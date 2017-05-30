@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xuh.io/"/>
-  <updated>2017-05-29T03:38:47.000Z</updated>
+  <updated>2017-05-30T05:35:20.000Z</updated>
   <id>http://xuh.io/</id>
   
   <author>
@@ -16,11 +16,119 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>为编译安装的nginx和php-fpm定制服务启动脚本</title>
+    <link href="http://xuh.io/2015/11/29/%E4%B8%BA%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85%E7%9A%84nginx%E5%92%8Cphp-fpm%E5%AE%9A%E5%88%B6%E6%9C%8D%E5%8A%A1%E5%90%AF%E5%8A%A8%E8%84%9A%E6%9C%AC/"/>
+    <id>http://xuh.io/2015/11/29/为编译安装的nginx和php-fpm定制服务启动脚本/</id>
+    <published>2015-11-29T05:26:38.000Z</published>
+    <updated>2017-05-30T05:35:20.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>源码编译安装的nginx和php-fpm没有centos自带的服务那样可以通过start|stop|restart等管理服务，只能自己定制了。</p>
+<h3 id="nginx启动脚本-etc-init-d-nginx"><a href="#nginx启动脚本-etc-init-d-nginx" class="headerlink" title="nginx启动脚本/etc/init.d/nginx"></a>nginx启动脚本/etc/init.d/nginx</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span>!/bin/bash</div><div class="line"><span class="meta">#</span></div><div class="line"><span class="meta">#</span> Startup script for Nginx - this script starts and stops the nginx daemon</div><div class="line"><span class="meta">#</span></div><div class="line"><span class="meta">#</span> chkconfig:   - 85 15</div><div class="line"><span class="meta">#</span> description:  Nginx is an HTTP(S) server, HTTP(S) reverse proxy and IMAP/POP3 proxy server</div><div class="line"><span class="meta">#</span> processname: nginx</div><div class="line"><span class="meta"></span></div><div class="line"># Source function library.</div><div class="line">. /etc/rc.d/init.d/functions</div><div class="line"><span class="meta"></span></div><div class="line"># Source networking configuration.</div><div class="line">. /etc/sysconfig/network</div><div class="line"><span class="meta"></span></div><div class="line"># Check that networking is up.</div><div class="line">[ "$NETWORKING" = "no" ] &amp;&amp; exit 0</div><div class="line"></div><div class="line">nginx="/alidata/server/nginx/sbin/nginx"</div><div class="line">prog=$(basename $nginx)</div><div class="line"></div><div class="line">NGINX_CONF_FILE="/alidata/server/nginx/conf/nginx.conf"</div><div class="line"></div><div class="line">[ -f /etc/sysconfig/nginx ] &amp;&amp; . /etc/sysconfig/nginx</div><div class="line"></div><div class="line">lockfile=/var/lock/subsys/nginx</div><div class="line"></div><div class="line">start() &#123;</div><div class="line">    [ -x $nginx ] || exit 5</div><div class="line">    [ -f $NGINX_CONF_FILE ] || exit 6</div><div class="line">    echo -n $"Starting $prog: "</div><div class="line">    daemon $nginx -c $NGINX_CONF_FILE</div><div class="line">    retval=$?</div><div class="line">    echo</div><div class="line">    [ $retval -eq 0 ] &amp;&amp; touch $lockfile</div><div class="line">    return $retval</div><div class="line">&#125;</div><div class="line"></div><div class="line">stop() &#123;</div><div class="line">    echo -n $"Stopping $prog: "</div><div class="line">    killproc $prog -QUIT</div><div class="line">    retval=$?</div><div class="line">    echo</div><div class="line">    [ $retval -eq 0 ] &amp;&amp; rm -f $lockfile</div><div class="line">    return $retval</div><div class="line">&#125;</div><div class="line"></div><div class="line">restart() &#123;</div><div class="line">    configtest || return $?</div><div class="line">    stop</div><div class="line">    sleep 1</div><div class="line">    start</div><div class="line">&#125;</div><div class="line"></div><div class="line">reload() &#123;</div><div class="line">    configtest || return $?</div><div class="line">    echo -n $"Reloading $prog: "</div><div class="line">    killproc $nginx -HUP</div><div class="line">    RETVAL=$?</div><div class="line">    echo</div><div class="line">&#125;</div><div class="line"></div><div class="line">force_reload() &#123;</div><div class="line">    restart</div><div class="line">&#125;</div><div class="line"></div><div class="line">configtest() &#123;</div><div class="line"><span class="meta">  $</span>nginx -t -c $NGINX_CONF_FILE</div><div class="line">&#125;</div><div class="line"></div><div class="line">rh_status() &#123;</div><div class="line">    status $prog</div><div class="line">&#125;</div><div class="line"></div><div class="line">rh_status_q() &#123;</div><div class="line">    rh_status &gt;/dev/null 2&gt;&amp;1</div><div class="line">&#125;</div><div class="line"></div><div class="line">case "$1" in</div><div class="line">    start)</div><div class="line">        rh_status_q &amp;&amp; exit 0</div><div class="line">        $1</div><div class="line">        ;;</div><div class="line">    stop)</div><div class="line">        rh_status_q || exit 0</div><div class="line">        $1</div><div class="line">        ;;</div><div class="line">    restart|configtest)</div><div class="line">        $1</div><div class="line">        ;;</div><div class="line">    reload)</div><div class="line">        rh_status_q || exit 7</div><div class="line">        $1</div><div class="line">        ;;</div><div class="line">    force-reload)</div><div class="line">        force_reload</div><div class="line">        ;;</div><div class="line">    status)</div><div class="line">        rh_status</div><div class="line">        ;;</div><div class="line">    condrestart|try-restart)</div><div class="line">        rh_status_q || exit 0</div><div class="line">            ;;</div><div class="line">    *)</div><div class="line">        echo $"Usage: $0 &#123;start|stop|status|restart|condrestart|try-restart|reload|force-reload|configtest&#125;"</div><div class="line">        exit 2</div><div class="line">esac</div></pre></td></tr></table></figure>
+<p>保存后赋予执行权限，加入开机启动</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo chmod +x /etc/init.d/nginx</div><div class="line">sudo /sbin/chkconfig nginx on</div></pre></td></tr></table></figure>
+<h3 id="PHP-FPM启动脚本-etc-init-d-php-fpm"><a href="#PHP-FPM启动脚本-etc-init-d-php-fpm" class="headerlink" title="PHP-FPM启动脚本/etc/init.d/php-fpm"></a>PHP-FPM启动脚本/etc/init.d/php-fpm</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div></pre></td><td class="code"><pre><div class="line"><span class="meta">	#</span>!/bin/bash</div><div class="line"><span class="meta">#</span></div><div class="line"><span class="meta">#</span> Startup script for the PHP-FPM server.</div><div class="line"><span class="meta">#</span></div><div class="line"><span class="meta">#</span> chkconfig: 345 85 15</div><div class="line"><span class="meta">#</span> description: PHP is an HTML-embedded scripting language</div><div class="line"><span class="meta">#</span> processname: php-fpm</div><div class="line"><span class="meta">#</span> config: /usr/local/php/etc/php.ini</div><div class="line"><span class="meta"></span></div><div class="line"># Source function library.</div><div class="line">. /etc/rc.d/init.d/functions</div><div class="line"></div><div class="line">PHP_PATH=/alidata/server</div><div class="line">DESC="php-fpm daemon"</div><div class="line">NAME=php-fpm</div><div class="line"><span class="meta">#</span> php-fpm路径</div><div class="line">DAEMON=$PHP_PATH/php/sbin/$NAME</div><div class="line"><span class="meta">#</span> 配置文件路径</div><div class="line">CONFIGFILE=$PHP_PATH/php/etc/php-fpm.conf</div><div class="line"><span class="meta">#</span> PID文件路径(在php-fpm.conf设置)</div><div class="line">PIDFILE=$PHP_PATH/php/var/run/$NAME.pid</div><div class="line">SCRIPTNAME=/etc/init.d/$NAME</div><div class="line"><span class="meta"></span></div><div class="line"># Gracefully exit if the package has been removed.</div><div class="line">test -x $DAEMON || exit 0</div><div class="line"></div><div class="line">rh_start() &#123;</div><div class="line"><span class="meta">  $</span>DAEMON -y $CONFIGFILE || echo -n " already running"</div><div class="line">&#125;</div><div class="line"></div><div class="line">rh_stop() &#123;</div><div class="line">  kill -QUIT `cat $PIDFILE` || echo -n " not running"</div><div class="line">&#125;</div><div class="line"></div><div class="line">rh_reload() &#123;</div><div class="line">  kill -HUP `cat $PIDFILE` || echo -n " can't reload"</div><div class="line">&#125;</div><div class="line"></div><div class="line">case "$1" in</div><div class="line">  start)</div><div class="line">        echo -n "Starting $DESC: $NAME"</div><div class="line">        rh_start</div><div class="line">        echo "."</div><div class="line">        ;;</div><div class="line">  stop)</div><div class="line">        echo -n "Stopping $DESC: $NAME"</div><div class="line">        rh_stop</div><div class="line">        echo "."</div><div class="line">        ;;</div><div class="line">  reload)</div><div class="line">        echo -n "Reloading $DESC configuration..."</div><div class="line">        rh_reload</div><div class="line">        echo "reloaded."</div><div class="line">  ;;</div><div class="line">  restart)</div><div class="line">        echo -n "Restarting $DESC: $NAME"</div><div class="line">        rh_stop</div><div class="line">        sleep 1</div><div class="line">        rh_start</div><div class="line">        echo "."</div><div class="line">        ;;</div><div class="line">  *)</div><div class="line">         echo "Usage: $SCRIPTNAME &#123;start|stop|restart|reload&#125;" &gt;&amp;2</div><div class="line">         exit 3</div><div class="line">        ;;</div><div class="line">esac</div><div class="line">exit 0</div></pre></td></tr></table></figure>
+<p>同样赋予执行权限和设置开机启动：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo chmod +x /etc/init.d/php-fpm</div><div class="line">sudo /sbin/chkconfig php-fpm on</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;源码编译安装的nginx和php-fpm没有centos自带的服务那样可以通过start|stop|restart等管理服务，只能自己定制了。&lt;/p&gt;
+&lt;h3 id=&quot;nginx启动脚本-etc-init-d-nginx&quot;&gt;&lt;a href=&quot;#nginx启动脚本-etc-i
+    
+    </summary>
+    
+      <category term="运维" scheme="http://xuh.io/categories/%E8%BF%90%E7%BB%B4/"/>
+    
+      <category term="LA/NMP服务" scheme="http://xuh.io/categories/%E8%BF%90%E7%BB%B4/LA-NMP%E6%9C%8D%E5%8A%A1/"/>
+    
+    
+      <category term="启动脚本" scheme="http://xuh.io/tags/%E5%90%AF%E5%8A%A8%E8%84%9A%E6%9C%AC/"/>
+    
+      <category term="nginx" scheme="http://xuh.io/tags/nginx/"/>
+    
+      <category term="php-fpm" scheme="http://xuh.io/tags/php-fpm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>centos6.5安装Memcached和php memcached扩展</title>
+    <link href="http://xuh.io/2015/11/29/centos6-5%E5%AE%89%E8%A3%85Memcached%E5%92%8Cphp-memcached%E6%89%A9%E5%B1%95/"/>
+    <id>http://xuh.io/2015/11/29/centos6-5安装Memcached和php-memcached扩展/</id>
+    <published>2015-11-29T05:12:15.000Z</published>
+    <updated>2017-05-30T05:37:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="安装memcached服务"><a href="#安装memcached服务" class="headerlink" title="安装memcached服务"></a>安装memcached服务</h3><p><code>$ yum -y install memcached</code></p>
+<p>把memcached加入开机启动</p>
+<p><code>$ chkconfig memcached on</code></p>
+<p>这个比较简单，yum同时安装依赖的libevent，安装后只要执行memcached -h有输出即安装成功,memcached的默认启动参数可以在/etc/sysconfig/memcached 修改。</p>
+<h3 id="安装memcached扩展依赖的libmemcached"><a href="#安装memcached扩展依赖的libmemcached" class="headerlink" title="安装memcached扩展依赖的libmemcached"></a>安装memcached扩展依赖的libmemcached</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ wget https://launchpad.net/libmemcached/1.0/1.0.18/+download/libmemcached-1.0.18.tar.gz</div><div class="line">$ tar zxvf libmemcached-1.0.18.tar.gz </div><div class="line">$ cd libmemcached-1.0.18</div><div class="line">$ ./configure -prefix=/usr/local/libmemcached -with-memcached</div><div class="line">$ make &amp;&amp; make install</div></pre></td></tr></table></figure>
+<h3 id="安装php-devel"><a href="#安装php-devel" class="headerlink" title="安装php-devel"></a>安装php-devel</h3><p>如果在你php的bin目录下有phpize这个东东这步可以省略，phpize主要用来编译php外挂扩展</p>
+<p><code>$ yum -y install php-devel</code></p>
+<h3 id="安装igbinary扩展"><a href="#安装igbinary扩展" class="headerlink" title="安装igbinary扩展"></a>安装igbinary扩展</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ wget http://pecl.php.net/get/igbinary-1.2.1.tgz</div><div class="line">$ tar zxvf igbinary-1.2.1.tgz</div><div class="line">$ cd igbinary-1.2.1</div><div class="line">$ /alidata/server/php/bin/phpize</div><div class="line">$ ./configure --with-php-config=/alidata/server/php/bin/php-config</div><div class="line">$ make &amp;&amp;  make install</div></pre></td></tr></table></figure>
+<p>然后在在php.ini中增加extension=igbinary.so</p>
+<h3 id="安装memcached扩展"><a href="#安装memcached扩展" class="headerlink" title="安装memcached扩展"></a>安装memcached扩展</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ wget http://pecl.php.net/get/memcached-2.2.0.tgz</div><div class="line">$ tar zxvf memcached-2.2.0.tgz</div><div class="line">$ cd memcached-2.2.0</div><div class="line">$ /alidata/server/php/bin/phpize</div><div class="line">$ ./configure -enable-memcached -enable-memcached-igbinary -enable-memcached-json -with-php-config=/alidata/server/php/bin/php-config -with-zlib-dir -with-libmemcached-dir=/usr/local/libmemcached -prefix=/usr/local/phpmemcached --disable-memcached-sasl</div><div class="line">$ make &amp;&amp; make install</div></pre></td></tr></table></figure>
+<p>最后编辑php.ini，加入memcached扩展<br>extension=memcached.so</p>
+<p>正常情况安装就成功了。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;安装memcached服务&quot;&gt;&lt;a href=&quot;#安装memcached服务&quot; class=&quot;headerlink&quot; title=&quot;安装memcached服务&quot;&gt;&lt;/a&gt;安装memcached服务&lt;/h3&gt;&lt;p&gt;&lt;code&gt;$ yum -y install mem
+    
+    </summary>
+    
+    
+      <category term="php扩展" scheme="http://xuh.io/tags/php%E6%89%A9%E5%B1%95/"/>
+    
+      <category term="memcached" scheme="http://xuh.io/tags/memcached/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>查询linux版本方法</title>
+    <link href="http://xuh.io/2015/11/29/%E6%9F%A5%E8%AF%A2linux%E7%89%88%E6%9C%AC%E6%96%B9%E6%B3%95/"/>
+    <id>http://xuh.io/2015/11/29/查询linux版本方法/</id>
+    <published>2015-11-29T03:54:33.000Z</published>
+    <updated>2017-05-30T05:09:41.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>1、查看/etc/redhat-release</p>
+<p><code>$ cat /etc/redhat-release</code></p>
+<p>2、查看rpm包版本</p>
+<p><code>$ rpm -q centos-release</code></p>
+<p>如果是redhat则执行rpm -q redhat-release</p>
+<p>3、所有版本通用的lsb_release</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta"></span></div><div class="line">#lsb_release -a</div><div class="line">LSB Version:	:base-4.0-amd64:base-4.0-noarch:core-4.0-amd64:core-4.0-noarch</div><div class="line">Distributor ID:	CentOS</div><div class="line">Description:	CentOS release 6.5 (Final)</div><div class="line">Release:	6.5</div><div class="line">Codename:	Final</div></pre></td></tr></table></figure>
+<p>4、使用uname-a</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;1、查看/etc/redhat-release&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;$ cat /etc/redhat-release&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;2、查看rpm包版本&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;$ rpm -q centos-release&lt;/code&gt;&lt;/p&gt;
+&lt;
+    
+    </summary>
+    
+      <category term="运维" scheme="http://xuh.io/categories/%E8%BF%90%E7%BB%B4/"/>
+    
+      <category term="系统管理" scheme="http://xuh.io/categories/%E8%BF%90%E7%BB%B4/%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86/"/>
+    
+    
+      <category term="linux" scheme="http://xuh.io/tags/linux/"/>
+    
+      <category term="发型版本" scheme="http://xuh.io/tags/%E5%8F%91%E5%9E%8B%E7%89%88%E6%9C%AC/"/>
+    
+  </entry>
+  
+  <entry>
     <title>CentOS安装samba服务</title>
     <link href="http://xuh.io/2015/11/28/CentOS%E5%AE%89%E8%A3%85samba%E6%9C%8D%E5%8A%A1/"/>
     <id>http://xuh.io/2015/11/28/CentOS安装samba服务/</id>
     <published>2015-11-28T03:21:44.000Z</published>
-    <updated>2017-05-29T03:38:47.000Z</updated>
+    <updated>2017-05-30T05:35:47.000Z</updated>
     
     <content type="html"><![CDATA[<p>检查是否有安装samba服务：</p>
 <p><code>$ rpm -qa | grep samba</code></p>
@@ -28,7 +136,7 @@
 <p><code>$ yum -y install samba samba-client samba-common</code></p>
 <p>默认的安装目录是/etc/samba，配置文件为smb.conf,先备份下smb文件<br><code>$ cd /etc/samba</code><br><code>$ cp smb.conf smb.conf.bak</code></p>
 <p>然后编辑smb.conf加入以下内容：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[remote_dev]</div><div class="line">        path = /alidata/nginx_www/wx.soopj.com</div><div class="line">        public =no</div><div class="line">        writable = yes</div><div class="line">        write list = @www  </div><div class="line">        valid users = @www</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[remote_dev]</div><div class="line">        path = /alidata/nginx_www/wx.soopj.com</div><div class="line">        public =no</div><div class="line">        writable = yes</div><div class="line">        write list = @www</div><div class="line">        valid users = @www</div></pre></td></tr></table></figure>
 <p>@www是客户端登录所需要的用户，设置nginx的用户密码：</p>
 <p><code>$ smbpasswd -a www</code></p>
 <p>为了避免在启动Samba时出现以下警告信息：rlimit_max: increasing rlimit_max (1024) tominimum Windows limit (16384)，<br>配置内核参数</p>

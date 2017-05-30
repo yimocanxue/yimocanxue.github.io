@@ -1,6 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[为编译安装的nginx和php-fpm定制服务启动脚本]]></title>
+    <url>%2F2015%2F11%2F29%2F%E4%B8%BA%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85%E7%9A%84nginx%E5%92%8Cphp-fpm%E5%AE%9A%E5%88%B6%E6%9C%8D%E5%8A%A1%E5%90%AF%E5%8A%A8%E8%84%9A%E6%9C%AC%2F</url>
+    <content type="text"><![CDATA[源码编译安装的nginx和php-fpm没有centos自带的服务那样可以通过start|stop|restart等管理服务，只能自己定制了。 nginx启动脚本/etc/init.d/nginx123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106#!/bin/bash## Startup script for Nginx - this script starts and stops the nginx daemon## chkconfig: - 85 15# description: Nginx is an HTTP(S) server, HTTP(S) reverse proxy and IMAP/POP3 proxy server# processname: nginx# Source function library.. /etc/rc.d/init.d/functions# Source networking configuration.. /etc/sysconfig/network# Check that networking is up.[ "$NETWORKING" = "no" ] &amp;&amp; exit 0nginx="/alidata/server/nginx/sbin/nginx"prog=$(basename $nginx)NGINX_CONF_FILE="/alidata/server/nginx/conf/nginx.conf"[ -f /etc/sysconfig/nginx ] &amp;&amp; . /etc/sysconfig/nginxlockfile=/var/lock/subsys/nginxstart() &#123; [ -x $nginx ] || exit 5 [ -f $NGINX_CONF_FILE ] || exit 6 echo -n $"Starting $prog: " daemon $nginx -c $NGINX_CONF_FILE retval=$? echo [ $retval -eq 0 ] &amp;&amp; touch $lockfile return $retval&#125;stop() &#123; echo -n $"Stopping $prog: " killproc $prog -QUIT retval=$? echo [ $retval -eq 0 ] &amp;&amp; rm -f $lockfile return $retval&#125;restart() &#123; configtest || return $? stop sleep 1 start&#125;reload() &#123; configtest || return $? echo -n $"Reloading $prog: " killproc $nginx -HUP RETVAL=$? echo&#125;force_reload() &#123; restart&#125;configtest() &#123; $nginx -t -c $NGINX_CONF_FILE&#125;rh_status() &#123; status $prog&#125;rh_status_q() &#123; rh_status &gt;/dev/null 2&gt;&amp;1&#125;case "$1" in start) rh_status_q &amp;&amp; exit 0 $1 ;; stop) rh_status_q || exit 0 $1 ;; restart|configtest) $1 ;; reload) rh_status_q || exit 7 $1 ;; force-reload) force_reload ;; status) rh_status ;; condrestart|try-restart) rh_status_q || exit 0 ;; *) echo $"Usage: $0 &#123;start|stop|status|restart|condrestart|try-restart|reload|force-reload|configtest&#125;" exit 2esac 保存后赋予执行权限，加入开机启动 12sudo chmod +x /etc/init.d/nginxsudo /sbin/chkconfig nginx on PHP-FPM启动脚本/etc/init.d/php-fpm12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667 #!/bin/bash## Startup script for the PHP-FPM server.## chkconfig: 345 85 15# description: PHP is an HTML-embedded scripting language# processname: php-fpm# config: /usr/local/php/etc/php.ini# Source function library.. /etc/rc.d/init.d/functionsPHP_PATH=/alidata/serverDESC="php-fpm daemon"NAME=php-fpm# php-fpm路径DAEMON=$PHP_PATH/php/sbin/$NAME# 配置文件路径CONFIGFILE=$PHP_PATH/php/etc/php-fpm.conf# PID文件路径(在php-fpm.conf设置)PIDFILE=$PHP_PATH/php/var/run/$NAME.pidSCRIPTNAME=/etc/init.d/$NAME# Gracefully exit if the package has been removed.test -x $DAEMON || exit 0rh_start() &#123; $DAEMON -y $CONFIGFILE || echo -n " already running"&#125;rh_stop() &#123; kill -QUIT `cat $PIDFILE` || echo -n " not running"&#125;rh_reload() &#123; kill -HUP `cat $PIDFILE` || echo -n " can't reload"&#125;case "$1" in start) echo -n "Starting $DESC: $NAME" rh_start echo "." ;; stop) echo -n "Stopping $DESC: $NAME" rh_stop echo "." ;; reload) echo -n "Reloading $DESC configuration..." rh_reload echo "reloaded." ;; restart) echo -n "Restarting $DESC: $NAME" rh_stop sleep 1 rh_start echo "." ;; *) echo "Usage: $SCRIPTNAME &#123;start|stop|restart|reload&#125;" &gt;&amp;2 exit 3 ;;esacexit 0 同样赋予执行权限和设置开机启动： 12sudo chmod +x /etc/init.d/php-fpmsudo /sbin/chkconfig php-fpm on]]></content>
+      <categories>
+        <category>运维</category>
+        <category>LA/NMP服务</category>
+      </categories>
+      <tags>
+        <tag>启动脚本</tag>
+        <tag>nginx</tag>
+        <tag>php-fpm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[centos6.5安装Memcached和php memcached扩展]]></title>
+    <url>%2F2015%2F11%2F29%2Fcentos6-5%E5%AE%89%E8%A3%85Memcached%E5%92%8Cphp-memcached%E6%89%A9%E5%B1%95%2F</url>
+    <content type="text"><![CDATA[安装memcached服务$ yum -y install memcached 把memcached加入开机启动 $ chkconfig memcached on 这个比较简单，yum同时安装依赖的libevent，安装后只要执行memcached -h有输出即安装成功,memcached的默认启动参数可以在/etc/sysconfig/memcached 修改。 安装memcached扩展依赖的libmemcached12345$ wget https://launchpad.net/libmemcached/1.0/1.0.18/+download/libmemcached-1.0.18.tar.gz$ tar zxvf libmemcached-1.0.18.tar.gz $ cd libmemcached-1.0.18$ ./configure -prefix=/usr/local/libmemcached -with-memcached$ make &amp;&amp; make install 安装php-devel如果在你php的bin目录下有phpize这个东东这步可以省略，phpize主要用来编译php外挂扩展 $ yum -y install php-devel 安装igbinary扩展123456$ wget http://pecl.php.net/get/igbinary-1.2.1.tgz$ tar zxvf igbinary-1.2.1.tgz$ cd igbinary-1.2.1$ /alidata/server/php/bin/phpize$ ./configure --with-php-config=/alidata/server/php/bin/php-config$ make &amp;&amp; make install 然后在在php.ini中增加extension=igbinary.so 安装memcached扩展123456$ wget http://pecl.php.net/get/memcached-2.2.0.tgz$ tar zxvf memcached-2.2.0.tgz$ cd memcached-2.2.0$ /alidata/server/php/bin/phpize$ ./configure -enable-memcached -enable-memcached-igbinary -enable-memcached-json -with-php-config=/alidata/server/php/bin/php-config -with-zlib-dir -with-libmemcached-dir=/usr/local/libmemcached -prefix=/usr/local/phpmemcached --disable-memcached-sasl$ make &amp;&amp; make install 最后编辑php.ini，加入memcached扩展extension=memcached.so 正常情况安装就成功了。]]></content>
+      <tags>
+        <tag>php扩展</tag>
+        <tag>memcached</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[查询linux版本方法]]></title>
+    <url>%2F2015%2F11%2F29%2F%E6%9F%A5%E8%AF%A2linux%E7%89%88%E6%9C%AC%E6%96%B9%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[1、查看/etc/redhat-release $ cat /etc/redhat-release 2、查看rpm包版本 $ rpm -q centos-release 如果是redhat则执行rpm -q redhat-release 3、所有版本通用的lsb_release 1234567#lsb_release -aLSB Version: :base-4.0-amd64:base-4.0-noarch:core-4.0-amd64:core-4.0-noarchDistributor ID: CentOSDescription: CentOS release 6.5 (Final)Release: 6.5Codename: Final 4、使用uname-a]]></content>
+      <categories>
+        <category>运维</category>
+        <category>系统管理</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>发型版本</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[CentOS安装samba服务]]></title>
     <url>%2F2015%2F11%2F28%2FCentOS%E5%AE%89%E8%A3%85samba%E6%9C%8D%E5%8A%A1%2F</url>
     <content type="text"><![CDATA[检查是否有安装samba服务： $ rpm -qa | grep samba 如果没安装则yum安装 $ yum -y install samba samba-client samba-common 默认的安装目录是/etc/samba，配置文件为smb.conf,先备份下smb文件$ cd /etc/samba$ cp smb.conf smb.conf.bak 然后编辑smb.conf加入以下内容： 123456[remote_dev] path = /alidata/nginx_www/wx.soopj.com public =no writable = yes write list = @www valid users = @www @www是客户端登录所需要的用户，设置nginx的用户密码： $ smbpasswd -a www 为了避免在启动Samba时出现以下警告信息：rlimit_max: increasing rlimit_max (1024) tominimum Windows limit (16384)，配置内核参数 12345$ ulimit -n 16384$ vi /etc/security/limits.conf#在最后加入以下内容* - nofile 16384 然后运行testparm检测配置文件。 然后启动服务，关闭防火墙： 123$ service smb start$ service nmb start$ service iptables stop centos7后启动服务由systemctl管理，防火墙换成firewalld，因此命令稍有不同。然后客户端即可测试。]]></content>
