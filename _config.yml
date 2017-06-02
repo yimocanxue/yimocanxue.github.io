@@ -5,7 +5,7 @@
 # Site
 title: 金州苍狼
 subtitle: 向往浪迹天涯的技术宅
-description: 放荡不羁爱自由,却偏偏做了个技术宅
+description: 放荡不羁爱自由,却偏偏是个技术宅
 author: David.xu
 language: zh-Hans
 timezone: Asia/Shanghai
@@ -15,7 +15,7 @@ email: xuh86@126.com
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://xuh.io
+url: https://xuh.io
 
 root: /
 permalink: :year/:month/:day/:title/
