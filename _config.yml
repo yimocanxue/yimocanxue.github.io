@@ -73,7 +73,8 @@ theme: next
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: git@github.com:yimocanxue/yimocanxue.github.io.git
+  #repo: git@github.com:yimocanxue/yimocanxue.github.io.git
+  repo: git@git.coding.net:jzwolf/jzwolf.coding.me.git
   branch: master
 
 feed:
