@@ -11,7 +11,7 @@
 {% if theme.copyright %}
 <div class="powered-by">
   {{ __('footer.powered', '<a class="theme-link" href="https://hexo.io">Hexo</a>') }}  |
-  <p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold;margin: 0;display: inline-block;padding-left: 5px;">Coding Pages</a></p>
+  <p  style="margin: 0;display: inline-block;padding-left: 5px;">Hosted by <a href="https://pages.coding.me" style="font-weight: bold;">Coding Pages</a></p>
 </div>
 
 <div class="theme-info">
