@@ -1,7 +1,7 @@
 ---
 title: gitlab系列教程之1-安装
 date: 2017-07-07 19:11:16
-tags: 
+tags:
 	- gitlab
 	- 安装
 	- docker
@@ -11,15 +11,15 @@ categories:
 ---
 
 
-# 一、安装gitlabe
+# 安装gitlabe
 
-### 1.1、安装docker
+## 安装docker
 
 安装环境为`centos_7.0 3.10.0-327.10.1.el7.x86_64`，参考链接https://docs.docker.com/engine/installation/linux/centos/#install-docker。安装方式有两种，一种是通过yum安装，另外一种是下载RPM包手动安装，这里采用第一种方式。
 
 这里以安装docker-ce stable为例，docker-ee安装类似，可以参照上面的链接。
 
-##### 1.1.1 设置yum repository
+### 设置yum repository
 
 安装yum-utils，它提供yum-config-manager这个工具包：
 
@@ -44,7 +44,7 @@ $ sudo yum-config-manager --enable docker-ce-edage
 
 ```
 
-###### 1.1.2 安装
+### 安装
 
 更新yum的安装包索引：
 
@@ -70,7 +70,7 @@ $ sudo systemctl start docker.service
 ```
 
 
-##### 1.1.3 安装docker-compose
+### 安装docker-compose
 
 因为一个完整的gitlab应用包含gitlab容器、redis、postgresql等服务，每个服务都启动一个docker实例，那么gitlab的管理就会很麻烦，docker-compose就是这么一个管理多容器应用的神器，它基于一个yml配置文件搞定依赖服务之前的管理。
 
@@ -99,7 +99,7 @@ $ sudo pip install docker-compose
 ![](http://xuh.cn-etc.com/2017/04/16/1492273456118.png!md)
 
 
-### 1.2、安装gitlab
+## 安装gitlab
 
 gitlab依赖redis、postgresql、其中redis提供缓存服务，postgresql负责持久化数据存储(当然也可以是MySQL)，因此需要开启三个容器，大致步骤如下。
 
@@ -111,16 +111,14 @@ $ docker run --name gitlab-postgresql -d \
     --env 'DB_USER=gitlab' --env 'DB_PASS=password' \
     --volume /srv/docker/gitlab/postgresql:/var/lib/postgresql \
     sameersbn/postgresql:9.4-12
-    
 ```
 
-启动redis容器   
- 
+启动redis容器
+
 ```
 docker run --name gitlab-redis -d \
     --volume /srv/docker/gitlab/redis:/var/lib/redis \
     sameersbn/redis:latest
-    
 ```
 
 然后再启动gitlab容器，然后通过--link连接redis和postgresql容器
@@ -133,12 +131,10 @@ docker run --name gitlab -d \
     --env 'GITLAB_SECRETS_DB_KEY_BASE=long-and-random-alpha-numeric-string' \
     --volume /srv/docker/gitlab/gitlab:/home/git/data \
     sameersbn/gitlab:8.4.4
-    
-``` 
+```
 
-这样相当复杂，因此我们可以把这些启动配置写到一个yml文件里面去，让docker-compose帮我们来管理这些容器，而这些容器之间的compose配置，已经有大牛贡献出来了（[点击这里查看](https://github.com/sameersbn/docker-gitlab)）。
 
-因此我们这里把它的配置文件下载下来
+这样相当复杂，因此我们可以把这些启动配置写到一个yml文件里面去，让docker-compose帮我们来管理这些容器，而这些容器之间的compose配置，已经有大牛贡献出来了（[点击这里查看](https://github.com/sameersbn/docker-gitlab)）。因此我们这里把它的配置文件下载下来
 
 ```
 $ wget https://raw.githubusercontent.com/sameersbn/docker-gitlab/master/docker-compose.yml
@@ -163,7 +159,8 @@ docker: Error response from daemon: mkdir /data/docker/mnt/overlay/e37098a0043c2
 
 果然，升级内核后不再报错了。
 
-### 1.3、配置gitlab
+
+## 配置gitlab
 
 这里只列出有配置改动的部分：
 
@@ -272,13 +269,13 @@ $ docker-compose up
 
 
 
-# 二、持续集成(CI/CD)
+# 持续集成(CI/CD)
 
-### 2.1 继续集成介绍
+## 继续集成介绍
 
-为了更好的理解gitlab持续集成的配置和管理，有必要详细理顺与持续集成相关概念，这里单独另开了一篇来说明这些概念，[点击这里查看](./持续集成介绍.md)。
+为了更好的理解gitlab持续集成的配置和管理，有必要详细理顺与持续集成相关概念，这里单独另开了一篇来说明这些概念，[点击这里查看](https://xuh.io/2017/07/07/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E4%BB%8B%E7%BB%8D/)。
 
-### 2.1 安装gitlab-runner
+## 安装gitlab-runner
 
 runner就是一个用来跑集成任务的特殊进程，可以和gitlab在同一台服务器，也可以安装在其它服务器上。
 
@@ -295,13 +292,3 @@ $ curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-ci-mult
 $ sudo yum install -y gitlab-ci-multi-runner
 
 ```
-
-
-
-
-   
-   
-
-
-	
-
