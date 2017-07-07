@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://xuh.io/"/>
-  <updated>2017-05-30T05:35:20.000Z</updated>
+  <updated>2017-07-07T11:15:47.000Z</updated>
   <id>https://xuh.io/</id>
   
   <author>
@@ -14,6 +14,418 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>gitlab系列教程之1-安装</title>
+    <link href="https://xuh.io/2017/07/07/gitlab%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E4%B9%8B1-%E5%AE%89%E8%A3%85/"/>
+    <id>https://xuh.io/2017/07/07/gitlab系列教程之1-安装/</id>
+    <published>2017-07-07T11:11:16.000Z</published>
+    <updated>2017-07-07T11:15:47.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="一、安装gitlabe"><a href="#一、安装gitlabe" class="headerlink" title="一、安装gitlabe"></a>一、安装gitlabe</h1><h3 id="1-1、安装docker"><a href="#1-1、安装docker" class="headerlink" title="1.1、安装docker"></a>1.1、安装docker</h3><p>安装环境为<code>centos_7.0 3.10.0-327.10.1.el7.x86_64</code>，参考链接<a href="https://docs.docker.com/engine/installation/linux/centos/#install-docker。安装方式有两种，一种是通过yum安装，另外一种是下载RPM包手动安装，这里采用第一种方式。" target="_blank" rel="external">https://docs.docker.com/engine/installation/linux/centos/#install-docker。安装方式有两种，一种是通过yum安装，另外一种是下载RPM包手动安装，这里采用第一种方式。</a></p>
+<p>这里以安装docker-ce stable为例，docker-ee安装类似，可以参照上面的链接。</p>
+<h5 id="1-1-1-设置yum-repository"><a href="#1-1-1-设置yum-repository" class="headerlink" title="1.1.1 设置yum repository"></a>1.1.1 设置yum repository</h5><p>安装yum-utils，它提供yum-config-manager这个工具包：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> sudo yum install -y yum-utils</div></pre></td></tr></table></figure>
+<p>添加docker资源库：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ sudo yum-config-manager \</div><div class="line">	--add-repo \</div><div class="line">	https:<span class="comment">//download.docker.com/linux/centos/docker-ce.repo</span></div></pre></td></tr></table></figure>
+<p><img src="http://xuh.cn-etc.com/2017/04/15/1492271229468.png!md" alt=""></p>
+<p>如果需要安装edage版，则执行下面的命令启用其repository：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo yum-config-manager --enable docker-ce-edage</div></pre></td></tr></table></figure>
+<h6 id="1-1-2-安装"><a href="#1-1-2-安装" class="headerlink" title="1.1.2 安装"></a>1.1.2 安装</h6><p>更新yum的安装包索引：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo yum makecache fast</div></pre></td></tr></table></figure>
+<p>安装最新版的docker:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo yum install docker-ce</div></pre></td></tr></table></figure>
+<p>输入docker version输出类似下面的内容则表示安装成功。</p>
+<p><img src="http://xuh.cn-etc.com/2017/04/16/1492272094596.png!md" alt=""></p>
+<p>启动docker服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo systemctl start docker.service</div></pre></td></tr></table></figure>
+<h5 id="1-1-3-安装docker-compose"><a href="#1-1-3-安装docker-compose" class="headerlink" title="1.1.3 安装docker-compose"></a>1.1.3 安装docker-compose</h5><p>因为一个完整的gitlab应用包含gitlab容器、redis、postgresql等服务，每个服务都启动一个docker实例，那么gitlab的管理就会很麻烦，docker-compose就是这么一个管理多容器应用的神器，它基于一个yml配置文件搞定依赖服务之前的管理。</p>
+<p>由于docker-compose依赖Python-pip，因此先安装它：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo yum install -y python-pip</div></pre></td></tr></table></figure>
+<p>对安装的pip进行升级：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo pip install --upgrade pip</div></pre></td></tr></table></figure>
+<p>利用pip安装docker-compose</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo pip install docker-compose</div></pre></td></tr></table></figure>
+<p>安装后查看版本如下：</p>
+<p><img src="http://xuh.cn-etc.com/2017/04/16/1492273456118.png!md" alt=""></p>
+<h3 id="1-2、安装gitlab"><a href="#1-2、安装gitlab" class="headerlink" title="1.2、安装gitlab"></a>1.2、安装gitlab</h3><p>gitlab依赖redis、postgresql、其中redis提供缓存服务，postgresql负责持久化数据存储(当然也可以是MySQL)，因此需要开启三个容器，大致步骤如下。</p>
+<p>启动postgresql容器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ docker run --name gitlab-postgresql -d \</div><div class="line">    --env &apos;DB_NAME=gitlabhq_production&apos; \</div><div class="line">    --env &apos;DB_USER=gitlab&apos; --env &apos;DB_PASS=password&apos; \</div><div class="line">    --volume /srv/docker/gitlab/postgresql:/var/lib/postgresql \</div><div class="line">    sameersbn/postgresql:9.4-12</div></pre></td></tr></table></figure>
+<p>启动redis容器   </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">docker run --name gitlab-redis -d \</div><div class="line">    --volume /srv/docker/gitlab/redis:/var/lib/redis \</div><div class="line">    sameersbn/redis:latest</div></pre></td></tr></table></figure>
+<p>然后再启动gitlab容器，然后通过–link连接redis和postgresql容器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">docker run --name gitlab -d \</div><div class="line">    --link gitlab-postgresql:postgresql --link gitlab-redis:redisio \</div><div class="line">    --publish 10022:22 --publish 10080:80 \</div><div class="line">    --env &apos;GITLAB_PORT=10080&apos; --env &apos;GITLAB_SSH_PORT=10022&apos; \</div><div class="line">    --env &apos;GITLAB_SECRETS_DB_KEY_BASE=long-and-random-alpha-numeric-string&apos; \</div><div class="line">    --volume /srv/docker/gitlab/gitlab:/home/git/data \</div><div class="line">    sameersbn/gitlab:8.4.4</div><div class="line">    </div><div class="line">``` </div><div class="line"></div><div class="line">这样相当复杂，因此我们可以把这些启动配置写到一个yml文件里面去，让docker-compose帮我们来管理这些容器，而这些容器之间的compose配置，已经有大牛贡献出来了（[点击这里查看](https://github.com/sameersbn/docker-gitlab)）。</div><div class="line"></div><div class="line">因此我们这里把它的配置文件下载下来</div></pre></td></tr></table></figure>
+<p>$ wget <a href="https://raw.githubusercontent.com/sameersbn/docker-gitlab/master/docker-compose.yml" target="_blank" rel="external">https://raw.githubusercontent.com/sameersbn/docker-gitlab/master/docker-compose.yml</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">然后修改里面的配置项（见下节），然后一条命令即可启动gitlab服务</div></pre></td></tr></table></figure>
+<p>$ docker-compose up</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">不过出现如下错误：</div></pre></td></tr></table></figure>
+<p>docker: Error response from daemon: mkdir /data/docker/mnt/overlay/e37098a0043c2bd200b919c4cd466a1cfe98a03865b08be82efa215e32e92196-init/merged/dev/shm: invalid argument.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">查了很久，找到两篇帖子（[看这里](https://github.com/docker/docker/issues/22937),[还有这里](https://github.com/docker/docker/issues/5122)），说啥的都有，不过隐约觉得应该是内核版本问题（[最新内核版本](https://www.kernel.org/)），具体内核升级参照[这里](https://baijiahao.baidu.com/po/feed/share?wfr=spider&amp;for=pc&amp;context=%7B%22sourceFrom%22%3A%22bjh%22%2C%22nid%22%3A%22news_3323164689172649603%22%7D)。</div><div class="line"></div><div class="line">果然，升级内核后不再报错了。</div><div class="line"></div><div class="line">### 1.3、配置gitlab</div><div class="line"></div><div class="line">这里只列出有配置改动的部分：</div></pre></td></tr></table></figure>
+<p>version: ‘2’</p>
+<p>services:<br>  redis:<br>    restart: always<br>    image: sameersbn/redis:latest<br>    command:</p>
+<pre><code>- --loglevel warning
+volumes:
+- /server/docker/gitlab/redis:/var/lib/redis:Z
+</code></pre><p>  postgresql:<br>    restart: always<br>    image: sameersbn/postgresql:9.6-2<br>    volumes:</p>
+<pre><code>- /server/docker/gitlab/postgresql:/var/lib/postgresql:Z
+environment:
+# postgsql的账户设置
+- DB_USER=gitlab
+- DB_PASS=8uf0s3cxdf
+- DB_NAME=gitlabhq_production
+- DB_EXTENSION=pg_trgm
+</code></pre><p>  gitlab:<br>    restart: always<br>    image: sameersbn/gitlab:9.0.5<br>    depends_on:</p>
+<pre><code>- redis
+- postgresql
+ports:
+# 把容器内nginx的80端口隐射到宿主机的10080端口上
+- &quot;10080:80&quot;
+# 把容器内ssh的22号端口映射到宿主机的10022端口上
+- &quot;10022:22&quot;
+volumes:
+# 通过数据卷把gitlab的数据挂载到/server/docker/gitlab/gitlab目录下，这样容器重启后数据就不会丢失了
+- /server/docker/gitlab/gitlab:/home/git/data:Z
+environment:
+- DEBUG=false
+
+- DB_ADAPTER=postgresql
+- DB_HOST=postgresql
+- DB_PORT=5432
+- DB_USER=gitlab
+- DB_PASS=8uf0s3cxdf
+- DB_NAME=gitlabhq_production
+
+- REDIS_HOST=redis
+- REDIS_PORT=6379
+
+# 修改时区
+- TZ=Asia/Shanghai
+- GITLAB_TIMEZONE=Beijing
+
+- GITLAB_HTTPS=false
+- SSL_SELF_SIGNED=false
+
+ # 发布gitlab应用的主机名称 
+- GITLAB_HOST=gitlab.cn-etc.com
+- GITLAB_PORT=10080
+- GITLAB_SSH_PORT=10022
+- GITLAB_RELATIVE_URL_ROOT=
+- GITLAB_SECRETS_DB_KEY_BASE=long-and-random-alphanumeric-string
+- GITLAB_SECRETS_SECRET_KEY_BASE=long-and-random-alphanumeric-string
+- GITLAB_SECRETS_OTP_KEY_BASE=long-and-random-alphanumeric-string
+
+- GITLAB_ROOT_PASSWORD=cnetc123
+- GITLAB_ROOT_EMAIL=gitlab@cn-etc.com
+
+- GITLAB_NOTIFY_ON_BROKEN_BUILDS=true
+- GITLAB_NOTIFY_PUSHER=false
+
+- GITLAB_EMAIL=gitlab@cn-etc.com
+- GITLAB_EMAIL_REPLY_TO=gitlab@cn-etc.com
+- GITLAB_INCOMING_EMAIL_ADDRESS=gitlab@cn-etc.com
+# 发送邮件时的显示名称
+- GITLAB_EMAIL_DISPLAY_NAME=Gitlab系统
+
+- GITLAB_BACKUP_SCHEDULE=daily
+- GITLAB_BACKUP_TIME=01:00
+
+# SMTP配置
+- SMTP_ENABLED=true
+- SMTP_DOMAIN=smtp.exmail.qq.com
+- SMTP_HOST=smtp.exmail.qq.com
+- SMTP_PORT=465
+- SMTP_USER=gitlab@cn-etc.com
+- SMTP_PASS=Gitlab123
+- SMTP_STARTTLS=true
+- SMTP_AUTHENTICATION=login
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">重新启动</div></pre></td></tr></table></figure>
+<p>$ docker-compose up</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">至此，gitlab安装完成，登录http://gitlab.cn-etc.com:10080 去注册用户新建group、project开干。</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"># 二、持续集成(CI/CD)</div><div class="line"></div><div class="line">### 2.1 继续集成介绍</div><div class="line"></div><div class="line">为了更好的理解gitlab持续集成的配置和管理，有必要详细理顺与持续集成相关概念，这里单独另开了一篇来说明这些概念，[点击这里查看](./持续集成介绍.md)。</div><div class="line"></div><div class="line">### 2.1 安装gitlab-runner</div><div class="line"></div><div class="line">runner就是一个用来跑集成任务的特殊进程，可以和gitlab在同一台服务器，也可以安装在其它服务器上。</div><div class="line"></div><div class="line">添加gitlab-runner资源库</div></pre></td></tr></table></figure>
+<p>$ curl -L <a href="https://packages.gitlab.com/install/repositories/runner/gitlab-ci-multi-runner/script.rpm.sh" target="_blank" rel="external">https://packages.gitlab.com/install/repositories/runner/gitlab-ci-multi-runner/script.rpm.sh</a> | sudo bash</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">然后安装</div></pre></td></tr></table></figure>
+<p>$ sudo yum install -y gitlab-ci-multi-runner</p>
+<p>```</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;一、安装gitlabe&quot;&gt;&lt;a href=&quot;#一、安装gitlabe&quot; class=&quot;headerlink&quot; title=&quot;一、安装gitlabe&quot;&gt;&lt;/a&gt;一、安装gitlabe&lt;/h1&gt;&lt;h3 id=&quot;1-1、安装docker&quot;&gt;&lt;a href=&quot;#1-1、安
+    
+    </summary>
+    
+      <category term="运维" scheme="https://xuh.io/categories/%E8%BF%90%E7%BB%B4/"/>
+    
+      <category term="devops" scheme="https://xuh.io/categories/%E8%BF%90%E7%BB%B4/devops/"/>
+    
+    
+      <category term="gitlab" scheme="https://xuh.io/tags/gitlab/"/>
+    
+      <category term="安装" scheme="https://xuh.io/tags/%E5%AE%89%E8%A3%85/"/>
+    
+      <category term="docker" scheme="https://xuh.io/tags/docker/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>算法分析</title>
+    <link href="https://xuh.io/2017/06/10/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90/"/>
+    <id>https://xuh.io/2017/06/10/算法分析/</id>
+    <published>2017-06-10T15:07:26.000Z</published>
+    <updated>2017-06-10T16:05:28.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>算法（algorithm）是为求解一个问题需要遵循的、被清楚指定的简单指令集合。衡量算法合理性的两个指标是运行时间和占用资源（比如内存）。</p>
+<p>分析估计算法性能一般来说是一个理论问题，因此需要有一套正式的系统理论，这个理论基础就是数学。</p>
+<h1 id="数学基础"><a href="#数学基础" class="headerlink" title="数学基础"></a>数学基础</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>算法分析用到以下4中定义。</p>
+<ul>
+<li><p>1、如果存在正常数c和$ n_0$使得当$ N \geq n_0 时T(N) \leq cf(N)，则记为T(N)=O(f(N)) 。$</p>
+</li>
+<li><p>2、如果存在正常数c和$ n_0 $使得当$ N \geq n_0 时T(N) \geq cg(N)，则记为T(N) = Ω(g(N))。$</p>
+</li>
+<li><p>3、$T(N)= \Theta (h(N))当且仅当T(N)=O(h(N))且T(N)=Ω(h(N))。$</p>
+</li>
+<li><p>4、$ 如果T(N)=O(p(N))且T(N) \neq \Theta (p(N))，则T(N) = o(p(N))。$</p>
+</li>
+</ul>
+<p>通常在一些点上一个函数的值大于另外一个函数的值，比较这些点的大小往往是没有意义的，在算法分析中我们通常是要比较两个函数的增长趋势，即相对增长率。</p>
+<p>从不等式的角度来看，定义1的含义为$T(N)$的相对增长率小于或等于$f(N)$，及$T(N)以不大于f(N)的趋势增长，因此f(N)是T(N)的一个$<code>上界</code>。</p>
+<p>定义2含义为$T(N)以大于或等于g(N)的增长率增长，g(N)为T(N)的一个$<code>下界</code>。</p>
+<p>定义3表示两个函数的增脏率相同。</p>
+<p>定义4与定义1的区别是定义1包含增长率相同的可能，定义1的表方法称着<code>大O记法</code>，定义4的表示方法称为<code>小o记法</code>。</p>
+<h2 id="几个重要的法则"><a href="#几个重要的法则" class="headerlink" title="几个重要的法则"></a>几个重要的法则</h2><h3 id="法则1"><a href="#法则1" class="headerlink" title="法则1"></a>法则1</h3><p>$ 如果T_1(N)=O(f(N))且T_2(N)=O(g(N))，那么$</p>
+<ul>
+<li>$ T_1(N) + T_2(N)=max(O(f(N),O(g(N)))$</li>
+<li>$ T_1(N) <em> T_2(N)=O(f(N) </em> g(N))$</li>
+</ul>
+<h3 id="法则2"><a href="#法则2" class="headerlink" title="法则2"></a>法则2</h3><p>$如果T(N)是一个k次多项式，则T(N)=\Theta(N^k)$</p>
+<h3 id="法则3"><a href="#法则3" class="headerlink" title="法则3"></a>法则3</h3><p>$对任意常数k,log^k N = O(N)$</p>
+<blockquote>
+<p>注意</p>
+<ol>
+<li>在大O表示发中，忽略常数和低阶项，比如$T(N) = O(2N^2)$和$T(N)=O(N^2 + N)$都应该表示为$T(N)=O(N^2)$</li>
+<li>可以通过计算极限$\lim_{n-&gt;\infty}{f(N)/g(N)}$来确定两个函数$f(N)和g(N)$的增长率。如果极限为0，则$f(N)=o(g(N))$;如果为不等于0的常数则$f(N)=\Theta(g(N))$;如果极限是$\infty$，则$g(N)=o(f(N))$;如果极限摆动，则二者无关(算法分析中不会出现这种情况)。</li>
+</ol>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;算法（algorithm）是为求解一个问题需要遵循的、被清楚指定的简单指令集合。衡量算法合理性的两个指标是运行时间和占用资源（比如内存）。&lt;/p&gt;
+&lt;p&gt;分析估计算法性能一般来说是一个理论问题，因此需要有一套正式的系统理论，这个理论基础就是数学。&lt;/p&gt;
+&lt;h1 id=&quot;数
+    
+    </summary>
+    
+      <category term="算法/数据结构" scheme="https://xuh.io/categories/%E7%AE%97%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+      <category term="理论" scheme="https://xuh.io/categories/%E7%AE%97%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%90%86%E8%AE%BA/"/>
+    
+    
+      <category term="算法分析" scheme="https://xuh.io/tags/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>数学证明方法与递归</title>
+    <link href="https://xuh.io/2017/06/09/%E6%95%B0%E5%AD%A6%E8%AF%81%E6%98%8E%E6%96%B9%E6%B3%95%E4%B8%8E%E9%80%92%E5%BD%92/"/>
+    <id>https://xuh.io/2017/06/09/数学证明方法与递归/</id>
+    <published>2017-06-09T10:34:34.000Z</published>
+    <updated>2017-06-10T14:58:27.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>证明数据结构分析中的结论经常用到两种方法,<code>归纳法</code>和<code>反证法</code>，这两种方法比较直观简单，只有在不得已的情况下才使用高大上的高等数学的证明方法。证明一个定理不成立最好的方法是反证法。</p>
+<h1 id="归纳法"><a href="#归纳法" class="headerlink" title="归纳法"></a>归纳法</h1><blockquote>
+<p>归纳法证明的两个关键步骤： <code>基准情形</code>，<code>归纳假设</code></p>
+</blockquote>
+<h2 id="证明基准情形"><a href="#证明基准情形" class="headerlink" title="证明基准情形"></a>证明基准情形</h2><p>归纳法证明第一步是证明基准情形，即对确定的某个小范围（通常是退化的）值的正确性，这一步通常是最简单直接的。</p>
+<h2 id="归纳假设"><a href="#归纳假设" class="headerlink" title="归纳假设"></a>归纳假设</h2><p>接下来是进行归纳假设，一般来说，这意味着假设定理对直到某个有限的数k的所有情况都成立，然后以此作为假设前提，证明定理对下一个值（通常是k+1）也成立，至此证明完成。</p>
+<p>下面通过归纳法证明下面的定理。</p>
+<ul>
+<li><p>斐波那契数列:$ F_0 = 1,F_1 = 1,F_2 = 2,F_3 = 3,F_4 = 5,…,F<em>i = F</em>{i-1} + F_{i-2} $, 对于$ i \geq 1 满足 {F_i &lt; ({ 5 \over 3})^i} $</p>
+<p>  证明:  首先，证明基准情形，对于$ F_1 = 1 &lt; {5 \over 3},F<em>2 = 2 &lt; {25 \over 9 }成立。$<br>  现假设对于$ i = 1,2,…,k $欲证定理成立，在此基础上如果我们能证明$ F</em>{k+1} &lt; ({5     \over 3})^{k+1} $成立，则定理成立。根据定义我们有：</p>
+<p>  $ F_{k+1} = F<em>k + F</em>{k-1} $</p>
+<p>  $ &lt; ({5 \over 3})^k + ({5 \over 3})^{k-1} $</p>
+<p>  $ &lt; ({3 \over 5})({5 \over 3})^{k+1} + ({3\over5})^2({5 \over 3})^{k+1} $</p>
+<p>  $ &lt; ({24 \over 25})({5 \over 3})^{k+1} $</p>
+<p>  $ &lt; ({5 \over 3})^{k+1} $</p>
+<p>  以此定理成立。</p>
+</li>
+<li><p>如果 $ N \geq 1,则\sum_{i=1}^N i^2 = { N(N+1)(2N+1) \over 6 } $</p>
+<p>  证明 当N=1时定理成立,现假设命题对 $ 1\leq k \leq N $ 成立,现证明对于N+1也成立</p>
+<p>  $ \sum<em>{i=1}^{N+1} i^2 = \sum</em>{i=1}^N i^2 + (N+1)^2 $</p>
+<p>  $ ={N(N+1)(2N+1) \over 6} + (N+1)^2 $</p>
+<p>  $ =(N+1)[{N(2N+1) \over 6} + (N+1)] $</p>
+<p>  $ =(N+1){(2N^2 + 7N + 6) \over 6} $</p>
+<p>  $ ={(N+1)[(N+1)+2][2(N+1)+1] \over 6} $</p>
+<p>  于是N+1时也成立,命题得证。</p>
+</li>
+</ul>
+<h1 id="反证法"><a href="#反证法" class="headerlink" title="反证法"></a>反证法</h1><ul>
+<li><p>费马猜想（费马素数），对于$ n \in N(自然数)，F_n =  2^{2^n} + 1 $是素数</p>
+<p>  这是费马老先生当时随便胡写在书页留白处的，并且说自己已经有证明方法了，可以这里写不下，我擦，据说好几十年没人证明出来，也是当时的计算能力有限，实际上当n=0,1,2,3,4时，$ F_n $分别是    3,5,17,257,65537都是素数，但是ｎ＝４时已经非常大了,但是当ｎ＝５时，$ F_n=614×6700417 $ ,这就是反证法</p>
+</li>
+<li><p>证明存在无穷多个素数</p>
+<p>  证明：　为了证明命题成立，我们先假设不成立，于是存在某个最大的素数$ P_k ,令P_1,P_2,..,P_k $是依序排列的所有素数，$ 令N = P_1P_2P_3…P_k + 1,显然N是比P_k $大的数，    根据假设N不是素数,可是$ P_1,P2,…,P_k $都不能整除N,因为整除的结果总有余数１，这就产生了    矛盾，因此假设不成立，因此原命题成立。</p>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;证明数据结构分析中的结论经常用到两种方法,&lt;code&gt;归纳法&lt;/code&gt;和&lt;code&gt;反证法&lt;/code&gt;，这两种方法比较直观简单，只有在不得已的情况下才使用高大上的高等数学的证明方法。证明一个定理不成立最好的方法是反证法。&lt;/p&gt;
+&lt;h1 id=&quot;归纳法&quot;&gt;&lt;a hre
+    
+    </summary>
+    
+      <category term="算法/数据结构" scheme="https://xuh.io/categories/%E7%AE%97%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+      <category term="理论" scheme="https://xuh.io/categories/%E7%AE%97%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%90%86%E8%AE%BA/"/>
+    
+    
+      <category term="证明方法" scheme="https://xuh.io/tags/%E8%AF%81%E6%98%8E%E6%96%B9%E6%B3%95/"/>
+    
+      <category term="递归" scheme="https://xuh.io/tags/%E9%80%92%E5%BD%92/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>数学基础知识</title>
+    <link href="https://xuh.io/2017/06/07/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    <id>https://xuh.io/2017/06/07/数学基础知识/</id>
+    <published>2017-06-07T14:54:13.000Z</published>
+    <updated>2017-06-10T14:58:27.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>算法分析的基础是数学，但是只从走出校门，就很少再接触这些东西，基本上都还给老师了，最近重读算法分析这本书，好多公式又冒出来了，为了以后再接触方便，这里特意记录下来。</p>
+<h1 id="指数"><a href="#指数" class="headerlink" title="指数"></a>指数</h1><p>$$ X^AX^B=X^{A+B} $$<br>$$ { X^A \over X^B } = X^{A-B} $$<br>$$ (X^A)^B = X^{AB} $$<br>$$ X^N + X^N = 2X^N \neq X^{2N} $$<br>$$ 2^N + 2^N = 2^{N+1} $$</p>
+<h1 id="对数"><a href="#对数" class="headerlink" title="对数"></a>对数</h1><p>在计算机科学中，除非又特殊说明，所有对数都是以2为底。</p>
+<h2 id="对数定义"><a href="#对数定义" class="headerlink" title="对数定义"></a>对数定义</h2><p> $ X^A = B ，当且仅当 \log_XB = A $</p>
+<p>根据定义可以推理出几个定理。</p>
+<h2 id="定理1"><a href="#定理1" class="headerlink" title="定理1"></a>定理1</h2><p>$ \log_AB = { \log_CB \over \log_CA}; C &gt; 0 $</p>
+<h2 id="定理2"><a href="#定理2" class="headerlink" title="定理2"></a>定理2</h2><p>$ logAB = logA + logB $</p>
+<h2 id="一些有用的公式"><a href="#一些有用的公式" class="headerlink" title="一些有用的公式"></a>一些有用的公式</h2><p>$$ log{A \over B} = logA - logB $$<br>$$ log(A^B) = BlogA $$<br>$$ logX &lt; X  (对所有X&gt;0成立) $$<br>$$ log1 = 0,log2 = 1,log1024=10, log1048576=20 $$</p>
+<h1 id="级数"><a href="#级数" class="headerlink" title="级数"></a>级数</h1><p>$$ \sum_{i=0}^N 2^i = 2^{N+1} - 1 $$</p>
+<p>$$ \sum_{i=0}^N A^i = { A^{N+1} - 1 \over A - 1} $$</p>
+<p>$$ \sum_{i=0}^N A^i \leq {1 \over 1 - A}; (0 &lt; A &lt; 1) $$</p>
+<p>$$ \sum_{i=0}^\infty = {1 \over 1 - A} ;(0 &lt; A &lt; 1)  $$</p>
+<p>$$ \sum_{i=1}^N = { N(N + 1) \over 2 } \approx {N^2 \over 2} $$</p>
+<p>$$ \sum_{i=1}^N i^2 = {N(N + 1)(2N + 1) \over 6 } \approx {N^3 \over 3} $$</p>
+<p>$$ \sum_{i=1}^N i^k \approx { N^{k+1} \over | k + 1 |};k \neq -1 $$</p>
+<h2 id="欧拉常数"><a href="#欧拉常数" class="headerlink" title="欧拉常数"></a>欧拉常数</h2><p>上面最后一个公式,当k=-1时不成立，此时我们需要另外的一个公式，这个公式在计算机科学中使用要远比在其它学科中使用得多。</p>
+<p>$$ \sum_{i=1}^N { 1 \over i } = H_N  \approx \log_e N,H_N称为调和数  $$</p>
+<p>式中误差γ趋近于0.57721566，这个值称为<code>欧拉常数</code></p>
+<h2 id="两个代数运算公式"><a href="#两个代数运算公式" class="headerlink" title="两个代数运算公式"></a>两个代数运算公式</h2><p>$$ \sum_{i=1}^N f(N) = Nf(N) $$</p>
+<blockquote>
+<p>$ \sum_{i=n_0}^N f(i) = A $</p>
+<p>$ \sum_{i=1}^N f(i) = B $</p>
+<p>$ \sum_{i=1}^{n_0 - 1}f(i) = C,则 A = B - C $</p>
+</blockquote>
+<h1 id="模运算"><a href="#模运算" class="headerlink" title="模运算"></a>模运算</h1><blockquote>
+<p>如果A - B能够被N整除，那么A与B模N同余（congruent），记为： $ A \equiv B(mod N) $</p>
+</blockquote>
+<h2 id="推论"><a href="#推论" class="headerlink" title="推论"></a>推论</h2><blockquote>
+<p>若 $ A \equiv B(mod N) ，则 A + C \equiv B + C(mod N) $<br>若 $ A \equiv B(mod N) ，则 AD \equiv BD(mod N) $</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;算法分析的基础是数学，但是只从走出校门，就很少再接触这些东西，基本上都还给老师了，最近重读算法分析这本书，好多公式又冒出来了，为了以后再接触方便，这里特意记录下来。&lt;/p&gt;
+&lt;h1 id=&quot;指数&quot;&gt;&lt;a href=&quot;#指数&quot; class=&quot;headerlink&quot; title
+    
+    </summary>
+    
+      <category term="算法/数据结构" scheme="https://xuh.io/categories/%E7%AE%97%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+      <category term="理论" scheme="https://xuh.io/categories/%E7%AE%97%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%90%86%E8%AE%BA/"/>
+    
+    
+      <category term="数学基础" scheme="https://xuh.io/tags/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>UITabBar的基本用法</title>
+    <link href="https://xuh.io/2017/06/06/UITabBar%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/"/>
+    <id>https://xuh.io/2017/06/06/UITabBar的基本用法/</id>
+    <published>2017-06-06T08:20:39.000Z</published>
+    <updated>2017-06-06T08:20:39.000Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>集合类型之0-概述</title>
+    <link href="https://xuh.io/2017/06/05/%E9%9B%86%E5%90%88%E7%B1%BB%E5%9E%8B%E4%B9%8B0-%E6%A6%82%E8%BF%B0/"/>
+    <id>https://xuh.io/2017/06/05/集合类型之0-概述/</id>
+    <published>2017-06-05T11:51:02.000Z</published>
+    <updated>2017-06-05T12:19:12.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="集合类型"><a href="#集合类型" class="headerlink" title="集合类型"></a>集合类型</h3><p>所有编程语言中，元素集合都是最重要的数据类型，Swift提供三种集合类型存储集合数据：Arrays(数组)、Sets(集合)、Dictionaries(字典)。</p>
+<p><img src="http://xuh.cn-etc.com/2017/06/05/1496663760489.png!md" alt=""></p>
+<p>Arrays: 有序数据集<br>Sets: 无序不重复数据集<br>Dictionaries: 无序键值对</p>
+<blockquote>
+<p>注意：<br>1、三种中集合都被实现为泛型集合<br>2、三种集合都是值类型<br>3、集合的可变性有声明关键字let、var决定<br>4、在不需要改变集合的时候，尽量以let声明成常量</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;集合类型&quot;&gt;&lt;a href=&quot;#集合类型&quot; class=&quot;headerlink&quot; title=&quot;集合类型&quot;&gt;&lt;/a&gt;集合类型&lt;/h3&gt;&lt;p&gt;所有编程语言中，元素集合都是最重要的数据类型，Swift提供三种集合类型存储集合数据：Arrays(数组)、Sets(集合)
+    
+    </summary>
+    
+      <category term="移动开发" scheme="https://xuh.io/categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/"/>
+    
+      <category term="iOS/swift" scheme="https://xuh.io/categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/iOS-swift/"/>
+    
+    
+      <category term="集合" scheme="https://xuh.io/tags/%E9%9B%86%E5%90%88/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>集合类型之3-字典</title>
+    <link href="https://xuh.io/2017/06/05/%E9%9B%86%E5%90%88%E7%B1%BB%E5%9E%8B%E4%B9%8B3-%E5%AD%97%E5%85%B8/"/>
+    <id>https://xuh.io/2017/06/05/集合类型之3-字典/</id>
+    <published>2017-06-05T11:50:46.000Z</published>
+    <updated>2017-06-05T11:50:46.000Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>集合类型之2-集合</title>
+    <link href="https://xuh.io/2017/06/05/%E9%9B%86%E5%90%88%E7%B1%BB%E5%9E%8B%E4%B9%8B2-%E9%9B%86%E5%90%88/"/>
+    <id>https://xuh.io/2017/06/05/集合类型之2-集合/</id>
+    <published>2017-06-05T11:50:38.000Z</published>
+    <updated>2017-06-05T11:50:38.000Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>集合类型之1-数组</title>
+    <link href="https://xuh.io/2017/06/05/%E9%9B%86%E5%90%88%E7%B1%BB%E5%9E%8B%E4%B9%8B1-%E6%95%B0%E7%BB%84/"/>
+    <id>https://xuh.io/2017/06/05/集合类型之1-数组/</id>
+    <published>2017-06-05T11:50:04.000Z</published>
+    <updated>2017-06-05T11:50:04.000Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>为编译安装的nginx和php-fpm定制服务启动脚本</title>
@@ -124,6 +536,34 @@
   </entry>
   
   <entry>
+    <title>让nginx支持path_info</title>
+    <link href="https://xuh.io/2015/11/28/%E8%AE%A9nginx%E6%94%AF%E6%8C%81path-info/"/>
+    <id>https://xuh.io/2015/11/28/让nginx支持path-info/</id>
+    <published>2015-11-28T03:21:44.000Z</published>
+    <updated>2017-05-29T03:33:22.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>nginx默认是不支持path_info模式的，也就是说不支持index.php/*这样的url，因此像Thinkphp中URL model为2的那种路径方式nginx不支持。</p>
+<p>只要修改虚拟主机的下面三个地方即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">location ~ .php &#123; #删除.php后的$</div><div class="line">         fastcgi_pass   soopj_phpfcgi;</div><div class="line">         fastcgi_index  default.php;</div><div class="line">          </div><div class="line">         fastcgi_split_path_info ^((?U).+.php)(/?.+)$;       #增加这句</div><div class="line">         fastcgi_param PATH_INFO $fastcgi_path_info;   #增加这句</div><div class="line">    </div><div class="line">         fastcgi_param  SCRIPT_FILENAME   $document_root$fastcgi_script_name;</div><div class="line">         include        fastcgi_params;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;nginx默认是不支持path_info模式的，也就是说不支持index.php/*这样的url，因此像Thinkphp中URL model为2的那种路径方式nginx不支持。&lt;/p&gt;
+&lt;p&gt;只要修改虚拟主机的下面三个地方即可：&lt;/p&gt;
+&lt;figure class=&quot;hig
+    
+    </summary>
+    
+      <category term="运维" scheme="https://xuh.io/categories/%E8%BF%90%E7%BB%B4/"/>
+    
+      <category term="LA/NMP服务" scheme="https://xuh.io/categories/%E8%BF%90%E7%BB%B4/LA-NMP%E6%9C%8D%E5%8A%A1/"/>
+    
+    
+      <category term="nginx" scheme="https://xuh.io/tags/nginx/"/>
+    
+  </entry>
+  
+  <entry>
     <title>CentOS安装samba服务</title>
     <link href="https://xuh.io/2015/11/28/CentOS%E5%AE%89%E8%A3%85samba%E6%9C%8D%E5%8A%A1/"/>
     <id>https://xuh.io/2015/11/28/CentOS安装samba服务/</id>
@@ -184,34 +624,6 @@
     
     
       <category term="git" scheme="https://xuh.io/tags/git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>让nginx支持path_info</title>
-    <link href="https://xuh.io/2015/11/28/%E8%AE%A9nginx%E6%94%AF%E6%8C%81path-info/"/>
-    <id>https://xuh.io/2015/11/28/让nginx支持path-info/</id>
-    <published>2015-11-28T03:21:44.000Z</published>
-    <updated>2017-05-29T03:33:22.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>nginx默认是不支持path_info模式的，也就是说不支持index.php/*这样的url，因此像Thinkphp中URL model为2的那种路径方式nginx不支持。</p>
-<p>只要修改虚拟主机的下面三个地方即可：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">location ~ .php &#123; #删除.php后的$</div><div class="line">         fastcgi_pass   soopj_phpfcgi;</div><div class="line">         fastcgi_index  default.php;</div><div class="line">          </div><div class="line">         fastcgi_split_path_info ^((?U).+.php)(/?.+)$;       #增加这句</div><div class="line">         fastcgi_param PATH_INFO $fastcgi_path_info;   #增加这句</div><div class="line">    </div><div class="line">         fastcgi_param  SCRIPT_FILENAME   $document_root$fastcgi_script_name;</div><div class="line">         include        fastcgi_params;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;nginx默认是不支持path_info模式的，也就是说不支持index.php/*这样的url，因此像Thinkphp中URL model为2的那种路径方式nginx不支持。&lt;/p&gt;
-&lt;p&gt;只要修改虚拟主机的下面三个地方即可：&lt;/p&gt;
-&lt;figure class=&quot;hig
-    
-    </summary>
-    
-      <category term="运维" scheme="https://xuh.io/categories/%E8%BF%90%E7%BB%B4/"/>
-    
-      <category term="LA/NMP服务" scheme="https://xuh.io/categories/%E8%BF%90%E7%BB%B4/LA-NMP%E6%9C%8D%E5%8A%A1/"/>
-    
-    
-      <category term="nginx" scheme="https://xuh.io/tags/nginx/"/>
     
   </entry>
   
