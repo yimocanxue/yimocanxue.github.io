@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="CI/CD,持续集成," />
 
 
 
@@ -92,17 +92,23 @@
 
 
 
-<meta name="description" content="放荡不羁爱自由,却偏偏是个技术宅">
-<meta name="keywords" content="爱编程,爱技术,爱生活,不爱拉芳">
+<meta name="description" content="一、什么是持续集成这个概念源于极限编程(XP)，是XP的12种实践之一，通俗地说，持续集成就是频繁地小步幅地向主干分支合并代码。  1.1 特征 自动化 单元测试 容器/虚拟化 版本控制 灵魂的反馈机制  1.2 优点 快速失败   持续集成最大的有点事快速失败，因为是快速的小步幅的合并代码，问题域会更集中，单元测试失败就直接拒绝，避免因提交内容太多造成的集成困难和携带错误发布而导致的发布回滚。">
+<meta name="keywords" content="CI&#x2F;CD,持续集成">
 <meta property="og:type" content="article">
-<meta property="og:title" content="集合类型之2-集合">
-<meta property="og:url" content="https://xuh.io/2017/06/05/集合类型之2-集合/index.html">
+<meta property="og:title" content="持续集成介绍">
+<meta property="og:url" content="https://xuh.io/2017/07/07/持续集成介绍/index.html">
 <meta property="og:site_name" content="金州苍狼">
-<meta property="og:description" content="放荡不羁爱自由,却偏偏是个技术宅">
-<meta property="og:updated_time" content="2017-06-05T11:50:38.000Z">
+<meta property="og:description" content="一、什么是持续集成这个概念源于极限编程(XP)，是XP的12种实践之一，通俗地说，持续集成就是频繁地小步幅地向主干分支合并代码。  1.1 特征 自动化 单元测试 容器/虚拟化 版本控制 灵魂的反馈机制  1.2 优点 快速失败   持续集成最大的有点事快速失败，因为是快速的小步幅的合并代码，问题域会更集中，单元测试失败就直接拒绝，避免因提交内容太多造成的集成困难和携带错误发布而导致的发布回滚。">
+<meta property="og:image" content="http://xuh.cn-etc.com/2017/04/16/1492333044202.png!md">
+<meta property="og:image" content="http://xuh.cn-etc.com/2017/04/16/1492333425508.png!md">
+<meta property="og:image" content="http://xuh.cn-etc.com/2017/04/16/1492333475513.png!md">
+<meta property="og:image" content="http://xuh.cn-etc.com/2017/04/16/1492333791473.png!md">
+<meta property="og:image" content="http://xuh.cn-etc.com/2017/04/16/1492335916641.png!md">
+<meta property="og:updated_time" content="2017-07-07T11:31:27.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="集合类型之2-集合">
-<meta name="twitter:description" content="放荡不羁爱自由,却偏偏是个技术宅">
+<meta name="twitter:title" content="持续集成介绍">
+<meta name="twitter:description" content="一、什么是持续集成这个概念源于极限编程(XP)，是XP的12种实践之一，通俗地说，持续集成就是频繁地小步幅地向主干分支合并代码。  1.1 特征 自动化 单元测试 容器/虚拟化 版本控制 灵魂的反馈机制  1.2 优点 快速失败   持续集成最大的有点事快速失败，因为是快速的小步幅的合并代码，问题域会更集中，单元测试失败就直接拒绝，避免因提交内容太多造成的集成困难和携带错误发布而导致的发布回滚。">
+<meta name="twitter:image" content="http://xuh.cn-etc.com/2017/04/16/1492333044202.png!md">
 
 
 
@@ -130,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="https://xuh.io/2017/06/05/集合类型之2-集合/"/>
+  <link rel="canonical" href="https://xuh.io/2017/07/07/持续集成介绍/"/>
 
 
 
 
 
-  <title>集合类型之2-集合 | 金州苍狼</title>
+  <title>持续集成介绍 | 金州苍狼</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -310,7 +316,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://xuh.io/2017/06/05/集合类型之2-集合/">
+    <link itemprop="mainEntityOfPage" href="https://xuh.io/2017/07/07/持续集成介绍/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="David.xu">
@@ -327,7 +333,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">集合类型之2-集合</h1>
+          <h1 class="post-title" itemprop="name headline">持续集成介绍</h1>
         
 
         <div class="post-meta">
@@ -339,8 +345,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-05T19:50:38+08:00">
-                2017-06-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-07T19:28:51+08:00">
+                2017-07-07
               </time>
             
 
@@ -350,6 +356,39 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/运维/" itemprop="url" rel="index">
+                    <span itemprop="name">运维</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/运维/devops/" itemprop="url" rel="index">
+                    <span itemprop="name">devops</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -358,7 +397,7 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a class="cloud-tie-join-count" href="/2017/06/05/集合类型之2-集合/#comments" itemprop="discussionUrl">
+                <a class="cloud-tie-join-count" href="/2017/07/07/持续集成介绍/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count join-count" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -384,7 +423,61 @@
       
 
       
-        
+        <h1 id="一、什么是持续集成"><a href="#一、什么是持续集成" class="headerlink" title="一、什么是持续集成"></a>一、什么是持续集成</h1><p>这个概念源于<code>极限编程(XP)</code>，是XP的12种实践之一，通俗地说，持续集成就是频繁地小步幅地向主干分支合并代码。</p>
+<p><img src="http://xuh.cn-etc.com/2017/04/16/1492333044202.png!md" alt=""></p>
+<h3 id="1-1-特征"><a href="#1-1-特征" class="headerlink" title="1.1 特征"></a>1.1 特征</h3><ul>
+<li>自动化</li>
+<li>单元测试</li>
+<li>容器/虚拟化</li>
+<li>版本控制</li>
+<li>灵魂的反馈机制</li>
+</ul>
+<h3 id="1-2-优点"><a href="#1-2-优点" class="headerlink" title="1.2 优点"></a>1.2 优点</h3><ul>
+<li><p>快速失败</p>
+<p>  持续集成最大的有点事<code>快速失败</code>，因为是快速的小步幅的合并代码，问题域会更集中，单元测试失败就直接拒绝，避免因提交内容太多造成的集成困难和携带错误发布而导致的发布回滚。</p>
+</li>
+<li><p>防止分支大幅偏离主干</p>
+<p>  如果不是经常集成，主干又在不断更新，会导致以后集成的难度变大，甚至难以集成。</p>
+</li>
+</ul>
+<h3 id="1-3-持续交付-Continuous-Delivery-和持续-Continuous-Deployment"><a href="#1-3-持续交付-Continuous-Delivery-和持续-Continuous-Deployment" class="headerlink" title="1.3 持续交付(Continuous Delivery)和持续(Continuous Deployment)"></a>1.3 持续交付(Continuous Delivery)和持续(Continuous Deployment)</h3><p>持续交付</p>
+<p><img src="http://xuh.cn-etc.com/2017/04/16/1492333425508.png!md" alt=""></p>
+<p>持续部署</p>
+<p><img src="http://xuh.cn-etc.com/2017/04/16/1492333475513.png!md" alt=""></p>
+<p>持续集成是持续交付的前提，持续交付是持续部署的前提。</p>
+<p>三者在流程上的关系</p>
+<p><img src="http://xuh.cn-etc.com/2017/04/16/1492333791473.png!md" alt=""></p>
+<blockquote>
+<p>注意，从上面我们可以看出来，在整个开发流程中，最重要的环节是持续集成，另外为了表述简便，在以后的文档中不会再可以提持续交付和持续部署，而是不严格的用持续集成代替整个流程或者用应为<code>CI/CD</code>指代整个流程。</p>
+</blockquote>
+<h3 id="1-4-持续集成构建方案-工具"><a href="#1-4-持续集成构建方案-工具" class="headerlink" title="1.4 持续集成构建方案(工具)"></a>1.4 持续集成构建方案(工具)</h3><p>从上面的整个持续集成的流程来看，都是自动化的，人工去完成这个过程显然不现实，因此就有各种各样的继续集成的构建工具，常见的以下几种</p>
+<ul>
+<li>Jenkins</li>
+<li>Gitlab</li>
+<li>Travis</li>
+<li>Strider</li>
+<li>Codeship</li>
+</ul>
+<h1 id="二、Gitlab中CI-CD相关概念"><a href="#二、Gitlab中CI-CD相关概念" class="headerlink" title="二、Gitlab中CI/CD相关概念"></a>二、Gitlab中CI/CD相关概念</h1><p>gitlab中通过根目录下的.gitlab-ci.yml配置持续集成任务。为了理解.gitlab-ci.yml，这里简单说明下gitlab中的几个概念</p>
+<ul>
+<li><p>Pipline</p>
+<p>  Pipline是<code>管道</code>的意思，一次构建任务就是一个Pipline，一个Pipline可以包括多个Stages。</p>
+</li>
+<li><p>Stages</p>
+<p>  Stages是<code>阶段</code>的意思，就是表示个持续发布流程中的一个环节，比如构建、测试、发布等，Stages是包含多个Jobs（任务）的集合，不包含任何Jobs的Stages会被gitlab-runner自动忽略。</p>
+<p>  Gitlab默认包含build, test, deploy三个Stages。</p>
+<p>  Stages按顺序串行执行，任何一个Stages失败，Pipline就失败。</p>
+</li>
+<li><p>Jobs</p>
+<p>  Jobs在这里是<code>任务</code>的意思。</p>
+<p>  Stages中的Jobs并行执行，任何一个Jobs失败则Stages失败。</p>
+</li>
+</ul>
+<p>三者的关系</p>
+<p><img src="http://xuh.cn-etc.com/2017/04/16/1492335916641.png!md" alt=""></p>
+<p>Gitlab中用gitlab-runner来执行pipline。</p>
+<p>更多请参见官方文档 <a href="https://docs.gitlab.com/ce/ci/#getting-started" target="_blank" rel="external">https://docs.gitlab.com/ce/ci/#getting-started</a></p>
+
       
     </div>
 
@@ -432,6 +525,14 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/CI-CD/" rel="tag"># CI/CD</a>
+          
+            <a href="/tags/持续集成/" rel="tag"># 持续集成</a>
+          
+        </div>
+      
 
       
         
@@ -441,8 +542,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/05/集合类型之1-数组/" rel="next" title="集合类型之1-数组">
-                <i class="fa fa-chevron-left"></i> 集合类型之1-数组
+              <a href="/2017/07/07/gitlab系列教程之1-安装/" rel="next" title="gitlab系列教程之1-安装">
+                <i class="fa fa-chevron-left"></i> gitlab系列教程之1-安装
               </a>
             
           </div>
@@ -450,10 +551,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/06/05/集合类型之3-字典/" rel="prev" title="集合类型之3-字典">
-                集合类型之3-字典 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -525,8 +622,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar.jpg"
@@ -595,6 +701,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、什么是持续集成"><span class="nav-number">1.</span> <span class="nav-text">一、什么是持续集成</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-特征"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.1 特征</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-优点"><span class="nav-number">1.0.2.</span> <span class="nav-text">1.2 优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-持续交付-Continuous-Delivery-和持续-Continuous-Deployment"><span class="nav-number">1.0.3.</span> <span class="nav-text">1.3 持续交付(Continuous Delivery)和持续(Continuous Deployment)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-持续集成构建方案-工具"><span class="nav-number">1.0.4.</span> <span class="nav-text">1.4 持续集成构建方案(工具)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、Gitlab中CI-CD相关概念"><span class="nav-number">2.</span> <span class="nav-text">二、Gitlab中CI/CD相关概念</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
