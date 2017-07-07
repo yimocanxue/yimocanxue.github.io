@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://xuh.io/"/>
-  <updated>2017-07-07T11:15:47.000Z</updated>
+  <updated>2017-07-07T11:20:11.000Z</updated>
   <id>https://xuh.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://xuh.io/2017/07/07/gitlab%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E4%B9%8B1-%E5%AE%89%E8%A3%85/"/>
     <id>https://xuh.io/2017/07/07/gitlab系列教程之1-安装/</id>
     <published>2017-07-07T11:11:16.000Z</published>
-    <updated>2017-07-07T11:15:47.000Z</updated>
+    <updated>2017-07-07T11:20:11.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="一、安装gitlabe"><a href="#一、安装gitlabe" class="headerlink" title="一、安装gitlabe"></a>一、安装gitlabe</h1><h3 id="1-1、安装docker"><a href="#1-1、安装docker" class="headerlink" title="1.1、安装docker"></a>1.1、安装docker</h3><p>安装环境为<code>centos_7.0 3.10.0-327.10.1.el7.x86_64</code>，参考链接<a href="https://docs.docker.com/engine/installation/linux/centos/#install-docker。安装方式有两种，一种是通过yum安装，另外一种是下载RPM包手动安装，这里采用第一种方式。" target="_blank" rel="external">https://docs.docker.com/engine/installation/linux/centos/#install-docker。安装方式有两种，一种是通过yum安装，另外一种是下载RPM包手动安装，这里采用第一种方式。</a></p>
 <p>这里以安装docker-ce stable为例，docker-ee安装类似，可以参照上面的链接。</p>
@@ -51,100 +51,29 @@
 <h3 id="1-2、安装gitlab"><a href="#1-2、安装gitlab" class="headerlink" title="1.2、安装gitlab"></a>1.2、安装gitlab</h3><p>gitlab依赖redis、postgresql、其中redis提供缓存服务，postgresql负责持久化数据存储(当然也可以是MySQL)，因此需要开启三个容器，大致步骤如下。</p>
 <p>启动postgresql容器</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ docker run --name gitlab-postgresql -d \</div><div class="line">    --env &apos;DB_NAME=gitlabhq_production&apos; \</div><div class="line">    --env &apos;DB_USER=gitlab&apos; --env &apos;DB_PASS=password&apos; \</div><div class="line">    --volume /srv/docker/gitlab/postgresql:/var/lib/postgresql \</div><div class="line">    sameersbn/postgresql:9.4-12</div></pre></td></tr></table></figure>
-<p>启动redis容器   </p>
+<p>启动redis容器</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">docker run --name gitlab-redis -d \</div><div class="line">    --volume /srv/docker/gitlab/redis:/var/lib/redis \</div><div class="line">    sameersbn/redis:latest</div></pre></td></tr></table></figure>
 <p>然后再启动gitlab容器，然后通过–link连接redis和postgresql容器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">docker run --name gitlab -d \</div><div class="line">    --link gitlab-postgresql:postgresql --link gitlab-redis:redisio \</div><div class="line">    --publish 10022:22 --publish 10080:80 \</div><div class="line">    --env &apos;GITLAB_PORT=10080&apos; --env &apos;GITLAB_SSH_PORT=10022&apos; \</div><div class="line">    --env &apos;GITLAB_SECRETS_DB_KEY_BASE=long-and-random-alpha-numeric-string&apos; \</div><div class="line">    --volume /srv/docker/gitlab/gitlab:/home/git/data \</div><div class="line">    sameersbn/gitlab:8.4.4</div><div class="line">    </div><div class="line">``` </div><div class="line"></div><div class="line">这样相当复杂，因此我们可以把这些启动配置写到一个yml文件里面去，让docker-compose帮我们来管理这些容器，而这些容器之间的compose配置，已经有大牛贡献出来了（[点击这里查看](https://github.com/sameersbn/docker-gitlab)）。</div><div class="line"></div><div class="line">因此我们这里把它的配置文件下载下来</div></pre></td></tr></table></figure>
-<p>$ wget <a href="https://raw.githubusercontent.com/sameersbn/docker-gitlab/master/docker-compose.yml" target="_blank" rel="external">https://raw.githubusercontent.com/sameersbn/docker-gitlab/master/docker-compose.yml</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">然后修改里面的配置项（见下节），然后一条命令即可启动gitlab服务</div></pre></td></tr></table></figure>
-<p>$ docker-compose up</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">不过出现如下错误：</div></pre></td></tr></table></figure>
-<p>docker: Error response from daemon: mkdir /data/docker/mnt/overlay/e37098a0043c2bd200b919c4cd466a1cfe98a03865b08be82efa215e32e92196-init/merged/dev/shm: invalid argument.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">查了很久，找到两篇帖子（[看这里](https://github.com/docker/docker/issues/22937),[还有这里](https://github.com/docker/docker/issues/5122)），说啥的都有，不过隐约觉得应该是内核版本问题（[最新内核版本](https://www.kernel.org/)），具体内核升级参照[这里](https://baijiahao.baidu.com/po/feed/share?wfr=spider&amp;for=pc&amp;context=%7B%22sourceFrom%22%3A%22bjh%22%2C%22nid%22%3A%22news_3323164689172649603%22%7D)。</div><div class="line"></div><div class="line">果然，升级内核后不再报错了。</div><div class="line"></div><div class="line">### 1.3、配置gitlab</div><div class="line"></div><div class="line">这里只列出有配置改动的部分：</div></pre></td></tr></table></figure>
-<p>version: ‘2’</p>
-<p>services:<br>  redis:<br>    restart: always<br>    image: sameersbn/redis:latest<br>    command:</p>
-<pre><code>- --loglevel warning
-volumes:
-- /server/docker/gitlab/redis:/var/lib/redis:Z
-</code></pre><p>  postgresql:<br>    restart: always<br>    image: sameersbn/postgresql:9.6-2<br>    volumes:</p>
-<pre><code>- /server/docker/gitlab/postgresql:/var/lib/postgresql:Z
-environment:
-# postgsql的账户设置
-- DB_USER=gitlab
-- DB_PASS=8uf0s3cxdf
-- DB_NAME=gitlabhq_production
-- DB_EXTENSION=pg_trgm
-</code></pre><p>  gitlab:<br>    restart: always<br>    image: sameersbn/gitlab:9.0.5<br>    depends_on:</p>
-<pre><code>- redis
-- postgresql
-ports:
-# 把容器内nginx的80端口隐射到宿主机的10080端口上
-- &quot;10080:80&quot;
-# 把容器内ssh的22号端口映射到宿主机的10022端口上
-- &quot;10022:22&quot;
-volumes:
-# 通过数据卷把gitlab的数据挂载到/server/docker/gitlab/gitlab目录下，这样容器重启后数据就不会丢失了
-- /server/docker/gitlab/gitlab:/home/git/data:Z
-environment:
-- DEBUG=false
-
-- DB_ADAPTER=postgresql
-- DB_HOST=postgresql
-- DB_PORT=5432
-- DB_USER=gitlab
-- DB_PASS=8uf0s3cxdf
-- DB_NAME=gitlabhq_production
-
-- REDIS_HOST=redis
-- REDIS_PORT=6379
-
-# 修改时区
-- TZ=Asia/Shanghai
-- GITLAB_TIMEZONE=Beijing
-
-- GITLAB_HTTPS=false
-- SSL_SELF_SIGNED=false
-
- # 发布gitlab应用的主机名称 
-- GITLAB_HOST=gitlab.cn-etc.com
-- GITLAB_PORT=10080
-- GITLAB_SSH_PORT=10022
-- GITLAB_RELATIVE_URL_ROOT=
-- GITLAB_SECRETS_DB_KEY_BASE=long-and-random-alphanumeric-string
-- GITLAB_SECRETS_SECRET_KEY_BASE=long-and-random-alphanumeric-string
-- GITLAB_SECRETS_OTP_KEY_BASE=long-and-random-alphanumeric-string
-
-- GITLAB_ROOT_PASSWORD=cnetc123
-- GITLAB_ROOT_EMAIL=gitlab@cn-etc.com
-
-- GITLAB_NOTIFY_ON_BROKEN_BUILDS=true
-- GITLAB_NOTIFY_PUSHER=false
-
-- GITLAB_EMAIL=gitlab@cn-etc.com
-- GITLAB_EMAIL_REPLY_TO=gitlab@cn-etc.com
-- GITLAB_INCOMING_EMAIL_ADDRESS=gitlab@cn-etc.com
-# 发送邮件时的显示名称
-- GITLAB_EMAIL_DISPLAY_NAME=Gitlab系统
-
-- GITLAB_BACKUP_SCHEDULE=daily
-- GITLAB_BACKUP_TIME=01:00
-
-# SMTP配置
-- SMTP_ENABLED=true
-- SMTP_DOMAIN=smtp.exmail.qq.com
-- SMTP_HOST=smtp.exmail.qq.com
-- SMTP_PORT=465
-- SMTP_USER=gitlab@cn-etc.com
-- SMTP_PASS=Gitlab123
-- SMTP_STARTTLS=true
-- SMTP_AUTHENTICATION=login
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">重新启动</div></pre></td></tr></table></figure>
-<p>$ docker-compose up</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">至此，gitlab安装完成，登录http://gitlab.cn-etc.com:10080 去注册用户新建group、project开干。</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"># 二、持续集成(CI/CD)</div><div class="line"></div><div class="line">### 2.1 继续集成介绍</div><div class="line"></div><div class="line">为了更好的理解gitlab持续集成的配置和管理，有必要详细理顺与持续集成相关概念，这里单独另开了一篇来说明这些概念，[点击这里查看](./持续集成介绍.md)。</div><div class="line"></div><div class="line">### 2.1 安装gitlab-runner</div><div class="line"></div><div class="line">runner就是一个用来跑集成任务的特殊进程，可以和gitlab在同一台服务器，也可以安装在其它服务器上。</div><div class="line"></div><div class="line">添加gitlab-runner资源库</div></pre></td></tr></table></figure>
-<p>$ curl -L <a href="https://packages.gitlab.com/install/repositories/runner/gitlab-ci-multi-runner/script.rpm.sh" target="_blank" rel="external">https://packages.gitlab.com/install/repositories/runner/gitlab-ci-multi-runner/script.rpm.sh</a> | sudo bash</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">然后安装</div></pre></td></tr></table></figure>
-<p>$ sudo yum install -y gitlab-ci-multi-runner</p>
-<p>```</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">docker run --name gitlab -d \</div><div class="line">    --link gitlab-postgresql:postgresql --link gitlab-redis:redisio \</div><div class="line">    --publish 10022:22 --publish 10080:80 \</div><div class="line">    --env &apos;GITLAB_PORT=10080&apos; --env &apos;GITLAB_SSH_PORT=10022&apos; \</div><div class="line">    --env &apos;GITLAB_SECRETS_DB_KEY_BASE=long-and-random-alpha-numeric-string&apos; \</div><div class="line">    --volume /srv/docker/gitlab/gitlab:/home/git/data \</div><div class="line">    sameersbn/gitlab:8.4.4</div></pre></td></tr></table></figure>
+<p>这样相当复杂，因此我们可以把这些启动配置写到一个yml文件里面去，让docker-compose帮我们来管理这些容器，而这些容器之间的compose配置，已经有大牛贡献出来了（<a href="https://github.com/sameersbn/docker-gitlab" target="_blank" rel="external">点击这里查看</a>）。因此我们这里把它的配置文件下载下来</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ wget https://raw.githubusercontent.com/sameersbn/docker-gitlab/master/docker-compose.yml</div></pre></td></tr></table></figure>
+<p>然后修改里面的配置项（见下节），然后一条命令即可启动gitlab服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ docker-compose up</div></pre></td></tr></table></figure>
+<p>不过出现如下错误：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker: Error response from daemon: mkdir /data/docker/mnt/overlay/e37098a0043c2bd200b919c4cd466a1cfe98a03865b08be82efa215e32e92196-init/merged/dev/shm: invalid argument.</div></pre></td></tr></table></figure>
+<p>查了很久，找到两篇帖子（<a href="https://github.com/docker/docker/issues/22937" target="_blank" rel="external">看这里</a>,<a href="https://github.com/docker/docker/issues/5122" target="_blank" rel="external">还有这里</a>），说啥的都有，不过隐约觉得应该是内核版本问题（<a href="https://www.kernel.org/" target="_blank" rel="external">最新内核版本</a>），具体内核升级参照<a href="https://baijiahao.baidu.com/po/feed/share?wfr=spider&amp;for=pc&amp;context=%7B%22sourceFrom%22%3A%22bjh%22%2C%22nid%22%3A%22news_3323164689172649603%22%7D" target="_blank" rel="external">这里</a>。</p>
+<p>果然，升级内核后不再报错了。</p>
+<h3 id="1-3、配置gitlab"><a href="#1-3、配置gitlab" class="headerlink" title="1.3、配置gitlab"></a>1.3、配置gitlab</h3><p>这里只列出有配置改动的部分：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div></pre></td><td class="code"><pre><div class="line">version: &apos;2&apos;</div><div class="line"></div><div class="line">services:</div><div class="line">  redis:</div><div class="line">    restart: always</div><div class="line">    image: sameersbn/redis:latest</div><div class="line">    command:</div><div class="line">    - --loglevel warning</div><div class="line">    volumes:</div><div class="line">    - /server/docker/gitlab/redis:/var/lib/redis:Z</div><div class="line"></div><div class="line">  postgresql:</div><div class="line">    restart: always</div><div class="line">    image: sameersbn/postgresql:9.6-2</div><div class="line">    volumes:</div><div class="line">    - /server/docker/gitlab/postgresql:/var/lib/postgresql:Z</div><div class="line">    environment:</div><div class="line">    # postgsql的账户设置</div><div class="line">    - DB_USER=gitlab</div><div class="line">    - DB_PASS=8uf0s3cxdf</div><div class="line">    - DB_NAME=gitlabhq_production</div><div class="line">    - DB_EXTENSION=pg_trgm</div><div class="line"></div><div class="line">  gitlab:</div><div class="line">    restart: always</div><div class="line">    image: sameersbn/gitlab:9.0.5</div><div class="line">    depends_on:</div><div class="line">    - redis</div><div class="line">    - postgresql</div><div class="line">    ports:</div><div class="line">    # 把容器内nginx的80端口隐射到宿主机的10080端口上</div><div class="line">    - &quot;10080:80&quot;</div><div class="line">    # 把容器内ssh的22号端口映射到宿主机的10022端口上</div><div class="line">    - &quot;10022:22&quot;</div><div class="line">    volumes:</div><div class="line">    # 通过数据卷把gitlab的数据挂载到/server/docker/gitlab/gitlab目录下，这样容器重启后数据就不会丢失了</div><div class="line">    - /server/docker/gitlab/gitlab:/home/git/data:Z</div><div class="line">    environment:</div><div class="line">    - DEBUG=false</div><div class="line"></div><div class="line">    - DB_ADAPTER=postgresql</div><div class="line">    - DB_HOST=postgresql</div><div class="line">    - DB_PORT=5432</div><div class="line">    - DB_USER=gitlab</div><div class="line">    - DB_PASS=8uf0s3cxdf</div><div class="line">    - DB_NAME=gitlabhq_production</div><div class="line"></div><div class="line">    - REDIS_HOST=redis</div><div class="line">    - REDIS_PORT=6379</div><div class="line"></div><div class="line">    # 修改时区</div><div class="line">    - TZ=Asia/Shanghai</div><div class="line">    - GITLAB_TIMEZONE=Beijing</div><div class="line"></div><div class="line">    - GITLAB_HTTPS=false</div><div class="line">    - SSL_SELF_SIGNED=false</div><div class="line"></div><div class="line">	 # 发布gitlab应用的主机名称 </div><div class="line">    - GITLAB_HOST=gitlab.cn-etc.com</div><div class="line">    - GITLAB_PORT=10080</div><div class="line">    - GITLAB_SSH_PORT=10022</div><div class="line">    - GITLAB_RELATIVE_URL_ROOT=</div><div class="line">    - GITLAB_SECRETS_DB_KEY_BASE=long-and-random-alphanumeric-string</div><div class="line">    - GITLAB_SECRETS_SECRET_KEY_BASE=long-and-random-alphanumeric-string</div><div class="line">    - GITLAB_SECRETS_OTP_KEY_BASE=long-and-random-alphanumeric-string</div><div class="line"></div><div class="line">    - GITLAB_ROOT_PASSWORD=cnetc123</div><div class="line">    - GITLAB_ROOT_EMAIL=gitlab@cn-etc.com</div><div class="line"></div><div class="line">    - GITLAB_NOTIFY_ON_BROKEN_BUILDS=true</div><div class="line">    - GITLAB_NOTIFY_PUSHER=false</div><div class="line"></div><div class="line">    - GITLAB_EMAIL=gitlab@cn-etc.com</div><div class="line">    - GITLAB_EMAIL_REPLY_TO=gitlab@cn-etc.com</div><div class="line">    - GITLAB_INCOMING_EMAIL_ADDRESS=gitlab@cn-etc.com</div><div class="line">    # 发送邮件时的显示名称</div><div class="line">    - GITLAB_EMAIL_DISPLAY_NAME=Gitlab系统</div><div class="line"></div><div class="line">    - GITLAB_BACKUP_SCHEDULE=daily</div><div class="line">    - GITLAB_BACKUP_TIME=01:00</div><div class="line"></div><div class="line">    # SMTP配置</div><div class="line">    - SMTP_ENABLED=true</div><div class="line">    - SMTP_DOMAIN=smtp.exmail.qq.com</div><div class="line">    - SMTP_HOST=smtp.exmail.qq.com</div><div class="line">    - SMTP_PORT=465</div><div class="line">    - SMTP_USER=gitlab@cn-etc.com</div><div class="line">    - SMTP_PASS=Gitlab123</div><div class="line">    - SMTP_STARTTLS=true</div><div class="line">    - SMTP_AUTHENTICATION=login</div></pre></td></tr></table></figure>
+<p>重新启动</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ docker-compose up</div></pre></td></tr></table></figure>
+<p>至此，gitlab安装完成，登录<a href="http://gitlab.cn-etc.com:10080" target="_blank" rel="external">http://gitlab.cn-etc.com:10080</a> 去注册用户新建group、project开干。</p>
+<h1 id="二、持续集成-CI-CD"><a href="#二、持续集成-CI-CD" class="headerlink" title="二、持续集成(CI/CD)"></a>二、持续集成(CI/CD)</h1><h3 id="2-1-继续集成介绍"><a href="#2-1-继续集成介绍" class="headerlink" title="2.1 继续集成介绍"></a>2.1 继续集成介绍</h3><p>为了更好的理解gitlab持续集成的配置和管理，有必要详细理顺与持续集成相关概念，这里单独另开了一篇来说明这些概念，<a href="./持续集成介绍.md">点击这里查看</a>。</p>
+<h3 id="2-1-安装gitlab-runner"><a href="#2-1-安装gitlab-runner" class="headerlink" title="2.1 安装gitlab-runner"></a>2.1 安装gitlab-runner</h3><p>runner就是一个用来跑集成任务的特殊进程，可以和gitlab在同一台服务器，也可以安装在其它服务器上。</p>
+<p>添加gitlab-runner资源库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-ci-multi-runner/script.rpm.sh | sudo bash</div></pre></td></tr></table></figure>
+<p>然后安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo yum install -y gitlab-ci-multi-runner</div></pre></td></tr></table></figure>
 ]]></content>
     
     <summary type="html">
@@ -536,6 +465,28 @@ environment:
   </entry>
   
   <entry>
+    <title>一个 git hook自动部署脚本</title>
+    <link href="https://xuh.io/2015/11/28/%E4%B8%80%E4%B8%AA-git-hook%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E8%84%9A%E6%9C%AC/"/>
+    <id>https://xuh.io/2015/11/28/一个-git-hook自动部署脚本/</id>
+    <published>2015-11-28T03:21:44.000Z</published>
+    <updated>2017-05-29T16:15:23.000Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight shell"><figcaption><span>http://www.ihorve.com/?p=234</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="meta"></span></div><div class="line">#!/bin/sh</div><div class="line"><span class="meta">#</span></div><div class="line"><span class="meta">#</span> git autodeploy script when it matches string "[deploy]"</div><div class="line"><span class="meta">#</span></div><div class="line"><span class="meta">#</span> Usage:</div><div class="line"><span class="meta">#</span>    1. put this into the post-receive hook file itself below</div><div class="line"><span class="meta">#</span>    2. `chmod +x post-receive`</div><div class="line"><span class="meta">#</span>    3. Done!</div><div class="line"><span class="meta">#</span> Check the remote git repository whether it is bare</div><div class="line">IS_BARE=$(git rev-parse --is-bare-repository)</div><div class="line">if [ -z "$IS_BARE" ]; then</div><div class="line">    echo &gt;&amp;2 "fatal:post-receive:IS_NOT_BARE"</div><div class="line">    exit 1</div><div class="line">fi</div><div class="line"><span class="meta">#</span> Get the latest commit subject</div><div class="line">SUBJECT=$(git log -1 --pretty=format:"%s")</div><div class="line"><span class="meta">#</span> Deploy the HEAD source to publish</div><div class="line">IS_PULL=$(echo "$SUBJECT"  | grep "\[deploy\]")</div><div class="line">if [ -z "$IS_PULL" ];then</div><div class="line">    echo &gt;&amp;2 "tips:post-receive:IS_NOT_PULL"</div><div class="line">    exit 1</div><div class="line">fi</div><div class="line"><span class="meta">#</span> Check the deploy dir whether is exists</div><div class="line">DEPLOY_DIR=/home/www</div><div class="line">if [ ! -d $DEPLOY_DIR ]; then</div><div class="line">    echo &gt;&amp;2 "fatal:post-receive:DEPLOY_DIR_NOT_EXISTS:\"$DEPLOY_DIR\""</div><div class="line">    exit 1</div><div class="line">fi</div><div class="line"><span class="meta">#</span> Check the deploy dir whether it is git repository</div><div class="line"><span class="meta">#</span>IS_GIT=$(git rev-parse --git-dir 2&gt;/dev/null)</div><div class="line"><span class="meta">#</span>if [ -z "$IS_GIT" ] ;then</div><div class="line"><span class="meta">#</span>    echo &gt;&amp;2 "fatal:post-receive:IS_NOT_GIT"</div><div class="line"><span class="meta">#</span>    exit 1</div><div class="line"><span class="meta">#</span>fi</div><div class="line"><span class="meta">#</span> Goto the deploy dir and pull the latest sources</div><div class="line">cd $DEPLOY_DIR</div><div class="line"><span class="meta">#</span> env -i git reset --hard</div><div class="line">env -i git pull</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;figure class=&quot;highlight shell&quot;&gt;&lt;figcaption&gt;&lt;span&gt;http://www.ihorve.com/?p=234&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div cl
+    
+    </summary>
+    
+      <category term="工具/版本管理" scheme="https://xuh.io/categories/%E5%B7%A5%E5%85%B7-%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/"/>
+    
+    
+      <category term="git" scheme="https://xuh.io/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
     <title>让nginx支持path_info</title>
     <link href="https://xuh.io/2015/11/28/%E8%AE%A9nginx%E6%94%AF%E6%8C%81path-info/"/>
     <id>https://xuh.io/2015/11/28/让nginx支持path-info/</id>
@@ -602,28 +553,6 @@ environment:
     
     
       <category term="samba" scheme="https://xuh.io/tags/samba/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>一个 git hook自动部署脚本</title>
-    <link href="https://xuh.io/2015/11/28/%E4%B8%80%E4%B8%AA-git-hook%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E8%84%9A%E6%9C%AC/"/>
-    <id>https://xuh.io/2015/11/28/一个-git-hook自动部署脚本/</id>
-    <published>2015-11-28T03:21:44.000Z</published>
-    <updated>2017-05-29T16:15:23.000Z</updated>
-    
-    <content type="html"><![CDATA[<figure class="highlight shell"><figcaption><span>http://www.ihorve.com/?p=234</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="meta"></span></div><div class="line">#!/bin/sh</div><div class="line"><span class="meta">#</span></div><div class="line"><span class="meta">#</span> git autodeploy script when it matches string "[deploy]"</div><div class="line"><span class="meta">#</span></div><div class="line"><span class="meta">#</span> Usage:</div><div class="line"><span class="meta">#</span>    1. put this into the post-receive hook file itself below</div><div class="line"><span class="meta">#</span>    2. `chmod +x post-receive`</div><div class="line"><span class="meta">#</span>    3. Done!</div><div class="line"><span class="meta">#</span> Check the remote git repository whether it is bare</div><div class="line">IS_BARE=$(git rev-parse --is-bare-repository)</div><div class="line">if [ -z "$IS_BARE" ]; then</div><div class="line">    echo &gt;&amp;2 "fatal:post-receive:IS_NOT_BARE"</div><div class="line">    exit 1</div><div class="line">fi</div><div class="line"><span class="meta">#</span> Get the latest commit subject</div><div class="line">SUBJECT=$(git log -1 --pretty=format:"%s")</div><div class="line"><span class="meta">#</span> Deploy the HEAD source to publish</div><div class="line">IS_PULL=$(echo "$SUBJECT"  | grep "\[deploy\]")</div><div class="line">if [ -z "$IS_PULL" ];then</div><div class="line">    echo &gt;&amp;2 "tips:post-receive:IS_NOT_PULL"</div><div class="line">    exit 1</div><div class="line">fi</div><div class="line"><span class="meta">#</span> Check the deploy dir whether is exists</div><div class="line">DEPLOY_DIR=/home/www</div><div class="line">if [ ! -d $DEPLOY_DIR ]; then</div><div class="line">    echo &gt;&amp;2 "fatal:post-receive:DEPLOY_DIR_NOT_EXISTS:\"$DEPLOY_DIR\""</div><div class="line">    exit 1</div><div class="line">fi</div><div class="line"><span class="meta">#</span> Check the deploy dir whether it is git repository</div><div class="line"><span class="meta">#</span>IS_GIT=$(git rev-parse --git-dir 2&gt;/dev/null)</div><div class="line"><span class="meta">#</span>if [ -z "$IS_GIT" ] ;then</div><div class="line"><span class="meta">#</span>    echo &gt;&amp;2 "fatal:post-receive:IS_NOT_GIT"</div><div class="line"><span class="meta">#</span>    exit 1</div><div class="line"><span class="meta">#</span>fi</div><div class="line"><span class="meta">#</span> Goto the deploy dir and pull the latest sources</div><div class="line">cd $DEPLOY_DIR</div><div class="line"><span class="meta">#</span> env -i git reset --hard</div><div class="line">env -i git pull</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;figure class=&quot;highlight shell&quot;&gt;&lt;figcaption&gt;&lt;span&gt;http://www.ihorve.com/?p=234&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div cl
-    
-    </summary>
-    
-      <category term="工具/版本管理" scheme="https://xuh.io/categories/%E5%B7%A5%E5%85%B7-%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/"/>
-    
-    
-      <category term="git" scheme="https://xuh.io/tags/git/"/>
     
   </entry>
   
