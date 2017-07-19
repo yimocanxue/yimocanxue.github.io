@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://xuh.io/"/>
-  <updated>2017-07-07T11:43:47.000Z</updated>
+  <updated>2017-07-19T06:12:52.000Z</updated>
   <id>https://xuh.io/</id>
   
   <author>
@@ -14,6 +14,40 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MongoDB用户管理</title>
+    <link href="https://xuh.io/2017/07/19/MongoDB%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86/"/>
+    <id>https://xuh.io/2017/07/19/MongoDB用户管理/</id>
+    <published>2017-07-19T03:58:17.000Z</published>
+    <updated>2017-07-19T06:12:52.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>MongoDB为了使用方便，默认启动是不带用户认证的，也就是说所有人都可以连接并进行读写操作，这在开发阶段当然很方便，但是生产环境可就不能这么裸奔了。</p>
+<p>首先来看看MongoDB的启动命令：<br><code>$ mongod [--auth] --dbpath=&lt;数据存放目录，默认/data/db&gt; --fork --logpath=&lt;日志存放目录&gt;</code></p>
+<p>当带上参数–auth即在安全模式下启动，要在安全模式下启动，必须先完成用户的添加和授权。</p>
+<h1 id="添加管理员"><a href="#添加管理员" class="headerlink" title="添加管理员"></a>添加管理员</h1><p>首次在非认证模式下登录，然后添加管理员账户，在默认的admin数据库里，有一个名为<em>userAdminAnyDatabase</em>的内置角色，顾名思义，该角色的用户即为超级管理员，不过该角色只有管理用户和角色的功能，没有数据库读写权限。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$ mongo</div><div class="line">#...省略连接输出..</div><div class="line"></div><div class="line">&gt; use admin</div><div class="line">&gt; db.createUser(&#123;</div><div class="line">	user: &quot;userAdmin&quot;,</div><div class="line">    pwd: &quot;123456&quot;</div><div class="line">    roles:[&#123;role:&quot;userAdminAnyDatabase&quot;,db:&quot;admin&quot;&#125;]</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h1 id="重启MongoDB并在安全模式下登录"><a href="#重启MongoDB并在安全模式下登录" class="headerlink" title="重启MongoDB并在安全模式下登录"></a>重启MongoDB并在安全模式下登录</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ ps -ef | grep mongod | grep -v grep | cut -c 10-16 | xargs kill -9</div><div class="line">$ mongod --auth --dbpath=&lt;数据存放目录，默认/data/db&gt; --fork --logpath=&lt;日志存放目录&gt;</div></pre></td></tr></table></figure>
+<h1 id="以管理员身份登录"><a href="#以管理员身份登录" class="headerlink" title="以管理员身份登录"></a>以管理员身份登录</h1><p>可以先连接到test数据库然后用db.auth进行认证，也可以直接在连接时候认证：<br><code>$ mongo -u &quot;userAdmin&quot; -p &quot;123456&quot; --authenticationDatabase &quot;admin&quot;</code>，<br>从命令参数可以看出来，连接时认证真不好记那些参数，因此一般我都是先连接后认证的方式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$ mongo</div><div class="line">$ use admin</div><div class="line">MongoDB shell version: 3.2.10</div><div class="line">connecting to: test</div><div class="line">&gt; use admin</div><div class="line">switched to db admin</div><div class="line">&gt; db.auth(&quot;root&quot;,&quot;ZzJK7Eg-akh9&quot;)</div><div class="line">1</div></pre></td></tr></table></figure>
+<p>登录后可以查看下用户表:<code>&gt; db.system.users.find()</code></p>
+<h1 id="添加其它用户"><a href="#添加其它用户" class="headerlink" title="添加其它用户"></a>添加其它用户</h1><p>和添加管理员方式一致，只是授权的数据库和赋予的角色有区别，一般常用的角色有read、readWrite、dbOwner等。</p>
+<p>要了解其它内置角色参考这里<a href="https://docs.mongodb.com/manual/reference/built-in-roles/" target="_blank" rel="external">https://docs.mongodb.com/manual/reference/built-in-roles/</a>,怎样自定义角色参考这里:<a href="https://docs.mongodb.com/manual/core/security-user-defined-roles/#user-defined-roles" target="_blank" rel="external">https://docs.mongodb.com/manual/core/security-user-defined-roles/#user-defined-roles</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;MongoDB为了使用方便，默认启动是不带用户认证的，也就是说所有人都可以连接并进行读写操作，这在开发阶段当然很方便，但是生产环境可就不能这么裸奔了。&lt;/p&gt;
+&lt;p&gt;首先来看看MongoDB的启动命令：&lt;br&gt;&lt;code&gt;$ mongod [--auth] --dbpath
+    
+    </summary>
+    
+    
+      <category term="用户管理" scheme="https://xuh.io/tags/%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86/"/>
+    
+      <category term="auth" scheme="https://xuh.io/tags/auth/"/>
+    
+  </entry>
   
   <entry>
     <title>持续集成介绍</title>
@@ -546,28 +580,6 @@
   </entry>
   
   <entry>
-    <title>一个 git hook自动部署脚本</title>
-    <link href="https://xuh.io/2015/11/28/%E4%B8%80%E4%B8%AA-git-hook%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E8%84%9A%E6%9C%AC/"/>
-    <id>https://xuh.io/2015/11/28/一个-git-hook自动部署脚本/</id>
-    <published>2015-11-28T03:21:44.000Z</published>
-    <updated>2017-05-29T16:15:23.000Z</updated>
-    
-    <content type="html"><![CDATA[<figure class="highlight shell"><figcaption><span>http://www.ihorve.com/?p=234</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="meta"></span></div><div class="line">#!/bin/sh</div><div class="line"><span class="meta">#</span></div><div class="line"><span class="meta">#</span> git autodeploy script when it matches string "[deploy]"</div><div class="line"><span class="meta">#</span></div><div class="line"><span class="meta">#</span> Usage:</div><div class="line"><span class="meta">#</span>    1. put this into the post-receive hook file itself below</div><div class="line"><span class="meta">#</span>    2. `chmod +x post-receive`</div><div class="line"><span class="meta">#</span>    3. Done!</div><div class="line"><span class="meta">#</span> Check the remote git repository whether it is bare</div><div class="line">IS_BARE=$(git rev-parse --is-bare-repository)</div><div class="line">if [ -z "$IS_BARE" ]; then</div><div class="line">    echo &gt;&amp;2 "fatal:post-receive:IS_NOT_BARE"</div><div class="line">    exit 1</div><div class="line">fi</div><div class="line"><span class="meta">#</span> Get the latest commit subject</div><div class="line">SUBJECT=$(git log -1 --pretty=format:"%s")</div><div class="line"><span class="meta">#</span> Deploy the HEAD source to publish</div><div class="line">IS_PULL=$(echo "$SUBJECT"  | grep "\[deploy\]")</div><div class="line">if [ -z "$IS_PULL" ];then</div><div class="line">    echo &gt;&amp;2 "tips:post-receive:IS_NOT_PULL"</div><div class="line">    exit 1</div><div class="line">fi</div><div class="line"><span class="meta">#</span> Check the deploy dir whether is exists</div><div class="line">DEPLOY_DIR=/home/www</div><div class="line">if [ ! -d $DEPLOY_DIR ]; then</div><div class="line">    echo &gt;&amp;2 "fatal:post-receive:DEPLOY_DIR_NOT_EXISTS:\"$DEPLOY_DIR\""</div><div class="line">    exit 1</div><div class="line">fi</div><div class="line"><span class="meta">#</span> Check the deploy dir whether it is git repository</div><div class="line"><span class="meta">#</span>IS_GIT=$(git rev-parse --git-dir 2&gt;/dev/null)</div><div class="line"><span class="meta">#</span>if [ -z "$IS_GIT" ] ;then</div><div class="line"><span class="meta">#</span>    echo &gt;&amp;2 "fatal:post-receive:IS_NOT_GIT"</div><div class="line"><span class="meta">#</span>    exit 1</div><div class="line"><span class="meta">#</span>fi</div><div class="line"><span class="meta">#</span> Goto the deploy dir and pull the latest sources</div><div class="line">cd $DEPLOY_DIR</div><div class="line"><span class="meta">#</span> env -i git reset --hard</div><div class="line">env -i git pull</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;figure class=&quot;highlight shell&quot;&gt;&lt;figcaption&gt;&lt;span&gt;http://www.ihorve.com/?p=234&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div cl
-    
-    </summary>
-    
-      <category term="工具/版本管理" scheme="https://xuh.io/categories/%E5%B7%A5%E5%85%B7-%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/"/>
-    
-    
-      <category term="git" scheme="https://xuh.io/tags/git/"/>
-    
-  </entry>
-  
-  <entry>
     <title>让nginx支持path_info</title>
     <link href="https://xuh.io/2015/11/28/%E8%AE%A9nginx%E6%94%AF%E6%8C%81path-info/"/>
     <id>https://xuh.io/2015/11/28/让nginx支持path-info/</id>
@@ -592,6 +604,28 @@
     
     
       <category term="nginx" scheme="https://xuh.io/tags/nginx/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>一个 git hook自动部署脚本</title>
+    <link href="https://xuh.io/2015/11/28/%E4%B8%80%E4%B8%AA-git-hook%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E8%84%9A%E6%9C%AC/"/>
+    <id>https://xuh.io/2015/11/28/一个-git-hook自动部署脚本/</id>
+    <published>2015-11-28T03:21:44.000Z</published>
+    <updated>2017-05-29T16:15:23.000Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight shell"><figcaption><span>http://www.ihorve.com/?p=234</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="meta"></span></div><div class="line">#!/bin/sh</div><div class="line"><span class="meta">#</span></div><div class="line"><span class="meta">#</span> git autodeploy script when it matches string "[deploy]"</div><div class="line"><span class="meta">#</span></div><div class="line"><span class="meta">#</span> Usage:</div><div class="line"><span class="meta">#</span>    1. put this into the post-receive hook file itself below</div><div class="line"><span class="meta">#</span>    2. `chmod +x post-receive`</div><div class="line"><span class="meta">#</span>    3. Done!</div><div class="line"><span class="meta">#</span> Check the remote git repository whether it is bare</div><div class="line">IS_BARE=$(git rev-parse --is-bare-repository)</div><div class="line">if [ -z "$IS_BARE" ]; then</div><div class="line">    echo &gt;&amp;2 "fatal:post-receive:IS_NOT_BARE"</div><div class="line">    exit 1</div><div class="line">fi</div><div class="line"><span class="meta">#</span> Get the latest commit subject</div><div class="line">SUBJECT=$(git log -1 --pretty=format:"%s")</div><div class="line"><span class="meta">#</span> Deploy the HEAD source to publish</div><div class="line">IS_PULL=$(echo "$SUBJECT"  | grep "\[deploy\]")</div><div class="line">if [ -z "$IS_PULL" ];then</div><div class="line">    echo &gt;&amp;2 "tips:post-receive:IS_NOT_PULL"</div><div class="line">    exit 1</div><div class="line">fi</div><div class="line"><span class="meta">#</span> Check the deploy dir whether is exists</div><div class="line">DEPLOY_DIR=/home/www</div><div class="line">if [ ! -d $DEPLOY_DIR ]; then</div><div class="line">    echo &gt;&amp;2 "fatal:post-receive:DEPLOY_DIR_NOT_EXISTS:\"$DEPLOY_DIR\""</div><div class="line">    exit 1</div><div class="line">fi</div><div class="line"><span class="meta">#</span> Check the deploy dir whether it is git repository</div><div class="line"><span class="meta">#</span>IS_GIT=$(git rev-parse --git-dir 2&gt;/dev/null)</div><div class="line"><span class="meta">#</span>if [ -z "$IS_GIT" ] ;then</div><div class="line"><span class="meta">#</span>    echo &gt;&amp;2 "fatal:post-receive:IS_NOT_GIT"</div><div class="line"><span class="meta">#</span>    exit 1</div><div class="line"><span class="meta">#</span>fi</div><div class="line"><span class="meta">#</span> Goto the deploy dir and pull the latest sources</div><div class="line">cd $DEPLOY_DIR</div><div class="line"><span class="meta">#</span> env -i git reset --hard</div><div class="line">env -i git pull</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;figure class=&quot;highlight shell&quot;&gt;&lt;figcaption&gt;&lt;span&gt;http://www.ihorve.com/?p=234&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div cl
+    
+    </summary>
+    
+      <category term="工具/版本管理" scheme="https://xuh.io/categories/%E5%B7%A5%E5%85%B7-%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/"/>
+    
+    
+      <category term="git" scheme="https://xuh.io/tags/git/"/>
     
   </entry>
   
