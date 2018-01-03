@@ -30,6 +30,7 @@ function doDecrypt(pwd, onError) {
 	try {
 	  	var bytes = CryptoJS.AES.decrypt(txt, pwd);
 		plaintext = bytes.toString(CryptoJS.enc.Utf8);
+		cookie.set("HEXO-X-CACHE",pwd); 
 	} catch(err) {
 		if(onError) {onError(err);}
 		return;
@@ -38,8 +39,13 @@ function doDecrypt(pwd, onError) {
 	document.getElementById("enc_content").style.display = "block";
    document.getElementById("enc_passwd").style.display = "none";
 }
+window.onload = function(){ 
+	var cachePwd = cookie.get("HEXO-X-CACHE")||"" 
+	if(cachePwd !== "") 
+		doDecrypt(cachePwd, onError); 
+} 
 </script>
-<div id="enc_content" style="display:none">U2FsdGVkX18wif+n0a5k7NTKh/CpYey1SkouzOD59kDjtp+vkhzU1ZRrcm3TwNZmiy3L8o88Zi607PxQ99gDeQ==</div><div id="enc_passwd" style="text-align: center;margin-bottom: 300px;position: relative;"> <input id="enc_pwd_input" type="text" style="border-radius: 17px;border: 1px solid #ccc;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 20px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}" placeholder="报上暗号，比如天王盖地虎^_^"> <input type="submit" value="对暗号" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 3px;background-color: white;margin-left: 3px;vertical-align: top;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
+<div id="enc_content" style="display:none">U2FsdGVkX18uQJoDXUeTWBP+dB2bretrGJjUaJqhqXc6qO7zhZEgU9K2rhfjSv+gWErm87kKwvJUSq/uCMjG0g==</div><div id="enc_passwd" style="text-align: center;margin-bottom: 300px;position: relative;"> <input id="enc_pwd_input" type="text" style="border-radius: 17px;border: 1px solid #ccc;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 20px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}" placeholder="报上暗号，比如天王盖地虎^_^"> <input type="submit" value="对暗号" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 3px;background-color: white;margin-left: 3px;vertical-align: top;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
 <script>
 var onError = function(error) {
 	document.getElementById("enc_error").innerHTML = "password error!"
@@ -763,48 +769,6 @@ function doDecrypt(pwd, onError) {
   </entry>
   
   <entry>
-    <title>CentOS安装samba服务</title>
-    <link href="https://xuh.io/2015/11/28/CentOS%E5%AE%89%E8%A3%85samba%E6%9C%8D%E5%8A%A1/"/>
-    <id>https://xuh.io/2015/11/28/CentOS安装samba服务/</id>
-    <published>2015-11-28T03:21:44.000Z</published>
-    <updated>2017-05-30T05:35:47.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>检查是否有安装samba服务：</p>
-<p><code>$ rpm -qa | grep samba</code></p>
-<p>如果没安装则yum安装</p>
-<p><code>$ yum -y install samba samba-client samba-common</code></p>
-<p>默认的安装目录是/etc/samba，配置文件为smb.conf,先备份下smb文件<br><code>$ cd /etc/samba</code><br><code>$ cp smb.conf smb.conf.bak</code></p>
-<p>然后编辑smb.conf加入以下内容：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[remote_dev]</div><div class="line">        path = /alidata/nginx_www/wx.soopj.com</div><div class="line">        public =no</div><div class="line">        writable = yes</div><div class="line">        write list = @www</div><div class="line">        valid users = @www</div></pre></td></tr></table></figure>
-<p>@www是客户端登录所需要的用户，设置nginx的用户密码：</p>
-<p><code>$ smbpasswd -a www</code></p>
-<p>为了避免在启动Samba时出现以下警告信息：rlimit_max: increasing rlimit_max (1024) tominimum Windows limit (16384)，<br>配置内核参数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">$ ulimit -n 16384</div><div class="line">$ vi /etc/security/limits.conf</div><div class="line">#在最后加入以下内容</div><div class="line">* - nofile 16384</div></pre></td></tr></table></figure>
-<p>然后运行testparm检测配置文件。</p>
-<p>然后启动服务，关闭防火墙：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ service smb start</div><div class="line">$ service nmb start</div><div class="line">$ service iptables stop</div></pre></td></tr></table></figure>
-<p>centos7后启动服务由systemctl管理，防火墙换成firewalld，因此命令稍有不同。然后客户端即可测试。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;检查是否有安装samba服务：&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;$ rpm -qa | grep samba&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;如果没安装则yum安装&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;$ yum -y install samba samba-client samba-comm
-    
-    </summary>
-    
-      <category term="运维" scheme="https://xuh.io/categories/%E8%BF%90%E7%BB%B4/"/>
-    
-      <category term="系统管理" scheme="https://xuh.io/categories/%E8%BF%90%E7%BB%B4/%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86/"/>
-    
-    
-      <category term="samba" scheme="https://xuh.io/tags/samba/"/>
-    
-  </entry>
-  
-  <entry>
     <title>让nginx支持path_info</title>
     <link href="https://xuh.io/2015/11/28/%E8%AE%A9nginx%E6%94%AF%E6%8C%81path-info/"/>
     <id>https://xuh.io/2015/11/28/让nginx支持path-info/</id>
@@ -851,6 +815,48 @@ function doDecrypt(pwd, onError) {
     
     
       <category term="git" scheme="https://xuh.io/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CentOS安装samba服务</title>
+    <link href="https://xuh.io/2015/11/28/CentOS%E5%AE%89%E8%A3%85samba%E6%9C%8D%E5%8A%A1/"/>
+    <id>https://xuh.io/2015/11/28/CentOS安装samba服务/</id>
+    <published>2015-11-28T03:21:44.000Z</published>
+    <updated>2017-05-30T05:35:47.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>检查是否有安装samba服务：</p>
+<p><code>$ rpm -qa | grep samba</code></p>
+<p>如果没安装则yum安装</p>
+<p><code>$ yum -y install samba samba-client samba-common</code></p>
+<p>默认的安装目录是/etc/samba，配置文件为smb.conf,先备份下smb文件<br><code>$ cd /etc/samba</code><br><code>$ cp smb.conf smb.conf.bak</code></p>
+<p>然后编辑smb.conf加入以下内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[remote_dev]</div><div class="line">        path = /alidata/nginx_www/wx.soopj.com</div><div class="line">        public =no</div><div class="line">        writable = yes</div><div class="line">        write list = @www</div><div class="line">        valid users = @www</div></pre></td></tr></table></figure>
+<p>@www是客户端登录所需要的用户，设置nginx的用户密码：</p>
+<p><code>$ smbpasswd -a www</code></p>
+<p>为了避免在启动Samba时出现以下警告信息：rlimit_max: increasing rlimit_max (1024) tominimum Windows limit (16384)，<br>配置内核参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">$ ulimit -n 16384</div><div class="line">$ vi /etc/security/limits.conf</div><div class="line">#在最后加入以下内容</div><div class="line">* - nofile 16384</div></pre></td></tr></table></figure>
+<p>然后运行testparm检测配置文件。</p>
+<p>然后启动服务，关闭防火墙：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ service smb start</div><div class="line">$ service nmb start</div><div class="line">$ service iptables stop</div></pre></td></tr></table></figure>
+<p>centos7后启动服务由systemctl管理，防火墙换成firewalld，因此命令稍有不同。然后客户端即可测试。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;检查是否有安装samba服务：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;$ rpm -qa | grep samba&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;如果没安装则yum安装&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;$ yum -y install samba samba-client samba-comm
+    
+    </summary>
+    
+      <category term="运维" scheme="https://xuh.io/categories/%E8%BF%90%E7%BB%B4/"/>
+    
+      <category term="系统管理" scheme="https://xuh.io/categories/%E8%BF%90%E7%BB%B4/%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86/"/>
+    
+    
+      <category term="samba" scheme="https://xuh.io/tags/samba/"/>
     
   </entry>
   
