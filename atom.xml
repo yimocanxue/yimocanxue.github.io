@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://xuh.io/"/>
-  <updated>2018-01-03T17:15:05.910Z</updated>
+  <updated>2018-01-03T17:21:13.143Z</updated>
   <id>https://xuh.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://xuh.io/post/d1ee6067.html"/>
     <id>https://xuh.io/post/d1ee6067.html</id>
     <published>2018-01-03T11:38:09.000Z</published>
-    <updated>2018-01-03T17:15:05.910Z</updated>
+    <updated>2018-01-03T17:21:13.143Z</updated>
     
     <content type="html"><![CDATA[<script src=/js/crypto-js.js></script><script>
 function doDecrypt(pwd, onError) {
@@ -45,7 +45,7 @@ window.onload = function(){
 		doDecrypt(cachePwd, onError); 
 } 
 </script>
-<div id="enc_content" style="display:none">U2FsdGVkX1+ad/1IvrMWTlBHSNqGhVdc3rsjVafngZlIA4iUFh8yMCKzFlnIlvAwmorFn16CM6LL6dim3OUW/w==</div><div id="enc_passwd" style="text-align: center;margin-bottom: 300px;position: relative;"> <input id="enc_pwd_input" type="text" style="border-radius: 17px;border: 1px solid #ccc;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 20px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}" placeholder="报上暗号，比如天王盖地虎^_^"> <input type="submit" value="对暗号" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 3px;background-color: white;margin-left: 3px;vertical-align: top;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
+<div id="enc_content" style="display:none">U2FsdGVkX1/Sz12ftksJo+UdsRc/8gXGfY7v1NLdLDdQ/fE6sjcKv7Be7yYez172BeL1qOE/d3PCF97xdTBEkQ==</div><div id="enc_passwd" style="text-align: center;margin-bottom: 300px;position: relative;"> <input id="enc_pwd_input" type="text" style="border-radius: 17px;border: 1px solid #ccc;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 20px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}" placeholder="报上暗号，比如天王盖地虎^_^"> <input type="submit" value="对暗号" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 3px;background-color: white;margin-left: 3px;vertical-align: top;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
 <script>
 var onError = function(error) {
 	document.getElementById("enc_error").innerHTML = "password error!"
@@ -81,7 +81,7 @@ function doDecrypt(pwd, onError) {
     <link href="https://xuh.io/post/a395cd40.html"/>
     <id>https://xuh.io/post/a395cd40.html</id>
     <published>2017-12-27T07:27:41.000Z</published>
-    <updated>2017-12-27T07:35:46.455Z</updated>
+    <updated>2018-01-03T17:21:13.137Z</updated>
     
     <content type="html"><![CDATA[<p>可以做端口转发的工具有很多，centos7以前的防火墙软件iptables就是其中之一，但是因为使用复杂，centos7以后被firewall代替了，下面就简单看看怎么用它来做端口转发。</p>
 <h3 id="开通伪IP"><a href="#开通伪IP" class="headerlink" title="开通伪IP"></a>开通伪IP</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> firewall-cmd --query-masquerade</div><div class="line"><span class="meta">#</span> 如果没有开通，则开通</div><div class="line"><span class="meta">$</span> firewall-cmd --add-masquerade --permanent</div><div class="line"><span class="meta">$</span> firewall-cmd --reload</div></pre></td></tr></table></figure>
@@ -114,7 +114,7 @@ function doDecrypt(pwd, onError) {
     <link href="https://xuh.io/post/6528fea8.html"/>
     <id>https://xuh.io/post/6528fea8.html</id>
     <published>2017-11-30T07:21:57.000Z</published>
-    <updated>2017-11-30T11:47:02.515Z</updated>
+    <updated>2018-01-03T17:21:13.129Z</updated>
     
     <content type="html"><![CDATA[<h3 id="编写切割日志脚本"><a href="#编写切割日志脚本" class="headerlink" title="编写切割日志脚本"></a>编写切割日志脚本</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line"></div><div class="line">LOG_PATH=/server/log/nginx</div><div class="line">BACKUP_PATH=$&#123;LOG_PATH&#125;/backup</div><div class="line"></div><div class="line">CURRENT_FILE=&quot;&quot;</div><div class="line"></div><div class="line"># 备份目录不存在则创建</div><div class="line">[[ ! -x &quot;$&#123;BACKUP_PATH&#125;&quot; ]] &amp;&amp; &#123; mkdir -p $BACKUP_PATH ; &#125;</div><div class="line"></div><div class="line"># 遍历日志文件并备份</div><div class="line">for file in `ls $&#123;LOG_PATH&#125;`;do</div><div class="line">    CURRENT_FILE=&quot;$&#123;LOG_PATH&#125;/$&#123;file&#125;&quot;</div><div class="line">    if [[ -f &quot;$&#123;CURRENT_FILE&#125;&quot; &amp;&amp; &quot;$&#123;file: -4&#125;&quot; = &quot;.log&quot; ]];then</div><div class="line">        echo $&#123;file%.*&#125;</div><div class="line">        mv &quot;$&#123;CURRENT_FILE&#125;&quot; &quot;$&#123;BACKUP_PATH&#125;/$&#123;file%.*&#125;-$(date +%Y%m%d).log&quot;</div><div class="line">    fi</div><div class="line">done</div><div class="line"></div><div class="line"></div><div class="line">kill -USR1 $(cat /server/tengine/logs/nginx.pid)</div></pre></td></tr></table></figure>
 <p>比如保存在根目录下/rotateLog，设置脚本执行权限<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ chmod +x /rotateLog</div></pre></td></tr></table></figure></p>
@@ -138,7 +138,7 @@ function doDecrypt(pwd, onError) {
     <link href="https://xuh.io/post/f110b008.html"/>
     <id>https://xuh.io/post/f110b008.html</id>
     <published>2017-11-30T05:54:33.000Z</published>
-    <updated>2017-11-30T05:59:10.136Z</updated>
+    <updated>2018-01-03T17:21:13.126Z</updated>
     
     <content type="html"><![CDATA[<h1 id="Tengine介绍"><a href="#Tengine介绍" class="headerlink" title="Tengine介绍"></a>Tengine介绍</h1><p>Tengine是有淘宝网发起的web服务器项目。它在Nginx的基础上，针对大访问量网站的需求，添加了很多高级功能和特性。它的最终目标是打造一个高效、稳定、安全、已用的web平台。</p>
 <h3 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h3><p>Tengine在Nginx的基础上作了很多改进，但是促使我弃Nginx转投它的原因是动态模块加载支持和多个请求报文重组（多个请求变成一个请求，比如多个css、js文件的访问）。</p>
@@ -209,7 +209,7 @@ function doDecrypt(pwd, onError) {
     <link href="https://xuh.io/post/ff4ef26d.html"/>
     <id>https://xuh.io/post/ff4ef26d.html</id>
     <published>2017-07-19T03:58:17.000Z</published>
-    <updated>2017-07-19T06:12:52.000Z</updated>
+    <updated>2018-01-03T17:21:13.128Z</updated>
     
     <content type="html"><![CDATA[<p>MongoDB为了使用方便，默认启动是不带用户认证的，也就是说所有人都可以连接并进行读写操作，这在开发阶段当然很方便，但是生产环境可就不能这么裸奔了。</p>
 <p>首先来看看MongoDB的启动命令：<br><code>$ mongod [--auth] --dbpath=&lt;数据存放目录，默认/data/db&gt; --fork --logpath=&lt;日志存放目录&gt;</code></p>
@@ -243,7 +243,7 @@ function doDecrypt(pwd, onError) {
     <link href="https://xuh.io/post/53ff9fdd.html"/>
     <id>https://xuh.io/post/53ff9fdd.html</id>
     <published>2017-07-07T11:28:51.000Z</published>
-    <updated>2017-07-07T11:43:47.000Z</updated>
+    <updated>2018-01-03T17:21:13.139Z</updated>
     
     <content type="html"><![CDATA[<h1 id="一、什么是持续集成"><a href="#一、什么是持续集成" class="headerlink" title="一、什么是持续集成"></a>一、什么是持续集成</h1><p>这个概念源于<code>极限编程(XP)</code>，是XP的12种实践之一，通俗地说，持续集成就是频繁地小步幅地向主干分支合并代码。</p>
 <p><img src="http://xuh.cn-etc.com/2017/04/16/1492333044202.png!md" alt=""></p>
@@ -324,7 +324,7 @@ function doDecrypt(pwd, onError) {
     <link href="https://xuh.io/post/14c433bb.html"/>
     <id>https://xuh.io/post/14c433bb.html</id>
     <published>2017-07-07T11:11:16.000Z</published>
-    <updated>2017-07-07T11:37:34.000Z</updated>
+    <updated>2018-01-03T17:21:13.133Z</updated>
     
     <content type="html"><![CDATA[<h1 id="安装gitlabe"><a href="#安装gitlabe" class="headerlink" title="安装gitlabe"></a>安装gitlabe</h1><h2 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h2><p>安装环境为<code>centos_7.0 3.10.0-327.10.1.el7.x86_64</code>，参考链接<a href="https://docs.docker.com/engine/installation/linux/centos/#install-docker。安装方式有两种，一种是通过yum安装，另外一种是下载RPM包手动安装，这里采用第一种方式。" target="_blank" rel="noopener">https://docs.docker.com/engine/installation/linux/centos/#install-docker。安装方式有两种，一种是通过yum安装，另外一种是下载RPM包手动安装，这里采用第一种方式。</a></p>
 <p>这里以安装docker-ce stable为例，docker-ee安装类似，可以参照上面的链接。</p>
@@ -404,7 +404,7 @@ function doDecrypt(pwd, onError) {
     <link href="https://xuh.io/post/d68e5e2f.html"/>
     <id>https://xuh.io/post/d68e5e2f.html</id>
     <published>2017-06-10T15:07:26.000Z</published>
-    <updated>2017-06-10T16:05:28.000Z</updated>
+    <updated>2018-01-03T17:21:13.145Z</updated>
     
     <content type="html"><![CDATA[<p>算法（algorithm）是为求解一个问题需要遵循的、被清楚指定的简单指令集合。衡量算法合理性的两个指标是运行时间和占用资源（比如内存）。</p>
 <p>分析估计算法性能一般来说是一个理论问题，因此需要有一套正式的系统理论，这个理论基础就是数学。</p>
@@ -462,7 +462,7 @@ function doDecrypt(pwd, onError) {
     <link href="https://xuh.io/post/d00315b3.html"/>
     <id>https://xuh.io/post/d00315b3.html</id>
     <published>2017-06-09T10:34:34.000Z</published>
-    <updated>2017-06-10T14:58:27.000Z</updated>
+    <updated>2018-01-03T17:21:13.142Z</updated>
     
     <content type="html"><![CDATA[<p>证明数据结构分析中的结论经常用到两种方法,<code>归纳法</code>和<code>反证法</code>，这两种方法比较直观简单，只有在不得已的情况下才使用高大上的高等数学的证明方法。证明一个定理不成立最好的方法是反证法。</p>
 <h1 id="归纳法"><a href="#归纳法" class="headerlink" title="归纳法"></a>归纳法</h1><blockquote>
@@ -524,7 +524,7 @@ function doDecrypt(pwd, onError) {
     <link href="https://xuh.io/post/bacfe825.html"/>
     <id>https://xuh.io/post/bacfe825.html</id>
     <published>2017-06-07T14:54:13.000Z</published>
-    <updated>2017-06-10T14:58:27.000Z</updated>
+    <updated>2018-01-03T17:21:13.141Z</updated>
     
     <content type="html"><![CDATA[<p>算法分析的基础是数学，但是只从走出校门，就很少再接触这些东西，基本上都还给老师了，最近重读算法分析这本书，好多公式又冒出来了，为了以后再接触方便，这里特意记录下来。</p>
 <h1 id="指数"><a href="#指数" class="headerlink" title="指数"></a>指数</h1><p>$$ X^AX^B=X^{A+B} $$<br>$$ { X^A \over X^B } = X^{A-B} $$<br>$$ (X^A)^B = X^{AB} $$<br>$$ X^N + X^N = 2X^N \neq X^{2N} $$<br>$$ 2^N + 2^N = 2^{N+1} $$</p>
@@ -579,7 +579,7 @@ function doDecrypt(pwd, onError) {
     <link href="https://xuh.io/post/550b57b7.html"/>
     <id>https://xuh.io/post/550b57b7.html</id>
     <published>2017-06-06T08:20:39.000Z</published>
-    <updated>2017-06-06T08:20:39.000Z</updated>
+    <updated>2018-01-03T17:21:13.131Z</updated>
     
     <summary type="html">
     
@@ -593,7 +593,7 @@ function doDecrypt(pwd, onError) {
     <link href="https://xuh.io/post/87569439.html"/>
     <id>https://xuh.io/post/87569439.html</id>
     <published>2017-06-05T11:51:02.000Z</published>
-    <updated>2017-06-05T12:19:12.000Z</updated>
+    <updated>2018-01-03T17:21:13.146Z</updated>
     
     <content type="html"><![CDATA[<h3 id="集合类型"><a href="#集合类型" class="headerlink" title="集合类型"></a>集合类型</h3><p>所有编程语言中，元素集合都是最重要的数据类型，Swift提供三种集合类型存储集合数据：Arrays(数组)、Sets(集合)、Dictionaries(字典)。</p>
 <p><img src="http://xuh.cn-etc.com/2017/06/05/1496663760489.png!md" alt=""></p>
@@ -623,7 +623,7 @@ function doDecrypt(pwd, onError) {
     <link href="https://xuh.io/post/bcf0b2d0.html"/>
     <id>https://xuh.io/post/bcf0b2d0.html</id>
     <published>2017-06-05T11:50:46.000Z</published>
-    <updated>2017-06-05T11:50:46.000Z</updated>
+    <updated>2018-01-03T17:21:13.148Z</updated>
     
     <summary type="html">
     
@@ -637,7 +637,7 @@ function doDecrypt(pwd, onError) {
     <link href="https://xuh.io/post/d030d951.html"/>
     <id>https://xuh.io/post/d030d951.html</id>
     <published>2017-06-05T11:50:38.000Z</published>
-    <updated>2017-06-05T11:50:38.000Z</updated>
+    <updated>2018-01-03T17:21:13.147Z</updated>
     
     <summary type="html">
     
@@ -651,7 +651,7 @@ function doDecrypt(pwd, onError) {
     <link href="https://xuh.io/post/b9db1057.html"/>
     <id>https://xuh.io/post/b9db1057.html</id>
     <published>2017-06-05T11:50:04.000Z</published>
-    <updated>2017-06-05T11:50:04.000Z</updated>
+    <updated>2018-01-03T17:21:13.146Z</updated>
     
     <summary type="html">
     
@@ -665,7 +665,7 @@ function doDecrypt(pwd, onError) {
     <link href="https://xuh.io/post/8d0d65c4.html"/>
     <id>https://xuh.io/post/8d0d65c4.html</id>
     <published>2015-11-29T05:26:38.000Z</published>
-    <updated>2017-05-30T05:35:20.000Z</updated>
+    <updated>2018-01-03T17:21:13.136Z</updated>
     
     <content type="html"><![CDATA[<p>源码编译安装的nginx和php-fpm没有centos自带的服务那样可以通过start|stop|restart等管理服务，只能自己定制了。</p>
 <h3 id="nginx启动脚本-etc-init-d-nginx"><a href="#nginx启动脚本-etc-init-d-nginx" class="headerlink" title="nginx启动脚本/etc/init.d/nginx"></a>nginx启动脚本/etc/init.d/nginx</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span>!/bin/bash</div><div class="line"><span class="meta">#</span></div><div class="line"><span class="meta">#</span> Startup script for Nginx - this script starts and stops the nginx daemon</div><div class="line"><span class="meta">#</span></div><div class="line"><span class="meta">#</span> chkconfig:   - 85 15</div><div class="line"><span class="meta">#</span> description:  Nginx is an HTTP(S) server, HTTP(S) reverse proxy and IMAP/POP3 proxy server</div><div class="line"><span class="meta">#</span> processname: nginx</div><div class="line"><span class="meta"></span></div><div class="line"># Source function library.</div><div class="line">. /etc/rc.d/init.d/functions</div><div class="line"><span class="meta"></span></div><div class="line"># Source networking configuration.</div><div class="line">. /etc/sysconfig/network</div><div class="line"><span class="meta"></span></div><div class="line"># Check that networking is up.</div><div class="line">[ "$NETWORKING" = "no" ] &amp;&amp; exit 0</div><div class="line"></div><div class="line">nginx="/alidata/server/nginx/sbin/nginx"</div><div class="line">prog=$(basename $nginx)</div><div class="line"></div><div class="line">NGINX_CONF_FILE="/alidata/server/nginx/conf/nginx.conf"</div><div class="line"></div><div class="line">[ -f /etc/sysconfig/nginx ] &amp;&amp; . /etc/sysconfig/nginx</div><div class="line"></div><div class="line">lockfile=/var/lock/subsys/nginx</div><div class="line"></div><div class="line">start() &#123;</div><div class="line">    [ -x $nginx ] || exit 5</div><div class="line">    [ -f $NGINX_CONF_FILE ] || exit 6</div><div class="line">    echo -n $"Starting $prog: "</div><div class="line">    daemon $nginx -c $NGINX_CONF_FILE</div><div class="line">    retval=$?</div><div class="line">    echo</div><div class="line">    [ $retval -eq 0 ] &amp;&amp; touch $lockfile</div><div class="line">    return $retval</div><div class="line">&#125;</div><div class="line"></div><div class="line">stop() &#123;</div><div class="line">    echo -n $"Stopping $prog: "</div><div class="line">    killproc $prog -QUIT</div><div class="line">    retval=$?</div><div class="line">    echo</div><div class="line">    [ $retval -eq 0 ] &amp;&amp; rm -f $lockfile</div><div class="line">    return $retval</div><div class="line">&#125;</div><div class="line"></div><div class="line">restart() &#123;</div><div class="line">    configtest || return $?</div><div class="line">    stop</div><div class="line">    sleep 1</div><div class="line">    start</div><div class="line">&#125;</div><div class="line"></div><div class="line">reload() &#123;</div><div class="line">    configtest || return $?</div><div class="line">    echo -n $"Reloading $prog: "</div><div class="line">    killproc $nginx -HUP</div><div class="line">    RETVAL=$?</div><div class="line">    echo</div><div class="line">&#125;</div><div class="line"></div><div class="line">force_reload() &#123;</div><div class="line">    restart</div><div class="line">&#125;</div><div class="line"></div><div class="line">configtest() &#123;</div><div class="line"><span class="meta">  $</span>nginx -t -c $NGINX_CONF_FILE</div><div class="line">&#125;</div><div class="line"></div><div class="line">rh_status() &#123;</div><div class="line">    status $prog</div><div class="line">&#125;</div><div class="line"></div><div class="line">rh_status_q() &#123;</div><div class="line">    rh_status &gt;/dev/null 2&gt;&amp;1</div><div class="line">&#125;</div><div class="line"></div><div class="line">case "$1" in</div><div class="line">    start)</div><div class="line">        rh_status_q &amp;&amp; exit 0</div><div class="line">        $1</div><div class="line">        ;;</div><div class="line">    stop)</div><div class="line">        rh_status_q || exit 0</div><div class="line">        $1</div><div class="line">        ;;</div><div class="line">    restart|configtest)</div><div class="line">        $1</div><div class="line">        ;;</div><div class="line">    reload)</div><div class="line">        rh_status_q || exit 7</div><div class="line">        $1</div><div class="line">        ;;</div><div class="line">    force-reload)</div><div class="line">        force_reload</div><div class="line">        ;;</div><div class="line">    status)</div><div class="line">        rh_status</div><div class="line">        ;;</div><div class="line">    condrestart|try-restart)</div><div class="line">        rh_status_q || exit 0</div><div class="line">            ;;</div><div class="line">    *)</div><div class="line">        echo $"Usage: $0 &#123;start|stop|status|restart|condrestart|try-restart|reload|force-reload|configtest&#125;"</div><div class="line">        exit 2</div><div class="line">esac</div></pre></td></tr></table></figure>
@@ -701,7 +701,7 @@ function doDecrypt(pwd, onError) {
     <link href="https://xuh.io/post/61bbb9b8.html"/>
     <id>https://xuh.io/post/61bbb9b8.html</id>
     <published>2015-11-29T05:12:15.000Z</published>
-    <updated>2017-05-30T05:37:00.000Z</updated>
+    <updated>2018-01-03T17:21:13.132Z</updated>
     
     <content type="html"><![CDATA[<h3 id="安装memcached服务"><a href="#安装memcached服务" class="headerlink" title="安装memcached服务"></a>安装memcached服务</h3><p><code>$ yum -y install memcached</code></p>
 <p>把memcached加入开机启动</p>
@@ -735,7 +735,7 @@ function doDecrypt(pwd, onError) {
     <link href="https://xuh.io/post/1addf0dc.html"/>
     <id>https://xuh.io/post/1addf0dc.html</id>
     <published>2015-11-29T03:54:33.000Z</published>
-    <updated>2017-05-30T05:09:41.000Z</updated>
+    <updated>2018-01-03T17:21:13.142Z</updated>
     
     <content type="html"><![CDATA[<p>1、查看/etc/redhat-release</p>
 <p><code>$ cat /etc/redhat-release</code></p>
@@ -769,39 +769,11 @@ function doDecrypt(pwd, onError) {
   </entry>
   
   <entry>
-    <title>让nginx支持path_info</title>
-    <link href="https://xuh.io/post/8e316de2.html"/>
-    <id>https://xuh.io/post/8e316de2.html</id>
-    <published>2015-11-28T03:21:44.000Z</published>
-    <updated>2017-05-29T03:33:22.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>nginx默认是不支持path_info模式的，也就是说不支持index.php/*这样的url，因此像Thinkphp中URL model为2的那种路径方式nginx不支持。</p>
-<p>只要修改虚拟主机的下面三个地方即可：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">location ~ .php &#123; #删除.php后的$</div><div class="line">         fastcgi_pass   soopj_phpfcgi;</div><div class="line">         fastcgi_index  default.php;</div><div class="line">          </div><div class="line">         fastcgi_split_path_info ^((?U).+.php)(/?.+)$;       #增加这句</div><div class="line">         fastcgi_param PATH_INFO $fastcgi_path_info;   #增加这句</div><div class="line">    </div><div class="line">         fastcgi_param  SCRIPT_FILENAME   $document_root$fastcgi_script_name;</div><div class="line">         include        fastcgi_params;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;nginx默认是不支持path_info模式的，也就是说不支持index.php/*这样的url，因此像Thinkphp中URL model为2的那种路径方式nginx不支持。&lt;/p&gt;
-&lt;p&gt;只要修改虚拟主机的下面三个地方即可：&lt;/p&gt;
-&lt;figure class=&quot;hig
-    
-    </summary>
-    
-      <category term="运维" scheme="https://xuh.io/categories/%E8%BF%90%E7%BB%B4/"/>
-    
-      <category term="LA/NMP服务" scheme="https://xuh.io/categories/%E8%BF%90%E7%BB%B4/LA-NMP%E6%9C%8D%E5%8A%A1/"/>
-    
-    
-      <category term="nginx" scheme="https://xuh.io/tags/nginx/"/>
-    
-  </entry>
-  
-  <entry>
     <title>一个 git hook自动部署脚本</title>
     <link href="https://xuh.io/post/56cf4d4.html"/>
     <id>https://xuh.io/post/56cf4d4.html</id>
     <published>2015-11-28T03:21:44.000Z</published>
-    <updated>2017-05-29T16:15:23.000Z</updated>
+    <updated>2018-01-03T17:21:13.135Z</updated>
     
     <content type="html"><![CDATA[<figure class="highlight shell"><figcaption><span>http://www.ihorve.com/?p</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="meta"></span></div><div class="line">#!/bin/sh</div><div class="line"><span class="meta">#</span></div><div class="line"><span class="meta">#</span> git autodeploy script when it matches string "[deploy]"</div><div class="line"><span class="meta">#</span></div><div class="line"><span class="meta">#</span> Usage:</div><div class="line"><span class="meta">#</span>    1. put this into the post-receive hook file itself below</div><div class="line"><span class="meta">#</span>    2. `chmod +x post-receive`</div><div class="line"><span class="meta">#</span>    3. Done!</div><div class="line"><span class="meta">#</span> Check the remote git repository whether it is bare</div><div class="line">IS_BARE=$(git rev-parse --is-bare-repository)</div><div class="line">if [ -z "$IS_BARE" ]; then</div><div class="line">    echo &gt;&amp;2 "fatal:post-receive:IS_NOT_BARE"</div><div class="line">    exit 1</div><div class="line">fi</div><div class="line"><span class="meta">#</span> Get the latest commit subject</div><div class="line">SUBJECT=$(git log -1 --pretty=format:"%s")</div><div class="line"><span class="meta">#</span> Deploy the HEAD source to publish</div><div class="line">IS_PULL=$(echo "$SUBJECT"  | grep "\[deploy\]")</div><div class="line">if [ -z "$IS_PULL" ];then</div><div class="line">    echo &gt;&amp;2 "tips:post-receive:IS_NOT_PULL"</div><div class="line">    exit 1</div><div class="line">fi</div><div class="line"><span class="meta">#</span> Check the deploy dir whether is exists</div><div class="line">DEPLOY_DIR=/home/www</div><div class="line">if [ ! -d $DEPLOY_DIR ]; then</div><div class="line">    echo &gt;&amp;2 "fatal:post-receive:DEPLOY_DIR_NOT_EXISTS:\"$DEPLOY_DIR\""</div><div class="line">    exit 1</div><div class="line">fi</div><div class="line"><span class="meta">#</span> Check the deploy dir whether it is git repository</div><div class="line"><span class="meta">#</span>IS_GIT=$(git rev-parse --git-dir 2&gt;/dev/null)</div><div class="line"><span class="meta">#</span>if [ -z "$IS_GIT" ] ;then</div><div class="line"><span class="meta">#</span>    echo &gt;&amp;2 "fatal:post-receive:IS_NOT_GIT"</div><div class="line"><span class="meta">#</span>    exit 1</div><div class="line"><span class="meta">#</span>fi</div><div class="line"><span class="meta">#</span> Goto the deploy dir and pull the latest sources</div><div class="line">cd $DEPLOY_DIR</div><div class="line"><span class="meta">#</span> env -i git reset --hard</div><div class="line">env -i git pull</div></pre></td></tr></table></figure>]]></content>
     
@@ -823,7 +795,7 @@ function doDecrypt(pwd, onError) {
     <link href="https://xuh.io/post/294fe70.html"/>
     <id>https://xuh.io/post/294fe70.html</id>
     <published>2015-11-28T03:21:44.000Z</published>
-    <updated>2017-05-30T05:35:47.000Z</updated>
+    <updated>2018-01-03T17:21:13.124Z</updated>
     
     <content type="html"><![CDATA[<p>检查是否有安装samba服务：</p>
 <p><code>$ rpm -qa | grep samba</code></p>
@@ -857,6 +829,34 @@ function doDecrypt(pwd, onError) {
     
     
       <category term="samba" scheme="https://xuh.io/tags/samba/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>让nginx支持path_info</title>
+    <link href="https://xuh.io/post/8e316de2.html"/>
+    <id>https://xuh.io/post/8e316de2.html</id>
+    <published>2015-11-28T03:21:44.000Z</published>
+    <updated>2018-01-03T17:21:13.144Z</updated>
+    
+    <content type="html"><![CDATA[<p>nginx默认是不支持path_info模式的，也就是说不支持index.php/*这样的url，因此像Thinkphp中URL model为2的那种路径方式nginx不支持。</p>
+<p>只要修改虚拟主机的下面三个地方即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">location ~ .php &#123; #删除.php后的$</div><div class="line">         fastcgi_pass   soopj_phpfcgi;</div><div class="line">         fastcgi_index  default.php;</div><div class="line">          </div><div class="line">         fastcgi_split_path_info ^((?U).+.php)(/?.+)$;       #增加这句</div><div class="line">         fastcgi_param PATH_INFO $fastcgi_path_info;   #增加这句</div><div class="line">    </div><div class="line">         fastcgi_param  SCRIPT_FILENAME   $document_root$fastcgi_script_name;</div><div class="line">         include        fastcgi_params;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;nginx默认是不支持path_info模式的，也就是说不支持index.php/*这样的url，因此像Thinkphp中URL model为2的那种路径方式nginx不支持。&lt;/p&gt;
+&lt;p&gt;只要修改虚拟主机的下面三个地方即可：&lt;/p&gt;
+&lt;figure class=&quot;hig
+    
+    </summary>
+    
+      <category term="运维" scheme="https://xuh.io/categories/%E8%BF%90%E7%BB%B4/"/>
+    
+      <category term="LA/NMP服务" scheme="https://xuh.io/categories/%E8%BF%90%E7%BB%B4/LA-NMP%E6%9C%8D%E5%8A%A1/"/>
+    
+    
+      <category term="nginx" scheme="https://xuh.io/tags/nginx/"/>
     
   </entry>
   
