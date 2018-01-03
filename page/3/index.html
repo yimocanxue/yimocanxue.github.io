@@ -312,7 +312,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://xuh.io/20151128-294fe70.html">
+    <link itemprop="mainEntityOfPage" href="https://xuh.io/20151128/8e316de2.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="David.xu">
@@ -331,7 +331,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/20151128-294fe70.html" itemprop="url">CentOS安装samba服务</a></h1>
+                <a class="post-title-link" href="/20151128/8e316de2.html" itemprop="url">让nginx支持path_info</a></h1>
         
 
         <div class="post-meta">
@@ -377,8 +377,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/运维/系统管理/" itemprop="url" rel="index">
-                    <span itemprop="name">系统管理</span>
+                  <a href="/categories/运维/LA-NMP服务/" itemprop="url" rel="index">
+                    <span itemprop="name">LA/NMP服务</span>
                   </a>
                 </span>
 
@@ -413,15 +413,13 @@
       
         
           
-          检查是否有安装samba服务：
-$ rpm -qa | grep samba
-如果没安装则yum安装
-$ yum -y install samba samba-client samba-common
-默认的安装目录是/etc/samba，配置文件为smb.conf,先备份下smb文件$ cd /et
+          nginx默认是不支持path_info模式的，也就是说不支持index.php/*这样的url，因此像Thinkphp中URL model为2的那种路径方式nginx不支持。
+只要修改虚拟主机的下面三个地方即可：
+12345678910location ~ .php &#123; #删除.php后
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/20151128-294fe70.html#more" rel="contents">
+            <a class="btn" href="/20151128/8e316de2.html#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
