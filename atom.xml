@@ -23,6 +23,7 @@
     <updated>2018-01-03T11:40:49.780Z</updated>
     
     <content type="html"><![CDATA[<script src=/js/crypto-js.js></script><script>
+cookie.expiresMultiplier = 1; 
 function doDecrypt(pwd, onError) {
 	console.log("in doDecrypt");
 	var txt = document.getElementById("enc_content").innerHTML;
@@ -30,7 +31,7 @@ function doDecrypt(pwd, onError) {
 	try {
 	  	var bytes = CryptoJS.AES.decrypt(txt, pwd);
 		plaintext = bytes.toString(CryptoJS.enc.Utf8);
-		cookie.set("HEXO-X-CACHE",pwd); 
+		cookie.set("HEXO-X-CACHE",pwd,{path:"/",expires: 2}); 
 	} catch(err) {
 		if(onError) {onError(err);}
 		return;
@@ -45,7 +46,7 @@ window.onload = function(){
 		doDecrypt(cachePwd, onError); 
 } 
 </script>
-<div id="enc_content" style="display:none">U2FsdGVkX18uQJoDXUeTWBP+dB2bretrGJjUaJqhqXc6qO7zhZEgU9K2rhfjSv+gWErm87kKwvJUSq/uCMjG0g==</div><div id="enc_passwd" style="text-align: center;margin-bottom: 300px;position: relative;"> <input id="enc_pwd_input" type="text" style="border-radius: 17px;border: 1px solid #ccc;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 20px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}" placeholder="报上暗号，比如天王盖地虎^_^"> <input type="submit" value="对暗号" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 3px;background-color: white;margin-left: 3px;vertical-align: top;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
+<div id="enc_content" style="display:none">U2FsdGVkX1+6wR7oxLMm/F5uXUg/zivaaRyUH1LfSD9DslqNx2ow5tpEmYMgv1baRERCaOzhcKnlaJsQk4bLXg==</div><div id="enc_passwd" style="text-align: center;margin-bottom: 300px;position: relative;"> <input id="enc_pwd_input" type="text" style="border-radius: 17px;border: 1px solid #ccc;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 20px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}" placeholder="报上暗号，比如天王盖地虎^_^"> <input type="submit" value="对暗号" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 3px;background-color: white;margin-left: 3px;vertical-align: top;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
 <script>
 var onError = function(error) {
 	document.getElementById("enc_error").innerHTML = "password error!"
@@ -61,9 +62,9 @@ doDecrypt(passwd, onError);
     <summary type="html">
     
       &lt;script src=/js/crypto-js.js&gt;&lt;/script&gt;&lt;script&gt;
+cookie.expiresMultiplier = 1; 
 function doDecrypt(pwd, onError) {
-	console.log(&quot;in doDecrypt&quot;);
-	var txt = document.getEleme
+	console.log(&quot;in doDecrypt&quot;
     
     </summary>
     
