@@ -99,6 +99,7 @@
 <meta property="og:url" content="https://xuh.io/2017/11/30/CentOS7-2编译安装tengine/index.html">
 <meta property="og:site_name" content="金州苍狼">
 <meta property="og:description" content="Tengine介绍Tengine是有淘宝网发起的web服务器项目。它在Nginx的基础上，针对大访问量网站的需求，添加了很多高级功能和特性。它的最终目标是打造一个高效、稳定、安全、已用的web平台。 特性Tengine在Nginx的基础上作了很多改进，但是促使我弃Nginx转投它的原因是动态模块加载支持和多个请求报文重组（多个请求变成一个请求，比如多个css、js文件的访问）。 下面是官方列举的一">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-11-30T05:59:10.136Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CentOS7.2编译安装tengine">
@@ -417,10 +418,10 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ cd /usr/local/src</div><div class="line">$ wget https://github.com/jemalloc/jemalloc/releases/download/5.0.1/jemalloc-5.0.1.tar.bz2</div><div class="line">$ tar xf jemalloc-5.0.1.tar.bz2</div><div class="line">$ cd jemalloc-5.0.1</div><div class="line">$ ./configure --prefix=/usr/local/jemalloc</div><div class="line">$ make &amp;&amp; make install</div></pre></td></tr></table></figure>
 <h5 id="安装LuaJIT"><a href="#安装LuaJIT" class="headerlink" title="安装LuaJIT"></a>安装LuaJIT</h5><p>LuaJIT(LuaJIT is a Just-In-Time Compilerfor the Lua programming languag)，它是Lua脚本的解释器，nginx可以通过lua扩展其功能，开启lua支持就需要LuaJIT。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$ cd /usr/local/src</div><div class="line">$ wget http://luajit.org/download/LuaJIT-2.0.5.tar.gz</div><div class="line">$ tar xf LuaJIT-2.0.5.tar.gz</div><div class="line">$ make PREFIX=/usr/local/luajit</div><div class="line">$ make install PREFIX=/usr/local/luajit</div><div class="line">$ # 添加环境变量，告诉Nginx在哪里找LuaJIT执行lua脚本 </div><div class="line">$ echo &quot;export LUAJIT_LIB=/usr/local/luajit/lib&quot; &gt;&gt; /etc/profile</div><div class="line">$ echo &quot;export LUAJIT_INC=/usr/local/luajit/include/luajit-2.0&quot; &gt;&gt; /etc/profile</div><div class="line">$ source /etc/profile</div></pre></td></tr></table></figure>
-<p>详情可以<a href="https://github.com/openresty/lua-nginx-module/blob/master/README.markdown#installation" target="_blank" rel="external">参照这里</a>。</p>
+<p>详情可以<a href="https://github.com/openresty/lua-nginx-module/blob/master/README.markdown#installation" target="_blank" rel="noopener">参照这里</a>。</p>
 <h3 id="下载lua模块"><a href="#下载lua模块" class="headerlink" title="下载lua模块"></a>下载lua模块</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ cd /usr/local/src</div><div class="line">$ wget https://github.com/simpl/ngx_devel_kit/archive/v0.3.0.tar.gz</div><div class="line">$ wget https://github.com/openresty/lua-nginx-module/archive/v0.10.11.tar.gz</div><div class="line">$ tar xf v0.3.0.tar.gz</div><div class="line">$ tar xf v0.10.11.tar.gz</div></pre></td></tr></table></figure>
 <p>这里只需要下载解压到/usr/local/src目录下解压即可。</p>
-<h3 id="安装Tengine"><a href="#安装Tengine" class="headerlink" title="安装Tengine"></a>安装Tengine</h3><p>Tengine和Nginx大多编译和配置选项均相同，Tengine特有的编译选项<a href="http://tengine.taobao.org/document_cn/install_cn.html" target="_blank" rel="external">参见这里</a>。</p>
+<h3 id="安装Tengine"><a href="#安装Tengine" class="headerlink" title="安装Tengine"></a>安装Tengine</h3><p>Tengine和Nginx大多编译和配置选项均相同，Tengine特有的编译选项<a href="http://tengine.taobao.org/document_cn/install_cn.html" target="_blank" rel="noopener">参见这里</a>。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">$ cd /usr/local/src</div><div class="line">$ curl -O http://tengine.taobao.org/download/tengine-2.2.1.tar.gz</div><div class="line">$ tar xf tengine-2.2.1.tar.gz</div><div class="line">$ cd tengine-2.2.1</div><div class="line">$ ./configure \</div><div class="line">--prefix=/server/tengine \</div><div class="line">--sbin-path=/server/tengine \</div><div class="line">--conf-path=/server/tengine/conf/nginx.conf \</div><div class="line">--user=www  \</div><div class="line">--group=www \</div><div class="line">--dso-path=/server/tengine/dso \</div><div class="line">--with-http_concat_module \</div><div class="line">--with-http_stub_status_module \</div><div class="line">--with-http_ssl_module \</div><div class="line">--with-http_gzip_static_module \</div><div class="line">--with-http_realip_module \</div><div class="line">--with-pcre=/usr/local/src/pcre-8.40  \</div><div class="line">--with-zlib=/usr/local/src/zlib-1.2.11 \</div><div class="line">--with-openssl=/usr/local/src/openssl-1.0.2 \</div><div class="line">--with-jemalloc=/usr/local/src/jemalloc-5.0.1 \</div><div class="line">--with-ld-opt=&quot;-Wl,-rpath,/usr/local/luajit/lib&quot; \</div><div class="line">--add-module=/usr/local/src/lua-nginx-module-0.10.11 \</div><div class="line">--add-module=/usr/local/src/ngx_devel_kit-0.3.0</div><div class="line"></div><div class="line">$ make &amp;&amp; make install</div><div class="line">$ ln -s /server/tengine/nginx /usr/bin/nginx # 可选</div></pre></td></tr></table></figure>
 <p>这里有几点需要注意：</p>
 <ul>
@@ -428,11 +429,11 @@
 <li>pcre、zlib、openssl、jemalloc相关的编译选项需要指向的是安装源文件路径，不是安装该库是指定的prefix，这个一定要注意；</li>
 <li>ngx_devel_kit、lua-nginx-module两个模块编译选项只要需要指向解压路径，Tengine编译时会进入相应目录完成编译。</li>
 </ul>
-<p>了解更多的编译选项参见<a href="http://nginx.org/en/docs/configure.html" target="_blank" rel="external">这里</a>、<a href="http://tengine.taobao.org/documentation_cn.html" target="_blank" rel="external">这里</a>、<a href="http://www.nginx.cn/doc/index.html" target="_blank" rel="external">还有这里</a>。</p>
+<p>了解更多的编译选项参见<a href="http://nginx.org/en/docs/configure.html" target="_blank" rel="noopener">这里</a>、<a href="http://tengine.taobao.org/documentation_cn.html" target="_blank" rel="noopener">这里</a>、<a href="http://www.nginx.cn/doc/index.html" target="_blank" rel="noopener">还有这里</a>。</p>
 <h3 id="配置Tengine服务，设置开机启动"><a href="#配置Tengine服务，设置开机启动" class="headerlink" title="配置Tengine服务，设置开机启动"></a>配置Tengine服务，设置开机启动</h3><h5 id="创建nginx-service"><a href="#创建nginx-service" class="headerlink" title="创建nginx.service"></a>创建nginx.service</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">$ vim /lib/systemd/system/nginx.service</div><div class="line"></div><div class="line">[Unit]</div><div class="line">Description=The nginx HTTP and reverse proxy server</div><div class="line">After=syslog.target network.target remote-fs.target nss-lookup.target</div><div class="line"></div><div class="line">[Service]</div><div class="line">Type=forking</div><div class="line">PIDFile=/server/tengine/logs/nginx.pid</div><div class="line">ExecStartPre=/server/tengine/nginx -t</div><div class="line">ExecStart=/server/tengine/nginx -c /server/tengine/conf/nginx.conf</div><div class="line">ExecReload=/bin/kill -s HUP $MAINPID</div><div class="line">ExecStop=/bin/kill -s QUIT $MAINPID</div><div class="line">PrivateTmp=true</div><div class="line"></div><div class="line">[Install]</div><div class="line">WantedBy=multi-user.target</div></pre></td></tr></table></figure>
 <h5 id="设置开机启动"><a href="#设置开机启动" class="headerlink" title="设置开机启动"></a>设置开机启动</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ chmod 745 /lib/systemd/system/nginx.service</div><div class="line">$ systemctl enable nginx.service # 设置开机启动</div></pre></td></tr></table></figure>
 <h5 id="开启服务"><a href="#开启服务" class="headerlink" title="开启服务"></a>开启服务</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ systemctl start nginx.service</div></pre></td></tr></table></figure>
-<p>访问<a href="http://127.0.0.1看到欢迎页则安装过程完成。" target="_blank" rel="external">http://127.0.0.1看到欢迎页则安装过程完成。</a></p>
+<p>访问<a href="http://127.0.0.1看到欢迎页则安装过程完成。" target="_blank" rel="noopener">http://127.0.0.1看到欢迎页则安装过程完成。</a></p>
 
       
     </div>
@@ -607,7 +608,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -618,7 +619,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -629,7 +630,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-count">27</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -694,7 +695,7 @@
         <div class="copyright" >
   
   &copy;  2015 - 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

@@ -92,17 +92,18 @@
 
 
 
-<meta name="description" content="http://www.ihorve.com/?p=234123456789101112131415161718192021222324252627282930313233343536373839#!/bin/sh## git autodeploy script when it matches string &quot;[deploy]&quot;## Usage:#    1. put this into the p">
+<meta name="description" content="http://www.ihorve.com/?p123456789101112131415161718192021222324252627282930313233343536373839#!/bin/sh## git autodeploy script when it matches string &quot;[deploy]&quot;## Usage:#    1. put this into the post-">
 <meta name="keywords" content="git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="一个 git hook自动部署脚本">
 <meta property="og:url" content="https://xuh.io/2015/11/28/一个-git-hook自动部署脚本/index.html">
 <meta property="og:site_name" content="金州苍狼">
-<meta property="og:description" content="http://www.ihorve.com/?p=234123456789101112131415161718192021222324252627282930313233343536373839#!/bin/sh## git autodeploy script when it matches string &quot;[deploy]&quot;## Usage:#    1. put this into the p">
+<meta property="og:description" content="http://www.ihorve.com/?p123456789101112131415161718192021222324252627282930313233343536373839#!/bin/sh## git autodeploy script when it matches string &quot;[deploy]&quot;## Usage:#    1. put this into the post-">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-05-29T16:15:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一个 git hook自动部署脚本">
-<meta name="twitter:description" content="http://www.ihorve.com/?p=234123456789101112131415161718192021222324252627282930313233343536373839#!/bin/sh## git autodeploy script when it matches string &quot;[deploy]&quot;## Usage:#    1. put this into the p">
+<meta name="twitter:description" content="http://www.ihorve.com/?p123456789101112131415161718192021222324252627282930313233343536373839#!/bin/sh## git autodeploy script when it matches string &quot;[deploy]&quot;## Usage:#    1. put this into the post-">
 
 
 
@@ -406,7 +407,7 @@
       
 
       
-        <figure class="highlight shell"><figcaption><span>http://www.ihorve.com/?p=234</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="meta"></span></div><div class="line">#!/bin/sh</div><div class="line"><span class="meta">#</span></div><div class="line"><span class="meta">#</span> git autodeploy script when it matches string "[deploy]"</div><div class="line"><span class="meta">#</span></div><div class="line"><span class="meta">#</span> Usage:</div><div class="line"><span class="meta">#</span>    1. put this into the post-receive hook file itself below</div><div class="line"><span class="meta">#</span>    2. `chmod +x post-receive`</div><div class="line"><span class="meta">#</span>    3. Done!</div><div class="line"><span class="meta">#</span> Check the remote git repository whether it is bare</div><div class="line">IS_BARE=$(git rev-parse --is-bare-repository)</div><div class="line">if [ -z "$IS_BARE" ]; then</div><div class="line">    echo &gt;&amp;2 "fatal:post-receive:IS_NOT_BARE"</div><div class="line">    exit 1</div><div class="line">fi</div><div class="line"><span class="meta">#</span> Get the latest commit subject</div><div class="line">SUBJECT=$(git log -1 --pretty=format:"%s")</div><div class="line"><span class="meta">#</span> Deploy the HEAD source to publish</div><div class="line">IS_PULL=$(echo "$SUBJECT"  | grep "\[deploy\]")</div><div class="line">if [ -z "$IS_PULL" ];then</div><div class="line">    echo &gt;&amp;2 "tips:post-receive:IS_NOT_PULL"</div><div class="line">    exit 1</div><div class="line">fi</div><div class="line"><span class="meta">#</span> Check the deploy dir whether is exists</div><div class="line">DEPLOY_DIR=/home/www</div><div class="line">if [ ! -d $DEPLOY_DIR ]; then</div><div class="line">    echo &gt;&amp;2 "fatal:post-receive:DEPLOY_DIR_NOT_EXISTS:\"$DEPLOY_DIR\""</div><div class="line">    exit 1</div><div class="line">fi</div><div class="line"><span class="meta">#</span> Check the deploy dir whether it is git repository</div><div class="line"><span class="meta">#</span>IS_GIT=$(git rev-parse --git-dir 2&gt;/dev/null)</div><div class="line"><span class="meta">#</span>if [ -z "$IS_GIT" ] ;then</div><div class="line"><span class="meta">#</span>    echo &gt;&amp;2 "fatal:post-receive:IS_NOT_GIT"</div><div class="line"><span class="meta">#</span>    exit 1</div><div class="line"><span class="meta">#</span>fi</div><div class="line"><span class="meta">#</span> Goto the deploy dir and pull the latest sources</div><div class="line">cd $DEPLOY_DIR</div><div class="line"><span class="meta">#</span> env -i git reset --hard</div><div class="line">env -i git pull</div></pre></td></tr></table></figure>
+        <figure class="highlight shell"><figcaption><span>http://www.ihorve.com/?p</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="meta"></span></div><div class="line">#!/bin/sh</div><div class="line"><span class="meta">#</span></div><div class="line"><span class="meta">#</span> git autodeploy script when it matches string "[deploy]"</div><div class="line"><span class="meta">#</span></div><div class="line"><span class="meta">#</span> Usage:</div><div class="line"><span class="meta">#</span>    1. put this into the post-receive hook file itself below</div><div class="line"><span class="meta">#</span>    2. `chmod +x post-receive`</div><div class="line"><span class="meta">#</span>    3. Done!</div><div class="line"><span class="meta">#</span> Check the remote git repository whether it is bare</div><div class="line">IS_BARE=$(git rev-parse --is-bare-repository)</div><div class="line">if [ -z "$IS_BARE" ]; then</div><div class="line">    echo &gt;&amp;2 "fatal:post-receive:IS_NOT_BARE"</div><div class="line">    exit 1</div><div class="line">fi</div><div class="line"><span class="meta">#</span> Get the latest commit subject</div><div class="line">SUBJECT=$(git log -1 --pretty=format:"%s")</div><div class="line"><span class="meta">#</span> Deploy the HEAD source to publish</div><div class="line">IS_PULL=$(echo "$SUBJECT"  | grep "\[deploy\]")</div><div class="line">if [ -z "$IS_PULL" ];then</div><div class="line">    echo &gt;&amp;2 "tips:post-receive:IS_NOT_PULL"</div><div class="line">    exit 1</div><div class="line">fi</div><div class="line"><span class="meta">#</span> Check the deploy dir whether is exists</div><div class="line">DEPLOY_DIR=/home/www</div><div class="line">if [ ! -d $DEPLOY_DIR ]; then</div><div class="line">    echo &gt;&amp;2 "fatal:post-receive:DEPLOY_DIR_NOT_EXISTS:\"$DEPLOY_DIR\""</div><div class="line">    exit 1</div><div class="line">fi</div><div class="line"><span class="meta">#</span> Check the deploy dir whether it is git repository</div><div class="line"><span class="meta">#</span>IS_GIT=$(git rev-parse --git-dir 2&gt;/dev/null)</div><div class="line"><span class="meta">#</span>if [ -z "$IS_GIT" ] ;then</div><div class="line"><span class="meta">#</span>    echo &gt;&amp;2 "fatal:post-receive:IS_NOT_GIT"</div><div class="line"><span class="meta">#</span>    exit 1</div><div class="line"><span class="meta">#</span>fi</div><div class="line"><span class="meta">#</span> Goto the deploy dir and pull the latest sources</div><div class="line">cd $DEPLOY_DIR</div><div class="line"><span class="meta">#</span> env -i git reset --hard</div><div class="line">env -i git pull</div></pre></td></tr></table></figure>
       
     </div>
 
@@ -469,14 +470,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2015/11/28/CentOS安装samba服务/" rel="next" title="CentOS安装samba服务">
+                <i class="fa fa-chevron-left"></i> CentOS安装samba服务
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/11/28/让nginx支持path-info/" rel="prev" title="让nginx支持path_info">
-                让nginx支持path_info <i class="fa fa-chevron-right"></i>
+              <a href="/2015/11/29/查询linux版本方法/" rel="prev" title="查询linux版本方法">
+                查询linux版本方法 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -565,7 +570,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -576,7 +581,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -587,7 +592,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-count">27</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -636,7 +641,7 @@
         <div class="copyright" >
   
   &copy;  2015 - 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
