@@ -17,8 +17,8 @@
   
   <entry>
     <title>测试加密</title>
-    <link href="https://xuh.io/2018/01/03/%E6%B5%8B%E8%AF%95%E5%8A%A0%E5%AF%86/"/>
-    <id>https://xuh.io/2018/01/03/测试加密/</id>
+    <link href="https://xuh.io/post/d1ee6067.html"/>
+    <id>https://xuh.io/post/d1ee6067.html</id>
     <published>2018-01-03T11:38:09.000Z</published>
     <updated>2018-01-03T17:15:05.910Z</updated>
     
@@ -45,7 +45,7 @@ window.onload = function(){
 		doDecrypt(cachePwd, onError); 
 } 
 </script>
-<div id="enc_content" style="display:none">U2FsdGVkX19HCx6eMuVyYbgNo54+/fBpUdcY6cleaZlxUZJu18g/DXNEwhgUQ64EBPWYFBEt94M/u7Vp26vhdw==</div><div id="enc_passwd" style="text-align: center;margin-bottom: 300px;position: relative;"> <input id="enc_pwd_input" type="text" style="border-radius: 17px;border: 1px solid #ccc;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 20px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}" placeholder="报上暗号，比如天王盖地虎^_^"> <input type="submit" value="对暗号" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 3px;background-color: white;margin-left: 3px;vertical-align: top;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
+<div id="enc_content" style="display:none">U2FsdGVkX1+ad/1IvrMWTlBHSNqGhVdc3rsjVafngZlIA4iUFh8yMCKzFlnIlvAwmorFn16CM6LL6dim3OUW/w==</div><div id="enc_passwd" style="text-align: center;margin-bottom: 300px;position: relative;"> <input id="enc_pwd_input" type="text" style="border-radius: 17px;border: 1px solid #ccc;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 20px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}" placeholder="报上暗号，比如天王盖地虎^_^"> <input type="submit" value="对暗号" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 3px;background-color: white;margin-left: 3px;vertical-align: top;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
 <script>
 var onError = function(error) {
 	document.getElementById("enc_error").innerHTML = "password error!"
@@ -78,8 +78,8 @@ function doDecrypt(pwd, onError) {
   
   <entry>
     <title>使用centos7</title>
-    <link href="https://xuh.io/2017/12/27/%E4%BD%BF%E7%94%A8centos7/"/>
-    <id>https://xuh.io/2017/12/27/使用centos7/</id>
+    <link href="https://xuh.io/post/a395cd40.html"/>
+    <id>https://xuh.io/post/a395cd40.html</id>
     <published>2017-12-27T07:27:41.000Z</published>
     <updated>2017-12-27T07:35:46.455Z</updated>
     
@@ -111,8 +111,8 @@ function doDecrypt(pwd, onError) {
   
   <entry>
     <title>Nginx日期切割</title>
-    <link href="https://xuh.io/2017/11/30/Nginx%E6%97%A5%E6%9C%9F%E5%88%87%E5%89%B2/"/>
-    <id>https://xuh.io/2017/11/30/Nginx日期切割/</id>
+    <link href="https://xuh.io/post/6528fea8.html"/>
+    <id>https://xuh.io/post/6528fea8.html</id>
     <published>2017-11-30T07:21:57.000Z</published>
     <updated>2017-11-30T11:47:02.515Z</updated>
     
@@ -135,8 +135,8 @@ function doDecrypt(pwd, onError) {
   
   <entry>
     <title>CentOS7.2编译安装tengine</title>
-    <link href="https://xuh.io/2017/11/30/CentOS7-2%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85tengine/"/>
-    <id>https://xuh.io/2017/11/30/CentOS7-2编译安装tengine/</id>
+    <link href="https://xuh.io/post/f110b008.html"/>
+    <id>https://xuh.io/post/f110b008.html</id>
     <published>2017-11-30T05:54:33.000Z</published>
     <updated>2017-11-30T05:59:10.136Z</updated>
     
@@ -206,8 +206,8 @@ function doDecrypt(pwd, onError) {
   
   <entry>
     <title>MongoDB用户管理</title>
-    <link href="https://xuh.io/2017/07/19/MongoDB%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86/"/>
-    <id>https://xuh.io/2017/07/19/MongoDB用户管理/</id>
+    <link href="https://xuh.io/post/ff4ef26d.html"/>
+    <id>https://xuh.io/post/ff4ef26d.html</id>
     <published>2017-07-19T03:58:17.000Z</published>
     <updated>2017-07-19T06:12:52.000Z</updated>
     
@@ -240,8 +240,8 @@ function doDecrypt(pwd, onError) {
   
   <entry>
     <title>持续集成介绍</title>
-    <link href="https://xuh.io/2017/07/07/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E4%BB%8B%E7%BB%8D/"/>
-    <id>https://xuh.io/2017/07/07/持续集成介绍/</id>
+    <link href="https://xuh.io/post/53ff9fdd.html"/>
+    <id>https://xuh.io/post/53ff9fdd.html</id>
     <published>2017-07-07T11:28:51.000Z</published>
     <updated>2017-07-07T11:43:47.000Z</updated>
     
@@ -321,8 +321,8 @@ function doDecrypt(pwd, onError) {
   
   <entry>
     <title>gitlab系列教程之1-安装</title>
-    <link href="https://xuh.io/2017/07/07/gitlab%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E4%B9%8B1-%E5%AE%89%E8%A3%85/"/>
-    <id>https://xuh.io/2017/07/07/gitlab系列教程之1-安装/</id>
+    <link href="https://xuh.io/post/14c433bb.html"/>
+    <id>https://xuh.io/post/14c433bb.html</id>
     <published>2017-07-07T11:11:16.000Z</published>
     <updated>2017-07-07T11:37:34.000Z</updated>
     
@@ -401,8 +401,8 @@ function doDecrypt(pwd, onError) {
   
   <entry>
     <title>算法分析</title>
-    <link href="https://xuh.io/2017/06/10/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90/"/>
-    <id>https://xuh.io/2017/06/10/算法分析/</id>
+    <link href="https://xuh.io/post/d68e5e2f.html"/>
+    <id>https://xuh.io/post/d68e5e2f.html</id>
     <published>2017-06-10T15:07:26.000Z</published>
     <updated>2017-06-10T16:05:28.000Z</updated>
     
@@ -459,8 +459,8 @@ function doDecrypt(pwd, onError) {
   
   <entry>
     <title>数学证明方法与递归</title>
-    <link href="https://xuh.io/2017/06/09/%E6%95%B0%E5%AD%A6%E8%AF%81%E6%98%8E%E6%96%B9%E6%B3%95%E4%B8%8E%E9%80%92%E5%BD%92/"/>
-    <id>https://xuh.io/2017/06/09/数学证明方法与递归/</id>
+    <link href="https://xuh.io/post/d00315b3.html"/>
+    <id>https://xuh.io/post/d00315b3.html</id>
     <published>2017-06-09T10:34:34.000Z</published>
     <updated>2017-06-10T14:58:27.000Z</updated>
     
@@ -521,8 +521,8 @@ function doDecrypt(pwd, onError) {
   
   <entry>
     <title>数学基础知识</title>
-    <link href="https://xuh.io/2017/06/07/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
-    <id>https://xuh.io/2017/06/07/数学基础知识/</id>
+    <link href="https://xuh.io/post/bacfe825.html"/>
+    <id>https://xuh.io/post/bacfe825.html</id>
     <published>2017-06-07T14:54:13.000Z</published>
     <updated>2017-06-10T14:58:27.000Z</updated>
     
@@ -576,8 +576,8 @@ function doDecrypt(pwd, onError) {
   
   <entry>
     <title>UITabBar的基本用法</title>
-    <link href="https://xuh.io/2017/06/06/UITabBar%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/"/>
-    <id>https://xuh.io/2017/06/06/UITabBar的基本用法/</id>
+    <link href="https://xuh.io/post/550b57b7.html"/>
+    <id>https://xuh.io/post/550b57b7.html</id>
     <published>2017-06-06T08:20:39.000Z</published>
     <updated>2017-06-06T08:20:39.000Z</updated>
     
@@ -590,8 +590,8 @@ function doDecrypt(pwd, onError) {
   
   <entry>
     <title>集合类型之0-概述</title>
-    <link href="https://xuh.io/2017/06/05/%E9%9B%86%E5%90%88%E7%B1%BB%E5%9E%8B%E4%B9%8B0-%E6%A6%82%E8%BF%B0/"/>
-    <id>https://xuh.io/2017/06/05/集合类型之0-概述/</id>
+    <link href="https://xuh.io/post/87569439.html"/>
+    <id>https://xuh.io/post/87569439.html</id>
     <published>2017-06-05T11:51:02.000Z</published>
     <updated>2017-06-05T12:19:12.000Z</updated>
     
@@ -620,8 +620,8 @@ function doDecrypt(pwd, onError) {
   
   <entry>
     <title>集合类型之3-字典</title>
-    <link href="https://xuh.io/2017/06/05/%E9%9B%86%E5%90%88%E7%B1%BB%E5%9E%8B%E4%B9%8B3-%E5%AD%97%E5%85%B8/"/>
-    <id>https://xuh.io/2017/06/05/集合类型之3-字典/</id>
+    <link href="https://xuh.io/post/bcf0b2d0.html"/>
+    <id>https://xuh.io/post/bcf0b2d0.html</id>
     <published>2017-06-05T11:50:46.000Z</published>
     <updated>2017-06-05T11:50:46.000Z</updated>
     
@@ -634,8 +634,8 @@ function doDecrypt(pwd, onError) {
   
   <entry>
     <title>集合类型之2-集合</title>
-    <link href="https://xuh.io/2017/06/05/%E9%9B%86%E5%90%88%E7%B1%BB%E5%9E%8B%E4%B9%8B2-%E9%9B%86%E5%90%88/"/>
-    <id>https://xuh.io/2017/06/05/集合类型之2-集合/</id>
+    <link href="https://xuh.io/post/d030d951.html"/>
+    <id>https://xuh.io/post/d030d951.html</id>
     <published>2017-06-05T11:50:38.000Z</published>
     <updated>2017-06-05T11:50:38.000Z</updated>
     
@@ -648,8 +648,8 @@ function doDecrypt(pwd, onError) {
   
   <entry>
     <title>集合类型之1-数组</title>
-    <link href="https://xuh.io/2017/06/05/%E9%9B%86%E5%90%88%E7%B1%BB%E5%9E%8B%E4%B9%8B1-%E6%95%B0%E7%BB%84/"/>
-    <id>https://xuh.io/2017/06/05/集合类型之1-数组/</id>
+    <link href="https://xuh.io/post/b9db1057.html"/>
+    <id>https://xuh.io/post/b9db1057.html</id>
     <published>2017-06-05T11:50:04.000Z</published>
     <updated>2017-06-05T11:50:04.000Z</updated>
     
@@ -662,8 +662,8 @@ function doDecrypt(pwd, onError) {
   
   <entry>
     <title>为编译安装的nginx和php-fpm定制服务启动脚本</title>
-    <link href="https://xuh.io/2015/11/29/%E4%B8%BA%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85%E7%9A%84nginx%E5%92%8Cphp-fpm%E5%AE%9A%E5%88%B6%E6%9C%8D%E5%8A%A1%E5%90%AF%E5%8A%A8%E8%84%9A%E6%9C%AC/"/>
-    <id>https://xuh.io/2015/11/29/为编译安装的nginx和php-fpm定制服务启动脚本/</id>
+    <link href="https://xuh.io/post/8d0d65c4.html"/>
+    <id>https://xuh.io/post/8d0d65c4.html</id>
     <published>2015-11-29T05:26:38.000Z</published>
     <updated>2017-05-30T05:35:20.000Z</updated>
     
@@ -698,8 +698,8 @@ function doDecrypt(pwd, onError) {
   
   <entry>
     <title>centos6.5安装Memcached和php memcached扩展</title>
-    <link href="https://xuh.io/2015/11/29/centos6-5%E5%AE%89%E8%A3%85Memcached%E5%92%8Cphp-memcached%E6%89%A9%E5%B1%95/"/>
-    <id>https://xuh.io/2015/11/29/centos6-5安装Memcached和php-memcached扩展/</id>
+    <link href="https://xuh.io/post/61bbb9b8.html"/>
+    <id>https://xuh.io/post/61bbb9b8.html</id>
     <published>2015-11-29T05:12:15.000Z</published>
     <updated>2017-05-30T05:37:00.000Z</updated>
     
@@ -732,8 +732,8 @@ function doDecrypt(pwd, onError) {
   
   <entry>
     <title>查询linux版本方法</title>
-    <link href="https://xuh.io/2015/11/29/%E6%9F%A5%E8%AF%A2linux%E7%89%88%E6%9C%AC%E6%96%B9%E6%B3%95/"/>
-    <id>https://xuh.io/2015/11/29/查询linux版本方法/</id>
+    <link href="https://xuh.io/post/1addf0dc.html"/>
+    <id>https://xuh.io/post/1addf0dc.html</id>
     <published>2015-11-29T03:54:33.000Z</published>
     <updated>2017-05-30T05:09:41.000Z</updated>
     
@@ -769,31 +769,9 @@ function doDecrypt(pwd, onError) {
   </entry>
   
   <entry>
-    <title>一个 git hook自动部署脚本</title>
-    <link href="https://xuh.io/2015/11/28/%E4%B8%80%E4%B8%AA-git-hook%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E8%84%9A%E6%9C%AC/"/>
-    <id>https://xuh.io/2015/11/28/一个-git-hook自动部署脚本/</id>
-    <published>2015-11-28T03:21:44.000Z</published>
-    <updated>2017-05-29T16:15:23.000Z</updated>
-    
-    <content type="html"><![CDATA[<figure class="highlight shell"><figcaption><span>http://www.ihorve.com/?p</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="meta"></span></div><div class="line">#!/bin/sh</div><div class="line"><span class="meta">#</span></div><div class="line"><span class="meta">#</span> git autodeploy script when it matches string "[deploy]"</div><div class="line"><span class="meta">#</span></div><div class="line"><span class="meta">#</span> Usage:</div><div class="line"><span class="meta">#</span>    1. put this into the post-receive hook file itself below</div><div class="line"><span class="meta">#</span>    2. `chmod +x post-receive`</div><div class="line"><span class="meta">#</span>    3. Done!</div><div class="line"><span class="meta">#</span> Check the remote git repository whether it is bare</div><div class="line">IS_BARE=$(git rev-parse --is-bare-repository)</div><div class="line">if [ -z "$IS_BARE" ]; then</div><div class="line">    echo &gt;&amp;2 "fatal:post-receive:IS_NOT_BARE"</div><div class="line">    exit 1</div><div class="line">fi</div><div class="line"><span class="meta">#</span> Get the latest commit subject</div><div class="line">SUBJECT=$(git log -1 --pretty=format:"%s")</div><div class="line"><span class="meta">#</span> Deploy the HEAD source to publish</div><div class="line">IS_PULL=$(echo "$SUBJECT"  | grep "\[deploy\]")</div><div class="line">if [ -z "$IS_PULL" ];then</div><div class="line">    echo &gt;&amp;2 "tips:post-receive:IS_NOT_PULL"</div><div class="line">    exit 1</div><div class="line">fi</div><div class="line"><span class="meta">#</span> Check the deploy dir whether is exists</div><div class="line">DEPLOY_DIR=/home/www</div><div class="line">if [ ! -d $DEPLOY_DIR ]; then</div><div class="line">    echo &gt;&amp;2 "fatal:post-receive:DEPLOY_DIR_NOT_EXISTS:\"$DEPLOY_DIR\""</div><div class="line">    exit 1</div><div class="line">fi</div><div class="line"><span class="meta">#</span> Check the deploy dir whether it is git repository</div><div class="line"><span class="meta">#</span>IS_GIT=$(git rev-parse --git-dir 2&gt;/dev/null)</div><div class="line"><span class="meta">#</span>if [ -z "$IS_GIT" ] ;then</div><div class="line"><span class="meta">#</span>    echo &gt;&amp;2 "fatal:post-receive:IS_NOT_GIT"</div><div class="line"><span class="meta">#</span>    exit 1</div><div class="line"><span class="meta">#</span>fi</div><div class="line"><span class="meta">#</span> Goto the deploy dir and pull the latest sources</div><div class="line">cd $DEPLOY_DIR</div><div class="line"><span class="meta">#</span> env -i git reset --hard</div><div class="line">env -i git pull</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;figure class=&quot;highlight shell&quot;&gt;&lt;figcaption&gt;&lt;span&gt;http://www.ihorve.com/?p&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=
-    
-    </summary>
-    
-      <category term="工具/版本管理" scheme="https://xuh.io/categories/%E5%B7%A5%E5%85%B7-%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/"/>
-    
-    
-      <category term="git" scheme="https://xuh.io/tags/git/"/>
-    
-  </entry>
-  
-  <entry>
     <title>让nginx支持path_info</title>
-    <link href="https://xuh.io/2015/11/28/%E8%AE%A9nginx%E6%94%AF%E6%8C%81path-info/"/>
-    <id>https://xuh.io/2015/11/28/让nginx支持path-info/</id>
+    <link href="https://xuh.io/post/8e316de2.html"/>
+    <id>https://xuh.io/post/8e316de2.html</id>
     <published>2015-11-28T03:21:44.000Z</published>
     <updated>2017-05-29T03:33:22.000Z</updated>
     
@@ -819,9 +797,31 @@ function doDecrypt(pwd, onError) {
   </entry>
   
   <entry>
+    <title>一个 git hook自动部署脚本</title>
+    <link href="https://xuh.io/post/56cf4d4.html"/>
+    <id>https://xuh.io/post/56cf4d4.html</id>
+    <published>2015-11-28T03:21:44.000Z</published>
+    <updated>2017-05-29T16:15:23.000Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight shell"><figcaption><span>http://www.ihorve.com/?p</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="meta"></span></div><div class="line">#!/bin/sh</div><div class="line"><span class="meta">#</span></div><div class="line"><span class="meta">#</span> git autodeploy script when it matches string "[deploy]"</div><div class="line"><span class="meta">#</span></div><div class="line"><span class="meta">#</span> Usage:</div><div class="line"><span class="meta">#</span>    1. put this into the post-receive hook file itself below</div><div class="line"><span class="meta">#</span>    2. `chmod +x post-receive`</div><div class="line"><span class="meta">#</span>    3. Done!</div><div class="line"><span class="meta">#</span> Check the remote git repository whether it is bare</div><div class="line">IS_BARE=$(git rev-parse --is-bare-repository)</div><div class="line">if [ -z "$IS_BARE" ]; then</div><div class="line">    echo &gt;&amp;2 "fatal:post-receive:IS_NOT_BARE"</div><div class="line">    exit 1</div><div class="line">fi</div><div class="line"><span class="meta">#</span> Get the latest commit subject</div><div class="line">SUBJECT=$(git log -1 --pretty=format:"%s")</div><div class="line"><span class="meta">#</span> Deploy the HEAD source to publish</div><div class="line">IS_PULL=$(echo "$SUBJECT"  | grep "\[deploy\]")</div><div class="line">if [ -z "$IS_PULL" ];then</div><div class="line">    echo &gt;&amp;2 "tips:post-receive:IS_NOT_PULL"</div><div class="line">    exit 1</div><div class="line">fi</div><div class="line"><span class="meta">#</span> Check the deploy dir whether is exists</div><div class="line">DEPLOY_DIR=/home/www</div><div class="line">if [ ! -d $DEPLOY_DIR ]; then</div><div class="line">    echo &gt;&amp;2 "fatal:post-receive:DEPLOY_DIR_NOT_EXISTS:\"$DEPLOY_DIR\""</div><div class="line">    exit 1</div><div class="line">fi</div><div class="line"><span class="meta">#</span> Check the deploy dir whether it is git repository</div><div class="line"><span class="meta">#</span>IS_GIT=$(git rev-parse --git-dir 2&gt;/dev/null)</div><div class="line"><span class="meta">#</span>if [ -z "$IS_GIT" ] ;then</div><div class="line"><span class="meta">#</span>    echo &gt;&amp;2 "fatal:post-receive:IS_NOT_GIT"</div><div class="line"><span class="meta">#</span>    exit 1</div><div class="line"><span class="meta">#</span>fi</div><div class="line"><span class="meta">#</span> Goto the deploy dir and pull the latest sources</div><div class="line">cd $DEPLOY_DIR</div><div class="line"><span class="meta">#</span> env -i git reset --hard</div><div class="line">env -i git pull</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;figure class=&quot;highlight shell&quot;&gt;&lt;figcaption&gt;&lt;span&gt;http://www.ihorve.com/?p&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=
+    
+    </summary>
+    
+      <category term="工具/版本管理" scheme="https://xuh.io/categories/%E5%B7%A5%E5%85%B7-%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/"/>
+    
+    
+      <category term="git" scheme="https://xuh.io/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
     <title>CentOS安装samba服务</title>
-    <link href="https://xuh.io/2015/11/28/CentOS%E5%AE%89%E8%A3%85samba%E6%9C%8D%E5%8A%A1/"/>
-    <id>https://xuh.io/2015/11/28/CentOS安装samba服务/</id>
+    <link href="https://xuh.io/post/294fe70.html"/>
+    <id>https://xuh.io/post/294fe70.html</id>
     <published>2015-11-28T03:21:44.000Z</published>
     <updated>2017-05-30T05:35:47.000Z</updated>
     
