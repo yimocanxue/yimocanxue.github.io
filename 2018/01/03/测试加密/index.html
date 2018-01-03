@@ -100,7 +100,7 @@
 <meta property="og:site_name" content="金州苍狼">
 <meta property="og:description" content="function doDecrypt(pwd, onError) { 	console.log(&quot;in doDecrypt&quot;); 	var txt = document.getElementById(&quot;enc_content&quot;).innerHTML; 	var plantext; 	try { 	  	var bytes = CryptoJS.AES.decrypt(txt, pwd); 		p">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-03T11:40:49.780Z">
+<meta property="og:updated_time" content="2018-01-03T17:13:55.714Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="测试加密">
 <meta name="twitter:description" content="function doDecrypt(pwd, onError) { 	console.log(&quot;in doDecrypt&quot;); 	var txt = document.getElementById(&quot;enc_content&quot;).innerHTML; 	var plantext; 	try { 	  	var bytes = CryptoJS.AES.decrypt(txt, pwd); 		p">
@@ -426,7 +426,7 @@ function doDecrypt(pwd, onError) {
 	try {
 	  	var bytes = CryptoJS.AES.decrypt(txt, pwd);
 		plaintext = bytes.toString(CryptoJS.enc.Utf8);
-		cookie.set("HEXO-X-CACHE",pwd,{path:"/",expires: 2}); 
+		cookie.set("HEXO-X-CACHE",pwd,{path:"/",expires: 1}); 
 	} catch(err) {
 		if(onError) {onError(err);}
 		return;
@@ -441,7 +441,7 @@ window.onload = function(){
 		doDecrypt(cachePwd, onError); 
 } 
 </script>
-<div id="enc_content" style="display:none">U2FsdGVkX1+QCzDHxvifN4H57YvmN/bZqmYhBf6IyWgwiGKCyAhJAzGtgrvUMinjziMd8jzWyY3yTSou+H2cAA==</div><div id="enc_passwd" style="text-align: center;margin-bottom: 300px;position: relative;"> <input id="enc_pwd_input" type="text" style="border-radius: 17px;border: 1px solid #ccc;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 20px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}" placeholder="报上暗号，比如天王盖地虎^_^"> <input type="submit" value="对暗号" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 3px;background-color: white;margin-left: 3px;vertical-align: top;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
+<div id="enc_content" style="display:none">U2FsdGVkX19q0RESmupN5K+FVDT8dVlhvkeT/YkQ2tsDOU4QLGo4zBTBp81Mu+VZlQuJKbLUmjc0Uxt0fq20fg==</div><div id="enc_passwd" style="text-align: center;margin-bottom: 300px;position: relative;"> <input id="enc_pwd_input" type="text" style="border-radius: 17px;border: 1px solid #ccc;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 20px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}" placeholder="报上暗号，比如天王盖地虎^_^"> <input type="submit" value="对暗号" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 3px;background-color: white;margin-left: 3px;vertical-align: top;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
 <script>
 var onError = function(error) {
 	document.getElementById("enc_error").innerHTML = "password error!"
