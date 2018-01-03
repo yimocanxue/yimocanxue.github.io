@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="用户管理,auth," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -92,18 +92,18 @@
 
 
 
-<meta name="description" content="MongoDB为了使用方便，默认启动是不带用户认证的，也就是说所有人都可以连接并进行读写操作，这在开发阶段当然很方便，但是生产环境可就不能这么裸奔了。 首先来看看MongoDB的启动命令：$ mongod [--auth] --dbpath=&amp;lt;数据存放目录，默认/data/db&amp;gt; --fork --logpath=&amp;lt;日志存放目录&amp;gt; 当带上参数–auth即在安全模式下启动，要">
-<meta name="keywords" content="用户管理,auth">
+<meta name="description" content="放荡不羁爱自由,却偏偏是个技术宅">
+<meta name="keywords" content="爱编程,爱技术,爱生活,不爱拉芳">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MongoDB用户管理">
-<meta property="og:url" content="https://xuh.io/year0719-ff4ef26d.html">
+<meta property="og:title" content="集合类型之3-字典">
+<meta property="og:url" content="https://xuh.io/20170605-bcf0b2d0.html">
 <meta property="og:site_name" content="金州苍狼">
-<meta property="og:description" content="MongoDB为了使用方便，默认启动是不带用户认证的，也就是说所有人都可以连接并进行读写操作，这在开发阶段当然很方便，但是生产环境可就不能这么裸奔了。 首先来看看MongoDB的启动命令：$ mongod [--auth] --dbpath=&amp;lt;数据存放目录，默认/data/db&amp;gt; --fork --logpath=&amp;lt;日志存放目录&amp;gt; 当带上参数–auth即在安全模式下启动，要">
+<meta property="og:description" content="放荡不羁爱自由,却偏偏是个技术宅">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-03T17:21:13.128Z">
+<meta property="og:updated_time" content="2018-01-03T17:21:13.148Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MongoDB用户管理">
-<meta name="twitter:description" content="MongoDB为了使用方便，默认启动是不带用户认证的，也就是说所有人都可以连接并进行读写操作，这在开发阶段当然很方便，但是生产环境可就不能这么裸奔了。 首先来看看MongoDB的启动命令：$ mongod [--auth] --dbpath=&amp;lt;数据存放目录，默认/data/db&amp;gt; --fork --logpath=&amp;lt;日志存放目录&amp;gt; 当带上参数–auth即在安全模式下启动，要">
+<meta name="twitter:title" content="集合类型之3-字典">
+<meta name="twitter:description" content="放荡不羁爱自由,却偏偏是个技术宅">
 
 
 
@@ -131,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="https://xuh.io/year0719-ff4ef26d.html"/>
+  <link rel="canonical" href="https://xuh.io/20170605-bcf0b2d0.html"/>
 
 
 
 
 
-  <title>MongoDB用户管理 | 金州苍狼</title>
+  <title>集合类型之3-字典 | 金州苍狼</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -311,7 +311,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://xuh.io/year0719-ff4ef26d.html">
+    <link itemprop="mainEntityOfPage" href="https://xuh.io/20170605-bcf0b2d0.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="David.xu">
@@ -328,7 +328,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">MongoDB用户管理</h1>
+          <h1 class="post-title" itemprop="name headline">集合类型之3-字典</h1>
         
 
         <div class="post-meta">
@@ -340,8 +340,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-19T11:58:17+08:00">
-                2017-07-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-05T19:50:46+08:00">
+                2017-06-05
               </time>
             
 
@@ -359,7 +359,7 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a class="cloud-tie-join-count" href="/year0719-ff4ef26d.html#comments" itemprop="discussionUrl">
+                <a class="cloud-tie-join-count" href="/20170605-bcf0b2d0.html#comments" itemprop="discussionUrl">
                   <span class="post-comments-count join-count" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -385,18 +385,7 @@
       
 
       
-        <p>MongoDB为了使用方便，默认启动是不带用户认证的，也就是说所有人都可以连接并进行读写操作，这在开发阶段当然很方便，但是生产环境可就不能这么裸奔了。</p>
-<p>首先来看看MongoDB的启动命令：<br><code>$ mongod [--auth] --dbpath=&lt;数据存放目录，默认/data/db&gt; --fork --logpath=&lt;日志存放目录&gt;</code></p>
-<p>当带上参数–auth即在安全模式下启动，要在安全模式下启动，必须先完成用户的添加和授权。</p>
-<h1 id="添加管理员"><a href="#添加管理员" class="headerlink" title="添加管理员"></a>添加管理员</h1><p>首次在非认证模式下登录，然后添加管理员账户，在默认的admin数据库里，有一个名为<em>userAdminAnyDatabase</em>的内置角色，顾名思义，该角色的用户即为超级管理员，不过该角色只有管理用户和角色的功能，没有数据库读写权限。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$ mongo</div><div class="line">#...省略连接输出..</div><div class="line"></div><div class="line">&gt; use admin</div><div class="line">&gt; db.createUser(&#123;</div><div class="line">	user: &quot;userAdmin&quot;,</div><div class="line">    pwd: &quot;123456&quot;</div><div class="line">    roles:[&#123;role:&quot;userAdminAnyDatabase&quot;,db:&quot;admin&quot;&#125;]</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<h1 id="重启MongoDB并在安全模式下登录"><a href="#重启MongoDB并在安全模式下登录" class="headerlink" title="重启MongoDB并在安全模式下登录"></a>重启MongoDB并在安全模式下登录</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ ps -ef | grep mongod | grep -v grep | cut -c 10-16 | xargs kill -9</div><div class="line">$ mongod --auth --dbpath=&lt;数据存放目录，默认/data/db&gt; --fork --logpath=&lt;日志存放目录&gt;</div></pre></td></tr></table></figure>
-<h1 id="以管理员身份登录"><a href="#以管理员身份登录" class="headerlink" title="以管理员身份登录"></a>以管理员身份登录</h1><p>可以先连接到test数据库然后用db.auth进行认证，也可以直接在连接时候认证：<br><code>$ mongo -u &quot;userAdmin&quot; -p &quot;123456&quot; --authenticationDatabase &quot;admin&quot;</code>，<br>从命令参数可以看出来，连接时认证真不好记那些参数，因此一般我都是先连接后认证的方式：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$ mongo</div><div class="line">$ use admin</div><div class="line">MongoDB shell version: 3.2.10</div><div class="line">connecting to: test</div><div class="line">&gt; use admin</div><div class="line">switched to db admin</div><div class="line">&gt; db.auth(&quot;root&quot;,&quot;ZzJK7Eg-akh9&quot;)</div><div class="line">1</div></pre></td></tr></table></figure>
-<p>登录后可以查看下用户表:<code>&gt; db.system.users.find()</code></p>
-<h1 id="添加其它用户"><a href="#添加其它用户" class="headerlink" title="添加其它用户"></a>添加其它用户</h1><p>和添加管理员方式一致，只是授权的数据库和赋予的角色有区别，一般常用的角色有read、readWrite、dbOwner等。</p>
-<p>要了解其它内置角色参考这里<a href="https://docs.mongodb.com/manual/reference/built-in-roles/" target="_blank" rel="noopener">https://docs.mongodb.com/manual/reference/built-in-roles/</a>,怎样自定义角色参考这里:<a href="https://docs.mongodb.com/manual/core/security-user-defined-roles/#user-defined-roles" target="_blank" rel="noopener">https://docs.mongodb.com/manual/core/security-user-defined-roles/#user-defined-roles</a></p>
-
+        
       
     </div>
 
@@ -444,14 +433,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/用户管理/" rel="tag"># 用户管理</a>
-          
-            <a href="/tags/auth/" rel="tag"># auth</a>
-          
-        </div>
-      
 
       
         
@@ -461,8 +442,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/year0707-53ff9fdd.html" rel="next" title="持续集成介绍">
-                <i class="fa fa-chevron-left"></i> 持续集成介绍
+              <a href="/20170605-d030d951.html" rel="next" title="集合类型之2-集合">
+                <i class="fa fa-chevron-left"></i> 集合类型之2-集合
               </a>
             
           </div>
@@ -471,8 +452,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/year1130-f110b008.html" rel="prev" title="CentOS7.2编译安装tengine">
-                CentOS7.2编译安装tengine <i class="fa fa-chevron-right"></i>
+              <a href="/20170605-87569439.html" rel="prev" title="集合类型之0-概述">
+                集合类型之0-概述 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -545,17 +526,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar.jpg"
@@ -624,22 +596,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#添加管理员"><span class="nav-number">1.</span> <span class="nav-text">添加管理员</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#重启MongoDB并在安全模式下登录"><span class="nav-number">2.</span> <span class="nav-text">重启MongoDB并在安全模式下登录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#以管理员身份登录"><span class="nav-number">3.</span> <span class="nav-text">以管理员身份登录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#添加其它用户"><span class="nav-number">4.</span> <span class="nav-text">添加其它用户</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       

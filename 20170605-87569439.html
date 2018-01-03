@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="samba," />
+  <meta name="keywords" content="集合," />
 
 
 
@@ -92,18 +92,20 @@
 
 
 
-<meta name="description" content="检查是否有安装samba服务： $ rpm -qa | grep samba 如果没安装则yum安装 $ yum -y install samba samba-client samba-common 默认的安装目录是/etc/samba，配置文件为smb.conf,先备份下smb文件$ cd /etc/samba$ cp smb.conf smb.conf.bak 然后编辑smb.conf加入以下">
-<meta name="keywords" content="samba">
+<meta name="description" content="集合类型所有编程语言中，元素集合都是最重要的数据类型，Swift提供三种集合类型存储集合数据：Arrays(数组)、Sets(集合)、Dictionaries(字典)。  Arrays: 有序数据集Sets: 无序不重复数据集Dictionaries: 无序键值对  注意：1、三种中集合都被实现为泛型集合2、三种集合都是值类型3、集合的可变性有声明关键字let、var决定4、在不需要改变集合的时候">
+<meta name="keywords" content="集合">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CentOS安装samba服务">
-<meta property="og:url" content="https://xuh.io/year1128-294fe70.html">
+<meta property="og:title" content="集合类型之0-概述">
+<meta property="og:url" content="https://xuh.io/20170605-87569439.html">
 <meta property="og:site_name" content="金州苍狼">
-<meta property="og:description" content="检查是否有安装samba服务： $ rpm -qa | grep samba 如果没安装则yum安装 $ yum -y install samba samba-client samba-common 默认的安装目录是/etc/samba，配置文件为smb.conf,先备份下smb文件$ cd /etc/samba$ cp smb.conf smb.conf.bak 然后编辑smb.conf加入以下">
+<meta property="og:description" content="集合类型所有编程语言中，元素集合都是最重要的数据类型，Swift提供三种集合类型存储集合数据：Arrays(数组)、Sets(集合)、Dictionaries(字典)。  Arrays: 有序数据集Sets: 无序不重复数据集Dictionaries: 无序键值对  注意：1、三种中集合都被实现为泛型集合2、三种集合都是值类型3、集合的可变性有声明关键字let、var决定4、在不需要改变集合的时候">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-03T17:21:13.124Z">
+<meta property="og:image" content="http://xuh.cn-etc.com/2017/06/05/1496663760489.png!md">
+<meta property="og:updated_time" content="2018-01-03T17:21:13.146Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CentOS安装samba服务">
-<meta name="twitter:description" content="检查是否有安装samba服务： $ rpm -qa | grep samba 如果没安装则yum安装 $ yum -y install samba samba-client samba-common 默认的安装目录是/etc/samba，配置文件为smb.conf,先备份下smb文件$ cd /etc/samba$ cp smb.conf smb.conf.bak 然后编辑smb.conf加入以下">
+<meta name="twitter:title" content="集合类型之0-概述">
+<meta name="twitter:description" content="集合类型所有编程语言中，元素集合都是最重要的数据类型，Swift提供三种集合类型存储集合数据：Arrays(数组)、Sets(集合)、Dictionaries(字典)。  Arrays: 有序数据集Sets: 无序不重复数据集Dictionaries: 无序键值对  注意：1、三种中集合都被实现为泛型集合2、三种集合都是值类型3、集合的可变性有声明关键字let、var决定4、在不需要改变集合的时候">
+<meta name="twitter:image" content="http://xuh.cn-etc.com/2017/06/05/1496663760489.png!md">
 
 
 
@@ -131,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="https://xuh.io/year1128-294fe70.html"/>
+  <link rel="canonical" href="https://xuh.io/20170605-87569439.html"/>
 
 
 
 
 
-  <title>CentOS安装samba服务 | 金州苍狼</title>
+  <title>集合类型之0-概述 | 金州苍狼</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -311,7 +313,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://xuh.io/year1128-294fe70.html">
+    <link itemprop="mainEntityOfPage" href="https://xuh.io/20170605-87569439.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="David.xu">
@@ -328,7 +330,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">CentOS安装samba服务</h1>
+          <h1 class="post-title" itemprop="name headline">集合类型之0-概述</h1>
         
 
         <div class="post-meta">
@@ -340,8 +342,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-28T11:21:44+08:00">
-                2015-11-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-05T19:51:02+08:00">
+                2017-06-05
               </time>
             
 
@@ -363,8 +365,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/运维/" itemprop="url" rel="index">
-                    <span itemprop="name">运维</span>
+                  <a href="/categories/移动开发/" itemprop="url" rel="index">
+                    <span itemprop="name">移动开发</span>
                   </a>
                 </span>
 
@@ -374,8 +376,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/运维/系统管理/" itemprop="url" rel="index">
-                    <span itemprop="name">系统管理</span>
+                  <a href="/categories/移动开发/iOS-swift/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS/swift</span>
                   </a>
                 </span>
 
@@ -392,7 +394,7 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a class="cloud-tie-join-count" href="/year1128-294fe70.html#comments" itemprop="discussionUrl">
+                <a class="cloud-tie-join-count" href="/20170605-87569439.html#comments" itemprop="discussionUrl">
                   <span class="post-comments-count join-count" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -418,21 +420,12 @@
       
 
       
-        <p>检查是否有安装samba服务：</p>
-<p><code>$ rpm -qa | grep samba</code></p>
-<p>如果没安装则yum安装</p>
-<p><code>$ yum -y install samba samba-client samba-common</code></p>
-<p>默认的安装目录是/etc/samba，配置文件为smb.conf,先备份下smb文件<br><code>$ cd /etc/samba</code><br><code>$ cp smb.conf smb.conf.bak</code></p>
-<p>然后编辑smb.conf加入以下内容：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[remote_dev]</div><div class="line">        path = /alidata/nginx_www/wx.soopj.com</div><div class="line">        public =no</div><div class="line">        writable = yes</div><div class="line">        write list = @www</div><div class="line">        valid users = @www</div></pre></td></tr></table></figure>
-<p>@www是客户端登录所需要的用户，设置nginx的用户密码：</p>
-<p><code>$ smbpasswd -a www</code></p>
-<p>为了避免在启动Samba时出现以下警告信息：rlimit_max: increasing rlimit_max (1024) tominimum Windows limit (16384)，<br>配置内核参数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">$ ulimit -n 16384</div><div class="line">$ vi /etc/security/limits.conf</div><div class="line">#在最后加入以下内容</div><div class="line">* - nofile 16384</div></pre></td></tr></table></figure>
-<p>然后运行testparm检测配置文件。</p>
-<p>然后启动服务，关闭防火墙：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ service smb start</div><div class="line">$ service nmb start</div><div class="line">$ service iptables stop</div></pre></td></tr></table></figure>
-<p>centos7后启动服务由systemctl管理，防火墙换成firewalld，因此命令稍有不同。然后客户端即可测试。</p>
+        <h3 id="集合类型"><a href="#集合类型" class="headerlink" title="集合类型"></a>集合类型</h3><p>所有编程语言中，元素集合都是最重要的数据类型，Swift提供三种集合类型存储集合数据：Arrays(数组)、Sets(集合)、Dictionaries(字典)。</p>
+<p><img src="http://xuh.cn-etc.com/2017/06/05/1496663760489.png!md" alt=""></p>
+<p>Arrays: 有序数据集<br>Sets: 无序不重复数据集<br>Dictionaries: 无序键值对</p>
+<blockquote>
+<p>注意：<br>1、三种中集合都被实现为泛型集合<br>2、三种集合都是值类型<br>3、集合的可变性有声明关键字let、var决定<br>4、在不需要改变集合的时候，尽量以let声明成常量</p>
+</blockquote>
 
       
     </div>
@@ -483,7 +476,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/samba/" rel="tag"># samba</a>
+            <a href="/tags/集合/" rel="tag"># 集合</a>
           
         </div>
       
@@ -496,8 +489,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/year1128-8e316de2.html" rel="next" title="让nginx支持path_info">
-                <i class="fa fa-chevron-left"></i> 让nginx支持path_info
+              <a href="/20170605-bcf0b2d0.html" rel="next" title="集合类型之3-字典">
+                <i class="fa fa-chevron-left"></i> 集合类型之3-字典
               </a>
             
           </div>
@@ -506,8 +499,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/year1128-56cf4d4.html" rel="prev" title="一个 git hook自动部署脚本">
-                一个 git hook自动部署脚本 <i class="fa fa-chevron-right"></i>
+              <a href="/20170606-550b57b7.html" rel="prev" title="UITabBar的基本用法">
+                UITabBar的基本用法 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -580,8 +573,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar.jpg"
@@ -650,6 +652,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#集合类型"><span class="nav-number">1.</span> <span class="nav-text">集合类型</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

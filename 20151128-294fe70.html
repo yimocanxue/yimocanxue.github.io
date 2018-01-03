@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="samba," />
 
 
 
@@ -92,18 +92,18 @@
 
 
 
-<meta name="description" content="放荡不羁爱自由,却偏偏是个技术宅">
-<meta name="keywords" content="爱编程,爱技术,爱生活,不爱拉芳">
+<meta name="description" content="检查是否有安装samba服务： $ rpm -qa | grep samba 如果没安装则yum安装 $ yum -y install samba samba-client samba-common 默认的安装目录是/etc/samba，配置文件为smb.conf,先备份下smb文件$ cd /etc/samba$ cp smb.conf smb.conf.bak 然后编辑smb.conf加入以下">
+<meta name="keywords" content="samba">
 <meta property="og:type" content="article">
-<meta property="og:title" content="集合类型之2-集合">
-<meta property="og:url" content="https://xuh.io/year0605-d030d951.html">
+<meta property="og:title" content="CentOS安装samba服务">
+<meta property="og:url" content="https://xuh.io/20151128-294fe70.html">
 <meta property="og:site_name" content="金州苍狼">
-<meta property="og:description" content="放荡不羁爱自由,却偏偏是个技术宅">
+<meta property="og:description" content="检查是否有安装samba服务： $ rpm -qa | grep samba 如果没安装则yum安装 $ yum -y install samba samba-client samba-common 默认的安装目录是/etc/samba，配置文件为smb.conf,先备份下smb文件$ cd /etc/samba$ cp smb.conf smb.conf.bak 然后编辑smb.conf加入以下">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-03T17:21:13.147Z">
+<meta property="og:updated_time" content="2018-01-03T17:21:13.124Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="集合类型之2-集合">
-<meta name="twitter:description" content="放荡不羁爱自由,却偏偏是个技术宅">
+<meta name="twitter:title" content="CentOS安装samba服务">
+<meta name="twitter:description" content="检查是否有安装samba服务： $ rpm -qa | grep samba 如果没安装则yum安装 $ yum -y install samba samba-client samba-common 默认的安装目录是/etc/samba，配置文件为smb.conf,先备份下smb文件$ cd /etc/samba$ cp smb.conf smb.conf.bak 然后编辑smb.conf加入以下">
 
 
 
@@ -131,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="https://xuh.io/year0605-d030d951.html"/>
+  <link rel="canonical" href="https://xuh.io/20151128-294fe70.html"/>
 
 
 
 
 
-  <title>集合类型之2-集合 | 金州苍狼</title>
+  <title>CentOS安装samba服务 | 金州苍狼</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -311,7 +311,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://xuh.io/year0605-d030d951.html">
+    <link itemprop="mainEntityOfPage" href="https://xuh.io/20151128-294fe70.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="David.xu">
@@ -328,7 +328,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">集合类型之2-集合</h1>
+          <h1 class="post-title" itemprop="name headline">CentOS安装samba服务</h1>
         
 
         <div class="post-meta">
@@ -340,8 +340,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-05T19:50:38+08:00">
-                2017-06-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-28T11:21:44+08:00">
+                2015-11-28
               </time>
             
 
@@ -351,6 +351,39 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/运维/" itemprop="url" rel="index">
+                    <span itemprop="name">运维</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/运维/系统管理/" itemprop="url" rel="index">
+                    <span itemprop="name">系统管理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -359,7 +392,7 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a class="cloud-tie-join-count" href="/year0605-d030d951.html#comments" itemprop="discussionUrl">
+                <a class="cloud-tie-join-count" href="/20151128-294fe70.html#comments" itemprop="discussionUrl">
                   <span class="post-comments-count join-count" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -385,7 +418,22 @@
       
 
       
-        
+        <p>检查是否有安装samba服务：</p>
+<p><code>$ rpm -qa | grep samba</code></p>
+<p>如果没安装则yum安装</p>
+<p><code>$ yum -y install samba samba-client samba-common</code></p>
+<p>默认的安装目录是/etc/samba，配置文件为smb.conf,先备份下smb文件<br><code>$ cd /etc/samba</code><br><code>$ cp smb.conf smb.conf.bak</code></p>
+<p>然后编辑smb.conf加入以下内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[remote_dev]</div><div class="line">        path = /alidata/nginx_www/wx.soopj.com</div><div class="line">        public =no</div><div class="line">        writable = yes</div><div class="line">        write list = @www</div><div class="line">        valid users = @www</div></pre></td></tr></table></figure>
+<p>@www是客户端登录所需要的用户，设置nginx的用户密码：</p>
+<p><code>$ smbpasswd -a www</code></p>
+<p>为了避免在启动Samba时出现以下警告信息：rlimit_max: increasing rlimit_max (1024) tominimum Windows limit (16384)，<br>配置内核参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">$ ulimit -n 16384</div><div class="line">$ vi /etc/security/limits.conf</div><div class="line">#在最后加入以下内容</div><div class="line">* - nofile 16384</div></pre></td></tr></table></figure>
+<p>然后运行testparm检测配置文件。</p>
+<p>然后启动服务，关闭防火墙：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ service smb start</div><div class="line">$ service nmb start</div><div class="line">$ service iptables stop</div></pre></td></tr></table></figure>
+<p>centos7后启动服务由systemctl管理，防火墙换成firewalld，因此命令稍有不同。然后客户端即可测试。</p>
+
       
     </div>
 
@@ -433,6 +481,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/samba/" rel="tag"># samba</a>
+          
+        </div>
+      
 
       
         
@@ -442,18 +496,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/year0605-b9db1057.html" rel="next" title="集合类型之1-数组">
-                <i class="fa fa-chevron-left"></i> 集合类型之1-数组
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/year0605-bcf0b2d0.html" rel="prev" title="集合类型之3-字典">
-                集合类型之3-字典 <i class="fa fa-chevron-right"></i>
+              <a href="/20151128-8e316de2.html" rel="prev" title="让nginx支持path_info">
+                让nginx支持path_info <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

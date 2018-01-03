@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="证明方法,递归," />
+  <meta name="keywords" content="gitlab,安装,docker," />
 
 
 
@@ -92,18 +92,22 @@
 
 
 
-<meta name="description" content="证明数据结构分析中的结论经常用到两种方法,归纳法和反证法，这两种方法比较直观简单，只有在不得已的情况下才使用高大上的高等数学的证明方法。证明一个定理不成立最好的方法是反证法。 归纳法 归纳法证明的两个关键步骤： 基准情形，归纳假设  证明基准情形归纳法证明第一步是证明基准情形，即对确定的某个小范围（通常是退化的）值的正确性，这一步通常是最简单直接的。 归纳假设接下来是进行归纳假设，一般来说，这意味">
-<meta name="keywords" content="证明方法,递归">
+<meta name="description" content="安装gitlabe安装docker安装环境为centos_7.0 3.10.0-327.10.1.el7.x86_64，参考链接https://docs.docker.com/engine/installation/linux/centos/#install-docker。安装方式有两种，一种是通过yum安装，另外一种是下载RPM包手动安装，这里采用第一种方式。 这里以安装docker-ce st">
+<meta name="keywords" content="gitlab,安装,docker">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数学证明方法与递归">
-<meta property="og:url" content="https://xuh.io/year0609-d00315b3.html">
+<meta property="og:title" content="gitlab系列教程之1-安装">
+<meta property="og:url" content="https://xuh.io/20170707-14c433bb.html">
 <meta property="og:site_name" content="金州苍狼">
-<meta property="og:description" content="证明数据结构分析中的结论经常用到两种方法,归纳法和反证法，这两种方法比较直观简单，只有在不得已的情况下才使用高大上的高等数学的证明方法。证明一个定理不成立最好的方法是反证法。 归纳法 归纳法证明的两个关键步骤： 基准情形，归纳假设  证明基准情形归纳法证明第一步是证明基准情形，即对确定的某个小范围（通常是退化的）值的正确性，这一步通常是最简单直接的。 归纳假设接下来是进行归纳假设，一般来说，这意味">
+<meta property="og:description" content="安装gitlabe安装docker安装环境为centos_7.0 3.10.0-327.10.1.el7.x86_64，参考链接https://docs.docker.com/engine/installation/linux/centos/#install-docker。安装方式有两种，一种是通过yum安装，另外一种是下载RPM包手动安装，这里采用第一种方式。 这里以安装docker-ce st">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-03T17:21:13.142Z">
+<meta property="og:image" content="http://xuh.cn-etc.com/2017/04/15/1492271229468.png!md">
+<meta property="og:image" content="http://xuh.cn-etc.com/2017/04/16/1492272094596.png!md">
+<meta property="og:image" content="http://xuh.cn-etc.com/2017/04/16/1492273456118.png!md">
+<meta property="og:updated_time" content="2018-01-03T17:21:13.133Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数学证明方法与递归">
-<meta name="twitter:description" content="证明数据结构分析中的结论经常用到两种方法,归纳法和反证法，这两种方法比较直观简单，只有在不得已的情况下才使用高大上的高等数学的证明方法。证明一个定理不成立最好的方法是反证法。 归纳法 归纳法证明的两个关键步骤： 基准情形，归纳假设  证明基准情形归纳法证明第一步是证明基准情形，即对确定的某个小范围（通常是退化的）值的正确性，这一步通常是最简单直接的。 归纳假设接下来是进行归纳假设，一般来说，这意味">
+<meta name="twitter:title" content="gitlab系列教程之1-安装">
+<meta name="twitter:description" content="安装gitlabe安装docker安装环境为centos_7.0 3.10.0-327.10.1.el7.x86_64，参考链接https://docs.docker.com/engine/installation/linux/centos/#install-docker。安装方式有两种，一种是通过yum安装，另外一种是下载RPM包手动安装，这里采用第一种方式。 这里以安装docker-ce st">
+<meta name="twitter:image" content="http://xuh.cn-etc.com/2017/04/15/1492271229468.png!md">
 
 
 
@@ -131,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="https://xuh.io/year0609-d00315b3.html"/>
+  <link rel="canonical" href="https://xuh.io/20170707-14c433bb.html"/>
 
 
 
 
 
-  <title>数学证明方法与递归 | 金州苍狼</title>
+  <title>gitlab系列教程之1-安装 | 金州苍狼</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -311,7 +315,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://xuh.io/year0609-d00315b3.html">
+    <link itemprop="mainEntityOfPage" href="https://xuh.io/20170707-14c433bb.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="David.xu">
@@ -328,7 +332,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">数学证明方法与递归</h1>
+          <h1 class="post-title" itemprop="name headline">gitlab系列教程之1-安装</h1>
         
 
         <div class="post-meta">
@@ -340,8 +344,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-09T18:34:34+08:00">
-                2017-06-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-07T19:11:16+08:00">
+                2017-07-07
               </time>
             
 
@@ -363,8 +367,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/算法-数据结构/" itemprop="url" rel="index">
-                    <span itemprop="name">算法/数据结构</span>
+                  <a href="/categories/运维/" itemprop="url" rel="index">
+                    <span itemprop="name">运维</span>
                   </a>
                 </span>
 
@@ -374,8 +378,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/算法-数据结构/理论/" itemprop="url" rel="index">
-                    <span itemprop="name">理论</span>
+                  <a href="/categories/运维/devops/" itemprop="url" rel="index">
+                    <span itemprop="name">devops</span>
                   </a>
                 </span>
 
@@ -392,7 +396,7 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a class="cloud-tie-join-count" href="/year0609-d00315b3.html#comments" itemprop="discussionUrl">
+                <a class="cloud-tie-join-count" href="/20170707-14c433bb.html#comments" itemprop="discussionUrl">
                   <span class="post-comments-count join-count" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -418,41 +422,58 @@
       
 
       
-        <p>证明数据结构分析中的结论经常用到两种方法,<code>归纳法</code>和<code>反证法</code>，这两种方法比较直观简单，只有在不得已的情况下才使用高大上的高等数学的证明方法。证明一个定理不成立最好的方法是反证法。</p>
-<h1 id="归纳法"><a href="#归纳法" class="headerlink" title="归纳法"></a>归纳法</h1><blockquote>
-<p>归纳法证明的两个关键步骤： <code>基准情形</code>，<code>归纳假设</code></p>
-</blockquote>
-<h2 id="证明基准情形"><a href="#证明基准情形" class="headerlink" title="证明基准情形"></a>证明基准情形</h2><p>归纳法证明第一步是证明基准情形，即对确定的某个小范围（通常是退化的）值的正确性，这一步通常是最简单直接的。</p>
-<h2 id="归纳假设"><a href="#归纳假设" class="headerlink" title="归纳假设"></a>归纳假设</h2><p>接下来是进行归纳假设，一般来说，这意味着假设定理对直到某个有限的数k的所有情况都成立，然后以此作为假设前提，证明定理对下一个值（通常是k+1）也成立，至此证明完成。</p>
-<p>下面通过归纳法证明下面的定理。</p>
-<ul>
-<li><p>斐波那契数列:$ F_0 = 1,F_1 = 1,F_2 = 2,F_3 = 3,F_4 = 5,…,F<em>i = F</em>{i-1} + F_{i-2} $, 对于$ i \geq 1 满足 {F_i &lt; ({ 5 \over 3})^i} $</p>
-<p>  证明:  首先，证明基准情形，对于$ F_1 = 1 &lt; {5 \over 3},F<em>2 = 2 &lt; {25 \over 9 }成立。$<br>  现假设对于$ i = 1,2,…,k $欲证定理成立，在此基础上如果我们能证明$ F</em>{k+1} &lt; ({5     \over 3})^{k+1} $成立，则定理成立。根据定义我们有：</p>
-<p>  $ F_{k+1} = F<em>k + F</em>{k-1} $</p>
-<p>  $ &lt; ({5 \over 3})^k + ({5 \over 3})^{k-1} $</p>
-<p>  $ &lt; ({3 \over 5})({5 \over 3})^{k+1} + ({3\over5})^2({5 \over 3})^{k+1} $</p>
-<p>  $ &lt; ({24 \over 25})({5 \over 3})^{k+1} $</p>
-<p>  $ &lt; ({5 \over 3})^{k+1} $</p>
-<p>  以此定理成立。</p>
-</li>
-<li><p>如果 $ N \geq 1,则\sum_{i=1}^N i^2 = { N(N+1)(2N+1) \over 6 } $</p>
-<p>  证明 当N=1时定理成立,现假设命题对 $ 1\leq k \leq N $ 成立,现证明对于N+1也成立</p>
-<p>  $ \sum<em>{i=1}^{N+1} i^2 = \sum</em>{i=1}^N i^2 + (N+1)^2 $</p>
-<p>  $ ={N(N+1)(2N+1) \over 6} + (N+1)^2 $</p>
-<p>  $ =(N+1)[{N(2N+1) \over 6} + (N+1)] $</p>
-<p>  $ =(N+1){(2N^2 + 7N + 6) \over 6} $</p>
-<p>  $ ={(N+1)[(N+1)+2][2(N+1)+1] \over 6} $</p>
-<p>  于是N+1时也成立,命题得证。</p>
-</li>
-</ul>
-<h1 id="反证法"><a href="#反证法" class="headerlink" title="反证法"></a>反证法</h1><ul>
-<li><p>费马猜想（费马素数），对于$ n \in N(自然数)，F_n =  2^{2^n} + 1 $是素数</p>
-<p>  这是费马老先生当时随便胡写在书页留白处的，并且说自己已经有证明方法了，可以这里写不下，我擦，据说好几十年没人证明出来，也是当时的计算能力有限，实际上当n=0,1,2,3,4时，$ F_n $分别是    3,5,17,257,65537都是素数，但是ｎ＝４时已经非常大了,但是当ｎ＝５时，$ F_n=614×6700417 $ ,这就是反证法</p>
-</li>
-<li><p>证明存在无穷多个素数</p>
-<p>  证明：　为了证明命题成立，我们先假设不成立，于是存在某个最大的素数$ P_k ,令P_1,P_2,..,P_k $是依序排列的所有素数，$ 令N = P_1P_2P_3…P_k + 1,显然N是比P_k $大的数，    根据假设N不是素数,可是$ P_1,P2,…,P_k $都不能整除N,因为整除的结果总有余数１，这就产生了    矛盾，因此假设不成立，因此原命题成立。</p>
-</li>
-</ul>
+        <h1 id="安装gitlabe"><a href="#安装gitlabe" class="headerlink" title="安装gitlabe"></a>安装gitlabe</h1><h2 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h2><p>安装环境为<code>centos_7.0 3.10.0-327.10.1.el7.x86_64</code>，参考链接<a href="https://docs.docker.com/engine/installation/linux/centos/#install-docker。安装方式有两种，一种是通过yum安装，另外一种是下载RPM包手动安装，这里采用第一种方式。" target="_blank" rel="noopener">https://docs.docker.com/engine/installation/linux/centos/#install-docker。安装方式有两种，一种是通过yum安装，另外一种是下载RPM包手动安装，这里采用第一种方式。</a></p>
+<p>这里以安装docker-ce stable为例，docker-ee安装类似，可以参照上面的链接。</p>
+<h3 id="设置yum-repository"><a href="#设置yum-repository" class="headerlink" title="设置yum repository"></a>设置yum repository</h3><p>安装yum-utils，它提供yum-config-manager这个工具包：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> sudo yum install -y yum-utils</div></pre></td></tr></table></figure>
+<p>添加docker资源库：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ sudo yum-config-manager \</div><div class="line">	--add-repo \</div><div class="line">	https:<span class="comment">//download.docker.com/linux/centos/docker-ce.repo</span></div></pre></td></tr></table></figure>
+<p><img src="http://xuh.cn-etc.com/2017/04/15/1492271229468.png!md" alt=""></p>
+<p>如果需要安装edage版，则执行下面的命令启用其repository：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo yum-config-manager --enable docker-ce-edage</div></pre></td></tr></table></figure>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>更新yum的安装包索引：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo yum makecache fast</div></pre></td></tr></table></figure>
+<p>安装最新版的docker:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo yum install docker-ce</div></pre></td></tr></table></figure>
+<p>输入docker version输出类似下面的内容则表示安装成功。</p>
+<p><img src="http://xuh.cn-etc.com/2017/04/16/1492272094596.png!md" alt=""></p>
+<p>启动docker服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo systemctl start docker.service</div></pre></td></tr></table></figure>
+<h3 id="安装docker-compose"><a href="#安装docker-compose" class="headerlink" title="安装docker-compose"></a>安装docker-compose</h3><p>因为一个完整的gitlab应用包含gitlab容器、redis、postgresql等服务，每个服务都启动一个docker实例，那么gitlab的管理就会很麻烦，docker-compose就是这么一个管理多容器应用的神器，它基于一个yml配置文件搞定依赖服务之前的管理。</p>
+<p>由于docker-compose依赖Python-pip，因此先安装它：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo yum install -y python-pip</div></pre></td></tr></table></figure>
+<p>对安装的pip进行升级：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo pip install --upgrade pip</div></pre></td></tr></table></figure>
+<p>利用pip安装docker-compose</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo pip install docker-compose</div></pre></td></tr></table></figure>
+<p>安装后查看版本如下：</p>
+<p><img src="http://xuh.cn-etc.com/2017/04/16/1492273456118.png!md" alt=""></p>
+<h2 id="安装gitlab"><a href="#安装gitlab" class="headerlink" title="安装gitlab"></a>安装gitlab</h2><p>gitlab依赖redis、postgresql、其中redis提供缓存服务，postgresql负责持久化数据存储(当然也可以是MySQL)，因此需要开启三个容器，大致步骤如下。</p>
+<p>启动postgresql容器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ docker run --name gitlab-postgresql -d \</div><div class="line">    --env &apos;DB_NAME=gitlabhq_production&apos; \</div><div class="line">    --env &apos;DB_USER=gitlab&apos; --env &apos;DB_PASS=password&apos; \</div><div class="line">    --volume /srv/docker/gitlab/postgresql:/var/lib/postgresql \</div><div class="line">    sameersbn/postgresql:9.4-12</div></pre></td></tr></table></figure>
+<p>启动redis容器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">docker run --name gitlab-redis -d \</div><div class="line">    --volume /srv/docker/gitlab/redis:/var/lib/redis \</div><div class="line">    sameersbn/redis:latest</div></pre></td></tr></table></figure>
+<p>然后再启动gitlab容器，然后通过–link连接redis和postgresql容器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">docker run --name gitlab -d \</div><div class="line">    --link gitlab-postgresql:postgresql --link gitlab-redis:redisio \</div><div class="line">    --publish 10022:22 --publish 10080:80 \</div><div class="line">    --env &apos;GITLAB_PORT=10080&apos; --env &apos;GITLAB_SSH_PORT=10022&apos; \</div><div class="line">    --env &apos;GITLAB_SECRETS_DB_KEY_BASE=long-and-random-alpha-numeric-string&apos; \</div><div class="line">    --volume /srv/docker/gitlab/gitlab:/home/git/data \</div><div class="line">    sameersbn/gitlab:8.4.4</div></pre></td></tr></table></figure>
+<p>这样相当复杂，因此我们可以把这些启动配置写到一个yml文件里面去，让docker-compose帮我们来管理这些容器，而这些容器之间的compose配置，已经有大牛贡献出来了（<a href="https://github.com/sameersbn/docker-gitlab" target="_blank" rel="noopener">点击这里查看</a>）。因此我们这里把它的配置文件下载下来</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ wget https://raw.githubusercontent.com/sameersbn/docker-gitlab/master/docker-compose.yml</div></pre></td></tr></table></figure>
+<p>然后修改里面的配置项（见下节），然后一条命令即可启动gitlab服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ docker-compose up</div></pre></td></tr></table></figure>
+<p>不过出现如下错误：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker: Error response from daemon: mkdir /data/docker/mnt/overlay/e37098a0043c2bd200b919c4cd466a1cfe98a03865b08be82efa215e32e92196-init/merged/dev/shm: invalid argument.</div></pre></td></tr></table></figure>
+<p>查了很久，找到两篇帖子（<a href="https://github.com/docker/docker/issues/22937" target="_blank" rel="noopener">看这里</a>,<a href="https://github.com/docker/docker/issues/5122" target="_blank" rel="noopener">还有这里</a>），说啥的都有，不过隐约觉得应该是内核版本问题（<a href="https://www.kernel.org/" target="_blank" rel="noopener">最新内核版本</a>），具体内核升级参照<a href="https://baijiahao.baidu.com/po/feed/share?wfr=spider&amp;for=pc&amp;context=%7B%22sourceFrom%22%3A%22bjh%22%2C%22nid%22%3A%22news_3323164689172649603%22%7D" target="_blank" rel="noopener">这里</a>。</p>
+<p>果然，升级内核后不再报错了。</p>
+<h2 id="配置gitlab"><a href="#配置gitlab" class="headerlink" title="配置gitlab"></a>配置gitlab</h2><p>这里只列出有配置改动的部分：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div></pre></td><td class="code"><pre><div class="line">version: &apos;2&apos;</div><div class="line"></div><div class="line">services:</div><div class="line">  redis:</div><div class="line">    restart: always</div><div class="line">    image: sameersbn/redis:latest</div><div class="line">    command:</div><div class="line">    - --loglevel warning</div><div class="line">    volumes:</div><div class="line">    - /server/docker/gitlab/redis:/var/lib/redis:Z</div><div class="line"></div><div class="line">  postgresql:</div><div class="line">    restart: always</div><div class="line">    image: sameersbn/postgresql:9.6-2</div><div class="line">    volumes:</div><div class="line">    - /server/docker/gitlab/postgresql:/var/lib/postgresql:Z</div><div class="line">    environment:</div><div class="line">    # postgsql的账户设置</div><div class="line">    - DB_USER=gitlab</div><div class="line">    - DB_PASS=8uf0s3cxdf</div><div class="line">    - DB_NAME=gitlabhq_production</div><div class="line">    - DB_EXTENSION=pg_trgm</div><div class="line"></div><div class="line">  gitlab:</div><div class="line">    restart: always</div><div class="line">    image: sameersbn/gitlab:9.0.5</div><div class="line">    depends_on:</div><div class="line">    - redis</div><div class="line">    - postgresql</div><div class="line">    ports:</div><div class="line">    # 把容器内nginx的80端口隐射到宿主机的10080端口上</div><div class="line">    - &quot;10080:80&quot;</div><div class="line">    # 把容器内ssh的22号端口映射到宿主机的10022端口上</div><div class="line">    - &quot;10022:22&quot;</div><div class="line">    volumes:</div><div class="line">    # 通过数据卷把gitlab的数据挂载到/server/docker/gitlab/gitlab目录下，这样容器重启后数据就不会丢失了</div><div class="line">    - /server/docker/gitlab/gitlab:/home/git/data:Z</div><div class="line">    environment:</div><div class="line">    - DEBUG=false</div><div class="line"></div><div class="line">    - DB_ADAPTER=postgresql</div><div class="line">    - DB_HOST=postgresql</div><div class="line">    - DB_PORT=5432</div><div class="line">    - DB_USER=gitlab</div><div class="line">    - DB_PASS=8uf0s3cxdf</div><div class="line">    - DB_NAME=gitlabhq_production</div><div class="line"></div><div class="line">    - REDIS_HOST=redis</div><div class="line">    - REDIS_PORT=6379</div><div class="line"></div><div class="line">    # 修改时区</div><div class="line">    - TZ=Asia/Shanghai</div><div class="line">    - GITLAB_TIMEZONE=Beijing</div><div class="line"></div><div class="line">    - GITLAB_HTTPS=false</div><div class="line">    - SSL_SELF_SIGNED=false</div><div class="line"></div><div class="line">	 # 发布gitlab应用的主机名称 </div><div class="line">    - GITLAB_HOST=gitlab.cn-etc.com</div><div class="line">    - GITLAB_PORT=10080</div><div class="line">    - GITLAB_SSH_PORT=10022</div><div class="line">    - GITLAB_RELATIVE_URL_ROOT=</div><div class="line">    - GITLAB_SECRETS_DB_KEY_BASE=long-and-random-alphanumeric-string</div><div class="line">    - GITLAB_SECRETS_SECRET_KEY_BASE=long-and-random-alphanumeric-string</div><div class="line">    - GITLAB_SECRETS_OTP_KEY_BASE=long-and-random-alphanumeric-string</div><div class="line"></div><div class="line">    - GITLAB_ROOT_PASSWORD=cnetc123</div><div class="line">    - GITLAB_ROOT_EMAIL=gitlab@cn-etc.com</div><div class="line"></div><div class="line">    - GITLAB_NOTIFY_ON_BROKEN_BUILDS=true</div><div class="line">    - GITLAB_NOTIFY_PUSHER=false</div><div class="line"></div><div class="line">    - GITLAB_EMAIL=gitlab@cn-etc.com</div><div class="line">    - GITLAB_EMAIL_REPLY_TO=gitlab@cn-etc.com</div><div class="line">    - GITLAB_INCOMING_EMAIL_ADDRESS=gitlab@cn-etc.com</div><div class="line">    # 发送邮件时的显示名称</div><div class="line">    - GITLAB_EMAIL_DISPLAY_NAME=Gitlab系统</div><div class="line"></div><div class="line">    - GITLAB_BACKUP_SCHEDULE=daily</div><div class="line">    - GITLAB_BACKUP_TIME=01:00</div><div class="line"></div><div class="line">    # SMTP配置</div><div class="line">    - SMTP_ENABLED=true</div><div class="line">    - SMTP_DOMAIN=smtp.exmail.qq.com</div><div class="line">    - SMTP_HOST=smtp.exmail.qq.com</div><div class="line">    - SMTP_PORT=465</div><div class="line">    - SMTP_USER=gitlab@cn-etc.com</div><div class="line">    - SMTP_PASS=Gitlab123</div><div class="line">    - SMTP_STARTTLS=true</div><div class="line">    - SMTP_AUTHENTICATION=login</div></pre></td></tr></table></figure>
+<p>重新启动</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ docker-compose up</div></pre></td></tr></table></figure>
+<p>至此，gitlab安装完成，登录<a href="http://gitlab.cn-etc.com:10080" target="_blank" rel="noopener">http://gitlab.cn-etc.com:10080</a> 去注册用户新建group、project开干。</p>
+<h1 id="持续集成-CI-CD"><a href="#持续集成-CI-CD" class="headerlink" title="持续集成(CI/CD)"></a>持续集成(CI/CD)</h1><h2 id="继续集成介绍"><a href="#继续集成介绍" class="headerlink" title="继续集成介绍"></a>继续集成介绍</h2><p>为了更好的理解gitlab持续集成的配置和管理，有必要详细理顺与持续集成相关概念，这里单独另开了一篇来说明这些概念，<a href="https://xuh.io/2017/07/07/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E4%BB%8B%E7%BB%8D/">点击这里查看</a>。</p>
+<h2 id="安装gitlab-runner"><a href="#安装gitlab-runner" class="headerlink" title="安装gitlab-runner"></a>安装gitlab-runner</h2><p>runner就是一个用来跑集成任务的特殊进程，可以和gitlab在同一台服务器，也可以安装在其它服务器上。</p>
+<p>添加gitlab-runner资源库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-ci-multi-runner/script.rpm.sh | sudo bash</div></pre></td></tr></table></figure>
+<p>然后安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo yum install -y gitlab-ci-multi-runner</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -503,9 +524,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/证明方法/" rel="tag"># 证明方法</a>
+            <a href="/tags/gitlab/" rel="tag"># gitlab</a>
           
-            <a href="/tags/递归/" rel="tag"># 递归</a>
+            <a href="/tags/安装/" rel="tag"># 安装</a>
+          
+            <a href="/tags/docker/" rel="tag"># docker</a>
           
         </div>
       
@@ -518,8 +541,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/year0607-bacfe825.html" rel="next" title="数学基础知识">
-                <i class="fa fa-chevron-left"></i> 数学基础知识
+              <a href="/20170610-d68e5e2f.html" rel="next" title="算法分析">
+                <i class="fa fa-chevron-left"></i> 算法分析
               </a>
             
           </div>
@@ -528,8 +551,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/year0610-d68e5e2f.html" rel="prev" title="算法分析">
-                算法分析 <i class="fa fa-chevron-right"></i>
+              <a href="/20170707-53ff9fdd.html" rel="prev" title="持续集成介绍">
+                持续集成介绍 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -691,7 +714,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#归纳法"><span class="nav-number">1.</span> <span class="nav-text">归纳法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#证明基准情形"><span class="nav-number">1.1.</span> <span class="nav-text">证明基准情形</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#归纳假设"><span class="nav-number">1.2.</span> <span class="nav-text">归纳假设</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#反证法"><span class="nav-number">2.</span> <span class="nav-text">反证法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装gitlabe"><span class="nav-number">1.</span> <span class="nav-text">安装gitlabe</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装docker"><span class="nav-number">1.1.</span> <span class="nav-text">安装docker</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#设置yum-repository"><span class="nav-number">1.1.1.</span> <span class="nav-text">设置yum repository</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">1.1.2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装docker-compose"><span class="nav-number">1.1.3.</span> <span class="nav-text">安装docker-compose</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装gitlab"><span class="nav-number">1.2.</span> <span class="nav-text">安装gitlab</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置gitlab"><span class="nav-number">1.3.</span> <span class="nav-text">配置gitlab</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#持续集成-CI-CD"><span class="nav-number">2.</span> <span class="nav-text">持续集成(CI/CD)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#继续集成介绍"><span class="nav-number">2.1.</span> <span class="nav-text">继续集成介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装gitlab-runner"><span class="nav-number">2.2.</span> <span class="nav-text">安装gitlab-runner</span></a></li></ol></li></ol></div>
             
 
           </div>

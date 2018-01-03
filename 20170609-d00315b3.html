@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="算法分析," />
+  <meta name="keywords" content="证明方法,递归," />
 
 
 
@@ -92,18 +92,18 @@
 
 
 
-<meta name="description" content="算法（algorithm）是为求解一个问题需要遵循的、被清楚指定的简单指令集合。衡量算法合理性的两个指标是运行时间和占用资源（比如内存）。 分析估计算法性能一般来说是一个理论问题，因此需要有一套正式的系统理论，这个理论基础就是数学。 数学基础定义算法分析用到以下4中定义。  1、如果存在正常数c和$ n_0$使得当$ N \geq n_0 时T(N) \leq cf(N)，则记为T(N)=O(f(">
-<meta name="keywords" content="算法分析">
+<meta name="description" content="证明数据结构分析中的结论经常用到两种方法,归纳法和反证法，这两种方法比较直观简单，只有在不得已的情况下才使用高大上的高等数学的证明方法。证明一个定理不成立最好的方法是反证法。 归纳法 归纳法证明的两个关键步骤： 基准情形，归纳假设  证明基准情形归纳法证明第一步是证明基准情形，即对确定的某个小范围（通常是退化的）值的正确性，这一步通常是最简单直接的。 归纳假设接下来是进行归纳假设，一般来说，这意味">
+<meta name="keywords" content="证明方法,递归">
 <meta property="og:type" content="article">
-<meta property="og:title" content="算法分析">
-<meta property="og:url" content="https://xuh.io/year0610-d68e5e2f.html">
+<meta property="og:title" content="数学证明方法与递归">
+<meta property="og:url" content="https://xuh.io/20170609-d00315b3.html">
 <meta property="og:site_name" content="金州苍狼">
-<meta property="og:description" content="算法（algorithm）是为求解一个问题需要遵循的、被清楚指定的简单指令集合。衡量算法合理性的两个指标是运行时间和占用资源（比如内存）。 分析估计算法性能一般来说是一个理论问题，因此需要有一套正式的系统理论，这个理论基础就是数学。 数学基础定义算法分析用到以下4中定义。  1、如果存在正常数c和$ n_0$使得当$ N \geq n_0 时T(N) \leq cf(N)，则记为T(N)=O(f(">
+<meta property="og:description" content="证明数据结构分析中的结论经常用到两种方法,归纳法和反证法，这两种方法比较直观简单，只有在不得已的情况下才使用高大上的高等数学的证明方法。证明一个定理不成立最好的方法是反证法。 归纳法 归纳法证明的两个关键步骤： 基准情形，归纳假设  证明基准情形归纳法证明第一步是证明基准情形，即对确定的某个小范围（通常是退化的）值的正确性，这一步通常是最简单直接的。 归纳假设接下来是进行归纳假设，一般来说，这意味">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-03T17:21:13.145Z">
+<meta property="og:updated_time" content="2018-01-03T17:21:13.142Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="算法分析">
-<meta name="twitter:description" content="算法（algorithm）是为求解一个问题需要遵循的、被清楚指定的简单指令集合。衡量算法合理性的两个指标是运行时间和占用资源（比如内存）。 分析估计算法性能一般来说是一个理论问题，因此需要有一套正式的系统理论，这个理论基础就是数学。 数学基础定义算法分析用到以下4中定义。  1、如果存在正常数c和$ n_0$使得当$ N \geq n_0 时T(N) \leq cf(N)，则记为T(N)=O(f(">
+<meta name="twitter:title" content="数学证明方法与递归">
+<meta name="twitter:description" content="证明数据结构分析中的结论经常用到两种方法,归纳法和反证法，这两种方法比较直观简单，只有在不得已的情况下才使用高大上的高等数学的证明方法。证明一个定理不成立最好的方法是反证法。 归纳法 归纳法证明的两个关键步骤： 基准情形，归纳假设  证明基准情形归纳法证明第一步是证明基准情形，即对确定的某个小范围（通常是退化的）值的正确性，这一步通常是最简单直接的。 归纳假设接下来是进行归纳假设，一般来说，这意味">
 
 
 
@@ -131,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="https://xuh.io/year0610-d68e5e2f.html"/>
+  <link rel="canonical" href="https://xuh.io/20170609-d00315b3.html"/>
 
 
 
 
 
-  <title>算法分析 | 金州苍狼</title>
+  <title>数学证明方法与递归 | 金州苍狼</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -311,7 +311,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://xuh.io/year0610-d68e5e2f.html">
+    <link itemprop="mainEntityOfPage" href="https://xuh.io/20170609-d00315b3.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="David.xu">
@@ -328,7 +328,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">算法分析</h1>
+          <h1 class="post-title" itemprop="name headline">数学证明方法与递归</h1>
         
 
         <div class="post-meta">
@@ -340,8 +340,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-10T23:07:26+08:00">
-                2017-06-10
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-09T18:34:34+08:00">
+                2017-06-09
               </time>
             
 
@@ -392,7 +392,7 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a class="cloud-tie-join-count" href="/year0610-d68e5e2f.html#comments" itemprop="discussionUrl">
+                <a class="cloud-tie-join-count" href="/20170609-d00315b3.html#comments" itemprop="discussionUrl">
                   <span class="post-comments-count join-count" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -418,38 +418,41 @@
       
 
       
-        <p>算法（algorithm）是为求解一个问题需要遵循的、被清楚指定的简单指令集合。衡量算法合理性的两个指标是运行时间和占用资源（比如内存）。</p>
-<p>分析估计算法性能一般来说是一个理论问题，因此需要有一套正式的系统理论，这个理论基础就是数学。</p>
-<h1 id="数学基础"><a href="#数学基础" class="headerlink" title="数学基础"></a>数学基础</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>算法分析用到以下4中定义。</p>
-<ul>
-<li><p>1、如果存在正常数c和$ n_0$使得当$ N \geq n_0 时T(N) \leq cf(N)，则记为T(N)=O(f(N)) 。$</p>
-</li>
-<li><p>2、如果存在正常数c和$ n_0 $使得当$ N \geq n_0 时T(N) \geq cg(N)，则记为T(N) = Ω(g(N))。$</p>
-</li>
-<li><p>3、$T(N)= \Theta (h(N))当且仅当T(N)=O(h(N))且T(N)=Ω(h(N))。$</p>
-</li>
-<li><p>4、$ 如果T(N)=O(p(N))且T(N) \neq \Theta (p(N))，则T(N) = o(p(N))。$</p>
-</li>
-</ul>
-<p>通常在一些点上一个函数的值大于另外一个函数的值，比较这些点的大小往往是没有意义的，在算法分析中我们通常是要比较两个函数的增长趋势，即相对增长率。</p>
-<p>从不等式的角度来看，定义1的含义为$T(N)$的相对增长率小于或等于$f(N)$，及$T(N)以不大于f(N)的趋势增长，因此f(N)是T(N)的一个$<code>上界</code>。</p>
-<p>定义2含义为$T(N)以大于或等于g(N)的增长率增长，g(N)为T(N)的一个$<code>下界</code>。</p>
-<p>定义3表示两个函数的增脏率相同。</p>
-<p>定义4与定义1的区别是定义1包含增长率相同的可能，定义1的表方法称着<code>大O记法</code>，定义4的表示方法称为<code>小o记法</code>。</p>
-<h2 id="几个重要的法则"><a href="#几个重要的法则" class="headerlink" title="几个重要的法则"></a>几个重要的法则</h2><h3 id="法则1"><a href="#法则1" class="headerlink" title="法则1"></a>法则1</h3><p>$ 如果T_1(N)=O(f(N))且T_2(N)=O(g(N))，那么$</p>
-<ul>
-<li>$ T_1(N) + T_2(N)=max(O(f(N),O(g(N)))$</li>
-<li>$ T_1(N) <em> T_2(N)=O(f(N) </em> g(N))$</li>
-</ul>
-<h3 id="法则2"><a href="#法则2" class="headerlink" title="法则2"></a>法则2</h3><p>$如果T(N)是一个k次多项式，则T(N)=\Theta(N^k)$</p>
-<h3 id="法则3"><a href="#法则3" class="headerlink" title="法则3"></a>法则3</h3><p>$对任意常数k,log^k N = O(N)$</p>
-<blockquote>
-<p>注意</p>
-<ol>
-<li>在大O表示发中，忽略常数和低阶项，比如$T(N) = O(2N^2)$和$T(N)=O(N^2 + N)$都应该表示为$T(N)=O(N^2)$</li>
-<li>可以通过计算极限$\lim_{n-&gt;\infty}{f(N)/g(N)}$来确定两个函数$f(N)和g(N)$的增长率。如果极限为0，则$f(N)=o(g(N))$;如果为不等于0的常数则$f(N)=\Theta(g(N))$;如果极限是$\infty$，则$g(N)=o(f(N))$;如果极限摆动，则二者无关(算法分析中不会出现这种情况)。</li>
-</ol>
+        <p>证明数据结构分析中的结论经常用到两种方法,<code>归纳法</code>和<code>反证法</code>，这两种方法比较直观简单，只有在不得已的情况下才使用高大上的高等数学的证明方法。证明一个定理不成立最好的方法是反证法。</p>
+<h1 id="归纳法"><a href="#归纳法" class="headerlink" title="归纳法"></a>归纳法</h1><blockquote>
+<p>归纳法证明的两个关键步骤： <code>基准情形</code>，<code>归纳假设</code></p>
 </blockquote>
+<h2 id="证明基准情形"><a href="#证明基准情形" class="headerlink" title="证明基准情形"></a>证明基准情形</h2><p>归纳法证明第一步是证明基准情形，即对确定的某个小范围（通常是退化的）值的正确性，这一步通常是最简单直接的。</p>
+<h2 id="归纳假设"><a href="#归纳假设" class="headerlink" title="归纳假设"></a>归纳假设</h2><p>接下来是进行归纳假设，一般来说，这意味着假设定理对直到某个有限的数k的所有情况都成立，然后以此作为假设前提，证明定理对下一个值（通常是k+1）也成立，至此证明完成。</p>
+<p>下面通过归纳法证明下面的定理。</p>
+<ul>
+<li><p>斐波那契数列:$ F_0 = 1,F_1 = 1,F_2 = 2,F_3 = 3,F_4 = 5,…,F<em>i = F</em>{i-1} + F_{i-2} $, 对于$ i \geq 1 满足 {F_i &lt; ({ 5 \over 3})^i} $</p>
+<p>  证明:  首先，证明基准情形，对于$ F_1 = 1 &lt; {5 \over 3},F<em>2 = 2 &lt; {25 \over 9 }成立。$<br>  现假设对于$ i = 1,2,…,k $欲证定理成立，在此基础上如果我们能证明$ F</em>{k+1} &lt; ({5     \over 3})^{k+1} $成立，则定理成立。根据定义我们有：</p>
+<p>  $ F_{k+1} = F<em>k + F</em>{k-1} $</p>
+<p>  $ &lt; ({5 \over 3})^k + ({5 \over 3})^{k-1} $</p>
+<p>  $ &lt; ({3 \over 5})({5 \over 3})^{k+1} + ({3\over5})^2({5 \over 3})^{k+1} $</p>
+<p>  $ &lt; ({24 \over 25})({5 \over 3})^{k+1} $</p>
+<p>  $ &lt; ({5 \over 3})^{k+1} $</p>
+<p>  以此定理成立。</p>
+</li>
+<li><p>如果 $ N \geq 1,则\sum_{i=1}^N i^2 = { N(N+1)(2N+1) \over 6 } $</p>
+<p>  证明 当N=1时定理成立,现假设命题对 $ 1\leq k \leq N $ 成立,现证明对于N+1也成立</p>
+<p>  $ \sum<em>{i=1}^{N+1} i^2 = \sum</em>{i=1}^N i^2 + (N+1)^2 $</p>
+<p>  $ ={N(N+1)(2N+1) \over 6} + (N+1)^2 $</p>
+<p>  $ =(N+1)[{N(2N+1) \over 6} + (N+1)] $</p>
+<p>  $ =(N+1){(2N^2 + 7N + 6) \over 6} $</p>
+<p>  $ ={(N+1)[(N+1)+2][2(N+1)+1] \over 6} $</p>
+<p>  于是N+1时也成立,命题得证。</p>
+</li>
+</ul>
+<h1 id="反证法"><a href="#反证法" class="headerlink" title="反证法"></a>反证法</h1><ul>
+<li><p>费马猜想（费马素数），对于$ n \in N(自然数)，F_n =  2^{2^n} + 1 $是素数</p>
+<p>  这是费马老先生当时随便胡写在书页留白处的，并且说自己已经有证明方法了，可以这里写不下，我擦，据说好几十年没人证明出来，也是当时的计算能力有限，实际上当n=0,1,2,3,4时，$ F_n $分别是    3,5,17,257,65537都是素数，但是ｎ＝４时已经非常大了,但是当ｎ＝５时，$ F_n=614×6700417 $ ,这就是反证法</p>
+</li>
+<li><p>证明存在无穷多个素数</p>
+<p>  证明：　为了证明命题成立，我们先假设不成立，于是存在某个最大的素数$ P_k ,令P_1,P_2,..,P_k $是依序排列的所有素数，$ 令N = P_1P_2P_3…P_k + 1,显然N是比P_k $大的数，    根据假设N不是素数,可是$ P_1,P2,…,P_k $都不能整除N,因为整除的结果总有余数１，这就产生了    矛盾，因此假设不成立，因此原命题成立。</p>
+</li>
+</ul>
 
       
     </div>
@@ -500,7 +503,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/算法分析/" rel="tag"># 算法分析</a>
+            <a href="/tags/证明方法/" rel="tag"># 证明方法</a>
+          
+            <a href="/tags/递归/" rel="tag"># 递归</a>
           
         </div>
       
@@ -513,8 +518,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/year0609-d00315b3.html" rel="next" title="数学证明方法与递归">
-                <i class="fa fa-chevron-left"></i> 数学证明方法与递归
+              <a href="/20170607-bacfe825.html" rel="next" title="数学基础知识">
+                <i class="fa fa-chevron-left"></i> 数学基础知识
               </a>
             
           </div>
@@ -523,8 +528,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/year0707-14c433bb.html" rel="prev" title="gitlab系列教程之1-安装">
-                gitlab系列教程之1-安装 <i class="fa fa-chevron-right"></i>
+              <a href="/20170610-d68e5e2f.html" rel="prev" title="算法分析">
+                算法分析 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -686,7 +691,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数学基础"><span class="nav-number">1.</span> <span class="nav-text">数学基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-number">1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#几个重要的法则"><span class="nav-number">1.2.</span> <span class="nav-text">几个重要的法则</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#法则1"><span class="nav-number">1.2.1.</span> <span class="nav-text">法则1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#法则2"><span class="nav-number">1.2.2.</span> <span class="nav-text">法则2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#法则3"><span class="nav-number">1.2.3.</span> <span class="nav-text">法则3</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#归纳法"><span class="nav-number">1.</span> <span class="nav-text">归纳法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#证明基准情形"><span class="nav-number">1.1.</span> <span class="nav-text">证明基准情形</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#归纳假设"><span class="nav-number">1.2.</span> <span class="nav-text">归纳假设</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#反证法"><span class="nav-number">2.</span> <span class="nav-text">反证法</span></a></li></ol></div>
             
 
           </div>
