@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[测试加密]]></title>
     <url>%2F2018%2F01%2F03%2F%E6%B5%8B%E8%AF%95%E5%8A%A0%E5%AF%86%2F</url>
-    <content type="text"><![CDATA[这是一个测试文档]]></content>
+    <content type="text"><![CDATA[function doDecrypt(pwd, onError) { console.log("in doDecrypt"); var txt = document.getElementById("enc_content").innerHTML; var plantext; try { var bytes = CryptoJS.AES.decrypt(txt, pwd); plaintext = bytes.toString(CryptoJS.enc.Utf8); } catch(err) { if(onError) {onError(err);} return; } document.getElementById("enc_content").innerHTML = plaintext; document.getElementById("enc_content").style.display = "block"; document.getElementById("enc_passwd").style.display = "none"; } U2FsdGVkX19QIiWSxQn5Jv6TvQ7o/D7F97MT24U/OZfGe9lzhLrn74PR+9CFwyPPizBrBmY6ULp8v56lc2/Fmg==next]]></content>
       <categories>
         <category>车加家</category>
         <category>产品文档</category>

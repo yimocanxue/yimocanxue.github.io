@@ -92,18 +92,18 @@
 
 
 
-<meta name="description" content="这是一个测试文档">
+<meta name="description" content="function doDecrypt(pwd, onError) { 	console.log(&quot;in doDecrypt&quot;); 	var txt = document.getElementById(&quot;enc_content&quot;).innerHTML; 	var plantext; 	try { 	  	var bytes = CryptoJS.AES.decrypt(txt, pwd); 		p">
 <meta name="keywords" content="加密">
 <meta property="og:type" content="article">
 <meta property="og:title" content="测试加密">
 <meta property="og:url" content="https://xuh.io/2018/01/03/测试加密/index.html">
 <meta property="og:site_name" content="金州苍狼">
-<meta property="og:description" content="这是一个测试文档">
+<meta property="og:description" content="function doDecrypt(pwd, onError) { 	console.log(&quot;in doDecrypt&quot;); 	var txt = document.getElementById(&quot;enc_content&quot;).innerHTML; 	var plantext; 	try { 	  	var bytes = CryptoJS.AES.decrypt(txt, pwd); 		p">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-03T11:39:21.536Z">
+<meta property="og:updated_time" content="2018-01-03T11:40:49.780Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="测试加密">
-<meta name="twitter:description" content="这是一个测试文档">
+<meta name="twitter:description" content="function doDecrypt(pwd, onError) { 	console.log(&quot;in doDecrypt&quot;); 	var txt = document.getElementById(&quot;enc_content&quot;).innerHTML; 	var plantext; 	try { 	  	var bytes = CryptoJS.AES.decrypt(txt, pwd); 		p">
 
 
 
@@ -418,8 +418,24 @@
       
 
       
-        <p>这是一个测试文档</p>
-
+        <script src=/js/crypto-js.js></script><script>
+function doDecrypt(pwd, onError) {
+	console.log("in doDecrypt");
+	var txt = document.getElementById("enc_content").innerHTML;
+	var plantext;
+	try {
+	  	var bytes = CryptoJS.AES.decrypt(txt, pwd);
+		plaintext = bytes.toString(CryptoJS.enc.Utf8);
+	} catch(err) {
+		if(onError) {onError(err);}
+		return;
+	}
+	document.getElementById("enc_content").innerHTML = plaintext;
+	document.getElementById("enc_content").style.display = "block";
+   document.getElementById("enc_passwd").style.display = "none";
+}
+</script>
+<div id="enc_content" style="display:none">U2FsdGVkX19QIiWSxQn5Jv6TvQ7o/D7F97MT24U/OZfGe9lzhLrn74PR+9CFwyPPizBrBmY6ULp8v56lc2/Fmg==</div><div id="enc_passwd">next</div>
       
     </div>
 

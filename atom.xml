@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://xuh.io/"/>
-  <updated>2018-01-03T11:39:21.536Z</updated>
+  <updated>2018-01-03T11:40:49.780Z</updated>
   <id>https://xuh.io/</id>
   
   <author>
@@ -20,15 +20,33 @@
     <link href="https://xuh.io/2018/01/03/%E6%B5%8B%E8%AF%95%E5%8A%A0%E5%AF%86/"/>
     <id>https://xuh.io/2018/01/03/测试加密/</id>
     <published>2018-01-03T11:38:09.000Z</published>
-    <updated>2018-01-03T11:39:21.536Z</updated>
+    <updated>2018-01-03T11:40:49.780Z</updated>
     
-    <content type="html"><![CDATA[<p>这是一个测试文档</p>
-]]></content>
+    <content type="html"><![CDATA[<script src=/js/crypto-js.js></script><script>
+function doDecrypt(pwd, onError) {
+	console.log("in doDecrypt");
+	var txt = document.getElementById("enc_content").innerHTML;
+	var plantext;
+	try {
+	  	var bytes = CryptoJS.AES.decrypt(txt, pwd);
+		plaintext = bytes.toString(CryptoJS.enc.Utf8);
+	} catch(err) {
+		if(onError) {onError(err);}
+		return;
+	}
+	document.getElementById("enc_content").innerHTML = plaintext;
+	document.getElementById("enc_content").style.display = "block";
+   document.getElementById("enc_passwd").style.display = "none";
+}
+</script>
+<div id="enc_content" style="display:none">U2FsdGVkX19QIiWSxQn5Jv6TvQ7o/D7F97MT24U/OZfGe9lzhLrn74PR+9CFwyPPizBrBmY6ULp8v56lc2/Fmg==</div><div id="enc_passwd">next</div>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;这是一个测试文档&lt;/p&gt;
-
+      &lt;script src=/js/crypto-js.js&gt;&lt;/script&gt;&lt;script&gt;
+function doDecrypt(pwd, onError) {
+	console.log(&quot;in doDecrypt&quot;);
+	var txt = document.getEleme
     
     </summary>
     
