@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="数学基础," />
+  <meta name="keywords" content="用户管理,auth," />
 
 
 
@@ -92,18 +92,18 @@
 
 
 
-<meta name="description" content="算法分析的基础是数学，但是只从走出校门，就很少再接触这些东西，基本上都还给老师了，最近重读算法分析这本书，好多公式又冒出来了，为了以后再接触方便，这里特意记录下来。 指数$$ X^AX^B=X^{A+B} $$$$ { X^A \over X^B } = X^{A-B} $$$$ (X^A)^B = X^{AB} $$$$ X^N + X^N = 2X^N \neq X^{2N} $$$$ 2^N">
-<meta name="keywords" content="数学基础">
+<meta name="description" content="MongoDB为了使用方便，默认启动是不带用户认证的，也就是说所有人都可以连接并进行读写操作，这在开发阶段当然很方便，但是生产环境可就不能这么裸奔了。 首先来看看MongoDB的启动命令：$ mongod [--auth] --dbpath=&amp;lt;数据存放目录，默认/data/db&amp;gt; --fork --logpath=&amp;lt;日志存放目录&amp;gt; 当带上参数–auth即在安全模式下启动，要">
+<meta name="keywords" content="用户管理,auth">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数学基础知识">
-<meta property="og:url" content="https://xuh.io/post/bacfe825.html">
+<meta property="og:title" content="MongoDB用户管理">
+<meta property="og:url" content="https://xuh.io/year0719-ff4ef26d.html">
 <meta property="og:site_name" content="金州苍狼">
-<meta property="og:description" content="算法分析的基础是数学，但是只从走出校门，就很少再接触这些东西，基本上都还给老师了，最近重读算法分析这本书，好多公式又冒出来了，为了以后再接触方便，这里特意记录下来。 指数$$ X^AX^B=X^{A+B} $$$$ { X^A \over X^B } = X^{A-B} $$$$ (X^A)^B = X^{AB} $$$$ X^N + X^N = 2X^N \neq X^{2N} $$$$ 2^N">
+<meta property="og:description" content="MongoDB为了使用方便，默认启动是不带用户认证的，也就是说所有人都可以连接并进行读写操作，这在开发阶段当然很方便，但是生产环境可就不能这么裸奔了。 首先来看看MongoDB的启动命令：$ mongod [--auth] --dbpath=&amp;lt;数据存放目录，默认/data/db&amp;gt; --fork --logpath=&amp;lt;日志存放目录&amp;gt; 当带上参数–auth即在安全模式下启动，要">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-03T17:21:13.141Z">
+<meta property="og:updated_time" content="2018-01-03T17:21:13.128Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数学基础知识">
-<meta name="twitter:description" content="算法分析的基础是数学，但是只从走出校门，就很少再接触这些东西，基本上都还给老师了，最近重读算法分析这本书，好多公式又冒出来了，为了以后再接触方便，这里特意记录下来。 指数$$ X^AX^B=X^{A+B} $$$$ { X^A \over X^B } = X^{A-B} $$$$ (X^A)^B = X^{AB} $$$$ X^N + X^N = 2X^N \neq X^{2N} $$$$ 2^N">
+<meta name="twitter:title" content="MongoDB用户管理">
+<meta name="twitter:description" content="MongoDB为了使用方便，默认启动是不带用户认证的，也就是说所有人都可以连接并进行读写操作，这在开发阶段当然很方便，但是生产环境可就不能这么裸奔了。 首先来看看MongoDB的启动命令：$ mongod [--auth] --dbpath=&amp;lt;数据存放目录，默认/data/db&amp;gt; --fork --logpath=&amp;lt;日志存放目录&amp;gt; 当带上参数–auth即在安全模式下启动，要">
 
 
 
@@ -131,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="https://xuh.io/post/bacfe825.html"/>
+  <link rel="canonical" href="https://xuh.io/year0719-ff4ef26d.html"/>
 
 
 
 
 
-  <title>数学基础知识 | 金州苍狼</title>
+  <title>MongoDB用户管理 | 金州苍狼</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -311,7 +311,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://xuh.io/post/bacfe825.html">
+    <link itemprop="mainEntityOfPage" href="https://xuh.io/year0719-ff4ef26d.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="David.xu">
@@ -328,7 +328,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">数学基础知识</h1>
+          <h1 class="post-title" itemprop="name headline">MongoDB用户管理</h1>
         
 
         <div class="post-meta">
@@ -340,8 +340,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-07T22:54:13+08:00">
-                2017-06-07
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-19T11:58:17+08:00">
+                2017-07-19
               </time>
             
 
@@ -351,39 +351,6 @@
           </span>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/算法-数据结构/" itemprop="url" rel="index">
-                    <span itemprop="name">算法/数据结构</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/算法-数据结构/理论/" itemprop="url" rel="index">
-                    <span itemprop="name">理论</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -392,7 +359,7 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a class="cloud-tie-join-count" href="/post/bacfe825.html#comments" itemprop="discussionUrl">
+                <a class="cloud-tie-join-count" href="/year0719-ff4ef26d.html#comments" itemprop="discussionUrl">
                   <span class="post-comments-count join-count" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -418,36 +385,17 @@
       
 
       
-        <p>算法分析的基础是数学，但是只从走出校门，就很少再接触这些东西，基本上都还给老师了，最近重读算法分析这本书，好多公式又冒出来了，为了以后再接触方便，这里特意记录下来。</p>
-<h1 id="指数"><a href="#指数" class="headerlink" title="指数"></a>指数</h1><p>$$ X^AX^B=X^{A+B} $$<br>$$ { X^A \over X^B } = X^{A-B} $$<br>$$ (X^A)^B = X^{AB} $$<br>$$ X^N + X^N = 2X^N \neq X^{2N} $$<br>$$ 2^N + 2^N = 2^{N+1} $$</p>
-<h1 id="对数"><a href="#对数" class="headerlink" title="对数"></a>对数</h1><p>在计算机科学中，除非又特殊说明，所有对数都是以2为底。</p>
-<h2 id="对数定义"><a href="#对数定义" class="headerlink" title="对数定义"></a>对数定义</h2><p> $ X^A = B ，当且仅当 \log_XB = A $</p>
-<p>根据定义可以推理出几个定理。</p>
-<h2 id="定理1"><a href="#定理1" class="headerlink" title="定理1"></a>定理1</h2><p>$ \log_AB = { \log_CB \over \log_CA}; C &gt; 0 $</p>
-<h2 id="定理2"><a href="#定理2" class="headerlink" title="定理2"></a>定理2</h2><p>$ logAB = logA + logB $</p>
-<h2 id="一些有用的公式"><a href="#一些有用的公式" class="headerlink" title="一些有用的公式"></a>一些有用的公式</h2><p>$$ log{A \over B} = logA - logB $$<br>$$ log(A^B) = BlogA $$<br>$$ logX &lt; X  (对所有X&gt;0成立) $$<br>$$ log1 = 0,log2 = 1,log1024=10, log1048576=20 $$</p>
-<h1 id="级数"><a href="#级数" class="headerlink" title="级数"></a>级数</h1><p>$$ \sum_{i=0}^N 2^i = 2^{N+1} - 1 $$</p>
-<p>$$ \sum_{i=0}^N A^i = { A^{N+1} - 1 \over A - 1} $$</p>
-<p>$$ \sum_{i=0}^N A^i \leq {1 \over 1 - A}; (0 &lt; A &lt; 1) $$</p>
-<p>$$ \sum_{i=0}^\infty = {1 \over 1 - A} ;(0 &lt; A &lt; 1)  $$</p>
-<p>$$ \sum_{i=1}^N = { N(N + 1) \over 2 } \approx {N^2 \over 2} $$</p>
-<p>$$ \sum_{i=1}^N i^2 = {N(N + 1)(2N + 1) \over 6 } \approx {N^3 \over 3} $$</p>
-<p>$$ \sum_{i=1}^N i^k \approx { N^{k+1} \over | k + 1 |};k \neq -1 $$</p>
-<h2 id="欧拉常数"><a href="#欧拉常数" class="headerlink" title="欧拉常数"></a>欧拉常数</h2><p>上面最后一个公式,当k=-1时不成立，此时我们需要另外的一个公式，这个公式在计算机科学中使用要远比在其它学科中使用得多。</p>
-<p>$$ \sum_{i=1}^N { 1 \over i } = H_N  \approx \log_e N,H_N称为调和数  $$</p>
-<p>式中误差γ趋近于0.57721566，这个值称为<code>欧拉常数</code></p>
-<h2 id="两个代数运算公式"><a href="#两个代数运算公式" class="headerlink" title="两个代数运算公式"></a>两个代数运算公式</h2><p>$$ \sum_{i=1}^N f(N) = Nf(N) $$</p>
-<blockquote>
-<p>$ \sum_{i=n_0}^N f(i) = A $</p>
-<p>$ \sum_{i=1}^N f(i) = B $</p>
-<p>$ \sum_{i=1}^{n_0 - 1}f(i) = C,则 A = B - C $</p>
-</blockquote>
-<h1 id="模运算"><a href="#模运算" class="headerlink" title="模运算"></a>模运算</h1><blockquote>
-<p>如果A - B能够被N整除，那么A与B模N同余（congruent），记为： $ A \equiv B(mod N) $</p>
-</blockquote>
-<h2 id="推论"><a href="#推论" class="headerlink" title="推论"></a>推论</h2><blockquote>
-<p>若 $ A \equiv B(mod N) ，则 A + C \equiv B + C(mod N) $<br>若 $ A \equiv B(mod N) ，则 AD \equiv BD(mod N) $</p>
-</blockquote>
+        <p>MongoDB为了使用方便，默认启动是不带用户认证的，也就是说所有人都可以连接并进行读写操作，这在开发阶段当然很方便，但是生产环境可就不能这么裸奔了。</p>
+<p>首先来看看MongoDB的启动命令：<br><code>$ mongod [--auth] --dbpath=&lt;数据存放目录，默认/data/db&gt; --fork --logpath=&lt;日志存放目录&gt;</code></p>
+<p>当带上参数–auth即在安全模式下启动，要在安全模式下启动，必须先完成用户的添加和授权。</p>
+<h1 id="添加管理员"><a href="#添加管理员" class="headerlink" title="添加管理员"></a>添加管理员</h1><p>首次在非认证模式下登录，然后添加管理员账户，在默认的admin数据库里，有一个名为<em>userAdminAnyDatabase</em>的内置角色，顾名思义，该角色的用户即为超级管理员，不过该角色只有管理用户和角色的功能，没有数据库读写权限。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$ mongo</div><div class="line">#...省略连接输出..</div><div class="line"></div><div class="line">&gt; use admin</div><div class="line">&gt; db.createUser(&#123;</div><div class="line">	user: &quot;userAdmin&quot;,</div><div class="line">    pwd: &quot;123456&quot;</div><div class="line">    roles:[&#123;role:&quot;userAdminAnyDatabase&quot;,db:&quot;admin&quot;&#125;]</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h1 id="重启MongoDB并在安全模式下登录"><a href="#重启MongoDB并在安全模式下登录" class="headerlink" title="重启MongoDB并在安全模式下登录"></a>重启MongoDB并在安全模式下登录</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ ps -ef | grep mongod | grep -v grep | cut -c 10-16 | xargs kill -9</div><div class="line">$ mongod --auth --dbpath=&lt;数据存放目录，默认/data/db&gt; --fork --logpath=&lt;日志存放目录&gt;</div></pre></td></tr></table></figure>
+<h1 id="以管理员身份登录"><a href="#以管理员身份登录" class="headerlink" title="以管理员身份登录"></a>以管理员身份登录</h1><p>可以先连接到test数据库然后用db.auth进行认证，也可以直接在连接时候认证：<br><code>$ mongo -u &quot;userAdmin&quot; -p &quot;123456&quot; --authenticationDatabase &quot;admin&quot;</code>，<br>从命令参数可以看出来，连接时认证真不好记那些参数，因此一般我都是先连接后认证的方式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$ mongo</div><div class="line">$ use admin</div><div class="line">MongoDB shell version: 3.2.10</div><div class="line">connecting to: test</div><div class="line">&gt; use admin</div><div class="line">switched to db admin</div><div class="line">&gt; db.auth(&quot;root&quot;,&quot;ZzJK7Eg-akh9&quot;)</div><div class="line">1</div></pre></td></tr></table></figure>
+<p>登录后可以查看下用户表:<code>&gt; db.system.users.find()</code></p>
+<h1 id="添加其它用户"><a href="#添加其它用户" class="headerlink" title="添加其它用户"></a>添加其它用户</h1><p>和添加管理员方式一致，只是授权的数据库和赋予的角色有区别，一般常用的角色有read、readWrite、dbOwner等。</p>
+<p>要了解其它内置角色参考这里<a href="https://docs.mongodb.com/manual/reference/built-in-roles/" target="_blank" rel="noopener">https://docs.mongodb.com/manual/reference/built-in-roles/</a>,怎样自定义角色参考这里:<a href="https://docs.mongodb.com/manual/core/security-user-defined-roles/#user-defined-roles" target="_blank" rel="noopener">https://docs.mongodb.com/manual/core/security-user-defined-roles/#user-defined-roles</a></p>
 
       
     </div>
@@ -498,7 +446,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/数学基础/" rel="tag"># 数学基础</a>
+            <a href="/tags/用户管理/" rel="tag"># 用户管理</a>
+          
+            <a href="/tags/auth/" rel="tag"># auth</a>
           
         </div>
       
@@ -511,8 +461,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/post/550b57b7.html" rel="next" title="UITabBar的基本用法">
-                <i class="fa fa-chevron-left"></i> UITabBar的基本用法
+              <a href="/year0707-53ff9fdd.html" rel="next" title="持续集成介绍">
+                <i class="fa fa-chevron-left"></i> 持续集成介绍
               </a>
             
           </div>
@@ -521,8 +471,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/post/d00315b3.html" rel="prev" title="数学证明方法与递归">
-                数学证明方法与递归 <i class="fa fa-chevron-right"></i>
+              <a href="/year1130-f110b008.html" rel="prev" title="CentOS7.2编译安装tengine">
+                CentOS7.2编译安装tengine <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -684,7 +634,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#指数"><span class="nav-number">1.</span> <span class="nav-text">指数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#对数"><span class="nav-number">2.</span> <span class="nav-text">对数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#对数定义"><span class="nav-number">2.1.</span> <span class="nav-text">对数定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定理1"><span class="nav-number">2.2.</span> <span class="nav-text">定理1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定理2"><span class="nav-number">2.3.</span> <span class="nav-text">定理2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一些有用的公式"><span class="nav-number">2.4.</span> <span class="nav-text">一些有用的公式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#级数"><span class="nav-number">3.</span> <span class="nav-text">级数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#欧拉常数"><span class="nav-number">3.1.</span> <span class="nav-text">欧拉常数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#两个代数运算公式"><span class="nav-number">3.2.</span> <span class="nav-text">两个代数运算公式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模运算"><span class="nav-number">4.</span> <span class="nav-text">模运算</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#推论"><span class="nav-number">4.1.</span> <span class="nav-text">推论</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#添加管理员"><span class="nav-number">1.</span> <span class="nav-text">添加管理员</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#重启MongoDB并在安全模式下登录"><span class="nav-number">2.</span> <span class="nav-text">重启MongoDB并在安全模式下登录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#以管理员身份登录"><span class="nav-number">3.</span> <span class="nav-text">以管理员身份登录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#添加其它用户"><span class="nav-number">4.</span> <span class="nav-text">添加其它用户</span></a></li></ol></div>
             
 
           </div>
