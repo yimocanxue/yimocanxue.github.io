@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[测试加密]]></title>
     <url>%2F20180103%2Fd1ee6067.html</url>
-    <content type="text"><![CDATA[var CACHE_KEY = "hexo-x-" + window.location.pathname.substr(window.location.pathname.lastIndexOf("/") + 1).split(".")[0]; function doDecrypt(pwd, onError) { //console.log("in doDecrypt"); var txt = document.getElementById("enc_content").innerHTML; var plantext; try { var bytes = CryptoJS.AES.decrypt(txt, pwd); plaintext = bytes.toString(CryptoJS.enc.Utf8); cookie.set(CACHE_KEY,pwd,{path:"/",expires: 1}); } catch(err) { if(onError) {onError(err);} return; } document.getElementById("enc_content").innerHTML = plaintext; document.getElementById("enc_content").style.display = "block"; document.getElementById("enc_passwd").style.display = "none"; } window.onload = function(){ var cachePwd = cookie.get(CACHE_KEY)||"" if(cachePwd !== "") doDecrypt(cachePwd, onError); } U2FsdGVkX19JoYSHSNddor0TWS7lSV3dSXAeFgZV2tUoH042RHsS8Nyfy1UOZScLiIXUiYQOqt1blhLruSi5WA== var onError = function(error) { document.getElementById("enc_error").innerHTML = "password error!" }; function decrypt() { var passwd = document.getElementById("enc_pwd_input").value; console.log(passwd); doDecrypt(passwd, onError); }]]></content>
+    <content type="text"><![CDATA[var CACHE_KEY = "hexo-x-" + window.location.pathname.substr(window.location.pathname.lastIndexOf("/") + 1).split(".")[0]; function doDecrypt(pwd, onError) { //console.log("in doDecrypt"); var txt = document.getElementById("enc_content").innerHTML; var plantext; try { var bytes = CryptoJS.AES.decrypt(txt, pwd); plaintext = bytes.toString(CryptoJS.enc.Utf8); cookie.set(CACHE_KEY,pwd,{path:"/",expires: 1}); } catch(err) { if(onError) {onError(err);} return; } document.getElementById("enc_content").innerHTML = plaintext; document.getElementById("enc_content").style.display = "block"; document.getElementById("enc_passwd").style.display = "none"; } window.onload = function(){ var cachePwd = cookie.get(CACHE_KEY)||"" if(cachePwd !== "") doDecrypt(cachePwd, onError); } U2FsdGVkX1/GPaNKbtzApLhrgX/jqL4vtmgW9f0LmilKF8Fh6X1vEPMZdItmsI7K4Xz4Armr288qxPSBWp4/kw== var onError = function(error) { document.getElementById("enc_error").innerHTML = "password error!" }; function decrypt() { var passwd = document.getElementById("enc_pwd_input").value; console.log(passwd); doDecrypt(passwd, onError); }]]></content>
       <categories>
         <category>车加家</category>
         <category>产品文档</category>
@@ -186,15 +186,15 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[CentOS安装samba服务]]></title>
-    <url>%2F20151128%2F294fe70.html</url>
-    <content type="text"><![CDATA[检查是否有安装samba服务： $ rpm -qa | grep samba 如果没安装则yum安装 $ yum -y install samba samba-client samba-common 默认的安装目录是/etc/samba，配置文件为smb.conf,先备份下smb文件$ cd /etc/samba$ cp smb.conf smb.conf.bak 然后编辑smb.conf加入以下内容： 123456[remote_dev] path = /alidata/nginx_www/wx.soopj.com public =no writable = yes write list = @www valid users = @www @www是客户端登录所需要的用户，设置nginx的用户密码： $ smbpasswd -a www 为了避免在启动Samba时出现以下警告信息：rlimit_max: increasing rlimit_max (1024) tominimum Windows limit (16384)，配置内核参数 12345$ ulimit -n 16384$ vi /etc/security/limits.conf#在最后加入以下内容* - nofile 16384 然后运行testparm检测配置文件。 然后启动服务，关闭防火墙： 123$ service smb start$ service nmb start$ service iptables stop centos7后启动服务由systemctl管理，防火墙换成firewalld，因此命令稍有不同。然后客户端即可测试。]]></content>
+    <title><![CDATA[让nginx支持path_info]]></title>
+    <url>%2F20151128%2F8e316de2.html</url>
+    <content type="text"><![CDATA[nginx默认是不支持path_info模式的，也就是说不支持index.php/*这样的url，因此像Thinkphp中URL model为2的那种路径方式nginx不支持。 只要修改虚拟主机的下面三个地方即可： 12345678910location ~ .php &#123; #删除.php后的$ fastcgi_pass soopj_phpfcgi; fastcgi_index default.php; fastcgi_split_path_info ^((?U).+.php)(/?.+)$; #增加这句 fastcgi_param PATH_INFO $fastcgi_path_info; #增加这句 fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name; include fastcgi_params; &#125;]]></content>
       <categories>
         <category>运维</category>
-        <category>系统管理</category>
+        <category>LA/NMP服务</category>
       </categories>
       <tags>
-        <tag>samba</tag>
+        <tag>nginx</tag>
       </tags>
   </entry>
   <entry>
@@ -209,15 +209,15 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[让nginx支持path_info]]></title>
-    <url>%2F20151128%2F8e316de2.html</url>
-    <content type="text"><![CDATA[nginx默认是不支持path_info模式的，也就是说不支持index.php/*这样的url，因此像Thinkphp中URL model为2的那种路径方式nginx不支持。 只要修改虚拟主机的下面三个地方即可： 12345678910location ~ .php &#123; #删除.php后的$ fastcgi_pass soopj_phpfcgi; fastcgi_index default.php; fastcgi_split_path_info ^((?U).+.php)(/?.+)$; #增加这句 fastcgi_param PATH_INFO $fastcgi_path_info; #增加这句 fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name; include fastcgi_params; &#125;]]></content>
+    <title><![CDATA[CentOS安装samba服务]]></title>
+    <url>%2F20151128%2F294fe70.html</url>
+    <content type="text"><![CDATA[检查是否有安装samba服务： $ rpm -qa | grep samba 如果没安装则yum安装 $ yum -y install samba samba-client samba-common 默认的安装目录是/etc/samba，配置文件为smb.conf,先备份下smb文件$ cd /etc/samba$ cp smb.conf smb.conf.bak 然后编辑smb.conf加入以下内容： 123456[remote_dev] path = /alidata/nginx_www/wx.soopj.com public =no writable = yes write list = @www valid users = @www @www是客户端登录所需要的用户，设置nginx的用户密码： $ smbpasswd -a www 为了避免在启动Samba时出现以下警告信息：rlimit_max: increasing rlimit_max (1024) tominimum Windows limit (16384)，配置内核参数 12345$ ulimit -n 16384$ vi /etc/security/limits.conf#在最后加入以下内容* - nofile 16384 然后运行testparm检测配置文件。 然后启动服务，关闭防火墙： 123$ service smb start$ service nmb start$ service iptables stop centos7后启动服务由systemctl管理，防火墙换成firewalld，因此命令稍有不同。然后客户端即可测试。]]></content>
       <categories>
         <category>运维</category>
-        <category>LA/NMP服务</category>
+        <category>系统管理</category>
       </categories>
       <tags>
-        <tag>nginx</tag>
+        <tag>samba</tag>
       </tags>
   </entry>
 </search>

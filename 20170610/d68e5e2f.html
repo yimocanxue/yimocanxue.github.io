@@ -306,6 +306,9 @@
 
   
   
+
+  
+
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
@@ -406,39 +409,7 @@
       
 
       
-        <p>算法（algorithm）是为求解一个问题需要遵循的、被清楚指定的简单指令集合。衡量算法合理性的两个指标是运行时间和占用资源（比如内存）。</p>
-<p>分析估计算法性能一般来说是一个理论问题，因此需要有一套正式的系统理论，这个理论基础就是数学。</p>
-<h1 id="数学基础"><a href="#数学基础" class="headerlink" title="数学基础"></a>数学基础</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>算法分析用到以下4中定义。</p>
-<ul>
-<li><p>1、如果存在正常数c和$ n_0$使得当$ N \geq n_0 时T(N) \leq cf(N)，则记为T(N)=O(f(N)) 。$</p>
-</li>
-<li><p>2、如果存在正常数c和$ n_0 $使得当$ N \geq n_0 时T(N) \geq cg(N)，则记为T(N) = Ω(g(N))。$</p>
-</li>
-<li><p>3、$T(N)= \Theta (h(N))当且仅当T(N)=O(h(N))且T(N)=Ω(h(N))。$</p>
-</li>
-<li><p>4、$ 如果T(N)=O(p(N))且T(N) \neq \Theta (p(N))，则T(N) = o(p(N))。$</p>
-</li>
-</ul>
-<p>通常在一些点上一个函数的值大于另外一个函数的值，比较这些点的大小往往是没有意义的，在算法分析中我们通常是要比较两个函数的增长趋势，即相对增长率。</p>
-<p>从不等式的角度来看，定义1的含义为$T(N)$的相对增长率小于或等于$f(N)$，及$T(N)以不大于f(N)的趋势增长，因此f(N)是T(N)的一个$<code>上界</code>。</p>
-<p>定义2含义为$T(N)以大于或等于g(N)的增长率增长，g(N)为T(N)的一个$<code>下界</code>。</p>
-<p>定义3表示两个函数的增脏率相同。</p>
-<p>定义4与定义1的区别是定义1包含增长率相同的可能，定义1的表方法称着<code>大O记法</code>，定义4的表示方法称为<code>小o记法</code>。</p>
-<h2 id="几个重要的法则"><a href="#几个重要的法则" class="headerlink" title="几个重要的法则"></a>几个重要的法则</h2><h3 id="法则1"><a href="#法则1" class="headerlink" title="法则1"></a>法则1</h3><p>$ 如果T_1(N)=O(f(N))且T_2(N)=O(g(N))，那么$</p>
-<ul>
-<li>$ T_1(N) + T_2(N)=max(O(f(N),O(g(N)))$</li>
-<li>$ T_1(N) <em> T_2(N)=O(f(N) </em> g(N))$</li>
-</ul>
-<h3 id="法则2"><a href="#法则2" class="headerlink" title="法则2"></a>法则2</h3><p>$如果T(N)是一个k次多项式，则T(N)=\Theta(N^k)$</p>
-<h3 id="法则3"><a href="#法则3" class="headerlink" title="法则3"></a>法则3</h3><p>$对任意常数k,log^k N = O(N)$</p>
-<blockquote>
-<p>注意</p>
-<ol>
-<li>在大O表示发中，忽略常数和低阶项，比如$T(N) = O(2N^2)$和$T(N)=O(N^2 + N)$都应该表示为$T(N)=O(N^2)$</li>
-<li>可以通过计算极限$\lim_{n-&gt;\infty}{f(N)/g(N)}$来确定两个函数$f(N)和g(N)$的增长率。如果极限为0，则$f(N)=o(g(N))$;如果为不等于0的常数则$f(N)=\Theta(g(N))$;如果极限是$\infty$，则$g(N)=o(f(N))$;如果极限摆动，则二者无关(算法分析中不会出现这种情况)。</li>
-</ol>
-</blockquote>
-
+        false
       
     </div>
 
