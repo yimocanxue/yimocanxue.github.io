@@ -301,6 +301,7 @@
             
   <section id="posts" class="posts-expand">
     
+      <!--加密的文章不列出来-->
       	
       	
 
@@ -315,7 +316,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://xuh.io/20151128/56cf4d4.html">
+    <link itemprop="mainEntityOfPage" href="https://xuh.io/20151128/294fe70.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="David.xu">
@@ -334,7 +335,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/20151128/56cf4d4.html" itemprop="url">一个 git hook自动部署脚本</a></h1>
+                <a class="post-title-link" href="/20151128/294fe70.html" itemprop="url">CentOS安装samba服务</a></h1>
         
 
         <div class="post-meta">
@@ -369,8 +370,19 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/工具-版本管理/" itemprop="url" rel="index">
-                    <span itemprop="name">工具/版本管理</span>
+                  <a href="/categories/运维/" itemprop="url" rel="index">
+                    <span itemprop="name">运维</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/运维/系统管理/" itemprop="url" rel="index">
+                    <span itemprop="name">系统管理</span>
                   </a>
                 </span>
 
@@ -405,11 +417,15 @@
       
         
           
-          http://www.ihorve.com/?p123456789101112131415161718192021222324252627282930313233343536373839#!/bin/sh## git autodeploy script when it matches string 
+          检查是否有安装samba服务：
+$ rpm -qa | grep samba
+如果没安装则yum安装
+$ yum -y install samba samba-client samba-common
+默认的安装目录是/etc/samba，配置文件为smb.conf,先备份下smb文件$ cd /et
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/20151128/56cf4d4.html#more" rel="contents">
+            <a class="btn" href="/20151128/294fe70.html#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
