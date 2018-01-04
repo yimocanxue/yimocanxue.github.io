@@ -46,7 +46,7 @@ window.onload = function(){
 		doDecrypt(cachePwd, onError); 
 } 
 </script>
-<div id="enc_content" style="display:none">U2FsdGVkX19UHoRgZq4YZxCmfRE/oPsMeFxN/iUGpk1pulQoEfTx3rH728Vpt37rDbo1fOBVEz1+lJubPY9cGQ==</div><div id="enc_passwd" style="text-align: center;margin-bottom: 300px;position: relative;"> <input id="enc_pwd_input" type="text" style="border-radius: 17px;border: 1px solid #ccc;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 20px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}" placeholder="报上暗号，比如天王盖地虎^_^"> <input type="submit" value="对暗号" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 3px;background-color: white;margin-left: 3px;vertical-align: top;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
+<div id="enc_content" style="display:none">U2FsdGVkX19dBVm8nb9cdG+VJjBryrpK6fiGxETpJtT/fJBmzTMwIjWbcOj7FzNH4mFv4wClh2CnvG2Fr+N/mA==</div><div id="enc_passwd" style="text-align: center;margin-bottom: 300px;position: relative;"> <input id="enc_pwd_input" type="text" style="border-radius: 17px;border: 1px solid #ccc;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 20px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}" placeholder="报上暗号，比如天王盖地虎^_^"> <input type="submit" value="对暗号" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 3px;background-color: white;margin-left: 3px;vertical-align: top;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
 <script>
 var onError = function(error) {
 	document.getElementById("enc_error").innerHTML = "password error!"
@@ -76,11 +76,11 @@ var CACHE_KEY = &quot;hexo-x-&quot; + window.location.pathname.substr(window.loc
   </entry>
   
   <entry>
-    <title>使用centos7</title>
+    <title>使用centos7 firewall-cmd做端口转发</title>
     <link href="https://xuh.io/20171227/a395cd40.html"/>
     <id>https://xuh.io/20171227/a395cd40.html</id>
     <published>2017-12-27T07:27:41.000Z</published>
-    <updated>2018-01-04T14:54:48.672Z</updated>
+    <updated>2018-01-04T14:56:23.526Z</updated>
     
     <content type="html"><![CDATA[<p>可以做端口转发的工具有很多，centos7以前的防火墙软件iptables就是其中之一，但是因为使用复杂，centos7以后被firewall代替了，下面就简单看看怎么用它来做端口转发。</p>
 <h3 id="开通伪IP"><a href="#开通伪IP" class="headerlink" title="开通伪IP"></a>开通伪IP</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> firewall-cmd --query-masquerade</div><div class="line"><span class="meta">#</span> 如果没有开通，则开通</div><div class="line"><span class="meta">$</span> firewall-cmd --add-masquerade --permanent</div><div class="line"><span class="meta">$</span> firewall-cmd --reload</div></pre></td></tr></table></figure>

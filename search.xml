@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[测试加密]]></title>
     <url>%2F20180103%2Fd1ee6067.html</url>
-    <content type="text"><![CDATA[var CACHE_KEY = "hexo-x-" + window.location.pathname.substr(window.location.pathname.lastIndexOf("/") + 1).split(".")[0]; function doDecrypt(pwd, onError) { //console.log("in doDecrypt"); var txt = document.getElementById("enc_content").innerHTML; var plantext; try { var bytes = CryptoJS.AES.decrypt(txt, pwd); plaintext = bytes.toString(CryptoJS.enc.Utf8); cookie.set(CACHE_KEY,pwd,{path:"/",expires: 1}); } catch(err) { if(onError) {onError(err);} return; } document.getElementById("enc_content").innerHTML = plaintext; document.getElementById("enc_content").style.display = "block"; document.getElementById("enc_passwd").style.display = "none"; } window.onload = function(){ var cachePwd = cookie.get(CACHE_KEY)||"" if(cachePwd !== "") doDecrypt(cachePwd, onError); } U2FsdGVkX19UHoRgZq4YZxCmfRE/oPsMeFxN/iUGpk1pulQoEfTx3rH728Vpt37rDbo1fOBVEz1+lJubPY9cGQ== var onError = function(error) { document.getElementById("enc_error").innerHTML = "password error!" }; function decrypt() { var passwd = document.getElementById("enc_pwd_input").value; console.log(passwd); doDecrypt(passwd, onError); }]]></content>
+    <content type="text"><![CDATA[var CACHE_KEY = "hexo-x-" + window.location.pathname.substr(window.location.pathname.lastIndexOf("/") + 1).split(".")[0]; function doDecrypt(pwd, onError) { //console.log("in doDecrypt"); var txt = document.getElementById("enc_content").innerHTML; var plantext; try { var bytes = CryptoJS.AES.decrypt(txt, pwd); plaintext = bytes.toString(CryptoJS.enc.Utf8); cookie.set(CACHE_KEY,pwd,{path:"/",expires: 1}); } catch(err) { if(onError) {onError(err);} return; } document.getElementById("enc_content").innerHTML = plaintext; document.getElementById("enc_content").style.display = "block"; document.getElementById("enc_passwd").style.display = "none"; } window.onload = function(){ var cachePwd = cookie.get(CACHE_KEY)||"" if(cachePwd !== "") doDecrypt(cachePwd, onError); } U2FsdGVkX19dBVm8nb9cdG+VJjBryrpK6fiGxETpJtT/fJBmzTMwIjWbcOj7FzNH4mFv4wClh2CnvG2Fr+N/mA== var onError = function(error) { document.getElementById("enc_error").innerHTML = "password error!" }; function decrypt() { var passwd = document.getElementById("enc_pwd_input").value; console.log(passwd); doDecrypt(passwd, onError); }]]></content>
       <categories>
         <category>车加家</category>
         <category>产品文档</category>
@@ -13,7 +13,7 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[使用centos7]]></title>
+    <title><![CDATA[使用centos7 firewall-cmd做端口转发]]></title>
     <url>%2F20171227%2Fa395cd40.html</url>
     <content type="text"><![CDATA[可以做端口转发的工具有很多，centos7以前的防火墙软件iptables就是其中之一，但是因为使用复杂，centos7以后被firewall代替了，下面就简单看看怎么用它来做端口转发。 开通伪IP1234$ firewall-cmd --query-masquerade# 如果没有开通，则开通$ firewall-cmd --add-masquerade --permanent$ firewall-cmd --reload 设置端口转发12$ firewall-cmd --add-forward-port=port=&lt;开放的本地端口&gt;:proto=tcp:toaddr=&lt;目的主机IP&gt;:toport=&lt;目的主机端口&gt; --permanent$ systecmctl restart firewalld.service OK,就是这么简单]]></content>
       <categories>
