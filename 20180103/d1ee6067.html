@@ -308,7 +308,9 @@
   
 
   
-
+  
+    
+  
 
   
 
@@ -410,42 +412,7 @@
       
 
       
-        <script src=/js/crypto-js.js></script><script>
-var CACHE_KEY = "hexo-x-" + window.location.pathname.substr(window.location.pathname.lastIndexOf("/") + 1).split(".")[0]; 
-function doDecrypt(pwd, onError) {
-	//console.log("in doDecrypt");
-	var txt = document.getElementById("enc_content").innerHTML;
-	var plantext;
-	try {
-	  	var bytes = CryptoJS.AES.decrypt(txt, pwd);
-		plaintext = bytes.toString(CryptoJS.enc.Utf8);
-		cookie.set(CACHE_KEY,pwd,{path:"/",expires: 1}); 
-	} catch(err) {
-		if(onError) {onError(err);}
-		return;
-	}
-	document.getElementById("enc_content").innerHTML = plaintext;
-	document.getElementById("enc_content").style.display = "block";
-   document.getElementById("enc_passwd").style.display = "none";
-}
-window.onload = function(){ 
-	var cachePwd = cookie.get(CACHE_KEY)||"" 
-	if(cachePwd !== "") 
-		doDecrypt(cachePwd, onError); 
-} 
-</script>
-<div id="enc_content" style="display:none">U2FsdGVkX19vW3O7mQsJDZPQnLs+FSyRkDv8igyysW22n1RFMQ4dGLWtmOoaQdtSuMQ/5IvhHBAalKZOOIgORA==</div><div id="enc_passwd" style="text-align: center;margin-bottom: 300px;position: relative;"> <input id="enc_pwd_input" type="text" style="border-radius: 17px;border: 1px solid #ccc;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 20px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}" placeholder="报上暗号，比如天王盖地虎^_^"> <input type="submit" value="对暗号" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 3px;background-color: white;margin-left: 3px;vertical-align: top;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
-<script>
-var onError = function(error) {
-	document.getElementById("enc_error").innerHTML = "password error!"
-};
-function decrypt() {
-var passwd = document.getElementById("enc_pwd_input").value;
-console.log(passwd);
-doDecrypt(passwd, onError);
-}
-</script>
-</div>
+        这是一篇加密内容，抱歉你看不到了
       
     </div>
 
