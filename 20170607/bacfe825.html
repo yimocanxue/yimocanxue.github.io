@@ -308,9 +308,7 @@
   
 
   
-  
 
-  
 
   
 
@@ -412,7 +410,37 @@
       
 
       
-        false
+        <p>算法分析的基础是数学，但是只从走出校门，就很少再接触这些东西，基本上都还给老师了，最近重读算法分析这本书，好多公式又冒出来了，为了以后再接触方便，这里特意记录下来。</p>
+<h1 id="指数"><a href="#指数" class="headerlink" title="指数"></a>指数</h1><p>$$ X^AX^B=X^{A+B} $$<br>$$ { X^A \over X^B } = X^{A-B} $$<br>$$ (X^A)^B = X^{AB} $$<br>$$ X^N + X^N = 2X^N \neq X^{2N} $$<br>$$ 2^N + 2^N = 2^{N+1} $$</p>
+<h1 id="对数"><a href="#对数" class="headerlink" title="对数"></a>对数</h1><p>在计算机科学中，除非又特殊说明，所有对数都是以2为底。</p>
+<h2 id="对数定义"><a href="#对数定义" class="headerlink" title="对数定义"></a>对数定义</h2><p> $ X^A = B ，当且仅当 \log_XB = A $</p>
+<p>根据定义可以推理出几个定理。</p>
+<h2 id="定理1"><a href="#定理1" class="headerlink" title="定理1"></a>定理1</h2><p>$ \log_AB = { \log_CB \over \log_CA}; C &gt; 0 $</p>
+<h2 id="定理2"><a href="#定理2" class="headerlink" title="定理2"></a>定理2</h2><p>$ logAB = logA + logB $</p>
+<h2 id="一些有用的公式"><a href="#一些有用的公式" class="headerlink" title="一些有用的公式"></a>一些有用的公式</h2><p>$$ log{A \over B} = logA - logB $$<br>$$ log(A^B) = BlogA $$<br>$$ logX &lt; X  (对所有X&gt;0成立) $$<br>$$ log1 = 0,log2 = 1,log1024=10, log1048576=20 $$</p>
+<h1 id="级数"><a href="#级数" class="headerlink" title="级数"></a>级数</h1><p>$$ \sum_{i=0}^N 2^i = 2^{N+1} - 1 $$</p>
+<p>$$ \sum_{i=0}^N A^i = { A^{N+1} - 1 \over A - 1} $$</p>
+<p>$$ \sum_{i=0}^N A^i \leq {1 \over 1 - A}; (0 &lt; A &lt; 1) $$</p>
+<p>$$ \sum_{i=0}^\infty = {1 \over 1 - A} ;(0 &lt; A &lt; 1)  $$</p>
+<p>$$ \sum_{i=1}^N = { N(N + 1) \over 2 } \approx {N^2 \over 2} $$</p>
+<p>$$ \sum_{i=1}^N i^2 = {N(N + 1)(2N + 1) \over 6 } \approx {N^3 \over 3} $$</p>
+<p>$$ \sum_{i=1}^N i^k \approx { N^{k+1} \over | k + 1 |};k \neq -1 $$</p>
+<h2 id="欧拉常数"><a href="#欧拉常数" class="headerlink" title="欧拉常数"></a>欧拉常数</h2><p>上面最后一个公式,当k=-1时不成立，此时我们需要另外的一个公式，这个公式在计算机科学中使用要远比在其它学科中使用得多。</p>
+<p>$$ \sum_{i=1}^N { 1 \over i } = H_N  \approx \log_e N,H_N称为调和数  $$</p>
+<p>式中误差γ趋近于0.57721566，这个值称为<code>欧拉常数</code></p>
+<h2 id="两个代数运算公式"><a href="#两个代数运算公式" class="headerlink" title="两个代数运算公式"></a>两个代数运算公式</h2><p>$$ \sum_{i=1}^N f(N) = Nf(N) $$</p>
+<blockquote>
+<p>$ \sum_{i=n_0}^N f(i) = A $</p>
+<p>$ \sum_{i=1}^N f(i) = B $</p>
+<p>$ \sum_{i=1}^{n_0 - 1}f(i) = C,则 A = B - C $</p>
+</blockquote>
+<h1 id="模运算"><a href="#模运算" class="headerlink" title="模运算"></a>模运算</h1><blockquote>
+<p>如果A - B能够被N整除，那么A与B模N同余（congruent），记为： $ A \equiv B(mod N) $</p>
+</blockquote>
+<h2 id="推论"><a href="#推论" class="headerlink" title="推论"></a>推论</h2><blockquote>
+<p>若 $ A \equiv B(mod N) ，则 A + C \equiv B + C(mod N) $<br>若 $ A \equiv B(mod N) ，则 AD \equiv BD(mod N) $</p>
+</blockquote>
+
       
     </div>
 

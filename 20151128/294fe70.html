@@ -308,9 +308,7 @@
   
 
   
-  
 
-  
 
   
 
@@ -412,7 +410,22 @@
       
 
       
-        false
+        <p>检查是否有安装samba服务：</p>
+<p><code>$ rpm -qa | grep samba</code></p>
+<p>如果没安装则yum安装</p>
+<p><code>$ yum -y install samba samba-client samba-common</code></p>
+<p>默认的安装目录是/etc/samba，配置文件为smb.conf,先备份下smb文件<br><code>$ cd /etc/samba</code><br><code>$ cp smb.conf smb.conf.bak</code></p>
+<p>然后编辑smb.conf加入以下内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[remote_dev]</div><div class="line">        path = /alidata/nginx_www/wx.soopj.com</div><div class="line">        public =no</div><div class="line">        writable = yes</div><div class="line">        write list = @www</div><div class="line">        valid users = @www</div></pre></td></tr></table></figure>
+<p>@www是客户端登录所需要的用户，设置nginx的用户密码：</p>
+<p><code>$ smbpasswd -a www</code></p>
+<p>为了避免在启动Samba时出现以下警告信息：rlimit_max: increasing rlimit_max (1024) tominimum Windows limit (16384)，<br>配置内核参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">$ ulimit -n 16384</div><div class="line">$ vi /etc/security/limits.conf</div><div class="line">#在最后加入以下内容</div><div class="line">* - nofile 16384</div></pre></td></tr></table></figure>
+<p>然后运行testparm检测配置文件。</p>
+<p>然后启动服务，关闭防火墙：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ service smb start</div><div class="line">$ service nmb start</div><div class="line">$ service iptables stop</div></pre></td></tr></table></figure>
+<p>centos7后启动服务由systemctl管理，防火墙换成firewalld，因此命令稍有不同。然后客户端即可测试。</p>
+
       
     </div>
 
@@ -475,14 +488,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/20151128/56cf4d4.html" rel="next" title="一个 git hook自动部署脚本">
+                <i class="fa fa-chevron-left"></i> 一个 git hook自动部署脚本
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/20151128/8e316de2.html" rel="prev" title="让nginx支持path_info">
-                让nginx支持path_info <i class="fa fa-chevron-right"></i>
+              <a href="/20151129/1addf0dc.html" rel="prev" title="查询linux版本方法">
+                查询linux版本方法 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

@@ -308,9 +308,7 @@
   
 
   
-  
 
-  
 
   
 
@@ -379,7 +377,19 @@
       
 
       
-        false
+        <h3 id="安装memcached服务"><a href="#安装memcached服务" class="headerlink" title="安装memcached服务"></a>安装memcached服务</h3><p><code>$ yum -y install memcached</code></p>
+<p>把memcached加入开机启动</p>
+<p><code>$ chkconfig memcached on</code></p>
+<p>这个比较简单，yum同时安装依赖的libevent，安装后只要执行memcached -h有输出即安装成功,memcached的默认启动参数可以在/etc/sysconfig/memcached 修改。</p>
+<h3 id="安装memcached扩展依赖的libmemcached"><a href="#安装memcached扩展依赖的libmemcached" class="headerlink" title="安装memcached扩展依赖的libmemcached"></a>安装memcached扩展依赖的libmemcached</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ wget https://launchpad.net/libmemcached/1.0/1.0.18/+download/libmemcached-1.0.18.tar.gz</div><div class="line">$ tar zxvf libmemcached-1.0.18.tar.gz </div><div class="line">$ cd libmemcached-1.0.18</div><div class="line">$ ./configure -prefix=/usr/local/libmemcached -with-memcached</div><div class="line">$ make &amp;&amp; make install</div></pre></td></tr></table></figure>
+<h3 id="安装php-devel"><a href="#安装php-devel" class="headerlink" title="安装php-devel"></a>安装php-devel</h3><p>如果在你php的bin目录下有phpize这个东东这步可以省略，phpize主要用来编译php外挂扩展</p>
+<p><code>$ yum -y install php-devel</code></p>
+<h3 id="安装igbinary扩展"><a href="#安装igbinary扩展" class="headerlink" title="安装igbinary扩展"></a>安装igbinary扩展</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ wget http://pecl.php.net/get/igbinary-1.2.1.tgz</div><div class="line">$ tar zxvf igbinary-1.2.1.tgz</div><div class="line">$ cd igbinary-1.2.1</div><div class="line">$ /alidata/server/php/bin/phpize</div><div class="line">$ ./configure --with-php-config=/alidata/server/php/bin/php-config</div><div class="line">$ make &amp;&amp;  make install</div></pre></td></tr></table></figure>
+<p>然后在在php.ini中增加extension=igbinary.so</p>
+<h3 id="安装memcached扩展"><a href="#安装memcached扩展" class="headerlink" title="安装memcached扩展"></a>安装memcached扩展</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ wget http://pecl.php.net/get/memcached-2.2.0.tgz</div><div class="line">$ tar zxvf memcached-2.2.0.tgz</div><div class="line">$ cd memcached-2.2.0</div><div class="line">$ /alidata/server/php/bin/phpize</div><div class="line">$ ./configure -enable-memcached -enable-memcached-igbinary -enable-memcached-json -with-php-config=/alidata/server/php/bin/php-config -with-zlib-dir -with-libmemcached-dir=/usr/local/libmemcached -prefix=/usr/local/phpmemcached --disable-memcached-sasl</div><div class="line">$ make &amp;&amp; make install</div></pre></td></tr></table></figure>
+<p>最后编辑php.ini，加入memcached扩展<br>extension=memcached.so</p>
+<p>正常情况安装就成功了。</p>
+
       
     </div>
 
