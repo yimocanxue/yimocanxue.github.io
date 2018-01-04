@@ -46,7 +46,7 @@ window.onload = function(){
 		doDecrypt(cachePwd, onError); 
 } 
 </script>
-<div id="enc_content" style="display:none">U2FsdGVkX1+v6jfzWg9FzMJhLgOow69TTtun187nR7b/WPMA6IweGkw3nc93CPb2djhFIFnsDKV7jtd34WIKTw==</div><div id="enc_passwd" style="text-align: center;margin-bottom: 300px;position: relative;"> <input id="enc_pwd_input" type="text" style="border-radius: 17px;border: 1px solid #ccc;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 20px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}" placeholder="报上暗号，比如天王盖地虎^_^"> <input type="submit" value="对暗号" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 3px;background-color: white;margin-left: 3px;vertical-align: top;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
+<div id="enc_content" style="display:none">U2FsdGVkX1+wVJEqUlxEd4LQh6Y1+qaicBeOzB8PgILYb6xoSCTPMBtBdQoVsHzF++APyKXoFMLS4oxNL079LA==</div><div id="enc_passwd" style="text-align: center;margin-bottom: 300px;position: relative;"> <input id="enc_pwd_input" type="text" style="border-radius: 17px;border: 1px solid #ccc;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 20px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}" placeholder="报上暗号，比如天王盖地虎^_^"> <input type="submit" value="对暗号" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 3px;background-color: white;margin-left: 3px;vertical-align: top;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
 <script>
 var onError = function(error) {
 	document.getElementById("enc_error").innerHTML = "password error!"
@@ -768,6 +768,28 @@ var CACHE_KEY = &quot;hexo-x-&quot; + window.location.pathname.substr(window.loc
   </entry>
   
   <entry>
+    <title>一个 git hook自动部署脚本</title>
+    <link href="https://xuh.io/20151128/56cf4d4.html"/>
+    <id>https://xuh.io/20151128/56cf4d4.html</id>
+    <published>2015-11-28T03:21:44.000Z</published>
+    <updated>2018-01-03T17:21:13.135Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight shell"><figcaption><span>http://www.ihorve.com/?p</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="meta"></span></div><div class="line">#!/bin/sh</div><div class="line"><span class="meta">#</span></div><div class="line"><span class="meta">#</span> git autodeploy script when it matches string "[deploy]"</div><div class="line"><span class="meta">#</span></div><div class="line"><span class="meta">#</span> Usage:</div><div class="line"><span class="meta">#</span>    1. put this into the post-receive hook file itself below</div><div class="line"><span class="meta">#</span>    2. `chmod +x post-receive`</div><div class="line"><span class="meta">#</span>    3. Done!</div><div class="line"><span class="meta">#</span> Check the remote git repository whether it is bare</div><div class="line">IS_BARE=$(git rev-parse --is-bare-repository)</div><div class="line">if [ -z "$IS_BARE" ]; then</div><div class="line">    echo &gt;&amp;2 "fatal:post-receive:IS_NOT_BARE"</div><div class="line">    exit 1</div><div class="line">fi</div><div class="line"><span class="meta">#</span> Get the latest commit subject</div><div class="line">SUBJECT=$(git log -1 --pretty=format:"%s")</div><div class="line"><span class="meta">#</span> Deploy the HEAD source to publish</div><div class="line">IS_PULL=$(echo "$SUBJECT"  | grep "\[deploy\]")</div><div class="line">if [ -z "$IS_PULL" ];then</div><div class="line">    echo &gt;&amp;2 "tips:post-receive:IS_NOT_PULL"</div><div class="line">    exit 1</div><div class="line">fi</div><div class="line"><span class="meta">#</span> Check the deploy dir whether is exists</div><div class="line">DEPLOY_DIR=/home/www</div><div class="line">if [ ! -d $DEPLOY_DIR ]; then</div><div class="line">    echo &gt;&amp;2 "fatal:post-receive:DEPLOY_DIR_NOT_EXISTS:\"$DEPLOY_DIR\""</div><div class="line">    exit 1</div><div class="line">fi</div><div class="line"><span class="meta">#</span> Check the deploy dir whether it is git repository</div><div class="line"><span class="meta">#</span>IS_GIT=$(git rev-parse --git-dir 2&gt;/dev/null)</div><div class="line"><span class="meta">#</span>if [ -z "$IS_GIT" ] ;then</div><div class="line"><span class="meta">#</span>    echo &gt;&amp;2 "fatal:post-receive:IS_NOT_GIT"</div><div class="line"><span class="meta">#</span>    exit 1</div><div class="line"><span class="meta">#</span>fi</div><div class="line"><span class="meta">#</span> Goto the deploy dir and pull the latest sources</div><div class="line">cd $DEPLOY_DIR</div><div class="line"><span class="meta">#</span> env -i git reset --hard</div><div class="line">env -i git pull</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;figure class=&quot;highlight shell&quot;&gt;&lt;figcaption&gt;&lt;span&gt;http://www.ihorve.com/?p&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=
+    
+    </summary>
+    
+      <category term="工具/版本管理" scheme="https://xuh.io/categories/%E5%B7%A5%E5%85%B7-%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/"/>
+    
+    
+      <category term="git" scheme="https://xuh.io/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
     <title>让nginx支持path_info</title>
     <link href="https://xuh.io/20151128/8e316de2.html"/>
     <id>https://xuh.io/20151128/8e316de2.html</id>
@@ -792,28 +814,6 @@ var CACHE_KEY = &quot;hexo-x-&quot; + window.location.pathname.substr(window.loc
     
     
       <category term="nginx" scheme="https://xuh.io/tags/nginx/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>一个 git hook自动部署脚本</title>
-    <link href="https://xuh.io/20151128/56cf4d4.html"/>
-    <id>https://xuh.io/20151128/56cf4d4.html</id>
-    <published>2015-11-28T03:21:44.000Z</published>
-    <updated>2018-01-03T17:21:13.135Z</updated>
-    
-    <content type="html"><![CDATA[<figure class="highlight shell"><figcaption><span>http://www.ihorve.com/?p</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="meta"></span></div><div class="line">#!/bin/sh</div><div class="line"><span class="meta">#</span></div><div class="line"><span class="meta">#</span> git autodeploy script when it matches string "[deploy]"</div><div class="line"><span class="meta">#</span></div><div class="line"><span class="meta">#</span> Usage:</div><div class="line"><span class="meta">#</span>    1. put this into the post-receive hook file itself below</div><div class="line"><span class="meta">#</span>    2. `chmod +x post-receive`</div><div class="line"><span class="meta">#</span>    3. Done!</div><div class="line"><span class="meta">#</span> Check the remote git repository whether it is bare</div><div class="line">IS_BARE=$(git rev-parse --is-bare-repository)</div><div class="line">if [ -z "$IS_BARE" ]; then</div><div class="line">    echo &gt;&amp;2 "fatal:post-receive:IS_NOT_BARE"</div><div class="line">    exit 1</div><div class="line">fi</div><div class="line"><span class="meta">#</span> Get the latest commit subject</div><div class="line">SUBJECT=$(git log -1 --pretty=format:"%s")</div><div class="line"><span class="meta">#</span> Deploy the HEAD source to publish</div><div class="line">IS_PULL=$(echo "$SUBJECT"  | grep "\[deploy\]")</div><div class="line">if [ -z "$IS_PULL" ];then</div><div class="line">    echo &gt;&amp;2 "tips:post-receive:IS_NOT_PULL"</div><div class="line">    exit 1</div><div class="line">fi</div><div class="line"><span class="meta">#</span> Check the deploy dir whether is exists</div><div class="line">DEPLOY_DIR=/home/www</div><div class="line">if [ ! -d $DEPLOY_DIR ]; then</div><div class="line">    echo &gt;&amp;2 "fatal:post-receive:DEPLOY_DIR_NOT_EXISTS:\"$DEPLOY_DIR\""</div><div class="line">    exit 1</div><div class="line">fi</div><div class="line"><span class="meta">#</span> Check the deploy dir whether it is git repository</div><div class="line"><span class="meta">#</span>IS_GIT=$(git rev-parse --git-dir 2&gt;/dev/null)</div><div class="line"><span class="meta">#</span>if [ -z "$IS_GIT" ] ;then</div><div class="line"><span class="meta">#</span>    echo &gt;&amp;2 "fatal:post-receive:IS_NOT_GIT"</div><div class="line"><span class="meta">#</span>    exit 1</div><div class="line"><span class="meta">#</span>fi</div><div class="line"><span class="meta">#</span> Goto the deploy dir and pull the latest sources</div><div class="line">cd $DEPLOY_DIR</div><div class="line"><span class="meta">#</span> env -i git reset --hard</div><div class="line">env -i git pull</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;figure class=&quot;highlight shell&quot;&gt;&lt;figcaption&gt;&lt;span&gt;http://www.ihorve.com/?p&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=
-    
-    </summary>
-    
-      <category term="工具/版本管理" scheme="https://xuh.io/categories/%E5%B7%A5%E5%85%B7-%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/"/>
-    
-    
-      <category term="git" scheme="https://xuh.io/tags/git/"/>
     
   </entry>
   
