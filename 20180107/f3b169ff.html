@@ -90,18 +90,20 @@
 
 
 
-<meta name="description" content="var CACHE_KEY = &quot;hexo-x-&quot; + window.location.pathname.substr(window.location.pathname.lastIndexOf(&quot;/&quot;) + 1).split(&quot;.&quot;)[0];  function doDecrypt(pwd, onError) { 	//console.log(&quot;in doDecrypt&quot;); 	var txt">
+<meta name="description" content="停车支付方式总览概述为了规范和统一车加家停车费支付体系语境，方便各产品团队就停车费支付功能的产内内涵和可能拓展外延达成共识，特编写本文档。 文档阅读对象为车加家、同利的产品、开发、运营相关人员。 名词解释   名词 含义     微信APP支付 在车加家的APP(iOS/android)客户端内，呼起微信客户端完成支付然后再返回到车加家APP的支付方式。   微信公众号支付 在微信客户端里打开车加">
 <meta name="keywords" content="支付方式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="车加家停车支付方式说明.md">
 <meta property="og:url" content="https://xuh.io/20180107/f3b169ff.html">
 <meta property="og:site_name" content="金州苍狼">
-<meta property="og:description" content="var CACHE_KEY = &quot;hexo-x-&quot; + window.location.pathname.substr(window.location.pathname.lastIndexOf(&quot;/&quot;) + 1).split(&quot;.&quot;)[0];  function doDecrypt(pwd, onError) { 	//console.log(&quot;in doDecrypt&quot;); 	var txt">
+<meta property="og:description" content="停车支付方式总览概述为了规范和统一车加家停车费支付体系语境，方便各产品团队就停车费支付功能的产内内涵和可能拓展外延达成共识，特编写本文档。 文档阅读对象为车加家、同利的产品、开发、运营相关人员。 名词解释   名词 含义     微信APP支付 在车加家的APP(iOS/android)客户端内，呼起微信客户端完成支付然后再返回到车加家APP的支付方式。   微信公众号支付 在微信客户端里打开车加">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-08T07:46:18.156Z">
+<meta property="og:image" content="http://xuh.cn-etc.com/2018/01/08/1515384914664.png">
+<meta property="og:updated_time" content="2018-01-08T07:47:52.851Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="车加家停车支付方式说明.md">
-<meta name="twitter:description" content="var CACHE_KEY = &quot;hexo-x-&quot; + window.location.pathname.substr(window.location.pathname.lastIndexOf(&quot;/&quot;) + 1).split(&quot;.&quot;)[0];  function doDecrypt(pwd, onError) { 	//console.log(&quot;in doDecrypt&quot;); 	var txt">
+<meta name="twitter:description" content="停车支付方式总览概述为了规范和统一车加家停车费支付体系语境，方便各产品团队就停车费支付功能的产内内涵和可能拓展外延达成共识，特编写本文档。 文档阅读对象为车加家、同利的产品、开发、运营相关人员。 名词解释   名词 含义     微信APP支付 在车加家的APP(iOS/android)客户端内，呼起微信客户端完成支付然后再返回到车加家APP的支付方式。   微信公众号支付 在微信客户端里打开车加">
+<meta name="twitter:image" content="http://xuh.cn-etc.com/2018/01/08/1515384914664.png">
 
 
 
@@ -309,8 +311,6 @@
 
   
   
-    
-  
 
   
 
@@ -412,42 +412,63 @@
       
 
       
-        <script src=/js/crypto-js.js></script><script>
-var CACHE_KEY = "hexo-x-" + window.location.pathname.substr(window.location.pathname.lastIndexOf("/") + 1).split(".")[0]; 
-function doDecrypt(pwd, onError) {
-	//console.log("in doDecrypt");
-	var txt = document.getElementById("enc_content").innerHTML;
-	var plantext;
-	try {
-	  	var bytes = CryptoJS.AES.decrypt(txt, pwd);
-		plaintext = bytes.toString(CryptoJS.enc.Utf8);
-		cookie.set(CACHE_KEY,pwd,{path:"/",expires: 1}); 
-	} catch(err) {
-		if(onError) {onError(err);}
-		return;
-	}
-	document.getElementById("enc_content").innerHTML = plaintext;
-	document.getElementById("enc_content").style.display = "block";
-   document.getElementById("enc_passwd").style.display = "none";
-}
-window.onload = function(){ 
-	var cachePwd = cookie.get(CACHE_KEY)||"" 
-	if(cachePwd !== "") 
-		doDecrypt(cachePwd, onError); 
-} 
-</script>
-<div id="enc_content" style="display:none">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</div><div id="enc_passwd" style="text-align: center;margin-bottom: 300px;position: relative;"> <input id="enc_pwd_input" type="text" style="border-radius: 17px;border: 1px solid #ccc;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 20px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}" placeholder="报上暗号，比如天王盖地虎^_^"> <input type="submit" value="对暗号" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 3px;background-color: white;margin-left: 3px;vertical-align: top;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
-<script>
-var onError = function(error) {
-	document.getElementById("enc_error").innerHTML = "password error!"
-};
-function decrypt() {
-var passwd = document.getElementById("enc_pwd_input").value;
-console.log(passwd);
-doDecrypt(passwd, onError);
-}
-</script>
-</div>
+        <h1 id="停车支付方式总览"><a href="#停车支付方式总览" class="headerlink" title="停车支付方式总览"></a>停车支付方式总览</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>为了规范和统一车加家停车费支付体系语境，方便各产品团队就停车费支付功能的产内内涵和可能拓展外延达成共识，特编写本文档。</p>
+<p>文档阅读对象为车加家、同利的产品、开发、运营相关人员。</p>
+<h2 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h2><table>
+<thead>
+<tr>
+<th>名词</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>微信APP支付</td>
+<td>在车加家的APP(iOS/android)客户端内，呼起微信客户端完成支付然后再返回到车加家APP的支付方式。</td>
+</tr>
+<tr>
+<td>微信公众号支付</td>
+<td>在微信客户端里打开车加家的公众号web页面发起的支付方式</td>
+</tr>
+<tr>
+<td>微信H5支付</td>
+<td>在微信客户端以外打开车加家缴费页面并选择微信支付，然后呼起微信客户端完成支付流程后跳回支付结果页的支付方式</td>
+</tr>
+</tbody>
+</table>
+<p><img src="http://xuh.cn-etc.com/2018/01/08/1515384914664.png" alt=""></p>
+<p><br></p>
+<p>这里为了区分方便，根据支付时机把支付方式分成4大类，即：预付、场内付、出口付、离场扣，前三种是用户主动发起支付，最后一种是无需用户操作情况下被动扣款。</p>
+<h1 id="支付方式详细说明"><a href="#支付方式详细说明" class="headerlink" title="支付方式详细说明"></a>支付方式详细说明</h1><h2 id="预付"><a href="#预付" class="headerlink" title="预付"></a>预付</h2><p>即支付动作发生在车辆入场以前的停车费缴费形式，目前仅包含月卡充值和错峰停车支付。</p>
+<h3 id="月卡"><a href="#月卡" class="headerlink" title="月卡"></a>月卡</h3><p>月卡分传统月卡和电子月卡，传统月卡指车主自行到物业处办理并交纳月费的月卡，其收费主体为物业本身，支付现金流和信息流都不会经过车加家停车系统，缴费后的名单直接在场内生效。</p>
+<p>电子月卡指通过物业办理且通过车加家APP/公众号缴纳月费的月卡，其收费主体为车加家，信息流和现金流都会经过车加家系统。</p>
+<div id="flowchart-0" class="flow-chart"></div>
+
+
+<p><div id="flowchart-1" class="flow-chart"></div></p>
+<p><script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.6.5/flowchart.min.js"></script><textarea id="flowchart-0-code" style="display: none">
+st=>start: Start
+op=>operation: Your Operation
+cond=>condition: Yes or No?
+e=>end
+st->op->cond
+cond(yes)->e
+cond(no)->op</textarea><textarea id="flowchart-0-options" style="display: none">{"scale":1,"line-width":1,"line-length":50,"text-margin":10,"font-size":12}</textarea><script>  var code = document.getElementById("flowchart-0-code").value;  var options = JSON.parse(decodeURIComponent(document.getElementById("flowchart-0-options").value));  var diagram = flowchart.parse(code);  diagram.drawSVG("flowchart-0", options);</script><textarea id="flowchart-1-code" style="display: none">st=>start: Start|past:>http://www.google.com[blank]
+e=>end: End:>http://www.google.com
+op1=>operation: My Operation|past
+op2=>operation: Stuff|current
+sub1=>subroutine: My Subroutine|invalid
+cond=>condition: Yes
+or No?|approved:>http://www.google.com
+c2=>condition: Good idea|rejected
+io=>inputoutput: catch something...|request
+
+st->op1(right)->cond
+cond(yes, right)->c2
+cond(no)->sub1(left)->op1
+c2(yes)->io->e
+c2(no)->op2->e</textarea><textarea id="flowchart-1-options" style="display: none">{"scale":1,"line-width":1,"line-length":50,"text-margin":10,"font-size":12}</textarea><script>  var code = document.getElementById("flowchart-1-code").value;  var options = JSON.parse(decodeURIComponent(document.getElementById("flowchart-1-options").value));  var diagram = flowchart.parse(code);  diagram.drawSVG("flowchart-1", options);</script></p>
+
       
     </div>
 
@@ -588,8 +609,17 @@ doDecrypt(passwd, onError);
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar.jpg"
@@ -658,6 +688,22 @@ doDecrypt(passwd, onError);
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#停车支付方式总览"><span class="nav-number">1.</span> <span class="nav-text">停车支付方式总览</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#名词解释"><span class="nav-number">1.2.</span> <span class="nav-text">名词解释</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#支付方式详细说明"><span class="nav-number">2.</span> <span class="nav-text">支付方式详细说明</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#预付"><span class="nav-number">2.1.</span> <span class="nav-text">预付</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#月卡"><span class="nav-number">2.1.1.</span> <span class="nav-text">月卡</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
