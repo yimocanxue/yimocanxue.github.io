@@ -90,20 +90,18 @@
 
 
 
-<meta name="description" content="停车支付方式总览概述为了规范和统一车加家停车费支付体系语境，方便各产品团队就停车费支付功能的产内内涵和可能拓展外延达成共识，特编写本文档。 文档阅读对象为车加家、同利的产品、开发、运营相关人员。 名词解释   名词 含义     微信APP支付 在车加家的APP(iOS/android)客户端内，呼起微信客户端完成支付然后再返回到车加家APP的支付方式。   微信公众号支付 在微信客户端里打开车加">
+<meta name="description" content="var CACHE_KEY = &quot;hexo-x-&quot; + window.location.pathname.substr(window.location.pathname.lastIndexOf(&quot;/&quot;) + 1).split(&quot;.&quot;)[0];  function doDecrypt(pwd, onError) { 	//console.log(&quot;in doDecrypt&quot;); 	var txt">
 <meta name="keywords" content="支付方式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="车加家停车支付方式说明.md">
 <meta property="og:url" content="https://xuh.io/20180107/f3b169ff.html">
 <meta property="og:site_name" content="金州苍狼">
-<meta property="og:description" content="停车支付方式总览概述为了规范和统一车加家停车费支付体系语境，方便各产品团队就停车费支付功能的产内内涵和可能拓展外延达成共识，特编写本文档。 文档阅读对象为车加家、同利的产品、开发、运营相关人员。 名词解释   名词 含义     微信APP支付 在车加家的APP(iOS/android)客户端内，呼起微信客户端完成支付然后再返回到车加家APP的支付方式。   微信公众号支付 在微信客户端里打开车加">
+<meta property="og:description" content="var CACHE_KEY = &quot;hexo-x-&quot; + window.location.pathname.substr(window.location.pathname.lastIndexOf(&quot;/&quot;) + 1).split(&quot;.&quot;)[0];  function doDecrypt(pwd, onError) { 	//console.log(&quot;in doDecrypt&quot;); 	var txt">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://xuh.cn-etc.com/2018/01/08/1515384914664.png">
-<meta property="og:updated_time" content="2018-01-08T07:47:52.851Z">
+<meta property="og:updated_time" content="2018-01-08T07:58:27.032Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="车加家停车支付方式说明.md">
-<meta name="twitter:description" content="停车支付方式总览概述为了规范和统一车加家停车费支付体系语境，方便各产品团队就停车费支付功能的产内内涵和可能拓展外延达成共识，特编写本文档。 文档阅读对象为车加家、同利的产品、开发、运营相关人员。 名词解释   名词 含义     微信APP支付 在车加家的APP(iOS/android)客户端内，呼起微信客户端完成支付然后再返回到车加家APP的支付方式。   微信公众号支付 在微信客户端里打开车加">
-<meta name="twitter:image" content="http://xuh.cn-etc.com/2018/01/08/1515384914664.png">
+<meta name="twitter:description" content="var CACHE_KEY = &quot;hexo-x-&quot; + window.location.pathname.substr(window.location.pathname.lastIndexOf(&quot;/&quot;) + 1).split(&quot;.&quot;)[0];  function doDecrypt(pwd, onError) { 	//console.log(&quot;in doDecrypt&quot;); 	var txt">
 
 
 
@@ -311,6 +309,8 @@
 
   
   
+    
+  
 
   
 
@@ -412,63 +412,42 @@
       
 
       
-        <h1 id="停车支付方式总览"><a href="#停车支付方式总览" class="headerlink" title="停车支付方式总览"></a>停车支付方式总览</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>为了规范和统一车加家停车费支付体系语境，方便各产品团队就停车费支付功能的产内内涵和可能拓展外延达成共识，特编写本文档。</p>
-<p>文档阅读对象为车加家、同利的产品、开发、运营相关人员。</p>
-<h2 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h2><table>
-<thead>
-<tr>
-<th>名词</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>微信APP支付</td>
-<td>在车加家的APP(iOS/android)客户端内，呼起微信客户端完成支付然后再返回到车加家APP的支付方式。</td>
-</tr>
-<tr>
-<td>微信公众号支付</td>
-<td>在微信客户端里打开车加家的公众号web页面发起的支付方式</td>
-</tr>
-<tr>
-<td>微信H5支付</td>
-<td>在微信客户端以外打开车加家缴费页面并选择微信支付，然后呼起微信客户端完成支付流程后跳回支付结果页的支付方式</td>
-</tr>
-</tbody>
-</table>
-<p><img src="http://xuh.cn-etc.com/2018/01/08/1515384914664.png" alt=""></p>
-<p><br></p>
-<p>这里为了区分方便，根据支付时机把支付方式分成4大类，即：预付、场内付、出口付、离场扣，前三种是用户主动发起支付，最后一种是无需用户操作情况下被动扣款。</p>
-<h1 id="支付方式详细说明"><a href="#支付方式详细说明" class="headerlink" title="支付方式详细说明"></a>支付方式详细说明</h1><h2 id="预付"><a href="#预付" class="headerlink" title="预付"></a>预付</h2><p>即支付动作发生在车辆入场以前的停车费缴费形式，目前仅包含月卡充值和错峰停车支付。</p>
-<h3 id="月卡"><a href="#月卡" class="headerlink" title="月卡"></a>月卡</h3><p>月卡分传统月卡和电子月卡，传统月卡指车主自行到物业处办理并交纳月费的月卡，其收费主体为物业本身，支付现金流和信息流都不会经过车加家停车系统，缴费后的名单直接在场内生效。</p>
-<p>电子月卡指通过物业办理且通过车加家APP/公众号缴纳月费的月卡，其收费主体为车加家，信息流和现金流都会经过车加家系统。</p>
-<div id="flowchart-0" class="flow-chart"></div>
-
-
-<p><div id="flowchart-1" class="flow-chart"></div></p>
-<p><script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.6.5/flowchart.min.js"></script><textarea id="flowchart-0-code" style="display: none">
-st=>start: Start
-op=>operation: Your Operation
-cond=>condition: Yes or No?
-e=>end
-st->op->cond
-cond(yes)->e
-cond(no)->op</textarea><textarea id="flowchart-0-options" style="display: none">{"scale":1,"line-width":1,"line-length":50,"text-margin":10,"font-size":12}</textarea><script>  var code = document.getElementById("flowchart-0-code").value;  var options = JSON.parse(decodeURIComponent(document.getElementById("flowchart-0-options").value));  var diagram = flowchart.parse(code);  diagram.drawSVG("flowchart-0", options);</script><textarea id="flowchart-1-code" style="display: none">st=>start: Start|past:>http://www.google.com[blank]
-e=>end: End:>http://www.google.com
-op1=>operation: My Operation|past
-op2=>operation: Stuff|current
-sub1=>subroutine: My Subroutine|invalid
-cond=>condition: Yes
-or No?|approved:>http://www.google.com
-c2=>condition: Good idea|rejected
-io=>inputoutput: catch something...|request
-
-st->op1(right)->cond
-cond(yes, right)->c2
-cond(no)->sub1(left)->op1
-c2(yes)->io->e
-c2(no)->op2->e</textarea><textarea id="flowchart-1-options" style="display: none">{"scale":1,"line-width":1,"line-length":50,"text-margin":10,"font-size":12}</textarea><script>  var code = document.getElementById("flowchart-1-code").value;  var options = JSON.parse(decodeURIComponent(document.getElementById("flowchart-1-options").value));  var diagram = flowchart.parse(code);  diagram.drawSVG("flowchart-1", options);</script></p>
-
+        <script src=/js/crypto-js.js></script><script>
+var CACHE_KEY = "hexo-x-" + window.location.pathname.substr(window.location.pathname.lastIndexOf("/") + 1).split(".")[0]; 
+function doDecrypt(pwd, onError) {
+	//console.log("in doDecrypt");
+	var txt = document.getElementById("enc_content").innerHTML;
+	var plantext;
+	try {
+	  	var bytes = CryptoJS.AES.decrypt(txt, pwd);
+		plaintext = bytes.toString(CryptoJS.enc.Utf8);
+		cookie.set(CACHE_KEY,pwd,{path:"/",expires: 1}); 
+	} catch(err) {
+		if(onError) {onError(err);}
+		return;
+	}
+	document.getElementById("enc_content").innerHTML = plaintext;
+	document.getElementById("enc_content").style.display = "block";
+   document.getElementById("enc_passwd").style.display = "none";
+}
+window.onload = function(){ 
+	var cachePwd = cookie.get(CACHE_KEY)||"" 
+	if(cachePwd !== "") 
+		doDecrypt(cachePwd, onError); 
+} 
+</script>
+<div id="enc_content" style="display:none">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</div><div id="enc_passwd" style="text-align: center;margin-bottom: 300px;position: relative;"> <input id="enc_pwd_input" type="text" style="border-radius: 17px;border: 1px solid #ccc;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 20px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}" placeholder="报上暗号，比如天王盖地虎^_^"> <input type="submit" value="对暗号" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 3px;background-color: white;margin-left: 3px;vertical-align: top;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
+<script>
+var onError = function(error) {
+	document.getElementById("enc_error").innerHTML = "password error!"
+};
+function decrypt() {
+var passwd = document.getElementById("enc_pwd_input").value;
+console.log(passwd);
+doDecrypt(passwd, onError);
+}
+</script>
+</div>
       
     </div>
 
@@ -609,17 +588,8 @@ c2(no)->op2->e</textarea><textarea id="flowchart-1-options" style="display: none
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar.jpg"
@@ -688,22 +658,6 @@ c2(no)->op2->e</textarea><textarea id="flowchart-1-options" style="display: none
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#停车支付方式总览"><span class="nav-number">1.</span> <span class="nav-text">停车支付方式总览</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#名词解释"><span class="nav-number">1.2.</span> <span class="nav-text">名词解释</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#支付方式详细说明"><span class="nav-number">2.</span> <span class="nav-text">支付方式详细说明</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#预付"><span class="nav-number">2.1.</span> <span class="nav-text">预付</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#月卡"><span class="nav-number">2.1.1.</span> <span class="nav-text">月卡</span></a></li></ol></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
