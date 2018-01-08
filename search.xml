@@ -197,18 +197,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[CentOS安装samba服务]]></title>
-    <url>%2F20151128%2F294fe70.html</url>
-    <content type="text"><![CDATA[检查是否有安装samba服务： $ rpm -qa | grep samba 如果没安装则yum安装 $ yum -y install samba samba-client samba-common 默认的安装目录是/etc/samba，配置文件为smb.conf,先备份下smb文件$ cd /etc/samba$ cp smb.conf smb.conf.bak 然后编辑smb.conf加入以下内容： 123456[remote_dev] path = /alidata/nginx_www/wx.soopj.com public =no writable = yes write list = @www valid users = @www @www是客户端登录所需要的用户，设置nginx的用户密码： $ smbpasswd -a www 为了避免在启动Samba时出现以下警告信息：rlimit_max: increasing rlimit_max (1024) tominimum Windows limit (16384)，配置内核参数 12345$ ulimit -n 16384$ vi /etc/security/limits.conf#在最后加入以下内容* - nofile 16384 然后运行testparm检测配置文件。 然后启动服务，关闭防火墙： 123$ service smb start$ service nmb start$ service iptables stop centos7后启动服务由systemctl管理，防火墙换成firewalld，因此命令稍有不同。然后客户端即可测试。]]></content>
-      <categories>
-        <category>运维</category>
-        <category>系统管理</category>
-      </categories>
-      <tags>
-        <tag>samba</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[让nginx支持path_info]]></title>
     <url>%2F20151128%2F8e316de2.html</url>
     <content type="text"><![CDATA[nginx默认是不支持path_info模式的，也就是说不支持index.php/*这样的url，因此像Thinkphp中URL model为2的那种路径方式nginx不支持。 只要修改虚拟主机的下面三个地方即可： 12345678910location ~ .php &#123; #删除.php后的$ fastcgi_pass soopj_phpfcgi; fastcgi_index default.php; fastcgi_split_path_info ^((?U).+.php)(/?.+)$; #增加这句 fastcgi_param PATH_INFO $fastcgi_path_info; #增加这句 fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name; include fastcgi_params; &#125;]]></content>
@@ -218,6 +206,18 @@
       </categories>
       <tags>
         <tag>nginx</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[CentOS安装samba服务]]></title>
+    <url>%2F20151128%2F294fe70.html</url>
+    <content type="text"><![CDATA[检查是否有安装samba服务： $ rpm -qa | grep samba 如果没安装则yum安装 $ yum -y install samba samba-client samba-common 默认的安装目录是/etc/samba，配置文件为smb.conf,先备份下smb文件$ cd /etc/samba$ cp smb.conf smb.conf.bak 然后编辑smb.conf加入以下内容： 123456[remote_dev] path = /alidata/nginx_www/wx.soopj.com public =no writable = yes write list = @www valid users = @www @www是客户端登录所需要的用户，设置nginx的用户密码： $ smbpasswd -a www 为了避免在启动Samba时出现以下警告信息：rlimit_max: increasing rlimit_max (1024) tominimum Windows limit (16384)，配置内核参数 12345$ ulimit -n 16384$ vi /etc/security/limits.conf#在最后加入以下内容* - nofile 16384 然后运行testparm检测配置文件。 然后启动服务，关闭防火墙： 123$ service smb start$ service nmb start$ service iptables stop centos7后启动服务由systemctl管理，防火墙换成firewalld，因此命令稍有不同。然后客户端即可测试。]]></content>
+      <categories>
+        <category>运维</category>
+        <category>系统管理</category>
+      </categories>
+      <tags>
+        <tag>samba</tag>
       </tags>
   </entry>
 </search>
