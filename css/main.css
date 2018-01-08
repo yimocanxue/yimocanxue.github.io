@@ -406,7 +406,7 @@ table>tbody>tr:hover {
 caption,
 th,
 td {
-  padding: 8px;
+  padding: 5px;
   text-align: left;
   vertical-align: middle;
   font-weight: normal;
@@ -1812,7 +1812,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #8e9c33;
+  background: #36ffff;
 }
 .links-of-blogroll {
   font-size: 13px;
