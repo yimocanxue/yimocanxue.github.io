@@ -1812,7 +1812,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ffffd1;
+  background: #40d24a;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2980,6 +2980,10 @@ pre .javascript .function {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+.post-body {
+  word-wrap: break-word;
+  word-break: break-all;
 }
 @media (max-width: 767px) {
   .post-body {
