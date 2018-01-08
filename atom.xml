@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://xuh.io/"/>
-  <updated>2018-01-08T17:16:46.323Z</updated>
+  <updated>2018-01-08T17:17:36.184Z</updated>
   <id>https://xuh.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://xuh.io/20180107/f3b169ff.html"/>
     <id>https://xuh.io/20180107/f3b169ff.html</id>
     <published>2018-01-07T09:57:35.000Z</published>
-    <updated>2018-01-08T17:16:46.323Z</updated>
+    <updated>2018-01-08T17:17:36.184Z</updated>
     
     <content type="html"><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>为了规范和统一车加家停车费支付体系语境，方便各产品团队就停车费支付功能的产内内涵和可能拓展外延达成共识，特编写本文档。</p>
 <h2 id="阅读对象"><a href="#阅读对象" class="headerlink" title="阅读对象"></a>阅读对象</h2><p>文档阅读对象为车加家、同利的产品、开发、运营相关人员。</p>
@@ -59,9 +59,6 @@
 <tr>
 <td>微信H5支付</td>
 <td>在微信客户端以外打开车加家缴费页面并选择微信支付，然后呼起微信客户端完成支付流程后跳回支付结果页的支付方式</td>
-</tr>
-<tr>
-<td></td>
 </tr>
 </tbody>
 </table>
