@@ -51,7 +51,7 @@ a[c].split("="),g=e.decode(k.shift()),k=e.decode(k.join("="));b[g]=k}return b};b
             return false;
 
         if (prompt('请对暗号') === pwd){
-            cookie.set(CACHE_KEY,page.passwd,{path:"/",expires: 1});
+            cookie.set(CACHE_KEY,pwd,{path:"/",expires: 1});
         }else{
             alert('暗号不对，拖出去砍了！');
             history.back();
