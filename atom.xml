@@ -24,7 +24,43 @@
     
     <content type="html"><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>为了规范和统一车加家停车费支付体系语境，方便各产品团队就停车费支付功能的产内内涵和可能拓展外延达成共识，特编写本文档。</p>
 <h2 id="阅读对象"><a href="#阅读对象" class="headerlink" title="阅读对象"></a>阅读对象</h2><p>文档阅读对象为车加家、同利的产品、开发、运营相关人员。</p>
-<h2 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h2><table><br>    <tr><br>        <td style="width:150px">名词</td><br>        <td style="width:100px">缩写</td><br>        <td>说明</td><br>    </tr><br>    <tr><br>        <td>悦生活内嵌H5</td><br>        <td>PAPPCCB</td><br>        <td>指嵌入建行APP悦生活频道提供无感支付缴费服务的H5应用。</td><br>    </tr><br>    <tr><br>        <td>用户</td><br>        <td></td><br>        <td>本文档用户特指车加家APP的车主会员。</td><br>    </tr><br>    <tr><br>        <td>客户端</td><br>        <td></td><br>        <td>本文档客户端指包含车加家APP(iOS/android)、车加家公众号应用、其它一切以扫码器或浏览器访问的车加家WEB应用。</td><br>    </tr><br>    <tr><br>        <td>微信APP支付</td><br>        <td>WXNativePay</td><br>        <td>在车加家的APP(iOS/android)客户端内，呼起微信客户端完成支付然后再返回到车加家APP的支付方式。</td><br>    </tr><br>    <tr><br>        <td>微信公众号支付</td><br>        <td>WXJSPay</td><br>        <td>在微信客户端里打开车加家的公众号web页面发起的支付方式</td><br>    </tr><br>    <tr><br>        <td>微信H5支付</td><br>        <td>WXH5Pay</td><br>        <td>在微信客户端里打开车加家的公众号web页面发起的支付方式</td><br>    </tr><br></table>
+<h2 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h2><table>
+    <tr>
+        <td style="width:150px">名词</td>
+        <td style="width:100px">缩写</td>
+        <td>说明</td>
+    </tr>
+    <tr>
+        <td>悦生活内嵌H5</td>
+        <td>PAPPCCB</td>
+        <td>指嵌入建行APP悦生活频道提供无感支付缴费服务的H5应用。</td>
+    </tr>
+    <tr>
+        <td>用户</td>
+        <td></td>
+        <td>本文档用户特指车加家APP的车主会员。</td>
+    </tr>
+    <tr>
+        <td>客户端</td>
+        <td></td>
+        <td>本文档客户端指包含车加家APP(iOS/android)、车加家公众号应用、其它一切以扫码器或浏览器访问的车加家WEB应用。</td>
+    </tr>
+    <tr>
+        <td>微信APP支付</td>
+        <td>WXNativePay</td>
+        <td>在车加家的APP(iOS/android)客户端内，呼起微信客户端完成支付然后再返回到车加家APP的支付方式。</td>
+    </tr>
+    <tr>
+        <td>微信公众号支付</td>
+        <td>WXJSPay</td>
+        <td>在微信客户端里打开车加家的公众号web页面发起的支付方式</td>
+    </tr>
+    <tr>
+        <td>微信H5支付</td>
+        <td>WXH5Pay</td>
+        <td>在微信客户端里打开车加家的公众号web页面发起的支付方式</td>
+    </tr>
+</table>
 
 
 <h2 id="支付方式概览"><a href="#支付方式概览" class="headerlink" title="支付方式概览"></a>支付方式概览</h2><p>这里为了区分方便，根据支付动作是用户主动发起还是被动扣缴把支付方式分为主动支付和被动支付两大类，被动支付包含出口(收费岗亭)付、离场付；主动付包括预付和场内付。</p>
@@ -91,7 +127,8 @@
     <updated>2018-01-03T17:21:13.129Z</updated>
     
     <content type="html"><![CDATA[<h3 id="编写切割日志脚本"><a href="#编写切割日志脚本" class="headerlink" title="编写切割日志脚本"></a>编写切割日志脚本</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line"></div><div class="line">LOG_PATH=/server/log/nginx</div><div class="line">BACKUP_PATH=$&#123;LOG_PATH&#125;/backup</div><div class="line"></div><div class="line">CURRENT_FILE=&quot;&quot;</div><div class="line"></div><div class="line"># 备份目录不存在则创建</div><div class="line">[[ ! -x &quot;$&#123;BACKUP_PATH&#125;&quot; ]] &amp;&amp; &#123; mkdir -p $BACKUP_PATH ; &#125;</div><div class="line"></div><div class="line"># 遍历日志文件并备份</div><div class="line">for file in `ls $&#123;LOG_PATH&#125;`;do</div><div class="line">    CURRENT_FILE=&quot;$&#123;LOG_PATH&#125;/$&#123;file&#125;&quot;</div><div class="line">    if [[ -f &quot;$&#123;CURRENT_FILE&#125;&quot; &amp;&amp; &quot;$&#123;file: -4&#125;&quot; = &quot;.log&quot; ]];then</div><div class="line">        echo $&#123;file%.*&#125;</div><div class="line">        mv &quot;$&#123;CURRENT_FILE&#125;&quot; &quot;$&#123;BACKUP_PATH&#125;/$&#123;file%.*&#125;-$(date +%Y%m%d).log&quot;</div><div class="line">    fi</div><div class="line">done</div><div class="line"></div><div class="line"></div><div class="line">kill -USR1 $(cat /server/tengine/logs/nginx.pid)</div></pre></td></tr></table></figure>
-<p>比如保存在根目录下/rotateLog，设置脚本执行权限<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ chmod +x /rotateLog</div></pre></td></tr></table></figure></p>
+<p>比如保存在根目录下/rotateLog，设置脚本执行权限
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ chmod +x /rotateLog</div></pre></td></tr></table></figure></p>
 <h3 id="设置crontab任务"><a href="#设置crontab任务" class="headerlink" title="设置crontab任务"></a>设置crontab任务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ crontab -e</div><div class="line"></div><div class="line">59 23 * * * /rotateLog</div></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
@@ -186,12 +223,15 @@
     <updated>2018-01-03T17:21:13.128Z</updated>
     
     <content type="html"><![CDATA[<p>MongoDB为了使用方便，默认启动是不带用户认证的，也就是说所有人都可以连接并进行读写操作，这在开发阶段当然很方便，但是生产环境可就不能这么裸奔了。</p>
-<p>首先来看看MongoDB的启动命令：<br><code>$ mongod [--auth] --dbpath=&lt;数据存放目录，默认/data/db&gt; --fork --logpath=&lt;日志存放目录&gt;</code></p>
+<p>首先来看看MongoDB的启动命令：
+<code>$ mongod [--auth] --dbpath=&lt;数据存放目录，默认/data/db&gt; --fork --logpath=&lt;日志存放目录&gt;</code></p>
 <p>当带上参数–auth即在安全模式下启动，要在安全模式下启动，必须先完成用户的添加和授权。</p>
 <h1 id="添加管理员"><a href="#添加管理员" class="headerlink" title="添加管理员"></a>添加管理员</h1><p>首次在非认证模式下登录，然后添加管理员账户，在默认的admin数据库里，有一个名为<em>userAdminAnyDatabase</em>的内置角色，顾名思义，该角色的用户即为超级管理员，不过该角色只有管理用户和角色的功能，没有数据库读写权限。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$ mongo</div><div class="line">#...省略连接输出..</div><div class="line"></div><div class="line">&gt; use admin</div><div class="line">&gt; db.createUser(&#123;</div><div class="line">	user: &quot;userAdmin&quot;,</div><div class="line">    pwd: &quot;123456&quot;</div><div class="line">    roles:[&#123;role:&quot;userAdminAnyDatabase&quot;,db:&quot;admin&quot;&#125;]</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 <h1 id="重启MongoDB并在安全模式下登录"><a href="#重启MongoDB并在安全模式下登录" class="headerlink" title="重启MongoDB并在安全模式下登录"></a>重启MongoDB并在安全模式下登录</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ ps -ef | grep mongod | grep -v grep | cut -c 10-16 | xargs kill -9</div><div class="line">$ mongod --auth --dbpath=&lt;数据存放目录，默认/data/db&gt; --fork --logpath=&lt;日志存放目录&gt;</div></pre></td></tr></table></figure>
-<h1 id="以管理员身份登录"><a href="#以管理员身份登录" class="headerlink" title="以管理员身份登录"></a>以管理员身份登录</h1><p>可以先连接到test数据库然后用db.auth进行认证，也可以直接在连接时候认证：<br><code>$ mongo -u &quot;userAdmin&quot; -p &quot;123456&quot; --authenticationDatabase &quot;admin&quot;</code>，<br>从命令参数可以看出来，连接时认证真不好记那些参数，因此一般我都是先连接后认证的方式：</p>
+<h1 id="以管理员身份登录"><a href="#以管理员身份登录" class="headerlink" title="以管理员身份登录"></a>以管理员身份登录</h1><p>可以先连接到test数据库然后用db.auth进行认证，也可以直接在连接时候认证：
+<code>$ mongo -u &quot;userAdmin&quot; -p &quot;123456&quot; --authenticationDatabase &quot;admin&quot;</code>，
+从命令参数可以看出来，连接时认证真不好记那些参数，因此一般我都是先连接后认证的方式：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$ mongo</div><div class="line">$ use admin</div><div class="line">MongoDB shell version: 3.2.10</div><div class="line">connecting to: test</div><div class="line">&gt; use admin</div><div class="line">switched to db admin</div><div class="line">&gt; db.auth(&quot;root&quot;,&quot;ZzJK7Eg-akh9&quot;)</div><div class="line">1</div></pre></td></tr></table></figure>
 <p>登录后可以查看下用户表:<code>&gt; db.system.users.find()</code></p>
 <h1 id="添加其它用户"><a href="#添加其它用户" class="headerlink" title="添加其它用户"></a>添加其它用户</h1><p>和添加管理员方式一致，只是授权的数据库和赋予的角色有区别，一般常用的角色有read、readWrite、dbOwner等。</p>
@@ -201,7 +241,8 @@
     <summary type="html">
     
       &lt;p&gt;MongoDB为了使用方便，默认启动是不带用户认证的，也就是说所有人都可以连接并进行读写操作，这在开发阶段当然很方便，但是生产环境可就不能这么裸奔了。&lt;/p&gt;
-&lt;p&gt;首先来看看MongoDB的启动命令：&lt;br&gt;&lt;code&gt;$ mongod [--auth] --dbpath
+&lt;p&gt;首先来看看MongoDB的启动命令：
+&lt;code&gt;$ mongod [--auth] --dbpath=&amp;l
     
     </summary>
     
@@ -501,13 +542,20 @@
     <updated>2018-01-03T17:21:13.141Z</updated>
     
     <content type="html"><![CDATA[<p>算法分析的基础是数学，但是只从走出校门，就很少再接触这些东西，基本上都还给老师了，最近重读算法分析这本书，好多公式又冒出来了，为了以后再接触方便，这里特意记录下来。</p>
-<h1 id="指数"><a href="#指数" class="headerlink" title="指数"></a>指数</h1><p>$$ X^AX^B=X^{A+B} $$<br>$$ { X^A \over X^B } = X^{A-B} $$<br>$$ (X^A)^B = X^{AB} $$<br>$$ X^N + X^N = 2X^N \neq X^{2N} $$<br>$$ 2^N + 2^N = 2^{N+1} $$</p>
+<h1 id="指数"><a href="#指数" class="headerlink" title="指数"></a>指数</h1><p>$$ X^AX^B=X^{A+B} $$
+$$ { X^A \over X^B } = X^{A-B} $$
+$$ (X^A)^B = X^{AB} $$
+$$ X^N + X^N = 2X^N \neq X^{2N} $$
+$$ 2^N + 2^N = 2^{N+1} $$</p>
 <h1 id="对数"><a href="#对数" class="headerlink" title="对数"></a>对数</h1><p>在计算机科学中，除非又特殊说明，所有对数都是以2为底。</p>
 <h2 id="对数定义"><a href="#对数定义" class="headerlink" title="对数定义"></a>对数定义</h2><p> $ X^A = B ，当且仅当 \log_XB = A $</p>
 <p>根据定义可以推理出几个定理。</p>
 <h2 id="定理1"><a href="#定理1" class="headerlink" title="定理1"></a>定理1</h2><p>$ \log_AB = { \log_CB \over \log_CA}; C &gt; 0 $</p>
 <h2 id="定理2"><a href="#定理2" class="headerlink" title="定理2"></a>定理2</h2><p>$ logAB = logA + logB $</p>
-<h2 id="一些有用的公式"><a href="#一些有用的公式" class="headerlink" title="一些有用的公式"></a>一些有用的公式</h2><p>$$ log{A \over B} = logA - logB $$<br>$$ log(A^B) = BlogA $$<br>$$ logX &lt; X  (对所有X&gt;0成立) $$<br>$$ log1 = 0,log2 = 1,log1024=10, log1048576=20 $$</p>
+<h2 id="一些有用的公式"><a href="#一些有用的公式" class="headerlink" title="一些有用的公式"></a>一些有用的公式</h2><p>$$ log{A \over B} = logA - logB $$
+$$ log(A^B) = BlogA $$
+$$ logX &lt; X  (对所有X&gt;0成立) $$
+$$ log1 = 0,log2 = 1,log1024=10, log1048576=20 $$</p>
 <h1 id="级数"><a href="#级数" class="headerlink" title="级数"></a>级数</h1><p>$$ \sum_{i=0}^N 2^i = 2^{N+1} - 1 $$</p>
 <p>$$ \sum_{i=0}^N A^i = { A^{N+1} - 1 \over A - 1} $$</p>
 <p>$$ \sum_{i=0}^N A^i \leq {1 \over 1 - A}; (0 &lt; A &lt; 1) $$</p>
@@ -528,7 +576,8 @@
 <p>如果A - B能够被N整除，那么A与B模N同余（congruent），记为： $ A \equiv B(mod N) $</p>
 </blockquote>
 <h2 id="推论"><a href="#推论" class="headerlink" title="推论"></a>推论</h2><blockquote>
-<p>若 $ A \equiv B(mod N) ，则 A + C \equiv B + C(mod N) $<br>若 $ A \equiv B(mod N) ，则 AD \equiv BD(mod N) $</p>
+<p>若 $ A \equiv B(mod N) ，则 A + C \equiv B + C(mod N) $
+若 $ A \equiv B(mod N) ，则 AD \equiv BD(mod N) $</p>
 </blockquote>
 ]]></content>
     
@@ -571,9 +620,15 @@
     
     <content type="html"><![CDATA[<h3 id="集合类型"><a href="#集合类型" class="headerlink" title="集合类型"></a>集合类型</h3><p>所有编程语言中，元素集合都是最重要的数据类型，Swift提供三种集合类型存储集合数据：Arrays(数组)、Sets(集合)、Dictionaries(字典)。</p>
 <p><img src="http://xuh.cn-etc.com/2017/06/05/1496663760489.png!md" alt=""></p>
-<p>Arrays: 有序数据集<br>Sets: 无序不重复数据集<br>Dictionaries: 无序键值对</p>
+<p>Arrays: 有序数据集
+Sets: 无序不重复数据集
+Dictionaries: 无序键值对</p>
 <blockquote>
-<p>注意：<br>1、三种中集合都被实现为泛型集合<br>2、三种集合都是值类型<br>3、集合的可变性有声明关键字let、var决定<br>4、在不需要改变集合的时候，尽量以let声明成常量</p>
+<p>注意：
+1、三种中集合都被实现为泛型集合
+2、三种集合都是值类型
+3、集合的可变性有声明关键字let、var决定
+4、在不需要改变集合的时候，尽量以let声明成常量</p>
 </blockquote>
 ]]></content>
     
@@ -687,7 +742,8 @@
 <h3 id="安装igbinary扩展"><a href="#安装igbinary扩展" class="headerlink" title="安装igbinary扩展"></a>安装igbinary扩展</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ wget http://pecl.php.net/get/igbinary-1.2.1.tgz</div><div class="line">$ tar zxvf igbinary-1.2.1.tgz</div><div class="line">$ cd igbinary-1.2.1</div><div class="line">$ /alidata/server/php/bin/phpize</div><div class="line">$ ./configure --with-php-config=/alidata/server/php/bin/php-config</div><div class="line">$ make &amp;&amp;  make install</div></pre></td></tr></table></figure>
 <p>然后在在php.ini中增加extension=igbinary.so</p>
 <h3 id="安装memcached扩展"><a href="#安装memcached扩展" class="headerlink" title="安装memcached扩展"></a>安装memcached扩展</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ wget http://pecl.php.net/get/memcached-2.2.0.tgz</div><div class="line">$ tar zxvf memcached-2.2.0.tgz</div><div class="line">$ cd memcached-2.2.0</div><div class="line">$ /alidata/server/php/bin/phpize</div><div class="line">$ ./configure -enable-memcached -enable-memcached-igbinary -enable-memcached-json -with-php-config=/alidata/server/php/bin/php-config -with-zlib-dir -with-libmemcached-dir=/usr/local/libmemcached -prefix=/usr/local/phpmemcached --disable-memcached-sasl</div><div class="line">$ make &amp;&amp; make install</div></pre></td></tr></table></figure>
-<p>最后编辑php.ini，加入memcached扩展<br>extension=memcached.so</p>
+<p>最后编辑php.ini，加入memcached扩展
+extension=memcached.so</p>
 <p>正常情况安装就成功了。</p>
 ]]></content>
     
@@ -765,6 +821,51 @@
   </entry>
   
   <entry>
+    <title>CentOS安装samba服务</title>
+    <link href="https://xuh.io/20151128/294fe70.html"/>
+    <id>https://xuh.io/20151128/294fe70.html</id>
+    <published>2015-11-28T03:21:44.000Z</published>
+    <updated>2018-01-03T17:21:13.124Z</updated>
+    
+    <content type="html"><![CDATA[<p>检查是否有安装samba服务：</p>
+<p><code>$ rpm -qa | grep samba</code></p>
+<p>如果没安装则yum安装</p>
+<p><code>$ yum -y install samba samba-client samba-common</code></p>
+<p>默认的安装目录是/etc/samba，配置文件为smb.conf,先备份下smb文件
+<code>$ cd /etc/samba</code>
+<code>$ cp smb.conf smb.conf.bak</code></p>
+<p>然后编辑smb.conf加入以下内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[remote_dev]</div><div class="line">        path = /alidata/nginx_www/wx.soopj.com</div><div class="line">        public =no</div><div class="line">        writable = yes</div><div class="line">        write list = @www</div><div class="line">        valid users = @www</div></pre></td></tr></table></figure>
+<p>@www是客户端登录所需要的用户，设置nginx的用户密码：</p>
+<p><code>$ smbpasswd -a www</code></p>
+<p>为了避免在启动Samba时出现以下警告信息：rlimit_max: increasing rlimit_max (1024) tominimum Windows limit (16384)，
+配置内核参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">$ ulimit -n 16384</div><div class="line">$ vi /etc/security/limits.conf</div><div class="line">#在最后加入以下内容</div><div class="line">* - nofile 16384</div></pre></td></tr></table></figure>
+<p>然后运行testparm检测配置文件。</p>
+<p>然后启动服务，关闭防火墙：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ service smb start</div><div class="line">$ service nmb start</div><div class="line">$ service iptables stop</div></pre></td></tr></table></figure>
+<p>centos7后启动服务由systemctl管理，防火墙换成firewalld，因此命令稍有不同。然后客户端即可测试。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;检查是否有安装samba服务：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;$ rpm -qa | grep samba&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;如果没安装则yum安装&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;$ yum -y install samba samba-client samba-comm
+    
+    </summary>
+    
+      <category term="运维" scheme="https://xuh.io/categories/%E8%BF%90%E7%BB%B4/"/>
+    
+      <category term="系统管理" scheme="https://xuh.io/categories/%E8%BF%90%E7%BB%B4/%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86/"/>
+    
+    
+      <category term="samba" scheme="https://xuh.io/tags/samba/"/>
+    
+  </entry>
+  
+  <entry>
     <title>让nginx支持path_info</title>
     <link href="https://xuh.io/20151128/8e316de2.html"/>
     <id>https://xuh.io/20151128/8e316de2.html</id>
@@ -789,48 +890,6 @@
     
     
       <category term="nginx" scheme="https://xuh.io/tags/nginx/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CentOS安装samba服务</title>
-    <link href="https://xuh.io/20151128/294fe70.html"/>
-    <id>https://xuh.io/20151128/294fe70.html</id>
-    <published>2015-11-28T03:21:44.000Z</published>
-    <updated>2018-01-03T17:21:13.124Z</updated>
-    
-    <content type="html"><![CDATA[<p>检查是否有安装samba服务：</p>
-<p><code>$ rpm -qa | grep samba</code></p>
-<p>如果没安装则yum安装</p>
-<p><code>$ yum -y install samba samba-client samba-common</code></p>
-<p>默认的安装目录是/etc/samba，配置文件为smb.conf,先备份下smb文件<br><code>$ cd /etc/samba</code><br><code>$ cp smb.conf smb.conf.bak</code></p>
-<p>然后编辑smb.conf加入以下内容：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[remote_dev]</div><div class="line">        path = /alidata/nginx_www/wx.soopj.com</div><div class="line">        public =no</div><div class="line">        writable = yes</div><div class="line">        write list = @www</div><div class="line">        valid users = @www</div></pre></td></tr></table></figure>
-<p>@www是客户端登录所需要的用户，设置nginx的用户密码：</p>
-<p><code>$ smbpasswd -a www</code></p>
-<p>为了避免在启动Samba时出现以下警告信息：rlimit_max: increasing rlimit_max (1024) tominimum Windows limit (16384)，<br>配置内核参数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">$ ulimit -n 16384</div><div class="line">$ vi /etc/security/limits.conf</div><div class="line">#在最后加入以下内容</div><div class="line">* - nofile 16384</div></pre></td></tr></table></figure>
-<p>然后运行testparm检测配置文件。</p>
-<p>然后启动服务，关闭防火墙：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ service smb start</div><div class="line">$ service nmb start</div><div class="line">$ service iptables stop</div></pre></td></tr></table></figure>
-<p>centos7后启动服务由systemctl管理，防火墙换成firewalld，因此命令稍有不同。然后客户端即可测试。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;检查是否有安装samba服务：&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;$ rpm -qa | grep samba&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;如果没安装则yum安装&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;$ yum -y install samba samba-client samba-comm
-    
-    </summary>
-    
-      <category term="运维" scheme="https://xuh.io/categories/%E8%BF%90%E7%BB%B4/"/>
-    
-      <category term="系统管理" scheme="https://xuh.io/categories/%E8%BF%90%E7%BB%B4/%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86/"/>
-    
-    
-      <category term="samba" scheme="https://xuh.io/tags/samba/"/>
     
   </entry>
   
