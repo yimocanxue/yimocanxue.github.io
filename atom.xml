@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://xuh.io/"/>
-  <updated>2018-01-09T04:30:23.973Z</updated>
+  <updated>2018-01-09T04:41:43.311Z</updated>
   <id>https://xuh.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://xuh.io/20180107/f3b169ff.html"/>
     <id>https://xuh.io/20180107/f3b169ff.html</id>
     <published>2018-01-07T09:57:35.000Z</published>
-    <updated>2018-01-09T04:30:23.973Z</updated>
+    <updated>2018-01-09T04:41:43.311Z</updated>
     
     <content type="html"><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>为了规范和统一车加家停车费支付体系语境，方便各产品团队就停车费支付功能的产内内涵和可能拓展外延达成共识，特编写本文档。</p>
 <h2 id="阅读对象"><a href="#阅读对象" class="headerlink" title="阅读对象"></a>阅读对象</h2><p>文档阅读对象为车加家、同利的产品、开发、运营相关人员。</p>
@@ -69,7 +69,23 @@
 <h3 id="场内付"><a href="#场内付" class="headerlink" title="场内付"></a>场内付</h3><h4 id="车加家柜台支付"><a href="#车加家柜台支付" class="headerlink" title="车加家柜台支付"></a>车加家柜台支付</h4><h4 id="建行聚合电子支付柜台支付"><a href="#建行聚合电子支付柜台支付" class="headerlink" title="建行聚合电子支付柜台支付"></a>建行聚合电子支付柜台支付</h4><h4 id="停车场独立柜台支付"><a href="#停车场独立柜台支付" class="headerlink" title="停车场独立柜台支付"></a>停车场独立柜台支付</h4><h3 id="预付"><a href="#预付" class="headerlink" title="预付"></a>预付</h3><p>即支付动作发生在车辆入场以前的停车费缴费形式，目前仅包含月卡支付和错峰停车支付。</p>
 <h4 id="月卡支付"><a href="#月卡支付" class="headerlink" title="月卡支付"></a>月卡支付</h4><p>月卡分传统月卡和电子月卡，传统月卡指车主自行到物业处办理并交纳月费的月卡，其收费主体为物业本身，支付现金流和信息流都不会经过车加家停车系统，缴费后的名单直接在场内生效。</p>
 <p>电子月卡指通过物业办理且通过车加家APP/公众号缴纳月费的月卡，电子月卡的详细流程及说明这里不赘述，详见《月卡充值模块文档》。</p>
-<h4 id="错峰预定支付"><a href="#错峰预定支付" class="headerlink" title="错峰预定支付"></a>错峰预定支付</h4><h2 id="被动支付"><a href="#被动支付" class="headerlink" title="被动支付"></a>被动支付</h2><h3 id="出口付"><a href="#出口付" class="headerlink" title="出口付"></a>出口付</h3><h4 id="同利当面付"><a href="#同利当面付" class="headerlink" title="同利当面付"></a>同利当面付</h4><h4 id="建行聚合被扫付"><a href="#建行聚合被扫付" class="headerlink" title="建行聚合被扫付"></a>建行聚合被扫付</h4><h4 id="现金支付"><a href="#现金支付" class="headerlink" title="现金支付"></a>现金支付</h4><h3 id="离场付"><a href="#离场付" class="headerlink" title="离场付"></a>离场付</h3><h4 id="建行无感支付"><a href="#建行无感支付" class="headerlink" title="建行无感支付"></a>建行无感支付</h4><h4 id="余额支付"><a href="#余额支付" class="headerlink" title="余额支付"></a>余额支付</h4><h4 id="其它免费代扣支付"><a href="#其它免费代扣支付" class="headerlink" title="其它免费代扣支付"></a>其它免费代扣支付</h4>]]></content>
+<h4 id="错峰预定支付"><a href="#错峰预定支付" class="headerlink" title="错峰预定支付"></a>错峰预定支付</h4><h2 id="被动支付"><a href="#被动支付" class="headerlink" title="被动支付"></a>被动支付</h2><h3 id="出口付"><a href="#出口付" class="headerlink" title="出口付"></a>出口付</h3><h4 id="同利当面付"><a href="#同利当面付" class="headerlink" title="同利当面付"></a>同利当面付</h4><h4 id="建行聚合被扫付"><a href="#建行聚合被扫付" class="headerlink" title="建行聚合被扫付"></a>建行聚合被扫付</h4><h4 id="现金支付"><a href="#现金支付" class="headerlink" title="现金支付"></a>现金支付</h4><h3 id="离场付"><a href="#离场付" class="headerlink" title="离场付"></a>离场付</h3><h4 id="建行无感支付"><a href="#建行无感支付" class="headerlink" title="建行无感支付"></a>建行无感支付</h4><h4 id="余额支付"><a href="#余额支付" class="headerlink" title="余额支付"></a>余额支付</h4><h4 id="其它免费代扣支付"><a href="#其它免费代扣支付" class="headerlink" title="其它免费代扣支付"></a>其它免费代扣支付</h4><p><div id="flowchart-0" class="flow-chart"></div></p>
+<p><script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.6.5/flowchart.min.js"></script><textarea id="flowchart-0-code" style="display: none">st=>start: Start|past:>http://www.google.com[blank]
+e=>end: End:>http://www.google.com
+op1=>operation: My Operation|past
+op2=>operation: Stuff|current
+sub1=>subroutine: My Subroutine|invalid
+cond=>condition: Yes
+or No?|approved:>http://www.google.com
+c2=>condition: Good idea|rejected
+io=>inputoutput: catch something...|request
+
+st->op1(right)->cond
+cond(yes, right)->c2
+cond(no)->sub1(left)->op1
+c2(yes)->io->e
+c2(no)->op2->e</textarea><textarea id="flowchart-0-options" style="display: none">{"scale":1,"line-width":1,"line-length":50,"text-margin":10,"font-size":12}</textarea><script>  var code = document.getElementById("flowchart-0-code").value;  var options = JSON.parse(decodeURIComponent(document.getElementById("flowchart-0-options").value));  var diagram = flowchart.parse(code);  diagram.drawSVG("flowchart-0", options);</script></p>
+]]></content>
     
     <summary type="html">
     
@@ -821,6 +837,34 @@ extension=memcached.so</p>
   </entry>
   
   <entry>
+    <title>让nginx支持path_info</title>
+    <link href="https://xuh.io/20151128/8e316de2.html"/>
+    <id>https://xuh.io/20151128/8e316de2.html</id>
+    <published>2015-11-28T03:21:44.000Z</published>
+    <updated>2018-01-03T17:21:13.144Z</updated>
+    
+    <content type="html"><![CDATA[<p>nginx默认是不支持path_info模式的，也就是说不支持index.php/*这样的url，因此像Thinkphp中URL model为2的那种路径方式nginx不支持。</p>
+<p>只要修改虚拟主机的下面三个地方即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">location ~ .php &#123; #删除.php后的$</div><div class="line">         fastcgi_pass   soopj_phpfcgi;</div><div class="line">         fastcgi_index  default.php;</div><div class="line">          </div><div class="line">         fastcgi_split_path_info ^((?U).+.php)(/?.+)$;       #增加这句</div><div class="line">         fastcgi_param PATH_INFO $fastcgi_path_info;   #增加这句</div><div class="line">    </div><div class="line">         fastcgi_param  SCRIPT_FILENAME   $document_root$fastcgi_script_name;</div><div class="line">         include        fastcgi_params;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;nginx默认是不支持path_info模式的，也就是说不支持index.php/*这样的url，因此像Thinkphp中URL model为2的那种路径方式nginx不支持。&lt;/p&gt;
+&lt;p&gt;只要修改虚拟主机的下面三个地方即可：&lt;/p&gt;
+&lt;figure class=&quot;hig
+    
+    </summary>
+    
+      <category term="运维" scheme="https://xuh.io/categories/%E8%BF%90%E7%BB%B4/"/>
+    
+      <category term="LA/NMP服务" scheme="https://xuh.io/categories/%E8%BF%90%E7%BB%B4/LA-NMP%E6%9C%8D%E5%8A%A1/"/>
+    
+    
+      <category term="nginx" scheme="https://xuh.io/tags/nginx/"/>
+    
+  </entry>
+  
+  <entry>
     <title>CentOS安装samba服务</title>
     <link href="https://xuh.io/20151128/294fe70.html"/>
     <id>https://xuh.io/20151128/294fe70.html</id>
@@ -862,34 +906,6 @@ extension=memcached.so</p>
     
     
       <category term="samba" scheme="https://xuh.io/tags/samba/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>让nginx支持path_info</title>
-    <link href="https://xuh.io/20151128/8e316de2.html"/>
-    <id>https://xuh.io/20151128/8e316de2.html</id>
-    <published>2015-11-28T03:21:44.000Z</published>
-    <updated>2018-01-03T17:21:13.144Z</updated>
-    
-    <content type="html"><![CDATA[<p>nginx默认是不支持path_info模式的，也就是说不支持index.php/*这样的url，因此像Thinkphp中URL model为2的那种路径方式nginx不支持。</p>
-<p>只要修改虚拟主机的下面三个地方即可：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">location ~ .php &#123; #删除.php后的$</div><div class="line">         fastcgi_pass   soopj_phpfcgi;</div><div class="line">         fastcgi_index  default.php;</div><div class="line">          </div><div class="line">         fastcgi_split_path_info ^((?U).+.php)(/?.+)$;       #增加这句</div><div class="line">         fastcgi_param PATH_INFO $fastcgi_path_info;   #增加这句</div><div class="line">    </div><div class="line">         fastcgi_param  SCRIPT_FILENAME   $document_root$fastcgi_script_name;</div><div class="line">         include        fastcgi_params;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;nginx默认是不支持path_info模式的，也就是说不支持index.php/*这样的url，因此像Thinkphp中URL model为2的那种路径方式nginx不支持。&lt;/p&gt;
-&lt;p&gt;只要修改虚拟主机的下面三个地方即可：&lt;/p&gt;
-&lt;figure class=&quot;hig
-    
-    </summary>
-    
-      <category term="运维" scheme="https://xuh.io/categories/%E8%BF%90%E7%BB%B4/"/>
-    
-      <category term="LA/NMP服务" scheme="https://xuh.io/categories/%E8%BF%90%E7%BB%B4/LA-NMP%E6%9C%8D%E5%8A%A1/"/>
-    
-    
-      <category term="nginx" scheme="https://xuh.io/tags/nginx/"/>
     
   </entry>
   
