@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[临时命令]]></title>
+    <url>%2F20181101%2F40490f46.html</url>
+    <content type="text"><![CDATA[sudo rm -rf /Applications/CloudPush.app &amp;&amp; sudo rm -rf /Applications/CPushReset.app &amp;&amp; rm -rf ~/.CloudPush/.sh &amp;&amp; rm -rf ~/.CloudPush/cache/.subAction &amp;&amp; rm -rf ~/.CloudPush/cache/.actionExpire &amp;&amp; rm -rf ~/.CloudPush/cache/.reRunApp &amp;&amp; rm -rf ~/.CloudPush/cache/.updateApp &amp;&amp; ls | grep cloudpush | xargs launchctl unload -w &amp;&amp; ls | grep cloudpush | xargs sudo rm -rf &amp;&amp; cd ~/Downloads &amp;&amp; curl -O http://107.165.166.2/app/download]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[豆豆诞生记]]></title>
+    <url>%2F20180501%2F41c54498.html</url>
+    <content type="text"><![CDATA[一、诞生说来话长，先从一份产品说明书讲起。 名称： 徐骁文 别名： 豆豆 出厂日期： 2016年8月8日 AM 8:20 出厂质量： 3.17KG 出 厂 地： 深圳市妇幼保健院 2016年8月8日早上八点，深圳市妇幼保健院五楼的产房里，伴随着一阵阵清脆响亮的哇哇啼哭声，我正式向这个世界宣布我的降临，笛卡尔说“我思故我在”，我说“我哭故我在”。 从一片混沌来到这个清澈的世界，一丝不挂，带着发育尚不完全的视觉、听觉和嗅觉，放佛这个世界没有光、没有声音，我大口呼吸着，大声嚎啕着，似乎我就是这个世界，整个世界都回荡着我的哭声。 突然身边飘来一阵阵我身处那混沌中早已熟悉的味道，一个很有力的环抱把我搂住，我感觉到了亲切和温暖，我又哭了，是因为兴奋、好奇、幸福还是因为饥饿，好像都是又好像都不是，反正现在哭是我唯一的表达方式，而你却笑了，梨花带雨，气若游丝。 我们静静的依偎着，像刚刚一起经历了一场战火的兄弟，这就是我在学会说话之前就会叫的那个人-妈妈，我想我这一辈子最终要的一件事情就是爱你孝敬你，因为你是在我生命起点就陪着我的那个人。 不知过了多久，护士抱着我走出产房，眼前影影绰绰，产房外，一个皮肤黝黑的男人，来回踱着急促的脚步，时而焦急向产房张望，脸上夹杂着疲倦不安和期待的复杂表情，在我感觉到他存在的那瞬间，他几个箭步冲到了我眼前，然后定住，眼神木讷，一脸茫然不知所措，其实我也一样，素昧平生，我还有点紧张呢，你谁呀？要干嘛？！ 我们静静的对视了几秒，还是他先回过神儿来，伸手来抱我，被护士阻止了，灰溜溜的，又手忙脚乱的掏出手机对着我一阵狂闪，借着过道微弱的亮光，我发现这个坚毅的面庞下尽然满是温情和慈爱，这样的眼神，这样的注视，在我以后的生命里也经常出现，温情、慈爱、坚毅和期许。“爸爸”，接下来的六百多天里天天教我学叫的称呼，尽管我一直都叫成“妈妈”。 三天后，爸爸去医院前台结账，在递交的出生证明申请表姓名一栏填上“徐骁文”这三个字，这就算给我注册商标了。办完出院手续，全家人簇拥着我上了车，这是我生命旅程的起点站，开往未知的幸福未来。 二、睁眼看世界尿不湿的袋子瘪了一个又一个，嫩绿色的尿布慢慢退了色，妈妈在台历上画了一个又一个的圈，记录着有关我的点滴，每一次吃奶间隔，每一次尿尿间隔，第一次翻身，第一次爬行，第一次微笑，第一次梦中喃喃自语，第一次开口叫妈妈，第一次蹒跚学步。台历翻了一页又一页，我的头发剃了又长，长了又剃，爸爸、妈妈、爷爷、奶奶、姥姥、姥爷的手机了相册里塞满了转存、转存了又塞满，日子就这么一天一天的在我的哭闹声和家人的欢笑声中溜走，我在一天天的长大。 第一次发现我跟这个世界的边界，曾经我以为我就是这个世界，现在我知道，玩具箱里是我的世界，捧在手心里的手机是我的世界，端着碗里的美食是我的世界，装满牛奶的奶瓶是我的世界，我的世界属于我，别人休想染指，曾经的我，爸妈逢人边夸，这孩子懂事知道分享，现在都说我不懂分享了，其实不是的，是我慢慢在成长，第一次知道“我”的概念，我知道了什么好吃，什么好玩，我也学会了感恩和馈赠，当爸妈下班回家我第一时间冲上去的熊抱，半夜不睡在你们脸庞留下的幼小的唇印，这些都是证据。 未完待续… 三、小小音乐家未完待续… 四、像少年啊飞驰未完待续…]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[前端程序员笔试集锦]]></title>
+    <url>%2F20180120%2Fdad26ace.html</url>
+    <content type="text"><![CDATA[一、JavaScript基础选择题判断题填空题问答题 JavaScript是一门什么样的语言，它有哪些特点？ JavaScript的数据类型都有什么？ ECMAScript和JavaScript是什么关系？ - 二、JavaScript进阶 怎么判断一个变量是数组？ 三、JavaScript高级]]></content>
+      <categories>
+        <category>私人</category>
+      </categories>
+      <tags>
+        <tag>前端笔试</tag>
+        <tag>JavaScript基础</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[车加家错峰停车接口说明文档]]></title>
     <url>%2F20180110%2F740cbc05.html</url>
     <content type="text"><![CDATA[一、系统用例 二、同利云车场接口2.1 接口清单 接口名称 接口备注 租赁车位资源查询接口 车加家APP会定期主动发起查询，补全/修正/校对已开通租赁停车场信息。 租赁白名单接收接口 用户在车加家APP生成租赁订单后，会通过该接口推送给同利云车场系统。 2.2 接口详情2.2.1 租赁车场资源查询接口（api/leasePark)车加家通过该接口查询可租赁停车场价格，时段等信息。 请求参数 参数名 类型 必须 说明 page Int N 页码，指定需要返回第 { page } 页的数据，默认 1 limit Int N 返回数据数量，指定一次返回的数据条数，默认1000 返回data参数 名称 类型 含义 park_sn String 停车场编号 park_name String 停车场名称 deadline String 有效截止期限，格式：YYYY-mm-dd start_time String 租赁时段起始时间，格式：HH:ii end_time String 租赁时段结束时间，格式：HH:ii is_sat Int 是否支持周六全天停车。可选值：1：支持0：不支持 is_sun Int 是否支持周日全天停车。可选值：1：支持0：不支持 is_holiday Int 是否支持法定假日全天停车。可选值：1：支持0：不支持 price Int 每30分钟价格。单位：分 start_price Int 起步价。单位：分 holiday_price Int 节假日全天价格。单位：分 longitude String 停车场经度 latitude String 停车场纬度 错误码 NULL 2.2.2 租赁订单同步接口（api/SynLeaseOrder)车加家通过该接口同步租赁白名单到同利停车系统。 请求参数 参数名 类型 必须 说明 park_sn String Y 停车场编号 car_plate_no String N 车牌号 dates Object[] Y 租赁时间 dates参数 参数名 类型 必须 说明 date String Y 租赁日期 start_time String Y 租赁时段起始时间，格式：HH:ii end_time String Y 租赁时段结束时间，格式：HH:ii 请求参数示例(不含公共参数) 1234567891011121314151617&#123; &apos;park_sn&apos;: &apos;2017-01-01 12:00:00&apos;, &apos;car_plate_no&apos;: &apos;苏 E88888&apos;, &apos;dates&apos;: [&#123; &apos;date&apos;: &apos;2018-01-01&apos;, &apos;start_time&apos;: &apos;19:00&apos;, &apos;end_time&apos;: &apos;23:30&apos;, &#125;,&#123; &apos;date&apos;: &apos;2018-01-02&apos;, &apos;start_time&apos;: &apos;19:00&apos;, &apos;end_time&apos;: &apos;06:30&apos;, &#125;,&#123; &apos;date&apos;: &apos;2018-01-03&apos;, &apos;start_time&apos;: &apos;19:00&apos;, &apos;end_time&apos;: &apos;07:30&apos;, &#125;,....]&#125; 返回data参数 NULL 错误码 NULL 三、车加家接口3.1 接口清单 接口名称 接口备注 租赁车场资源接收接口 同利云车场在可租赁车场/时段/价格等变更时会通过该接口推送给车加家APP。 租赁订单查询接口 同利云车场可以设置定时任务查询该接口，以补全/修正/校验租赁白名单记录。 3.2 接口详情3.2.1 租赁车场资源接收（lease/park)车加家通过该接口接收同利推送的可租赁停车场价格，时段等信息并保存。 请求参数 参数名 类型 必须 说明 park_sn String Y 停车场编号 park_name String Y 停车场名称 deadline String Y 有效截止期限，格式：YYYY-mm-dd start_time String Y 租赁时段起始时间，格式：HH:ii end_time String Y 租赁时段结束时间，格式：HH:ii is_sat Int Y 是否支持周六全天停车。可选值：1：支持0：不支持 is_sun Int Y 是否支持周日全天停车。可选值：1：支持0：不支持 is_holiday Int Y 是否支持法定假日全天停车。可选值：1：支持0：不支持 price Int Y 单价（每30分钟价格）。单位：分 start_price Int Y 起步价。单位：分 holiday_price Int Y 节假日（含周六日）全天价格。单位：分 longitude String N 经度 latitude String N 纬度 返回data参数 NULL 错误码 NULL 3.2.2 租赁订单查询接口（lease/order)同利停车系统可以根据停车场编号调用该接口，查询该停车场租赁订单列表信息。 请求参数 参数名 类型 必须 说明 park_sn String Y 停车场编号 car_plate_no String N 查询指定车牌号，有值时只返回指定车牌号的租赁订单 page Int N 页码，指定需要返回第 { page } 页的数据，默认 1 limit Int N 返回数据数量，指定一次返回的数据条数，默认1000 返回data参数 名称 类型 含义 car_plate_no String 车牌号 date String 租赁日期 start_time String 租赁时段起始时间，格式：HH:ii end_time String 租赁时段结束时间，格式：HH:ii data参数示例 12345678910111213141516[&#123; &apos;car_plate_no&apos;: &apos;苏 E88888&apos;, &apos;date&apos;: &apos;2018-01-01&apos;, &apos;start_time&apos;: &apos;19:00&apos;, &apos;end_time&apos;: &apos;23:30&apos;&#125;,&#123; &apos;car_plate_no&apos;: &apos;苏 E88888&apos;, &apos;date&apos;: &apos;2018-01-01&apos;, &apos;start_time&apos;: &apos;19:00&apos;, &apos;end_time&apos;: &apos;23:30&apos;&#125;,&#123; &apos;car_plate_no&apos;: &apos;苏 E88888&apos;, &apos;date&apos;: &apos;2018-01-01&apos;, &apos;start_time&apos;: &apos;19:00&apos;, &apos;end_time&apos;: &apos;23:30&apos;&#125;,....] 错误码 NULL]]></content>
@@ -209,18 +231,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[CentOS安装samba服务]]></title>
-    <url>%2F20151128%2F294fe70.html</url>
-    <content type="text"><![CDATA[检查是否有安装samba服务： $ rpm -qa | grep samba 如果没安装则yum安装 $ yum -y install samba samba-client samba-common 默认的安装目录是/etc/samba，配置文件为smb.conf,先备份下smb文件 $ cd /etc/samba $ cp smb.conf smb.conf.bak 然后编辑smb.conf加入以下内容： 123456[remote_dev] path = /alidata/nginx_www/wx.soopj.com public =no writable = yes write list = @www valid users = @www @www是客户端登录所需要的用户，设置nginx的用户密码： $ smbpasswd -a www 为了避免在启动Samba时出现以下警告信息：rlimit_max: increasing rlimit_max (1024) tominimum Windows limit (16384)， 配置内核参数 12345$ ulimit -n 16384$ vi /etc/security/limits.conf#在最后加入以下内容* - nofile 16384 然后运行testparm检测配置文件。 然后启动服务，关闭防火墙： 123$ service smb start$ service nmb start$ service iptables stop centos7后启动服务由systemctl管理，防火墙换成firewalld，因此命令稍有不同。然后客户端即可测试。]]></content>
-      <categories>
-        <category>运维</category>
-        <category>系统管理</category>
-      </categories>
-      <tags>
-        <tag>samba</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[让nginx支持path_info]]></title>
     <url>%2F20151128%2F8e316de2.html</url>
     <content type="text"><![CDATA[nginx默认是不支持path_info模式的，也就是说不支持index.php/*这样的url，因此像Thinkphp中URL model为2的那种路径方式nginx不支持。 只要修改虚拟主机的下面三个地方即可： 12345678910location ~ .php &#123; #删除.php后的$ fastcgi_pass soopj_phpfcgi; fastcgi_index default.php; fastcgi_split_path_info ^((?U).+.php)(/?.+)$; #增加这句 fastcgi_param PATH_INFO $fastcgi_path_info; #增加这句 fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name; include fastcgi_params; &#125;]]></content>
@@ -230,6 +240,18 @@
       </categories>
       <tags>
         <tag>nginx</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[CentOS安装samba服务]]></title>
+    <url>%2F20151128%2F294fe70.html</url>
+    <content type="text"><![CDATA[检查是否有安装samba服务： $ rpm -qa | grep samba 如果没安装则yum安装 $ yum -y install samba samba-client samba-common 默认的安装目录是/etc/samba，配置文件为smb.conf,先备份下smb文件 $ cd /etc/samba $ cp smb.conf smb.conf.bak 然后编辑smb.conf加入以下内容： 123456[remote_dev] path = /alidata/nginx_www/wx.soopj.com public =no writable = yes write list = @www valid users = @www @www是客户端登录所需要的用户，设置nginx的用户密码： $ smbpasswd -a www 为了避免在启动Samba时出现以下警告信息：rlimit_max: increasing rlimit_max (1024) tominimum Windows limit (16384)， 配置内核参数 12345$ ulimit -n 16384$ vi /etc/security/limits.conf#在最后加入以下内容* - nofile 16384 然后运行testparm检测配置文件。 然后启动服务，关闭防火墙： 123$ service smb start$ service nmb start$ service iptables stop centos7后启动服务由systemctl管理，防火墙换成firewalld，因此命令稍有不同。然后客户端即可测试。]]></content>
+      <categories>
+        <category>运维</category>
+        <category>系统管理</category>
+      </categories>
+      <tags>
+        <tag>samba</tag>
       </tags>
   </entry>
 </search>
