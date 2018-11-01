@@ -1,10 +1,11 @@
 ---
 title: CentOS安装samba服务
-date: 2015-11-28 11:21:44
 tags: samba
 categories:
-	- 运维
-	- 系统管理
+  - 运维
+  - 系统管理
+abbrlink: 294fe70
+date: 2015-11-28 11:21:44
 ---
 
 

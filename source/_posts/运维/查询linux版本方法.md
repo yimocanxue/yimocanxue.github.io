@@ -1,15 +1,14 @@
 ---
 title: 查询linux版本方法
-date: 2015-11-29 11:54:33
 categories:
-	- 运维
-	- 系统管理
+  - 运维
+  - 系统管理
 tags:
-	- linux
-	- 发型版本
-
+  - linux
+  - 发型版本
 comments: false
-
+abbrlink: 1addf0dc
+date: 2015-11-29 11:54:33
 ---
 
 1、查看/etc/redhat-release

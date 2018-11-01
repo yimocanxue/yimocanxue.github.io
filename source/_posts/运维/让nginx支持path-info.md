@@ -1,10 +1,11 @@
 ---
 title: 让nginx支持path_info
-date: 2015-11-28 11:21:44
 tags: nginx
 categories:
-	- 运维
-	- LA/NMP服务
+  - 运维
+  - LA/NMP服务
+abbrlink: 8e316de2
+date: 2015-11-28 11:21:44
 ---
 
 

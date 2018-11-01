@@ -1,12 +1,13 @@
 ---
 title: centos6.5安装Memcached和php memcached扩展
-date: 2015-11-29 13:12:15
 cetegories:
-	- 运维
-	- LA/NMP服务
+  - 运维
+  - LA/NMP服务
 tags:
-	- php扩展
-	- memcached
+  - php扩展
+  - memcached
+abbrlink: 61bbb9b8
+date: 2015-11-29 13:12:15
 ---
 
 ### 安装memcached服务

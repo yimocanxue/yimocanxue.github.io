@@ -1,12 +1,13 @@
 ---
 title: CentOS7.2编译安装tengine
-date: 2017-11-30 13:54:33
 cetegories:
-	- 运维
-	- LA/NMP服务
+  - 运维
+  - LA/NMP服务
 tags:
-	- tengine
-	- nginx lua扩展
+  - tengine
+  - nginx lua扩展
+abbrlink: f110b008
+date: 2017-11-30 13:54:33
 ---
 
 # Tengine介绍

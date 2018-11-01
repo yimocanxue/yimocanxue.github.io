@@ -1,10 +1,10 @@
 ---
 title: 一个 git hook自动部署脚本
-date: 2015-11-28 11:21:44
-tags: "git"
-
+tags: git
 categories:
-	- 工具/版本管理
+  - 工具/版本管理
+abbrlink: 56cf4d4
+date: 2015-11-28 11:21:44
 ---
 
 ```shell http://www.ihorve.com/?p=234

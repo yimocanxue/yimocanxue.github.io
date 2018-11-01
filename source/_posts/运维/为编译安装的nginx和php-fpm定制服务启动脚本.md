@@ -1,13 +1,14 @@
 ---
 title: 为编译安装的nginx和php-fpm定制服务启动脚本
-date: 2015-11-29 13:26:38
 categories:
-	- 运维
-	- LA/NMP服务
+  - 运维
+  - LA/NMP服务
 tags:
-	- 启动脚本
-	- nginx
-	- php-fpm
+  - 启动脚本
+  - nginx
+  - php-fpm
+abbrlink: 8d0d65c4
+date: 2015-11-29 13:26:38
 ---
 
 源码编译安装的nginx和php-fpm没有centos自带的服务那样可以通过start|stop|restart等管理服务，只能自己定制了。

@@ -18,8 +18,13 @@ email: xuh86@126.com
 url: https://xuh.io
 
 root: /
-permalink: :year/:month/:day/:title/
+#permalink: :year/:month/:day/:title/
 permalink_defaults:
+
+permalink: :year:month:day/:abbrlink.html
+abbrlink:
+  alg: crc32  # 算法：crc16(default) and crc32
+  rep: hex    # 进制：dec(default) and hex
 
 # Directory
 source_dir: source
@@ -107,6 +112,10 @@ search:
   format:  html
   limit: 10000
 
+marked:
+    gfm: true
+    breaks: false
+
 # Admin
 admin:
     name: david
@@ -114,4 +123,30 @@ admin:
     secret: hey hexo
     expire: 60*1
 
- 
+# encrypt
+encrypt:
+  #pwdfile: encrypt_password
+  password: cnetc123 # this set password here
+  replace_all_url: false # this will replace img url in all posts
+  #base_url: http://you img base url/  # this will connect with you img url in you post, except full url(start with http://)
+  #qiniu_ak: your qiniu access key
+  #qiniu_sk: your qiniu secrect key
+  #img_url_ttl: 7200  # 3600 second, the ttl for qiniu img url
+  #type: qiniu # or base64, if base64, the base_url, qiniu_ak, qiniu_sk and img_url_ttl is unnecessary
+  #template: NexT # optional, it's html template include html and js. in js, you should call doDecrypt(password, onErrorCallbackFunc) with you password
+
+
+# Gitment
+# Introduction: https://imsun.net/posts/gitment-introduction/
+#gitment:
+#  enable: true
+#  githubID: xuh86@126.com
+#  repo: git@git.coding.net:jzwolf/jzwolf.coding.me.git
+#  ClientID: ae1f57801334a8eccdb2
+#  ClientSecret: 439c06a63aa7e8f9b37918d808f00fd48e906484
+#  lazy: true
+
+flowchart:
+    flowchart: https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.6.5/flowchart.min.js # optional, the source url of flowchart.js
+    options:
+        line-width: 1

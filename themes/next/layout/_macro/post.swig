@@ -4,6 +4,12 @@
 
   {% set post_class = 'post post-type-' + post.type | default('normal') %}
   {% set post_class = post_class + ' ' + post_extra_class | default('') %}
+
+  {% set post_content = post.content  %}
+  {% if post.content.indexOf('function doDecrypt(pwd') >-1 %}
+    {% set post_content = '这是一篇加密内容，抱歉你看不到了' %}
+  {% endif %}
+
   {% if post.sticky > 0 %}
     {% set post_class = post_class + ' ' + 'post-sticky' %}
   {% endif %}
@@ -215,7 +221,7 @@
                   <span class="post-meta-item-text">{{ __('post.wordcount') }}</span>
                 {% endif %}
                 <span title="{{ __('post.wordcount') }}">
-                  {{ wordcount(post.content) }}
+                  {{ wordcount(post_content) }}
                 </span>
               {% endif %}
 
@@ -231,7 +237,7 @@
                   <span class="post-meta-item-text">{{ __('post.min2read') }}</span>
                 {% endif %}
                 <span title="{{ __('post.min2read') }}">
-                  {{ min2read(post.content) }}
+                  {{ min2read(post_content) }}
                 </span>
               {% endif %}
             </div>
@@ -288,7 +294,7 @@
           </div>
           <!--/noindex-->
         {% elif theme.auto_excerpt.enable %}
-          {% set content = post.content | striptags %}
+          {% set content = post_content | striptags %}
           {{ content.substring(0, theme.auto_excerpt.length) }}
           {% if content.length > theme.auto_excerpt.length %}...{% endif %}
           <!--noindex-->
@@ -300,9 +306,9 @@
           <!--/noindex-->
         {% else %}
           {% if post.type === 'picture' %}
-            <a href="{{ url_for(post.path) }}">{{ post.content }}</a>
+            <a href="{{ url_for(post.path) }}">{{ post_content }}</a>
           {% else %}
-            {{ post.content }}
+            {{ post_content }}
           {% endif %}
         {% endif %}
       {% else %}

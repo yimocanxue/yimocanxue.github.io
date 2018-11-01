@@ -1,13 +1,14 @@
 ---
 title: gitlab系列教程之1-安装
-date: 2017-07-07 19:11:16
 tags:
-	- gitlab
-	- 安装
-	- docker
+  - gitlab
+  - 安装
+  - docker
 categories:
-	- 运维
-	- devops
+  - 运维
+  - devops
+abbrlink: 14c433bb
+date: 2017-07-07 19:11:16
 ---
 
 

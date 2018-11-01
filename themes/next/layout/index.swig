@@ -11,7 +11,10 @@
 {% block content %}
   <section id="posts" class="posts-expand">
     {% for post in page.posts %}
-      {{ post_template.render(post, true) }}
+      <!--加密的文章不列出来-->
+      {% if post.content.indexOf('function doDecrypt(pwd') < 0  && post.passwd == '' %}	
+      	{{ post_template.render(post, true) }}
+      {% endif %}
     {% endfor %}
   </section>
 

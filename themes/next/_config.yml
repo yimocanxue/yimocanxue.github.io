@@ -289,7 +289,8 @@ highlight_theme: normal
 mathjax:
   enable: true
   per_page: false
-  cdn: //cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+  #cdn: //cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+  cdn: //cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML
   
 
 
@@ -315,7 +316,7 @@ disqus:
 #hypercomments_id:
 
 # Gentie productKey
-gentie_productKey: 8be32ce867ff4cccad504c20852114ff
+#gentie_productKey: 8be32ce867ff4cccad504c20852114ff
 
 # changyan
 changyan:

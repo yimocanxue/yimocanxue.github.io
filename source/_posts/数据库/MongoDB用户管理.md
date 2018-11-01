@@ -1,12 +1,13 @@
 ---
 title: MongoDB用户管理
-date: 2017-07-19 11:58:17
 tags:
-	- 用户管理
-	- auth
+  - 用户管理
+  - auth
 categorires:
-	- 数据库
-	- NoSQL/MongoDB
+  - 数据库
+  - NoSQL/MongoDB
+abbrlink: ff4ef26d
+date: 2017-07-19 11:58:17
 ---
 
 MongoDB为了使用方便，默认启动是不带用户认证的，也就是说所有人都可以连接并进行读写操作，这在开发阶段当然很方便，但是生产环境可就不能这么裸奔了。
