@@ -605,31 +605,6 @@
   </entry>
   
   <entry>
-    <title>一个 git hook自动部署脚本</title>
-    <link href="https://xuh.io/20151128/56cf4d4.html"/>
-    <id>https://xuh.io/20151128/56cf4d4.html</id>
-    <published>2015-11-28T03:21:44.000Z</published>
-    <updated>2018-11-01T05:38:52.097Z</updated>
-    
-    <content type="html"><![CDATA[<figure class="highlight shell"><figcaption><span>http://www.ihorve.com/?p</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#</span>!/bin/sh</span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span> git autodeploy script when it matches string "[deploy]"</span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span> Usage:</span><br><span class="line"><span class="meta">#</span>    1. put this into the post-receive hook file itself below</span><br><span class="line"><span class="meta">#</span>    2. `chmod +x post-receive`</span><br><span class="line"><span class="meta">#</span>    3. Done!</span><br><span class="line"><span class="meta">#</span> Check the remote git repository whether it is bare</span><br><span class="line">IS_BARE=$(git rev-parse --is-bare-repository)</span><br><span class="line">if [ -z "$IS_BARE" ]; then</span><br><span class="line">    echo &gt;&amp;2 "fatal:post-receive:IS_NOT_BARE"</span><br><span class="line">    exit 1</span><br><span class="line">fi</span><br><span class="line"><span class="meta">#</span> Get the latest commit subject</span><br><span class="line">SUBJECT=$(git log -1 --pretty=format:"%s")</span><br><span class="line"><span class="meta">#</span> Deploy the HEAD source to publish</span><br><span class="line">IS_PULL=$(echo "$SUBJECT"  | grep "\[deploy\]")</span><br><span class="line">if [ -z "$IS_PULL" ];then</span><br><span class="line">    echo &gt;&amp;2 "tips:post-receive:IS_NOT_PULL"</span><br><span class="line">    exit 1</span><br><span class="line">fi</span><br><span class="line"><span class="meta">#</span> Check the deploy dir whether is exists</span><br><span class="line">DEPLOY_DIR=/home/www</span><br><span class="line">if [ ! -d $DEPLOY_DIR ]; then</span><br><span class="line">    echo &gt;&amp;2 "fatal:post-receive:DEPLOY_DIR_NOT_EXISTS:\"$DEPLOY_DIR\""</span><br><span class="line">    exit 1</span><br><span class="line">fi</span><br><span class="line"><span class="meta">#</span> Check the deploy dir whether it is git repository</span><br><span class="line"><span class="meta">#</span>IS_GIT=$(git rev-parse --git-dir 2&gt;/dev/null)</span><br><span class="line"><span class="meta">#</span>if [ -z "$IS_GIT" ] ;then</span><br><span class="line"><span class="meta">#</span>    echo &gt;&amp;2 "fatal:post-receive:IS_NOT_GIT"</span><br><span class="line"><span class="meta">#</span>    exit 1</span><br><span class="line"><span class="meta">#</span>fi</span><br><span class="line"><span class="meta">#</span> Goto the deploy dir and pull the latest sources</span><br><span class="line">cd $DEPLOY_DIR</span><br><span class="line"><span class="meta">#</span> env -i git reset --hard</span><br><span class="line">env -i git pull</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;figure class=&quot;highlight shell&quot;&gt;&lt;figcaption&gt;&lt;span&gt;http://www.ihorve.com/?p&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class
-      
-    
-    </summary>
-    
-      <category term="工具/版本管理" scheme="https://xuh.io/categories/%E5%B7%A5%E5%85%B7-%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/"/>
-    
-    
-      <category term="git" scheme="https://xuh.io/tags/git/"/>
-    
-  </entry>
-  
-  <entry>
     <title>CentOS安装samba服务</title>
     <link href="https://xuh.io/20151128/294fe70.html"/>
     <id>https://xuh.io/20151128/294fe70.html</id>
@@ -656,6 +631,31 @@
     
     
       <category term="samba" scheme="https://xuh.io/tags/samba/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>一个 git hook自动部署脚本</title>
+    <link href="https://xuh.io/20151128/56cf4d4.html"/>
+    <id>https://xuh.io/20151128/56cf4d4.html</id>
+    <published>2015-11-28T03:21:44.000Z</published>
+    <updated>2018-11-01T05:38:52.097Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight shell"><figcaption><span>http://www.ihorve.com/?p</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#</span>!/bin/sh</span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span> git autodeploy script when it matches string "[deploy]"</span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span> Usage:</span><br><span class="line"><span class="meta">#</span>    1. put this into the post-receive hook file itself below</span><br><span class="line"><span class="meta">#</span>    2. `chmod +x post-receive`</span><br><span class="line"><span class="meta">#</span>    3. Done!</span><br><span class="line"><span class="meta">#</span> Check the remote git repository whether it is bare</span><br><span class="line">IS_BARE=$(git rev-parse --is-bare-repository)</span><br><span class="line">if [ -z "$IS_BARE" ]; then</span><br><span class="line">    echo &gt;&amp;2 "fatal:post-receive:IS_NOT_BARE"</span><br><span class="line">    exit 1</span><br><span class="line">fi</span><br><span class="line"><span class="meta">#</span> Get the latest commit subject</span><br><span class="line">SUBJECT=$(git log -1 --pretty=format:"%s")</span><br><span class="line"><span class="meta">#</span> Deploy the HEAD source to publish</span><br><span class="line">IS_PULL=$(echo "$SUBJECT"  | grep "\[deploy\]")</span><br><span class="line">if [ -z "$IS_PULL" ];then</span><br><span class="line">    echo &gt;&amp;2 "tips:post-receive:IS_NOT_PULL"</span><br><span class="line">    exit 1</span><br><span class="line">fi</span><br><span class="line"><span class="meta">#</span> Check the deploy dir whether is exists</span><br><span class="line">DEPLOY_DIR=/home/www</span><br><span class="line">if [ ! -d $DEPLOY_DIR ]; then</span><br><span class="line">    echo &gt;&amp;2 "fatal:post-receive:DEPLOY_DIR_NOT_EXISTS:\"$DEPLOY_DIR\""</span><br><span class="line">    exit 1</span><br><span class="line">fi</span><br><span class="line"><span class="meta">#</span> Check the deploy dir whether it is git repository</span><br><span class="line"><span class="meta">#</span>IS_GIT=$(git rev-parse --git-dir 2&gt;/dev/null)</span><br><span class="line"><span class="meta">#</span>if [ -z "$IS_GIT" ] ;then</span><br><span class="line"><span class="meta">#</span>    echo &gt;&amp;2 "fatal:post-receive:IS_NOT_GIT"</span><br><span class="line"><span class="meta">#</span>    exit 1</span><br><span class="line"><span class="meta">#</span>fi</span><br><span class="line"><span class="meta">#</span> Goto the deploy dir and pull the latest sources</span><br><span class="line">cd $DEPLOY_DIR</span><br><span class="line"><span class="meta">#</span> env -i git reset --hard</span><br><span class="line">env -i git pull</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;figure class=&quot;highlight shell&quot;&gt;&lt;figcaption&gt;&lt;span&gt;http://www.ihorve.com/?p&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class
+      
+    
+    </summary>
+    
+      <category term="工具/版本管理" scheme="https://xuh.io/categories/%E5%B7%A5%E5%85%B7-%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/"/>
+    
+    
+      <category term="git" scheme="https://xuh.io/tags/git/"/>
     
   </entry>
   
