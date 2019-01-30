@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://xuh.io/"/>
-  <updated>2019-01-30T15:48:19.939Z</updated>
+  <updated>2019-01-30T15:53:58.906Z</updated>
   <id>https://xuh.io/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://xuh.io/20190130/af5c789.html"/>
     <id>https://xuh.io/20190130/af5c789.html</id>
     <published>2019-01-30T15:38:11.000Z</published>
-    <updated>2019-01-30T15:48:19.939Z</updated>
+    <updated>2019-01-30T15:53:58.906Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="抽象数据类型-ADT"><a href="#抽象数据类型-ADT" class="headerlink" title="抽象数据类型(ADT)"></a>抽象数据类型(ADT)</h3><p>抽象数据类型ADT(abstract data type)，一个实现包括存储数据元素的存储结构以及基本操作的算法集合，它是数学的抽象，在ADT的定义中，不包括具体的实现细节。</p><h3 id="表ADT"><a href="#表ADT" class="headerlink" title="表ADT"></a>表ADT</h3><h5 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h5><p>一组数据类型相同的有限序列{A~1~, A~2~, A~3~ ,…, A~n~}，表的大小为n，当表大小为0时成为空表。</p><p>除第一个元素外，每个元素有且仅有一个前驱；</p><p>出最后一个元素外，每个元素有且仅有一个后继。</p>]]></content>
+    <content type="html"><![CDATA[<h3 id="抽象数据类型-ADT"><a href="#抽象数据类型-ADT" class="headerlink" title="抽象数据类型(ADT)"></a>抽象数据类型(ADT)</h3><p>抽象数据类型ADT(abstract data type)，一个实现包括存储数据元素的存储结构以及基本操作的算法集合，它是数学的抽象，在ADT的定义中，不包括具体的实现细节。</p><h3 id="表ADT"><a href="#表ADT" class="headerlink" title="表ADT"></a>表ADT</h3><h5 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h5><p>一组数据类型相同的有限序列{A_1, A~2~, A~3~ ,…, A~n~}，表的大小为n，当表大小为0时成为空表。</p><p>除第一个元素外，每个元素有且仅有一个前驱；</p><p>出最后一个元素外，每个元素有且仅有一个后继。</p>]]></content>
     
     <summary type="html">
     

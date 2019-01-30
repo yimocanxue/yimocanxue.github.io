@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[数据结构之线性表（一）]]></title>
     <url>%2F20190130%2Faf5c789.html</url>
-    <content type="text"><![CDATA[抽象数据类型(ADT)抽象数据类型ADT(abstract data type)，一个实现包括存储数据元素的存储结构以及基本操作的算法集合，它是数学的抽象，在ADT的定义中，不包括具体的实现细节。 表ADT定义一组数据类型相同的有限序列{A~1~, A~2~, A~3~ ,…, A~n~}，表的大小为n，当表大小为0时成为空表。 除第一个元素外，每个元素有且仅有一个前驱； 出最后一个元素外，每个元素有且仅有一个后继。]]></content>
+    <content type="text"><![CDATA[抽象数据类型(ADT)抽象数据类型ADT(abstract data type)，一个实现包括存储数据元素的存储结构以及基本操作的算法集合，它是数学的抽象，在ADT的定义中，不包括具体的实现细节。 表ADT定义一组数据类型相同的有限序列{A_1, A~2~, A~3~ ,…, A~n~}，表的大小为n，当表大小为0时成为空表。 除第一个元素外，每个元素有且仅有一个前驱； 出最后一个元素外，每个元素有且仅有一个后继。]]></content>
       <categories>
         <category>算法/数据结构</category>
         <category>理论</category>
