@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[数据结构之线性表（一）]]></title>
     <url>%2F20190130%2Faf5c789.html</url>
-    <content type="text"><![CDATA[[TOC] 抽象数据类型(ADT)抽象数据类型ADT(abstract data type)，一个实现包括存储数据元素的存储结构以及基本操作的算法集合，它是数学的抽象，在ADT的定义中，不包括具体的实现细节。 表ADT定义一组数据类型相同的有限序列{$A_1, A_2, A_3 ,…, A_n​$}，表的大小为n，当表大小为0时成为空表。除第一个元素外，每个元素有且仅有一个前驱，除最后一个元素外，每个元素有且仅有一个后继。 分类根据元素的存储方式可分为顺序表和链表两大类： graph LR ​ 绘图 –&gt; 导出图像 ​ 导出图像 –&gt; 上传服务器 ​ 上传服务器 –&gt; 文章插入 st=>start: Start op=>operation: Your Operation cond=>condition: Yes or No? e=>end st->op->cond cond(yes)->e cond(no)->op{"scale":1,"line-width":1,"line-length":50,"text-margin":10,"font-size":12} var code = document.getElementById("flowchart-0-code").value; var options = JSON.parse(decodeURIComponent(document.getElementById("flowchart-0-options").value)); var diagram = flowchart.parse(code); diagram.drawSVG("flowchart-0", options);]]></content>
+    <content type="text"><![CDATA[[TOC] 抽象数据类型(ADT)抽象数据类型ADT(abstract data type)，一个实现包括存储数据元素的存储结构以及基本操作的算法集合，它是数学的抽象，在ADT的定义中，不包括具体的实现细节。 表ADT定义一组数据类型相同的有限序列{$A_1, A_2, A_3 ,…, A_n​$}，表的大小为n，当表大小为0时成为空表。除第一个元素外，每个元素有且仅有一个前驱，除最后一个元素外，每个元素有且仅有一个后继。 分类根据元素的存储方式可分为顺序表和链表两大类： graph LR 绘图 --> 导出图像 导出图像 --> 上传服务器 上传服务器 --> 文章插入 st=>start: Start op=>operation: Your Operation cond=>condition: Yes or No? e=>end st->op->cond cond(yes)->e cond(no)->op{"scale":1,"line-width":1,"line-length":50,"text-margin":10,"font-size":12} var code = document.getElementById("flowchart-0-code").value; var options = JSON.parse(decodeURIComponent(document.getElementById("flowchart-0-options").value)); var diagram = flowchart.parse(code); diagram.drawSVG("flowchart-0", options);]]></content>
       <categories>
         <category>算法/数据结构</category>
         <category>理论</category>
