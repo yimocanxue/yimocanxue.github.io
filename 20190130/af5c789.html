@@ -84,7 +84,7 @@ a[c].split("="),g=e.decode(k.shift()),k=e.decode(k.join("="));b[g]=k}return b};b
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="ADT,线性表,">
 
 
 
@@ -102,17 +102,18 @@ a[c].split("="),g=e.decode(k.shift()),k=e.decode(k.join("="));b[g]=k}return b};b
 
 
 
-<meta name="description" content="放荡不羁爱自由,却偏偏是个技术宅">
-<meta name="keywords" content="爱编程,爱技术,爱生活,不爱拉芳">
-<meta property="og:type" content="website">
-<meta property="og:title" content="金州苍狼">
-<meta property="og:url" content="https://xuh.io/tags/集合/index.html">
+<meta name="description" content="抽象数据类型(ADT)抽象数据类型ADT(abstract data type)，一个实现包括存储数据元素的存储结构以及基本操作的算法集合，它是数学的抽象，在ADT的定义中，不包括具体的实现细节。 表ADT定义一组数据类型相同的有限序列{A~1~, A~2~, A~3~ ,…, A~n~}，表的大小为n，当表大小为0时成为空表。 除第一个元素外，每个元素有且仅有一个前驱； 出最后一个元素外，每个元">
+<meta name="keywords" content="ADT,线性表">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构之线性表（一）">
+<meta property="og:url" content="https://xuh.io/20190130/af5c789.html">
 <meta property="og:site_name" content="金州苍狼">
-<meta property="og:description" content="放荡不羁爱自由,却偏偏是个技术宅">
+<meta property="og:description" content="抽象数据类型(ADT)抽象数据类型ADT(abstract data type)，一个实现包括存储数据元素的存储结构以及基本操作的算法集合，它是数学的抽象，在ADT的定义中，不包括具体的实现细节。 表ADT定义一组数据类型相同的有限序列{A~1~, A~2~, A~3~ ,…, A~n~}，表的大小为n，当表大小为0时成为空表。 除第一个元素外，每个元素有且仅有一个前驱； 出最后一个元素外，每个元">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-01-30T15:48:19.939Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="金州苍狼">
-<meta name="twitter:description" content="放荡不羁爱自由,却偏偏是个技术宅">
+<meta name="twitter:title" content="数据结构之线性表（一）">
+<meta name="twitter:description" content="抽象数据类型(ADT)抽象数据类型ADT(abstract data type)，一个实现包括存储数据元素的存储结构以及基本操作的算法集合，它是数学的抽象，在ADT的定义中，不包括具体的实现细节。 表ADT定义一组数据类型相同的有限序列{A~1~, A~2~, A~3~ ,…, A~n~}，表的大小为n，当表大小为0时成为空表。 除第一个元素外，每个元素有且仅有一个前驱； 出最后一个元素外，每个元">
 
 
 
@@ -140,13 +141,13 @@ a[c].split("="),g=e.decode(k.shift()),k=e.decode(k.join("="));b[g]=k}return b};b
 
 
 
-  <link rel="canonical" href="https://xuh.io/tags/集合/">
+  <link rel="canonical" href="https://xuh.io/20190130/af5c789.html">
 
 
 
 
 
-  <title>标签: 集合 | 金州苍狼</title>
+  <title>数据结构之线性表（一） | 金州苍狼</title>
 </head>
 
 <body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -172,7 +173,7 @@ a[c].split("="),g=e.decode(k.shift()),k=e.decode(k.join("="));b[g]=k}return b};b
     
   
 
-  <div class="container sidebar-position-right  ">
+  <div class="container sidebar-position-right page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -308,42 +309,234 @@ a[c].split("="),g=e.decode(k.shift()),k=e.decode(k.join("="));b[g]=k}return b};b
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h1>集合<small>标签</small>
-      </h1>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://xuh.io/20190130/af5c789.html">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="David.xu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="金州苍狼">
+    </span>
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">数据结构之线性表（一）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-30T23:38:11+08:00">
+                2019-01-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法-数据结构/" itemprop="url" rel="index">
+                    <span itemprop="name">算法/数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法-数据结构/理论/" itemprop="url" rel="index">
+                    <span itemprop="name">理论</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <h3 id="抽象数据类型-ADT"><a href="#抽象数据类型-ADT" class="headerlink" title="抽象数据类型(ADT)"></a>抽象数据类型(ADT)</h3><p>抽象数据类型ADT(abstract data type)，一个实现包括存储数据元素的存储结构以及基本操作的算法集合，它是数学的抽象，在ADT的定义中，不包括具体的实现细节。</p>
+<h3 id="表ADT"><a href="#表ADT" class="headerlink" title="表ADT"></a>表ADT</h3><h5 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h5><p>一组数据类型相同的有限序列{A~1~, A~2~, A~3~ ,…, A~n~}，表的大小为n，当表大小为0时成为空表。</p>
+<p>除第一个元素外，每个元素有且仅有一个前驱；</p>
+<p>出最后一个元素外，每个元素有且仅有一个后继。</p>
 
-      <h2 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/20170605/87569439.html" itemprop="url">
-              
-                <span itemprop="name">集合类型之0-概述</span>
-              
-            </a>
+
+      
+    </div>
+
+    <div>
+      
         
-      </h2>
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/uploads/wechat.jpg" alt="David.xu WeChat Pay">
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/uploads/alipay.jpg" alt="David.xu Alipay">
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2017-06-05T19:51:02+08:00" content="2017-06-05">
-          06-05
-        </time>
-      </div>
 
-    </header>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ADT/" rel="tag"># ADT</a>
+          
+            <a href="/tags/线性表/" rel="tag"># 线性表</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/20190129/667c01ef.html" rel="next" title="结构和联合">
+                <i class="fa fa-chevron-left"></i> 结构和联合
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript">
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
 
 
           </div>
@@ -351,6 +544,10 @@ a[c].split("="),g=e.decode(k.shift()),k=e.decode(k.join("="));b[g]=k}return b};b
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -370,8 +567,17 @@ a[c].split("="),g=e.decode(k.shift()),k=e.decode(k.join("="));b[g]=k}return b};b
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image" src="/uploads/avatar.jpg" alt="David.xu">
           <p class="site-author-name" itemprop="name">David.xu</p>
@@ -438,6 +644,22 @@ a[c].split("="),g=e.decode(k.shift()),k=e.decode(k.join("="));b[g]=k}return b};b
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#抽象数据类型-ADT"><span class="nav-text">抽象数据类型(ADT)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#表ADT"><span class="nav-text">表ADT</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#定义"><span class="nav-text">定义</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -559,6 +781,10 @@ a[c].split("="),g=e.decode(k.shift()),k=e.decode(k.join("="));b[g]=k}return b};b
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
 
   
 
