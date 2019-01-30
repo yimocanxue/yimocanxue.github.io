@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://xuh.io/"/>
-  <updated>2019-01-30T16:42:28.144Z</updated>
+  <updated>2019-01-30T16:50:00.506Z</updated>
   <id>https://xuh.io/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://xuh.io/20190130/af5c789.html"/>
     <id>https://xuh.io/20190130/af5c789.html</id>
     <published>2019-01-30T15:38:11.000Z</published>
-    <updated>2019-01-30T16:42:28.144Z</updated>
+    <updated>2019-01-30T16:50:00.506Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="抽象数据类型-ADT"><a href="#抽象数据类型-ADT" class="headerlink" title="抽象数据类型(ADT)"></a>抽象数据类型(ADT)</h3><p>抽象数据类型ADT(abstract data type)，一个实现包括存储数据元素的存储结构以及基本操作的算法集合，它是数学的抽象，在ADT的定义中，不包括具体的实现细节。</p><h3 id="表ADT"><a href="#表ADT" class="headerlink" title="表ADT"></a>表ADT</h3><h5 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h5><p>一组数据类型相同的有限序列{$A_1, A_2, A_3 ,…, A_n​$}，表的大小为n，当表大小为0时成为空表。除第一个元素外，每个元素有且仅有一个前驱，除最后一个元素外，每个元素有且仅有一个后继。</p><h5 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h5><p>根据元素的存储方式可分为顺序表和链表两大类：</p><pre class="mermaid">graph LR      B["线性表"]      B-->C[线性存储]      C-->D[顺序表]      B-->E["链式存储"]      E-->F["单链表"]      E-->G["双链表"]      E-->H["循环链表"]      E-->I["静态链表(借助数组实现)"]</pre>]]></content>
+    <content type="html"><![CDATA[<h3 id="抽象数据类型-ADT"><a href="#抽象数据类型-ADT" class="headerlink" title="抽象数据类型(ADT)"></a>抽象数据类型(ADT)</h3><p>抽象数据类型ADT(abstract data type)，一个实现包括存储数据元素的存储结构以及基本操作的算法集合，它是数学的抽象，在ADT的定义中，不包括具体的实现细节。</p><h3 id="表ADT"><a href="#表ADT" class="headerlink" title="表ADT"></a>表ADT</h3><h5 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h5><p>一组数据类型相同的有限序列{$A_1, A_2, A_3 ,…, A_n​$}，表的大小为n，当表大小为0时成为空表。除第一个元素外，每个元素有且仅有一个前驱，除最后一个元素外，每个元素有且仅有一个后继。</p><h5 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h5><p>根据元素的存储方式可分为顺序表和链表两大类：</p><pre class="mermaid">graph LR      B["线性表"]      B-->C[线性存储]      C-->D[顺序表]      B-->E["链式存储"]      E-->F["单链表"]      E-->G["双链表"]      E-->H["循环链表"]      E-->I["静态链表(借助数组实现)"]</pre><h5 id="顺序表"><a href="#顺序表" class="headerlink" title="顺序表"></a>顺序表</h5><p>逻辑上相邻的两个元素，其物理存储也相邻，一般通过数组实现。</p><ul><li><p>优点</p><ul><li>实现简单</li><li>查找性能高，时间复杂度为O(1)</li></ul></li><li><p>缺点</p><ul><li>插入、删除需要移动元素，时间复杂度为O(N)</li><li>需要预分配存储空间，容易造成资源浪费和发生溢出错误</li></ul></li><li><p>适用场景</p><ul><li>表大小确定</li><li>查找操作频繁，插入、删除操作少</li></ul></li></ul><h5 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h5>]]></content>
     
     <summary type="html">
     
@@ -634,31 +634,27 @@
   </entry>
   
   <entry>
-    <title>让nginx支持path_info</title>
-    <link href="https://xuh.io/20151128/8e316de2.html"/>
-    <id>https://xuh.io/20151128/8e316de2.html</id>
+    <title>一个 git hook自动部署脚本</title>
+    <link href="https://xuh.io/20151128/56cf4d4.html"/>
+    <id>https://xuh.io/20151128/56cf4d4.html</id>
     <published>2015-11-28T03:21:44.000Z</published>
-    <updated>2018-11-01T05:38:52.099Z</updated>
+    <updated>2018-11-01T05:38:52.097Z</updated>
     
-    <content type="html"><![CDATA[<p>nginx默认是不支持path_info模式的，也就是说不支持index.php/*这样的url，因此像Thinkphp中URL model为2的那种路径方式nginx不支持。</p><p>只要修改虚拟主机的下面三个地方即可：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">location ~ .php &#123; #删除.php后的$</span><br><span class="line">         fastcgi_pass   soopj_phpfcgi;</span><br><span class="line">         fastcgi_index  default.php;</span><br><span class="line">          </span><br><span class="line">         fastcgi_split_path_info ^((?U).+.php)(/?.+)$;       #增加这句</span><br><span class="line">         fastcgi_param PATH_INFO $fastcgi_path_info;   #增加这句</span><br><span class="line">    </span><br><span class="line">         fastcgi_param  SCRIPT_FILENAME   $document_root$fastcgi_script_name;</span><br><span class="line">         include        fastcgi_params;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<figure class="highlight shell"><figcaption><span>http://www.ihorve.com/?p</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#</span>!/bin/sh</span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span> git autodeploy script when it matches string "[deploy]"</span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span> Usage:</span><br><span class="line"><span class="meta">#</span>    1. put this into the post-receive hook file itself below</span><br><span class="line"><span class="meta">#</span>    2. `chmod +x post-receive`</span><br><span class="line"><span class="meta">#</span>    3. Done!</span><br><span class="line"><span class="meta">#</span> Check the remote git repository whether it is bare</span><br><span class="line">IS_BARE=$(git rev-parse --is-bare-repository)</span><br><span class="line">if [ -z "$IS_BARE" ]; then</span><br><span class="line">    echo &gt;&amp;2 "fatal:post-receive:IS_NOT_BARE"</span><br><span class="line">    exit 1</span><br><span class="line">fi</span><br><span class="line"><span class="meta">#</span> Get the latest commit subject</span><br><span class="line">SUBJECT=$(git log -1 --pretty=format:"%s")</span><br><span class="line"><span class="meta">#</span> Deploy the HEAD source to publish</span><br><span class="line">IS_PULL=$(echo "$SUBJECT"  | grep "\[deploy\]")</span><br><span class="line">if [ -z "$IS_PULL" ];then</span><br><span class="line">    echo &gt;&amp;2 "tips:post-receive:IS_NOT_PULL"</span><br><span class="line">    exit 1</span><br><span class="line">fi</span><br><span class="line"><span class="meta">#</span> Check the deploy dir whether is exists</span><br><span class="line">DEPLOY_DIR=/home/www</span><br><span class="line">if [ ! -d $DEPLOY_DIR ]; then</span><br><span class="line">    echo &gt;&amp;2 "fatal:post-receive:DEPLOY_DIR_NOT_EXISTS:\"$DEPLOY_DIR\""</span><br><span class="line">    exit 1</span><br><span class="line">fi</span><br><span class="line"><span class="meta">#</span> Check the deploy dir whether it is git repository</span><br><span class="line"><span class="meta">#</span>IS_GIT=$(git rev-parse --git-dir 2&gt;/dev/null)</span><br><span class="line"><span class="meta">#</span>if [ -z "$IS_GIT" ] ;then</span><br><span class="line"><span class="meta">#</span>    echo &gt;&amp;2 "fatal:post-receive:IS_NOT_GIT"</span><br><span class="line"><span class="meta">#</span>    exit 1</span><br><span class="line"><span class="meta">#</span>fi</span><br><span class="line"><span class="meta">#</span> Goto the deploy dir and pull the latest sources</span><br><span class="line">cd $DEPLOY_DIR</span><br><span class="line"><span class="meta">#</span> env -i git reset --hard</span><br><span class="line">env -i git pull</span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;nginx默认是不支持path_info模式的，也就是说不支持index.php/*这样的url，因此像Thinkphp中URL model为2的那种路径方式nginx不支持。&lt;/p&gt;
-&lt;p&gt;只要修改虚拟主机的下面三个地方即可：&lt;/p&gt;
-&lt;figure class=&quot;hig
+        &lt;figure class=&quot;highlight shell&quot;&gt;&lt;figcaption&gt;&lt;span&gt;http://www.ihorve.com/?p&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class
       
     
     </summary>
     
-      <category term="运维" scheme="https://xuh.io/categories/%E8%BF%90%E7%BB%B4/"/>
-    
-      <category term="LA/NMP服务" scheme="https://xuh.io/categories/%E8%BF%90%E7%BB%B4/LA-NMP%E6%9C%8D%E5%8A%A1/"/>
+      <category term="工具/版本管理" scheme="https://xuh.io/categories/%E5%B7%A5%E5%85%B7-%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/"/>
     
     
-      <category term="nginx" scheme="https://xuh.io/tags/nginx/"/>
+      <category term="git" scheme="https://xuh.io/tags/git/"/>
     
   </entry>
   
@@ -693,27 +689,31 @@
   </entry>
   
   <entry>
-    <title>一个 git hook自动部署脚本</title>
-    <link href="https://xuh.io/20151128/56cf4d4.html"/>
-    <id>https://xuh.io/20151128/56cf4d4.html</id>
+    <title>让nginx支持path_info</title>
+    <link href="https://xuh.io/20151128/8e316de2.html"/>
+    <id>https://xuh.io/20151128/8e316de2.html</id>
     <published>2015-11-28T03:21:44.000Z</published>
-    <updated>2018-11-01T05:38:52.097Z</updated>
+    <updated>2018-11-01T05:38:52.099Z</updated>
     
-    <content type="html"><![CDATA[<figure class="highlight shell"><figcaption><span>http://www.ihorve.com/?p</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#</span>!/bin/sh</span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span> git autodeploy script when it matches string "[deploy]"</span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span> Usage:</span><br><span class="line"><span class="meta">#</span>    1. put this into the post-receive hook file itself below</span><br><span class="line"><span class="meta">#</span>    2. `chmod +x post-receive`</span><br><span class="line"><span class="meta">#</span>    3. Done!</span><br><span class="line"><span class="meta">#</span> Check the remote git repository whether it is bare</span><br><span class="line">IS_BARE=$(git rev-parse --is-bare-repository)</span><br><span class="line">if [ -z "$IS_BARE" ]; then</span><br><span class="line">    echo &gt;&amp;2 "fatal:post-receive:IS_NOT_BARE"</span><br><span class="line">    exit 1</span><br><span class="line">fi</span><br><span class="line"><span class="meta">#</span> Get the latest commit subject</span><br><span class="line">SUBJECT=$(git log -1 --pretty=format:"%s")</span><br><span class="line"><span class="meta">#</span> Deploy the HEAD source to publish</span><br><span class="line">IS_PULL=$(echo "$SUBJECT"  | grep "\[deploy\]")</span><br><span class="line">if [ -z "$IS_PULL" ];then</span><br><span class="line">    echo &gt;&amp;2 "tips:post-receive:IS_NOT_PULL"</span><br><span class="line">    exit 1</span><br><span class="line">fi</span><br><span class="line"><span class="meta">#</span> Check the deploy dir whether is exists</span><br><span class="line">DEPLOY_DIR=/home/www</span><br><span class="line">if [ ! -d $DEPLOY_DIR ]; then</span><br><span class="line">    echo &gt;&amp;2 "fatal:post-receive:DEPLOY_DIR_NOT_EXISTS:\"$DEPLOY_DIR\""</span><br><span class="line">    exit 1</span><br><span class="line">fi</span><br><span class="line"><span class="meta">#</span> Check the deploy dir whether it is git repository</span><br><span class="line"><span class="meta">#</span>IS_GIT=$(git rev-parse --git-dir 2&gt;/dev/null)</span><br><span class="line"><span class="meta">#</span>if [ -z "$IS_GIT" ] ;then</span><br><span class="line"><span class="meta">#</span>    echo &gt;&amp;2 "fatal:post-receive:IS_NOT_GIT"</span><br><span class="line"><span class="meta">#</span>    exit 1</span><br><span class="line"><span class="meta">#</span>fi</span><br><span class="line"><span class="meta">#</span> Goto the deploy dir and pull the latest sources</span><br><span class="line">cd $DEPLOY_DIR</span><br><span class="line"><span class="meta">#</span> env -i git reset --hard</span><br><span class="line">env -i git pull</span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<p>nginx默认是不支持path_info模式的，也就是说不支持index.php/*这样的url，因此像Thinkphp中URL model为2的那种路径方式nginx不支持。</p><p>只要修改虚拟主机的下面三个地方即可：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">location ~ .php &#123; #删除.php后的$</span><br><span class="line">         fastcgi_pass   soopj_phpfcgi;</span><br><span class="line">         fastcgi_index  default.php;</span><br><span class="line">          </span><br><span class="line">         fastcgi_split_path_info ^((?U).+.php)(/?.+)$;       #增加这句</span><br><span class="line">         fastcgi_param PATH_INFO $fastcgi_path_info;   #增加这句</span><br><span class="line">    </span><br><span class="line">         fastcgi_param  SCRIPT_FILENAME   $document_root$fastcgi_script_name;</span><br><span class="line">         include        fastcgi_params;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;figure class=&quot;highlight shell&quot;&gt;&lt;figcaption&gt;&lt;span&gt;http://www.ihorve.com/?p&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class
+        &lt;p&gt;nginx默认是不支持path_info模式的，也就是说不支持index.php/*这样的url，因此像Thinkphp中URL model为2的那种路径方式nginx不支持。&lt;/p&gt;
+&lt;p&gt;只要修改虚拟主机的下面三个地方即可：&lt;/p&gt;
+&lt;figure class=&quot;hig
       
     
     </summary>
     
-      <category term="工具/版本管理" scheme="https://xuh.io/categories/%E5%B7%A5%E5%85%B7-%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/"/>
+      <category term="运维" scheme="https://xuh.io/categories/%E8%BF%90%E7%BB%B4/"/>
+    
+      <category term="LA/NMP服务" scheme="https://xuh.io/categories/%E8%BF%90%E7%BB%B4/LA-NMP%E6%9C%8D%E5%8A%A1/"/>
     
     
-      <category term="git" scheme="https://xuh.io/tags/git/"/>
+      <category term="nginx" scheme="https://xuh.io/tags/nginx/"/>
     
   </entry>
   

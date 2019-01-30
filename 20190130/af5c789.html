@@ -110,7 +110,7 @@ a[c].split("="),g=e.decode(k.shift()),k=e.decode(k.join("="));b[g]=k}return b};b
 <meta property="og:site_name" content="金州苍狼">
 <meta property="og:description" content="抽象数据类型(ADT)抽象数据类型ADT(abstract data type)，一个实现包括存储数据元素的存储结构以及基本操作的算法集合，它是数学的抽象，在ADT的定义中，不包括具体的实现细节。 表ADT定义一组数据类型相同的有限序列{$A_1, A_2, A_3 ,…, A_n​$}，表的大小为n，当表大小为0时成为空表。除第一个元素外，每个元素有且仅有一个前驱，除最后一个元素外，每个元素有且">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-30T16:42:28.144Z">
+<meta property="og:updated_time" content="2019-01-30T16:50:00.506Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据结构之线性表（一）">
 <meta name="twitter:description" content="抽象数据类型(ADT)抽象数据类型ADT(abstract data type)，一个实现包括存储数据元素的存储结构以及基本操作的算法集合，它是数学的抽象，在ADT的定义中，不包括具体的实现细节。 表ADT定义一组数据类型相同的有限序列{$A_1, A_2, A_3 ,…, A_n​$}，表的大小为n，当表大小为0时成为空表。除第一个元素外，每个元素有且仅有一个前驱，除最后一个元素外，每个元素有且">
@@ -437,7 +437,28 @@ a[c].split("="),g=e.decode(k.shift()),k=e.decode(k.join("="));b[g]=k}return b};b
 
 
 
-
+<h5 id="顺序表"><a href="#顺序表" class="headerlink" title="顺序表"></a>顺序表</h5><p>逻辑上相邻的两个元素，其物理存储也相邻，一般通过数组实现。</p>
+<ul>
+<li><p>优点</p>
+<ul>
+<li>实现简单</li>
+<li>查找性能高，时间复杂度为O(1)</li>
+</ul>
+</li>
+<li><p>缺点</p>
+<ul>
+<li>插入、删除需要移动元素，时间复杂度为O(N)</li>
+<li>需要预分配存储空间，容易造成资源浪费和发生溢出错误</li>
+</ul>
+</li>
+<li><p>适用场景</p>
+<ul>
+<li>表大小确定</li>
+<li>查找操作频繁，插入、删除操作少</li>
+</ul>
+</li>
+</ul>
+<h5 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h5>
       
     </div>
 
@@ -667,7 +688,7 @@ a[c].split("="),g=e.decode(k.shift()),k=e.decode(k.join("="));b[g]=k}return b};b
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#抽象数据类型-ADT"><span class="nav-text">抽象数据类型(ADT)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#表ADT"><span class="nav-text">表ADT</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#定义"><span class="nav-text">定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分类"><span class="nav-text">分类</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#抽象数据类型-ADT"><span class="nav-text">抽象数据类型(ADT)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#表ADT"><span class="nav-text">表ADT</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#定义"><span class="nav-text">定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分类"><span class="nav-text">分类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#顺序表"><span class="nav-text">顺序表</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#链表"><span class="nav-text">链表</span></a></li></ol></li></ol></div>
             
 
           </div>
