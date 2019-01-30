@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://xuh.io/"/>
-  <updated>2019-01-30T16:40:36.196Z</updated>
+  <updated>2019-01-30T16:42:28.144Z</updated>
   <id>https://xuh.io/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://xuh.io/20190130/af5c789.html"/>
     <id>https://xuh.io/20190130/af5c789.html</id>
     <published>2019-01-30T15:38:11.000Z</published>
-    <updated>2019-01-30T16:40:36.196Z</updated>
+    <updated>2019-01-30T16:42:28.144Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="抽象数据类型-ADT"><a href="#抽象数据类型-ADT" class="headerlink" title="抽象数据类型(ADT)"></a>抽象数据类型(ADT)</h3><p>抽象数据类型ADT(abstract data type)，一个实现包括存储数据元素的存储结构以及基本操作的算法集合，它是数学的抽象，在ADT的定义中，不包括具体的实现细节。</p><h3 id="表ADT"><a href="#表ADT" class="headerlink" title="表ADT"></a>表ADT</h3><h5 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h5><p>一组数据类型相同的有限序列{$A_1, A_2, A_3 ,…, A_n​$}，表的大小为n，当表大小为0时成为空表。除第一个元素外，每个元素有且仅有一个前驱，除最后一个元素外，每个元素有且仅有一个后继。</p><h5 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h5><p>根据元素的存储方式可分为顺序表和链表两大类：</p><pre class="mermaid">graph TD      B["线性表"]      B-->C[线性存储]      C-->D[顺序表]      B-->E["链式存储"]      E-->F["单链表"]      E-->G["双链表"]      E-->H["循环链表"]      E-->I["静态链表(借助数组实现)"]</pre>]]></content>
+    <content type="html"><![CDATA[<h3 id="抽象数据类型-ADT"><a href="#抽象数据类型-ADT" class="headerlink" title="抽象数据类型(ADT)"></a>抽象数据类型(ADT)</h3><p>抽象数据类型ADT(abstract data type)，一个实现包括存储数据元素的存储结构以及基本操作的算法集合，它是数学的抽象，在ADT的定义中，不包括具体的实现细节。</p><h3 id="表ADT"><a href="#表ADT" class="headerlink" title="表ADT"></a>表ADT</h3><h5 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h5><p>一组数据类型相同的有限序列{$A_1, A_2, A_3 ,…, A_n​$}，表的大小为n，当表大小为0时成为空表。除第一个元素外，每个元素有且仅有一个前驱，除最后一个元素外，每个元素有且仅有一个后继。</p><h5 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h5><p>根据元素的存储方式可分为顺序表和链表两大类：</p><pre class="mermaid">graph LR      B["线性表"]      B-->C[线性存储]      C-->D[顺序表]      B-->E["链式存储"]      E-->F["单链表"]      E-->G["双链表"]      E-->H["循环链表"]      E-->I["静态链表(借助数组实现)"]</pre>]]></content>
     
     <summary type="html">
     
@@ -634,6 +634,35 @@
   </entry>
   
   <entry>
+    <title>让nginx支持path_info</title>
+    <link href="https://xuh.io/20151128/8e316de2.html"/>
+    <id>https://xuh.io/20151128/8e316de2.html</id>
+    <published>2015-11-28T03:21:44.000Z</published>
+    <updated>2018-11-01T05:38:52.099Z</updated>
+    
+    <content type="html"><![CDATA[<p>nginx默认是不支持path_info模式的，也就是说不支持index.php/*这样的url，因此像Thinkphp中URL model为2的那种路径方式nginx不支持。</p><p>只要修改虚拟主机的下面三个地方即可：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">location ~ .php &#123; #删除.php后的$</span><br><span class="line">         fastcgi_pass   soopj_phpfcgi;</span><br><span class="line">         fastcgi_index  default.php;</span><br><span class="line">          </span><br><span class="line">         fastcgi_split_path_info ^((?U).+.php)(/?.+)$;       #增加这句</span><br><span class="line">         fastcgi_param PATH_INFO $fastcgi_path_info;   #增加这句</span><br><span class="line">    </span><br><span class="line">         fastcgi_param  SCRIPT_FILENAME   $document_root$fastcgi_script_name;</span><br><span class="line">         include        fastcgi_params;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;nginx默认是不支持path_info模式的，也就是说不支持index.php/*这样的url，因此像Thinkphp中URL model为2的那种路径方式nginx不支持。&lt;/p&gt;
+&lt;p&gt;只要修改虚拟主机的下面三个地方即可：&lt;/p&gt;
+&lt;figure class=&quot;hig
+      
+    
+    </summary>
+    
+      <category term="运维" scheme="https://xuh.io/categories/%E8%BF%90%E7%BB%B4/"/>
+    
+      <category term="LA/NMP服务" scheme="https://xuh.io/categories/%E8%BF%90%E7%BB%B4/LA-NMP%E6%9C%8D%E5%8A%A1/"/>
+    
+    
+      <category term="nginx" scheme="https://xuh.io/tags/nginx/"/>
+    
+  </entry>
+  
+  <entry>
     <title>CentOS安装samba服务</title>
     <link href="https://xuh.io/20151128/294fe70.html"/>
     <id>https://xuh.io/20151128/294fe70.html</id>
@@ -685,35 +714,6 @@
     
     
       <category term="git" scheme="https://xuh.io/tags/git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>让nginx支持path_info</title>
-    <link href="https://xuh.io/20151128/8e316de2.html"/>
-    <id>https://xuh.io/20151128/8e316de2.html</id>
-    <published>2015-11-28T03:21:44.000Z</published>
-    <updated>2018-11-01T05:38:52.099Z</updated>
-    
-    <content type="html"><![CDATA[<p>nginx默认是不支持path_info模式的，也就是说不支持index.php/*这样的url，因此像Thinkphp中URL model为2的那种路径方式nginx不支持。</p><p>只要修改虚拟主机的下面三个地方即可：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">location ~ .php &#123; #删除.php后的$</span><br><span class="line">         fastcgi_pass   soopj_phpfcgi;</span><br><span class="line">         fastcgi_index  default.php;</span><br><span class="line">          </span><br><span class="line">         fastcgi_split_path_info ^((?U).+.php)(/?.+)$;       #增加这句</span><br><span class="line">         fastcgi_param PATH_INFO $fastcgi_path_info;   #增加这句</span><br><span class="line">    </span><br><span class="line">         fastcgi_param  SCRIPT_FILENAME   $document_root$fastcgi_script_name;</span><br><span class="line">         include        fastcgi_params;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;nginx默认是不支持path_info模式的，也就是说不支持index.php/*这样的url，因此像Thinkphp中URL model为2的那种路径方式nginx不支持。&lt;/p&gt;
-&lt;p&gt;只要修改虚拟主机的下面三个地方即可：&lt;/p&gt;
-&lt;figure class=&quot;hig
-      
-    
-    </summary>
-    
-      <category term="运维" scheme="https://xuh.io/categories/%E8%BF%90%E7%BB%B4/"/>
-    
-      <category term="LA/NMP服务" scheme="https://xuh.io/categories/%E8%BF%90%E7%BB%B4/LA-NMP%E6%9C%8D%E5%8A%A1/"/>
-    
-    
-      <category term="nginx" scheme="https://xuh.io/tags/nginx/"/>
     
   </entry>
   
