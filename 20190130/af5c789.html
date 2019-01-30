@@ -110,7 +110,7 @@ a[c].split("="),g=e.decode(k.shift()),k=e.decode(k.join("="));b[g]=k}return b};b
 <meta property="og:site_name" content="金州苍狼">
 <meta property="og:description" content="[TOC] 抽象数据类型(ADT)抽象数据类型ADT(abstract data type)，一个实现包括存储数据元素的存储结构以及基本操作的算法集合，它是数学的抽象，在ADT的定义中，不包括具体的实现细节。 表ADT定义一组数据类型相同的有限序列{$A_1, A_2, A_3 ,…, A_n​$}，表的大小为n，当表大小为0时成为空表。除第一个元素外，每个元素有且仅有一个前驱，除最后一个元素外，">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-30T16:32:54.078Z">
+<meta property="og:updated_time" content="2019-01-30T16:38:58.524Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据结构之线性表（一）">
 <meta name="twitter:description" content="[TOC] 抽象数据类型(ADT)抽象数据类型ADT(abstract data type)，一个实现包括存储数据元素的存储结构以及基本操作的算法集合，它是数学的抽象，在ADT的定义中，不包括具体的实现细节。 表ADT定义一组数据类型相同的有限序列{$A_1, A_2, A_3 ,…, A_n​$}，表的大小为n，当表大小为0时成为空表。除第一个元素外，每个元素有且仅有一个前驱，除最后一个元素外，">
@@ -424,42 +424,20 @@ a[c].split("="),g=e.decode(k.shift()),k=e.decode(k.join("="));b[g]=k}return b};b
 <h3 id="抽象数据类型-ADT"><a href="#抽象数据类型-ADT" class="headerlink" title="抽象数据类型(ADT)"></a>抽象数据类型(ADT)</h3><p>抽象数据类型ADT(abstract data type)，一个实现包括存储数据元素的存储结构以及基本操作的算法集合，它是数学的抽象，在ADT的定义中，不包括具体的实现细节。</p>
 <h3 id="表ADT"><a href="#表ADT" class="headerlink" title="表ADT"></a>表ADT</h3><h5 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h5><p>一组数据类型相同的有限序列{$A_1, A_2, A_3 ,…, A_n​$}，表的大小为n，当表大小为0时成为空表。除第一个元素外，每个元素有且仅有一个前驱，除最后一个元素外，每个元素有且仅有一个后继。</p>
 <h5 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h5><p>根据元素的存储方式可分为顺序表和链表两大类：</p>
-<pre class="mermaid">graph LR
-
-    绘图 --> 导出图像
-
-    导出图像 --> 上传服务器
-
-    上传服务器 --> 文章插入</pre>
-
-
-
-
-
-
-
-<div id="flowchart-0" class="flow-chart"></div>
-
-
-
 <pre class="mermaid">graph TD
-      B["fa:fa-twitter for peace"]
-      B-->C[fa:fa-ban forbidden]
-      B-->D(fa:fa-spinner);
-      B-->E(A fa:fa-camera-retro perhaps?);</pre>
+      B["线性表"]
+      B-->C[线性存储]
+      C-->D[顺序表]
+      B-->E["链式存储"]
+      E-->F["单链表"]
+      E-->G["双链表"]
+      E-->H["循环链表"]
+      E-->I["静态链表(借助数组实现)"]</pre>
 
 
 
 
 
-<p><script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.6.5/flowchart.min.js"></script><textarea id="flowchart-0-code" style="display: none">st=>start: Start
-op=>operation: Your Operation
-cond=>condition: Yes or No?
-e=>end
-
-st->op->cond
-cond(yes)->e
-cond(no)->op</textarea><textarea id="flowchart-0-options" style="display: none">{"scale":1,"line-width":1,"line-length":50,"text-margin":10,"font-size":12}</textarea><script>  var code = document.getElementById("flowchart-0-code").value;  var options = JSON.parse(decodeURIComponent(document.getElementById("flowchart-0-options").value));  var diagram = flowchart.parse(code);  diagram.drawSVG("flowchart-0", options);</script></p>
 
       
     </div>
