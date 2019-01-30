@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[数据结构之线性表（一）]]></title>
     <url>%2F20190130%2Faf5c789.html</url>
-    <content type="text"><![CDATA[[TOC] 抽象数据类型(ADT)抽象数据类型ADT(abstract data type)，一个实现包括存储数据元素的存储结构以及基本操作的算法集合，它是数学的抽象，在ADT的定义中，不包括具体的实现细节。 表ADT定义一组数据类型相同的有限序列{$A_1, A_2, A_3 ,…, A_n​$}，表的大小为n，当表大小为0时成为空表。除第一个元素外，每个元素有且仅有一个前驱，除最后一个元素外，每个元素有且仅有一个后继。]]></content>
+    <content type="text"><![CDATA[[TOC] 抽象数据类型(ADT)抽象数据类型ADT(abstract data type)，一个实现包括存储数据元素的存储结构以及基本操作的算法集合，它是数学的抽象，在ADT的定义中，不包括具体的实现细节。 表ADT定义一组数据类型相同的有限序列{$A_1, A_2, A_3 ,…, A_n​$}，表的大小为n，当表大小为0时成为空表。除第一个元素外，每个元素有且仅有一个前驱，除最后一个元素外，每个元素有且仅有一个后继。 分类根据元素的存储方式可分为顺序表和链表两大类： graph LR 绘图 –&gt; 导出图像 导出图像 –&gt; 上传服务器 上传服务器 –&gt; 文章插入]]></content>
       <categories>
         <category>算法/数据结构</category>
         <category>理论</category>
@@ -248,6 +248,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[一个 git hook自动部署脚本]]></title>
+    <url>%2F20151128%2F56cf4d4.html</url>
+    <content type="text"><![CDATA[http://www.ihorve.com/?p123456789101112131415161718192021222324252627282930313233343536373839#!/bin/sh## git autodeploy script when it matches string "[deploy]"## Usage:# 1. put this into the post-receive hook file itself below# 2. `chmod +x post-receive`# 3. Done!# Check the remote git repository whether it is bareIS_BARE=$(git rev-parse --is-bare-repository)if [ -z "$IS_BARE" ]; then echo &gt;&amp;2 "fatal:post-receive:IS_NOT_BARE" exit 1fi# Get the latest commit subjectSUBJECT=$(git log -1 --pretty=format:"%s")# Deploy the HEAD source to publishIS_PULL=$(echo "$SUBJECT" | grep "\[deploy\]")if [ -z "$IS_PULL" ];then echo &gt;&amp;2 "tips:post-receive:IS_NOT_PULL" exit 1fi# Check the deploy dir whether is existsDEPLOY_DIR=/home/wwwif [ ! -d $DEPLOY_DIR ]; then echo &gt;&amp;2 "fatal:post-receive:DEPLOY_DIR_NOT_EXISTS:\"$DEPLOY_DIR\"" exit 1fi# Check the deploy dir whether it is git repository#IS_GIT=$(git rev-parse --git-dir 2&gt;/dev/null)#if [ -z "$IS_GIT" ] ;then# echo &gt;&amp;2 "fatal:post-receive:IS_NOT_GIT"# exit 1#fi# Goto the deploy dir and pull the latest sourcescd $DEPLOY_DIR# env -i git reset --hardenv -i git pull]]></content>
+      <categories>
+        <category>工具/版本管理</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[CentOS安装samba服务]]></title>
     <url>%2F20151128%2F294fe70.html</url>
     <content type="text"><![CDATA[检查是否有安装samba服务： $ rpm -qa | grep samba 如果没安装则yum安装 $ yum -y install samba samba-client samba-common 默认的安装目录是/etc/samba，配置文件为smb.conf,先备份下smb文件 $ cd /etc/samba $ cp smb.conf smb.conf.bak 然后编辑smb.conf加入以下内容： 123456[remote_dev] path = /alidata/nginx_www/wx.soopj.com public =no writable = yes write list = @www valid users = @www @www是客户端登录所需要的用户，设置nginx的用户密码： $ smbpasswd -a www 为了避免在启动Samba时出现以下警告信息：rlimit_max: increasing rlimit_max (1024) tominimum Windows limit (16384)， 配置内核参数 12345$ ulimit -n 16384$ vi /etc/security/limits.conf#在最后加入以下内容* - nofile 16384 然后运行testparm检测配置文件。 然后启动服务，关闭防火墙： 123$ service smb start$ service nmb start$ service iptables stop centos7后启动服务由systemctl管理，防火墙换成firewalld，因此命令稍有不同。然后客户端即可测试。]]></content>
@@ -257,17 +268,6 @@
       </categories>
       <tags>
         <tag>samba</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[一个 git hook自动部署脚本]]></title>
-    <url>%2F20151128%2F56cf4d4.html</url>
-    <content type="text"><![CDATA[http://www.ihorve.com/?p123456789101112131415161718192021222324252627282930313233343536373839#!/bin/sh## git autodeploy script when it matches string "[deploy]"## Usage:# 1. put this into the post-receive hook file itself below# 2. `chmod +x post-receive`# 3. Done!# Check the remote git repository whether it is bareIS_BARE=$(git rev-parse --is-bare-repository)if [ -z "$IS_BARE" ]; then echo &gt;&amp;2 "fatal:post-receive:IS_NOT_BARE" exit 1fi# Get the latest commit subjectSUBJECT=$(git log -1 --pretty=format:"%s")# Deploy the HEAD source to publishIS_PULL=$(echo "$SUBJECT" | grep "\[deploy\]")if [ -z "$IS_PULL" ];then echo &gt;&amp;2 "tips:post-receive:IS_NOT_PULL" exit 1fi# Check the deploy dir whether is existsDEPLOY_DIR=/home/wwwif [ ! -d $DEPLOY_DIR ]; then echo &gt;&amp;2 "fatal:post-receive:DEPLOY_DIR_NOT_EXISTS:\"$DEPLOY_DIR\"" exit 1fi# Check the deploy dir whether it is git repository#IS_GIT=$(git rev-parse --git-dir 2&gt;/dev/null)#if [ -z "$IS_GIT" ] ;then# echo &gt;&amp;2 "fatal:post-receive:IS_NOT_GIT"# exit 1#fi# Goto the deploy dir and pull the latest sourcescd $DEPLOY_DIR# env -i git reset --hardenv -i git pull]]></content>
-      <categories>
-        <category>工具/版本管理</category>
-      </categories>
-      <tags>
-        <tag>git</tag>
       </tags>
   </entry>
   <entry>
