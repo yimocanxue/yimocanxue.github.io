@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[数据结构之线性表（一）]]></title>
     <url>%2F20190130%2Faf5c789.html</url>
-    <content type="text"><![CDATA[抽象数据类型(ADT)抽象数据类型ADT(abstract data type)，一个实现包括存储数据元素的存储结构以及基本操作的算法集合，它是数学的抽象，在ADT的定义中，不包括具体的实现细节。 表ADT定义一组数据类型相同的有限序列{$A_1, A_2, A_3 ,…, A_n​$}，表的大小为n，当表大小为0时成为空表。除第一个元素外，每个元素有且仅有一个前驱，除最后一个元素外，每个元素有且仅有一个后继。 分类根据元素的存储方式可分为顺序表和链表两大类： graph LR B["线性表"] B-->C[线性存储] C-->D[顺序表] B-->E["链式存储"] E-->F["单链表"] E-->G["双链表"] E-->H["循环链表"] E-->I["静态链表(借助数组实现)"] 顺序表逻辑上相邻的两个元素，其物理存储也相邻，一般通过数组实现。 优点 实现简单 查找性能高，时间复杂度为O(1) 缺点 插入、删除需要移动元素，时间复杂度为O(N) 需要预分配存储空间，容易造成资源浪费和发生溢出错误 适用场景 表大小确定 查找操作频繁，插入、删除操作少 链表]]></content>
+    <content type="text"><![CDATA[抽象数据类型(ADT)抽象数据类型ADT(abstract data type)，一个实现包括存储数据元素的存储结构以及基本操作的算法集合，它是数学的抽象，在ADT的定义中，不包括具体的实现细节。 表ADT定义一组数据类型相同的有限序列{$A_1, A_2, A_3 ,…, A_n​$}，表的大小为n，当表大小为0时成为空表。除第一个元素外，每个元素有且仅有一个前驱，除最后一个元素外，每个元素有且仅有一个后继。 分类根据元素的存储方式可分为顺序表和链表两大类： graph LR B["线性表"] B-->C[线性存储] C-->D[顺序表] B-->E["链式存储"] E-->F["单链表"] E-->G["双链表"] E-->H["循环链表"] E-->I["静态链表(借助数组实现)"] 顺序表逻辑上相邻的两个元素，其物理存储也相邻，一般通过数组实现。 优点 实现简单 查找性能高，时间复杂度为O(1) 缺点 插入、删除需要移动元素，时间复杂度为O(N) 需要预分配存储空间，容易造成资源浪费和发生溢出错误 适用场景 表大小确定 查找操作频繁，插入、删除操作少 链表为了避免插入、删除的线性开销，就要避免插入、删除时的部分或整体移动，因此表元素之间不能连续存储，这种表就是链表，链表分单链表、双链表、循环链表等，下面先说说比较简单和常用的单链表。 在C语言的实现中，通过一个结构体来描述一个元素(节点)，包括一个数据域成员和一个指针成员，指针指向元素的后继 。该指针成员称Next指针或“链”，最后一个元素的Next指针指向NULL。 一个含有五个元素的单链表 指向第一个节点A1的指针叫头指针，我们通过头指针来命名链表。 因为元素不是连续存储的，元素之间的逻辑关联通过Next指针引用，因此插入元素时不需要把插入点后的元素整个后移，只需要修改插入点的指针引用关系即可： 上图中，在A2后插入元素X，只需要修改A2的Next指针指向新的节点，然后新的节点指向原A2的后继即可。 同样，对于删除操作，只需要将删除节点的前驱Next指针指向删除节点的后继即可： 如果要删除的是最后一个节点，只需要将前驱Next指针指向NULL即可，但是，这里有一个问题，就是当要删除的节点是第一个节点A1的时候会怎样？头指针的引用将会丢失，也就是表丢失了，同样如果在A1前插入元素也会造成表的丢失。 为了解决首节点删除和前插问题，一般实现中引入一个额外的节点，成为头节点或哑节点，它不包含数据域。头结点在位置0处，下面是一个带头结点的表： 引入头结点后，对A1节点的删除和前插操作和其它节点统一了，下面的实现采用头结点方案。]]></content>
       <categories>
         <category>算法/数据结构</category>
         <category>理论</category>
@@ -259,18 +259,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[CentOS安装samba服务]]></title>
-    <url>%2F20151128%2F294fe70.html</url>
-    <content type="text"><![CDATA[检查是否有安装samba服务： $ rpm -qa | grep samba 如果没安装则yum安装 $ yum -y install samba samba-client samba-common 默认的安装目录是/etc/samba，配置文件为smb.conf,先备份下smb文件 $ cd /etc/samba $ cp smb.conf smb.conf.bak 然后编辑smb.conf加入以下内容： 123456[remote_dev] path = /alidata/nginx_www/wx.soopj.com public =no writable = yes write list = @www valid users = @www @www是客户端登录所需要的用户，设置nginx的用户密码： $ smbpasswd -a www 为了避免在启动Samba时出现以下警告信息：rlimit_max: increasing rlimit_max (1024) tominimum Windows limit (16384)， 配置内核参数 12345$ ulimit -n 16384$ vi /etc/security/limits.conf#在最后加入以下内容* - nofile 16384 然后运行testparm检测配置文件。 然后启动服务，关闭防火墙： 123$ service smb start$ service nmb start$ service iptables stop centos7后启动服务由systemctl管理，防火墙换成firewalld，因此命令稍有不同。然后客户端即可测试。]]></content>
-      <categories>
-        <category>运维</category>
-        <category>系统管理</category>
-      </categories>
-      <tags>
-        <tag>samba</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[让nginx支持path_info]]></title>
     <url>%2F20151128%2F8e316de2.html</url>
     <content type="text"><![CDATA[nginx默认是不支持path_info模式的，也就是说不支持index.php/*这样的url，因此像Thinkphp中URL model为2的那种路径方式nginx不支持。 只要修改虚拟主机的下面三个地方即可： 12345678910location ~ .php &#123; #删除.php后的$ fastcgi_pass soopj_phpfcgi; fastcgi_index default.php; fastcgi_split_path_info ^((?U).+.php)(/?.+)$; #增加这句 fastcgi_param PATH_INFO $fastcgi_path_info; #增加这句 fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name; include fastcgi_params; &#125;]]></content>
@@ -280,6 +268,18 @@
       </categories>
       <tags>
         <tag>nginx</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[CentOS安装samba服务]]></title>
+    <url>%2F20151128%2F294fe70.html</url>
+    <content type="text"><![CDATA[检查是否有安装samba服务： $ rpm -qa | grep samba 如果没安装则yum安装 $ yum -y install samba samba-client samba-common 默认的安装目录是/etc/samba，配置文件为smb.conf,先备份下smb文件 $ cd /etc/samba $ cp smb.conf smb.conf.bak 然后编辑smb.conf加入以下内容： 123456[remote_dev] path = /alidata/nginx_www/wx.soopj.com public =no writable = yes write list = @www valid users = @www @www是客户端登录所需要的用户，设置nginx的用户密码： $ smbpasswd -a www 为了避免在启动Samba时出现以下警告信息：rlimit_max: increasing rlimit_max (1024) tominimum Windows limit (16384)， 配置内核参数 12345$ ulimit -n 16384$ vi /etc/security/limits.conf#在最后加入以下内容* - nofile 16384 然后运行testparm检测配置文件。 然后启动服务，关闭防火墙： 123$ service smb start$ service nmb start$ service iptables stop centos7后启动服务由systemctl管理，防火墙换成firewalld，因此命令稍有不同。然后客户端即可测试。]]></content>
+      <categories>
+        <category>运维</category>
+        <category>系统管理</category>
+      </categories>
+      <tags>
+        <tag>samba</tag>
       </tags>
   </entry>
 </search>
