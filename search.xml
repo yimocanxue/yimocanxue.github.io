@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[数据结构之（三）- 栈实现]]></title>
+    <title><![CDATA[数据结构之（三）--- 栈实现]]></title>
     <url>%2F20190211%2Fb2596ee6.html</url>
     <content type="text"><![CDATA[栈ADT概述栈(stack)其实是一种特殊的表，插入后删除都只能从表的指定位置进行，这个位置成为栈顶。栈的插入叫入栈(push)，删除叫出栈(pop)，因为入栈和出栈都是在栈顶进行，因此最后入栈的元素最先出栈(后进先出:LIFO)，因此栈也叫LIFO表，换句话说，在任意时刻，只有栈顶元素是可见的。 因为栈其实是一个表，因此任何实现表的方法都能实现栈，通常有链表和数组两种实现方式，下面分别实现。 栈链表实现首先是栈链表实现的ADT声明头文件stack.h: 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465#ifndef _stack_htypedef int VType;struct StackNode;typedef struct StackNode *ptrToNode;typedef ptrToNode Stack;typedef ptrToNode Node;/** * 创建一个空栈 * @return */Stack createStack (void);/** * 检测是否空栈 * @param s * @return */int isEmpty (Stack s);/** * 获取栈大小 * @param s * @return */int size (Stack s);/** * 清空栈 * @param s */void deleteAll (Stack s);/** * 入栈 * @param Stack * @param x */void push (Stack, VType x);/** * 出栈 * @param stack * @return */VType pop (Stack stack);/** * 返回栈顶元素 * @param s * @return */VType top (Stack s);/** * 展示栈数据 * @param list */void show (Stack stack);#endif /* _stack_h */ 然后是显现文件stack.c: 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143144145146147148149150#include &lt;stdlib.h&gt;#include &lt;stdio.h&gt;#include "stack.h"struct StackNode &#123; VType value; struct StackNode *next;&#125;;/** * 显示unix风格的错误 * @param msg */void unix_error (char *msg) &#123; printf("%s\n", msg); exit(0);&#125;void *Malloc (size_t size) &#123; void *p; if ((p = malloc(size)) == NULL) unix_error("malloc error!"); return p;&#125;/** * 创建一个空栈 * @return */Stack createStack (void)&#123; Stack s = (Stack)Malloc(sizeof (struct StackNode)); s-&gt;next = NULL; return s;&#125;/** * 检测是否空栈 * @param s * @return */int isEmpty (Stack s) &#123; return s-&gt;next == NULL;&#125;/** * 获取栈大小 * @param s * @return */int size (Stack s)&#123; int count = 0; Node p = s; while (p-&gt;next != NULL) &#123; count++; p = p-&gt;next; &#125; return count;&#125;/** * 清空栈 * @param s */void deleteAll (Stack s)&#123; Node tmp, node = s-&gt;next; while (node != NULL) &#123; tmp = node-&gt;next; free(node); node = tmp; &#125; s-&gt;next = NULL;&#125;/** * 入栈 * @param s * @param x */void push (Stack s, VType x) &#123; Node node; node = (Node)Malloc(sizeof(struct StackNode)); node-&gt;value = x; node-&gt;next = s-&gt;next; s-&gt;next = node;&#125;/** * 出栈 * @param s * @return */VType pop (Stack s)&#123; if (isEmpty (s)) unix_error("pop error"); VType result; Node node = s-&gt;next; s-&gt;next = node-&gt;next; result = node-&gt;value; free(node); return result;&#125;/** * 返回栈顶元素 * @param s * @return */VType top (Stack s)&#123; if (isEmpty(s)) unix_error("empty stack"); return s-&gt;next-&gt;value;&#125;/** * 展示栈数据 * @param list */void show (Stack s)&#123; if (isEmpty(s)) &#123; printf("当前是空栈\n"); return; &#125; int count = 1; Node n = s-&gt;next; while (n != NULL) &#123; printf("从栈顶第%d个元素：%d\n", count++, n-&gt;value); n = n-&gt;next; &#125;&#125; 栈数组实现栈数组实现和链表实现的区别在于需要提前设置栈的大小，一遍初始化数组，但是它相比于链表实现的优势在于入栈和出栈少了频繁的malloc和free开销。 因为需要提前设置栈大小，因此创建栈实例时需要给出栈容量参数，下面是栈的数组直线的ADT头文件stack2.h: 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879#ifndef _stack_hstruct StackRecord;typedef struct StackRecord *Stack;typedef int VType;/** * 创建并初始化一个空栈 * @param maxElements 栈最大容量 * @return */Stack createStack (int maxElements);/** * 获取栈大小 * @param s * @return */int size (Stack s);/** * 检测当期栈是否为空 * @param s * @return */int isEmpty (Stack s);/** * 检测当前栈是否满栈 * @param s * @return */int isFull (Stack s);/** * 清空栈 * @param s [description] */void deleteAll (Stack s);/** * 释放栈 * @param s */void disposeStack (Stack s);/** * 入栈 * @param x 入栈元素 * @param s */void push (VType x, Stack s);/** * 出栈 * @param s * @return */VType pop (Stack s);/** * 返回栈顶元素 * @param s * @return */Vtype top (Stack s);/** * 展示栈数据 * @param list */void show (Stack s);#endif /* _stack_h */ 实现文件stack2.c: 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143144145146147148149150151152153154155156157158#include &lt;stdio.h&gt;#include &lt;stdlib.h&gt;#include "stack2.h"#define EmptyTOS (-1)#define MinStackSize (5)struct StackRecord &#123; int capacity; // 栈最大容量 int topOfStack; // 栈顶下标 VType *array; // 存储栈元素的数组&#125;;/** * 显示unix风格的错误 * @param msg */void unix_error (char *msg) &#123; printf("%s\n", msg); exit(0);&#125;void *Malloc (size_t size) &#123; void *p; if ((p = malloc(size)) == NULL) unix_error("malloc error!"); return p;&#125;/** * 创建并初始化一个空栈 * @param maxElements 栈最大容量 * @return */Stack createStack (int maxElements)&#123; Stack s; if (maxElements &lt; MinStackSize) unix_error("Stack size is too small"); s = Malloc(sizeof (struct StackRecord)); s-&gt;array = Malloc(sizeof (VType) * maxElements); s-&gt;capacity = maxElements deleteAll(s); return s;&#125;/** * 获取栈大小 * @param s * @return */int size (Stack s)&#123; return s-&gt;topOfStack + 1;&#125;/** * 检测当期栈是否为空 * @param s * @return */int isEmpty (Stack s)&#123; return s-&gt;topOfStack == EmptyTOS;&#125;/** * 检测当前栈是否满栈 * @param s * @return */int isFull (Stack s)&#123; return size(s) == s-&gt;capacity;&#125;/** * 清空栈 * @param s [description] */void deleteAll (Stack s) &#123; s-&gt;topOfStack = EmptyTOS;&#125;/** * 释放栈 * @param s */void disposeStack (Stack s)&#123; if (s != NULL) &#123; free (s-&gt;array); free(s); &#125;&#125;/** * 入栈 * @param x 入栈元素 * @param s */void push (VType x, Stack s)&#123; if (isFull(s)) unix_error("Full stack"); s-&gt;array[++(s-&gt;topOfStack)] = x;&#125;/** * 出栈 * @param s * @return */VType pop (Stack s)&#123; if (isEmpty(s)) unix_error("Empty stack"); return s-&gt;array[s-&gt;topOfStack--];&#125;/** * 返回栈顶元素 * @param s * @return */VType pop (Stack s)&#123; if (isEmpty(s)) unix_error("Empty stack"); return s-&gt;array[s-&gt;topOfStack];&#125;/** * 展示栈数据 * @param list */void show (Stack s)&#123; if (isEmpty(s)) &#123; printf("当前是空栈\n"); return ; &#125; for (int i = s-&gt;topOfStack; i &gt;= 0; i--) &#123; printf("从栈顶第%d个元素：%d\n", (s-&gt;topOfStack - i), s-&gt;array[i]); &#125;&#125;]]></content>
       <categories>
@@ -245,8 +245,8 @@
         <category>LA/NMP服务</category>
       </categories>
       <tags>
-        <tag>nginx</tag>
         <tag>启动脚本</tag>
+        <tag>nginx</tag>
         <tag>php-fpm</tag>
       </tags>
   </entry>
@@ -273,6 +273,18 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[CentOS安装samba服务]]></title>
+    <url>%2F20151128%2F294fe70.html</url>
+    <content type="text"><![CDATA[检查是否有安装samba服务： $ rpm -qa | grep samba 如果没安装则yum安装 $ yum -y install samba samba-client samba-common 默认的安装目录是/etc/samba，配置文件为smb.conf,先备份下smb文件 $ cd /etc/samba $ cp smb.conf smb.conf.bak 然后编辑smb.conf加入以下内容： 123456[remote_dev] path = /alidata/nginx_www/wx.soopj.com public =no writable = yes write list = @www valid users = @www @www是客户端登录所需要的用户，设置nginx的用户密码： $ smbpasswd -a www 为了避免在启动Samba时出现以下警告信息：rlimit_max: increasing rlimit_max (1024) tominimum Windows limit (16384)， 配置内核参数 12345$ ulimit -n 16384$ vi /etc/security/limits.conf#在最后加入以下内容* - nofile 16384 然后运行testparm检测配置文件。 然后启动服务，关闭防火墙： 123$ service smb start$ service nmb start$ service iptables stop centos7后启动服务由systemctl管理，防火墙换成firewalld，因此命令稍有不同。然后客户端即可测试。]]></content>
+      <categories>
+        <category>运维</category>
+        <category>系统管理</category>
+      </categories>
+      <tags>
+        <tag>samba</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[一个 git hook自动部署脚本]]></title>
     <url>%2F20151128%2F56cf4d4.html</url>
     <content type="text"><![CDATA[http://www.ihorve.com/?p123456789101112131415161718192021222324252627282930313233343536373839#!/bin/sh## git autodeploy script when it matches string "[deploy]"## Usage:# 1. put this into the post-receive hook file itself below# 2. `chmod +x post-receive`# 3. Done!# Check the remote git repository whether it is bareIS_BARE=$(git rev-parse --is-bare-repository)if [ -z "$IS_BARE" ]; then echo &gt;&amp;2 "fatal:post-receive:IS_NOT_BARE" exit 1fi# Get the latest commit subjectSUBJECT=$(git log -1 --pretty=format:"%s")# Deploy the HEAD source to publishIS_PULL=$(echo "$SUBJECT" | grep "\[deploy\]")if [ -z "$IS_PULL" ];then echo &gt;&amp;2 "tips:post-receive:IS_NOT_PULL" exit 1fi# Check the deploy dir whether is existsDEPLOY_DIR=/home/wwwif [ ! -d $DEPLOY_DIR ]; then echo &gt;&amp;2 "fatal:post-receive:DEPLOY_DIR_NOT_EXISTS:\"$DEPLOY_DIR\"" exit 1fi# Check the deploy dir whether it is git repository#IS_GIT=$(git rev-parse --git-dir 2&gt;/dev/null)#if [ -z "$IS_GIT" ] ;then# echo &gt;&amp;2 "fatal:post-receive:IS_NOT_GIT"# exit 1#fi# Goto the deploy dir and pull the latest sourcescd $DEPLOY_DIR# env -i git reset --hardenv -i git pull]]></content>
@@ -293,18 +305,6 @@
       </categories>
       <tags>
         <tag>nginx</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[CentOS安装samba服务]]></title>
-    <url>%2F20151128%2F294fe70.html</url>
-    <content type="text"><![CDATA[检查是否有安装samba服务： $ rpm -qa | grep samba 如果没安装则yum安装 $ yum -y install samba samba-client samba-common 默认的安装目录是/etc/samba，配置文件为smb.conf,先备份下smb文件 $ cd /etc/samba $ cp smb.conf smb.conf.bak 然后编辑smb.conf加入以下内容： 123456[remote_dev] path = /alidata/nginx_www/wx.soopj.com public =no writable = yes write list = @www valid users = @www @www是客户端登录所需要的用户，设置nginx的用户密码： $ smbpasswd -a www 为了避免在启动Samba时出现以下警告信息：rlimit_max: increasing rlimit_max (1024) tominimum Windows limit (16384)， 配置内核参数 12345$ ulimit -n 16384$ vi /etc/security/limits.conf#在最后加入以下内容* - nofile 16384 然后运行testparm检测配置文件。 然后启动服务，关闭防火墙： 123$ service smb start$ service nmb start$ service iptables stop centos7后启动服务由systemctl管理，防火墙换成firewalld，因此命令稍有不同。然后客户端即可测试。]]></content>
-      <categories>
-        <category>运维</category>
-        <category>系统管理</category>
-      </categories>
-      <tags>
-        <tag>samba</tag>
       </tags>
   </entry>
 </search>
