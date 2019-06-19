@@ -140,6 +140,16 @@ $ tar xf v0.10.11.tar.gz
 
 这里只需要下载解压到/usr/local/src目录下解压即可。
 
+
+
+### 增加运行tengine的用户和组
+
+``` 
+$ useradd -s /bin/bash -m -U  -c "web user"  www
+```
+
+
+
 ### 安装Tengine
 
 Tengine和Nginx大多编译和配置选项均相同，Tengine特有的编译选项[参见这里](http://tengine.taobao.org/document_cn/install_cn.html)。
@@ -155,6 +165,7 @@ $ ./configure \
 --conf-path=/server/tengine/conf/nginx.conf \
 --user=www  \
 --group=www \
+--with-ipv6 \
 --dso-path=/server/tengine/dso \
 --with-http_concat_module \
 --with-http_stub_status_module \
@@ -179,6 +190,7 @@ $ ln -s /server/tengine/nginx /usr/bin/nginx # 可选
 - 运行Tengine的用户和组须先添加，这里省略了；
 - pcre、zlib、openssl、jemalloc相关的编译选项需要指向的是安装源文件路径，不是安装该库是指定的prefix，这个一定要注意；
 - ngx_devel_kit、lua-nginx-module两个模块编译选项只要需要指向解压路径，Tengine编译时会进入相应目录完成编译。
+- 需要增加--with-ipv6 选项，不然启动会报错。
 
 了解更多的编译选项参见[这里](http://nginx.org/en/docs/configure.html)、[这里](http://tengine.taobao.org/documentation_cn.html)、[还有这里](http://www.nginx.cn/doc/index.html)。
 
@@ -223,6 +235,27 @@ $ systemctl start nginx.service
 ```
 
 访问http://127.0.0.1看到欢迎页则安装过程完成。
+
+
+
+### 安装PHP5.6
+
+```
+$ yum -y install epel-release
+$ rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
+$ yum -y install  mod_ssl  mcrypt libjpeg*
+$ yum -y install php56w php56w-devel  php56w-mysqlnd  php56w-gd  php56w-ldap  php56w-pear  php56w-pdo php56w-xml  php56w-xmlrpc  php56w-mbstring php56w-bcmath  php56w-devel php56w-fpm php56w-intl php56w-mcrypt php56w-pecl-igbinary php56w-pecl-memcached php56w-pecl-mongodb php56w-pecl-redis php56w-pecl-xdebug php56w-opcache
+$ systemctl enable php-fpm
+$ systemctl start php-fpm
+```
+
+
+
+### 安装MySQL
+
+```
+https://www.cnblogs.com/yizitrd/p/5363059.html
+```
 
 
 
